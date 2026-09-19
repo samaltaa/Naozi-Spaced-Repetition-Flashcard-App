@@ -2,8 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 import { errorMessage } from "@/lib/client/api";
-import { COMMON_LANGUAGES, languageName } from "@/lib/client/languages";
 import type { CourseFormValues, DiacriticMode, Visibility } from "@/lib/client/types";
+import { LanguagePicker } from "./LanguagePicker";
 
 // Types
 
@@ -25,7 +25,6 @@ type Status = { kind: "idle" } | { kind: "saving" } | { kind: "saved" } | { kind
 const INPUT =
   "w-full rounded-lg border-2 border-ink/15 bg-white px-3 py-2 font-semibold outline-none focus:border-water";
 const LABEL = "mb-1 block text-sm font-bold";
-const HINT = "mt-1 text-sm text-ink/60";
 
 const ACCENT_MODES: { value: DiacriticMode; title: string; body: string }[] = [
   { value: "lenient", title: "Lenient", body: "Missing accents are accepted with a reminder." },
@@ -89,14 +88,6 @@ export function CourseForm({ initial, submitLabel, onSubmit }: Props) {
 
   return (
     <form onSubmit={submit} className="flex flex-col gap-6" noValidate>
-      <datalist id="language-codes">
-        {COMMON_LANGUAGES.map((code) => (
-          <option key={code} value={code}>
-            {languageName(code)}
-          </option>
-        ))}
-      </datalist>
-
       <div>
         <label htmlFor="course-title" className={LABEL}>
           Title
@@ -127,34 +118,18 @@ export function CourseForm({ initial, submitLabel, onSubmit }: Props) {
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <label htmlFor="course-target" className={LABEL}>
-            Language being taught
-          </label>
-          <input
-            id="course-target"
-            list="language-codes"
-            value={fields.targetLang}
-            onChange={(e) => set("targetLang", e.target.value)}
-            placeholder="es"
-            className={INPUT}
-          />
-          <p className={HINT}>{fields.targetLang ? languageName(fields.targetLang.trim()) : "Use a language code"}</p>
-        </div>
-        <div>
-          <label htmlFor="course-source" className={LABEL}>
-            Language of the prompts
-          </label>
-          <input
-            id="course-source"
-            list="language-codes"
-            value={fields.sourceLang}
-            onChange={(e) => set("sourceLang", e.target.value)}
-            placeholder="en"
-            className={INPUT}
-          />
-          <p className={HINT}>{fields.sourceLang ? languageName(fields.sourceLang.trim()) : "Use a language code"}</p>
-        </div>
+        <LanguagePicker
+          id="course-target"
+          label="Language being taught"
+          value={fields.targetLang}
+          onChange={(code) => set("targetLang", code)}
+        />
+        <LanguagePicker
+          id="course-source"
+          label="Language of the prompts"
+          value={fields.sourceLang}
+          onChange={(code) => set("sourceLang", code)}
+        />
       </div>
 
       <fieldset>

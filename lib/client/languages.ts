@@ -25,12 +25,30 @@ export function accentsFor(lang: string): string[] {
   return ACCENTS[base] ?? [];
 }
 
-// Common codes
+// Language list
 
-export const COMMON_LANGUAGES = [
-  "en", "es", "fr", "de", "it", "pt", "nl", "sv", "pl", "ru", "tr", "el",
-  "ar", "he", "hi", "ja", "zh", "ko", "ht", "la",
+const LANGUAGE_CODES = [
+  "af", "am", "ar", "az", "be", "bg", "bn", "bo", "bs", "ca", "ceb", "cs", "cy", "da", "de", "el",
+  "en", "eo", "es", "et", "eu", "fa", "fi", "fil", "fr", "ga", "gd", "gl", "grc", "gu", "ha", "haw",
+  "he", "hi", "hr", "ht", "hu", "hy", "id", "ig", "is", "it", "ja", "jv", "ka", "kk", "km", "kn",
+  "ko", "ku", "ky", "la", "lb", "lo", "lt", "lv", "mg", "mi", "mk", "ml", "mn", "mr", "ms", "mt",
+  "my", "ne", "nl", "no", "pa", "pl", "pt", "qu", "ro", "ru", "sd", "si", "sk", "sl", "sm", "sn",
+  "so", "sq", "sr", "sv", "sw", "ta", "te", "tg", "th", "tk", "tr", "tt", "ug", "uk", "ur", "uz",
+  "vi", "xh", "yi", "yo", "zh", "zu",
 ];
+
+export interface LanguageOption {
+  code: string;
+  name: string;
+}
+
+export const LANGUAGE_OPTIONS: LanguageOption[] = LANGUAGE_CODES.map((code) => ({ code, name: languageName(code) })).sort(
+  (a, b) => a.name.localeCompare(b.name, "en"),
+);
+
+export function isKnownLanguage(code: string): boolean {
+  return LANGUAGE_CODES.includes(code);
+}
 
 // Names
 
