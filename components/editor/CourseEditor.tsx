@@ -28,6 +28,8 @@ import { LevelPanel } from "./LevelPanel";
 
 type Tab = "words" | "settings";
 
+const IMPORT_BATCH = 500;
+
 const TABS: { id: Tab; label: string }[] = [
   { id: "words", label: "Levels and words" },
   { id: "settings", label: "Settings" },
@@ -62,6 +64,7 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
   const [levels, setLevels] = useState<CourseLevel[]>(initial.levels);
   const [tab, setTab] = useState<Tab>("words");
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
 
   const totalWords = levels.reduce((sum, level) => sum + level.items.length, 0);
   const sourceLabel = languageName(course.source_lang);
@@ -69,6 +72,7 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
 
   const run = useCallback(async (action: () => Promise<void>): Promise<boolean> => {
     setError(null);
+    setNotice(null);
     try {
       await action();
       return true;
@@ -113,6 +117,23 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
   const deleteItem = async (levelId: string, itemId: string) => {
     await api.deleteItem(itemId);
     setLevels((ls) => mapItems(ls, levelId, (items) => items.filter((i) => i.id !== itemId)));
+  };
+
+  const importItems = async (levelId: string, items: ItemInput[], onProgress: (done: number) => void) => {
+    const created: CourseItem[] = [];
+    setNotice(null);
+    try {
+      for (let i = 0; i < items.length; i += IMPORT_BATCH) {
+        const batch = await api.createItems(levelId, items.slice(i, i + IMPORT_BATCH));
+        created.push(...batch);
+        onProgress(created.length);
+      }
+    } finally {
+      if (created.length > 0) {
+        setLevels((ls) => mapItems(ls, levelId, (existing) => [...existing, ...created]));
+      }
+    }
+    setNotice(`Added ${created.length} ${created.length === 1 ? "word" : "words"}.`);
   };
 
   // Course
@@ -173,6 +194,12 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
           </p>
         ) : null}
 
+        {notice ? (
+          <p role="status" className="mb-4 rounded-lg bg-leaf/10 px-4 py-3 font-semibold text-leaf-dark">
+            {notice}
+          </p>
+        ) : null}
+
         {tab === "words" ? (
           <div className="flex flex-col gap-4">
             {levels.map((level, i) => (
@@ -188,6 +215,7 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
                 onCreateItem={(input) => createItem(level.id, input)}
                 onUpdateItem={(itemId, changes) => updateItem(level.id, itemId, changes)}
                 onDeleteItem={(itemId) => deleteItem(level.id, itemId)}
+                onImport={(items, onProgress) => importItems(level.id, items, onProgress)}
               />
             ))}
             <AddLevelForm nextNumber={levels.length + 1} onAdd={addLevel} />

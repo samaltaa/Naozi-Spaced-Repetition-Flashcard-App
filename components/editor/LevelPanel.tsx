@@ -4,6 +4,7 @@ import { useState, type KeyboardEvent } from "react";
 import { ConfirmButton } from "@/components/ui/ConfirmButton";
 import type { CourseLevel, ItemInput, UpdateItemInput } from "@/lib/client/types";
 import { AddItemRow } from "./AddItemRow";
+import { ImportDialog } from "./ImportDialog";
 import { ItemRow } from "./ItemRow";
 
 type Props = {
@@ -17,6 +18,7 @@ type Props = {
   onCreateItem: (input: ItemInput) => Promise<void>;
   onUpdateItem: (itemId: string, changes: UpdateItemInput) => Promise<void>;
   onDeleteItem: (itemId: string) => Promise<void>;
+  onImport: (items: ItemInput[], onProgress: (done: number) => void) => Promise<void>;
 };
 
 export function LevelPanel({
@@ -30,8 +32,10 @@ export function LevelPanel({
   onCreateItem,
   onUpdateItem,
   onDeleteItem,
+  onImport,
 }: Props) {
   const [title, setTitle] = useState(level.title);
+  const [importing, setImporting] = useState(false);
   const count = level.items.length;
 
   const saveTitle = async () => {
@@ -68,8 +72,28 @@ export function LevelPanel({
         <span className="text-sm text-ink/50">
           {count} {count === 1 ? "word" : "words"}
         </span>
+        <button
+          type="button"
+          onClick={() => setImporting(true)}
+          className="rounded-lg border border-ink/20 bg-white px-3 py-1.5 text-sm font-bold hover:border-water hover:text-water"
+        >
+          Import CSV
+        </button>
         <ConfirmButton label="Delete level" confirmLabel="Delete level and its words" onConfirm={onDelete} />
       </header>
+
+      {importing ? (
+        <ImportDialog
+          levelNumber={number}
+          levelTitle={level.title}
+          existing={level.items}
+          sourceLabel={sourceLabel}
+          targetLabel={targetLabel}
+          lang={lang}
+          onImport={onImport}
+          onClose={() => setImporting(false)}
+        />
+      ) : null}
 
       <div className="overflow-x-auto">
         <table className="w-full min-w-[44rem] text-left">
