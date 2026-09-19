@@ -5,6 +5,8 @@ import type { ReviewSubmission } from "@/lib/validation";
 import {
   checkChoice,
   checkTyped,
+  GRADUATING_INTERVAL_DAYS,
+  LEARNING_STEPS,
   gradeFromCheck,
   initialCard,
   planLearnSession,
@@ -26,8 +28,6 @@ import {
 const LEARN_BATCH = 5;
 const REVIEW_BATCH = 25;
 const POOL_LIMIT = 500;
-const LEARNING_STEPS = 3;
-const GRADUATING_INTERVAL_DAYS = 1;
 
 // Row types
 

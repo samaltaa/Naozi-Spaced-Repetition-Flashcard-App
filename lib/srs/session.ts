@@ -51,7 +51,7 @@ export function pickDistractors(
 // Test types
 
 export function learningTestType(step: number, settings: SrsSettings): TestType {
-  return step < settings.learningSteps - 1 ? "multiple_choice" : "typing";
+  return step < Math.ceil(settings.learningSteps / 2) ? "multiple_choice" : "typing";
 }
 
 export function testTypeForCard(card: CardState, settings: SrsSettings, rng: Rng): TestType {
