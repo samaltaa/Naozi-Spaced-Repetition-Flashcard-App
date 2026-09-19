@@ -15,6 +15,9 @@ export function Header() {
           <Link href="/" className="text-white/80 hover:text-white">
             Courses
           </Link>
+          <Link href="/courses/new" className="text-white/80 hover:text-white">
+            New course
+          </Link>
           <DevTimeTravel />
         </nav>
       </div>

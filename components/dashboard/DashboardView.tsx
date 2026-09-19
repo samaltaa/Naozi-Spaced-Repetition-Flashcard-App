@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Header } from "@/components/ui/Header";
 import { DropIcon } from "@/components/ui/icons";
 import { StatusMessage } from "@/components/ui/StatusMessage";
@@ -32,11 +33,22 @@ export function DashboardView() {
         {state.status === "ready" ? (
           <div className="grid gap-8 md:grid-cols-[1fr_16rem]">
             <section>
-              <h1 className="mb-4 text-2xl font-extrabold">Your courses</h1>
+              <div className="mb-4 flex items-center justify-between gap-4">
+                <h1 className="text-2xl font-extrabold">Your courses</h1>
+                <Link
+                  href="/courses/new"
+                  className="rounded-lg bg-ink px-4 py-2 text-sm font-bold text-white hover:bg-ink-soft"
+                >
+                  New course
+                </Link>
+              </div>
               {state.data.courses.length === 0 ? (
-                <p className="rounded-xl border border-dashed border-ink/20 bg-white p-8 text-center text-ink/70">
-                  You don&apos;t have any courses yet.
-                </p>
+                <div className="rounded-xl border border-dashed border-ink/20 bg-white p-8 text-center">
+                  <p className="text-ink/70">You don&apos;t have any courses yet.</p>
+                  <Link href="/courses/new" className="mt-3 inline-block font-bold text-water hover:underline">
+                    Create your first course
+                  </Link>
+                </div>
               ) : (
                 <ul className="flex flex-col gap-3">
                   {state.data.courses.map((course) => (

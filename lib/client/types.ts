@@ -1,7 +1,15 @@
 import type { ReviewResult, SessionPayload } from "@/lib/services/study";
 import type { Question, SessionStep, TestType, Verdict } from "@/lib/srs/types";
+import type {
+  CreateLevelInput,
+  ItemInput,
+  UpdateCourseInput,
+  UpdateItemInput,
+  UpdateLevelInput,
+} from "@/lib/validation";
 
 export type { Question, ReviewResult, SessionPayload, SessionStep, TestType, Verdict };
+export type { CreateLevelInput, ItemInput, UpdateCourseInput, UpdateItemInput, UpdateLevelInput };
 
 // Sessions
 
@@ -34,6 +42,9 @@ export interface Dashboard {
 
 // Courses
 
+export type Visibility = "private" | "unlisted" | "public";
+export type DiacriticMode = "strict" | "lenient";
+
 export interface CourseItem {
   id: string;
   prompt: string;
@@ -51,12 +62,46 @@ export interface CourseLevel {
   items: CourseItem[];
 }
 
-export interface CourseDetail {
+export interface LevelRecord {
   id: string;
+  course_id: string;
+  title: string;
+  position: number;
+}
+
+export interface CourseRecord {
+  id: string;
+  owner_id: string;
   title: string;
   description: string;
   source_lang: string;
   target_lang: string;
-  diacritic_mode: "strict" | "lenient";
+  visibility: Visibility;
+  diacritic_mode: DiacriticMode;
+  new_per_day: number;
+  max_reviews_per_day: number;
+}
+
+export interface CourseDetail extends CourseRecord {
   levels: CourseLevel[];
+}
+
+// Editor
+
+export interface CourseFormValues {
+  title: string;
+  description: string;
+  sourceLang: string;
+  targetLang: string;
+  visibility: Visibility;
+  diacriticMode: DiacriticMode;
+  newPerDay: number;
+  maxReviewsPerDay: number;
+}
+
+export interface ItemDraft {
+  prompt: string;
+  answer: string;
+  alternates: string;
+  reading: string;
 }

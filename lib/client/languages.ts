@@ -25,6 +25,13 @@ export function accentsFor(lang: string): string[] {
   return ACCENTS[base] ?? [];
 }
 
+// Common codes
+
+export const COMMON_LANGUAGES = [
+  "en", "es", "fr", "de", "it", "pt", "nl", "sv", "pl", "ru", "tr", "el",
+  "ar", "he", "hi", "ja", "zh", "ko", "ht", "la",
+];
+
 // Names
 
 export function languageName(code: string): string {

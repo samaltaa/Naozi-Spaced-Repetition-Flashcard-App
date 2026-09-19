@@ -1,11 +1,20 @@
 import { devHeaders } from "./devClock";
 import type {
   CourseDetail,
+  CourseFormValues,
+  CourseItem,
+  CourseRecord,
+  CreateLevelInput,
   Dashboard,
+  ItemInput,
+  LevelRecord,
   ReviewRequest,
   ReviewResult,
   SessionMode,
   SessionPayload,
+  UpdateCourseInput,
+  UpdateItemInput,
+  UpdateLevelInput,
 } from "./types";
 
 // Errors
@@ -40,11 +49,28 @@ async function request<T>(path: string, options: { method?: string; body?: unkno
   return (await res.json()) as T;
 }
 
-// Endpoints
+// Study
 
 export const api = {
   dashboard: () => request<Dashboard>("/api/dashboard"),
   course: (courseId: string) => request<CourseDetail>(`/api/courses/${courseId}`),
   session: (courseId: string, mode: SessionMode) => request<SessionPayload>(`/api/courses/${courseId}/${mode}`),
   submitReview: (body: ReviewRequest) => request<ReviewResult>("/api/reviews", { method: "POST", body }),
+
+  createCourse: (body: CourseFormValues) => request<CourseRecord>("/api/courses", { method: "POST", body }),
+  updateCourse: (courseId: string, body: UpdateCourseInput) =>
+    request<CourseRecord>(`/api/courses/${courseId}`, { method: "PATCH", body }),
+  deleteCourse: (courseId: string) => request<void>(`/api/courses/${courseId}`, { method: "DELETE" }),
+
+  createLevel: (courseId: string, body: CreateLevelInput) =>
+    request<LevelRecord>(`/api/courses/${courseId}/levels`, { method: "POST", body }),
+  updateLevel: (levelId: string, body: UpdateLevelInput) =>
+    request<LevelRecord>(`/api/levels/${levelId}`, { method: "PATCH", body }),
+  deleteLevel: (levelId: string) => request<void>(`/api/levels/${levelId}`, { method: "DELETE" }),
+
+  createItems: (levelId: string, body: ItemInput | ItemInput[]) =>
+    request<CourseItem[]>(`/api/levels/${levelId}/items`, { method: "POST", body }),
+  updateItem: (itemId: string, body: UpdateItemInput) =>
+    request<CourseItem>(`/api/items/${itemId}`, { method: "PATCH", body }),
+  deleteItem: (itemId: string) => request<void>(`/api/items/${itemId}`, { method: "DELETE" }),
 };

@@ -93,7 +93,15 @@ export function CourseView({ courseId }: { courseId: string }) {
         <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-center">
           <LanguageTile code={course.target_lang} size="lg" />
           <div className="min-w-0 flex-1">
-            <h1 className="text-3xl font-extrabold">{course.title}</h1>
+            <div className="flex flex-wrap items-baseline gap-x-4">
+              <h1 className="text-3xl font-extrabold">{course.title}</h1>
+              <Link
+                href={`/courses/${course.id}/edit`}
+                className="text-sm font-bold text-white/70 underline-offset-4 hover:text-white hover:underline"
+              >
+                Edit course
+              </Link>
+            </div>
             <p className="mt-1 text-white/70">
               {languageName(course.target_lang)} from {languageName(course.source_lang)}
             </p>
@@ -126,9 +134,12 @@ export function CourseView({ courseId }: { courseId: string }) {
 
       <main className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8">
         {course.levels.length === 0 ? (
-          <p className="rounded-xl border border-dashed border-ink/20 bg-white p-8 text-center text-ink/70">
-            This course has no levels yet.
-          </p>
+          <div className="rounded-xl border border-dashed border-ink/20 bg-white p-8 text-center">
+            <p className="text-ink/70">This course has no words yet.</p>
+            <Link href={`/courses/${course.id}/edit`} className="mt-3 inline-block font-bold text-water hover:underline">
+              Add words
+            </Link>
+          </div>
         ) : (
           course.levels.map((level, i) => <LevelSection key={level.id} level={level} number={i + 1} />)
         )}
