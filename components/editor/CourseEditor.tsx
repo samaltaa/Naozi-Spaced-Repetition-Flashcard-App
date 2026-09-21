@@ -154,21 +154,24 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
       <Header />
 
       <div className="bg-ink-soft text-white">
-        <div className="mx-auto max-w-5xl px-4 pt-6">
-          <Link href={`/courses/${course.id}`} className="text-sm font-semibold text-white/70 hover:text-white">
+        <div className="mx-auto max-w-5xl px-4 pt-3 sm:pt-6">
+          <Link
+            href={`/courses/${course.id}`}
+            className="inline-flex min-h-11 items-center text-sm font-semibold text-white/70 hover:text-white"
+          >
             Back to course
           </Link>
-          <div className="mt-3 flex items-center gap-4">
+          <div className="mt-1 flex items-center gap-3 sm:mt-3 sm:gap-4">
             <LanguageTile code={course.target_lang} />
             <div className="min-w-0">
-              <h1 className="truncate text-2xl font-extrabold">{course.title}</h1>
+              <h1 className="truncate text-xl font-extrabold sm:text-2xl">{course.title}</h1>
               <p className="text-white/70">
                 {totalWords} {totalWords === 1 ? "word" : "words"} in {levels.length}{" "}
                 {levels.length === 1 ? "level" : "levels"}
               </p>
             </div>
           </div>
-          <div role="tablist" aria-label="Editor sections" className="mt-6 flex gap-1">
+          <div role="tablist" aria-label="Editor sections" className="mt-4 flex gap-1 sm:mt-6">
             {TABS.map((t) => (
               <button
                 key={t.id}
@@ -176,7 +179,7 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
                 role="tab"
                 aria-selected={tab === t.id}
                 onClick={() => setTab(t.id)}
-                className={`rounded-t-lg px-4 py-2.5 font-bold ${
+                className={`min-h-11 flex-1 rounded-t-lg px-4 py-2.5 font-bold sm:flex-none ${
                   tab === t.id ? "bg-paper text-ink" : "text-white/70 hover:bg-white/10 hover:text-white"
                 }`}
               >
@@ -187,7 +190,7 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
         </div>
       </div>
 
-      <main className="mx-auto max-w-5xl px-4 py-8">
+      <main className="mx-auto max-w-5xl px-3 pb-[max(2rem,env(safe-area-inset-bottom))] pt-4 sm:px-4 sm:py-8">
         {error ? (
           <p role="alert" className="mb-4 rounded-lg bg-berry/10 px-4 py-3 font-semibold text-berry">
             {error}

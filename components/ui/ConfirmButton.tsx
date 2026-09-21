@@ -38,7 +38,7 @@ export function ConfirmButton({ label, confirmLabel, onConfirm, className = "" }
       type="button"
       onClick={click}
       disabled={busy}
-      className={`rounded-lg px-3 py-1.5 text-sm font-bold transition-colors disabled:opacity-50 ${
+      className={`min-h-11 rounded-lg px-4 py-2 text-sm font-bold transition-colors disabled:opacity-50 ${
         armed ? "bg-berry text-white" : "border border-berry/40 text-berry hover:bg-berry/10"
       } ${className}`}
     >

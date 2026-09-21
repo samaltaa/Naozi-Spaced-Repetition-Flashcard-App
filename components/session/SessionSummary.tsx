@@ -15,7 +15,7 @@ export function SessionSummary({ mode, courseId, correct, wrong, missed, onAgain
   const Icon = mode === "learn" ? FlowerIcon : DropIcon;
 
   return (
-    <div className="animate-pop mx-auto flex max-w-md flex-col items-center px-4 py-16 text-center">
+    <div className="animate-pop mx-auto flex max-w-md flex-col items-center px-4 pb-[max(3rem,env(safe-area-inset-bottom))] pt-12 text-center sm:py-16">
       <Icon className={`h-16 w-16 ${mode === "learn" ? "text-sun" : "text-water"}`} />
       <h1 className="mt-4 text-3xl font-extrabold">Session complete</h1>
       <p className="mt-2 text-lg text-ink/70">
@@ -35,17 +35,17 @@ export function SessionSummary({ mode, courseId, correct, wrong, missed, onAgain
         </div>
       ) : null}
 
-      <div className="mt-8 flex flex-wrap justify-center gap-3">
+      <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:justify-center">
         <button
           type="button"
           onClick={onAgain}
-          className={`rounded-lg px-6 py-3 font-bold text-white shadow-[0_3px_0_rgba(0,0,0,0.18)] ${
+          className={`min-h-12 rounded-lg px-6 py-3 font-bold text-white shadow-[0_3px_0_rgba(0,0,0,0.18)] ${
             mode === "learn" ? "bg-leaf hover:bg-leaf-dark" : "bg-water hover:bg-water-dark"
           }`}
         >
           {mode === "learn" ? "Learn more words" : "Review more"}
         </button>
-        <Link href={`/courses/${courseId}`} className="rounded-lg border border-ink/20 bg-white px-6 py-3 font-bold">
+        <Link href={`/courses/${courseId}`} className="inline-flex min-h-12 items-center justify-center rounded-lg border border-ink/20 bg-white px-6 py-3 font-bold">
           Back to course
         </Link>
       </div>

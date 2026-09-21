@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 import type { ReactNode } from "react";
 import { APP_NAME } from "@/lib/client/config";
@@ -17,6 +17,13 @@ const nunito = Nunito({
 export const metadata: Metadata = {
   title: APP_NAME,
   description: "Learn vocabulary with spaced repetition",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#22303c",
 };
 
 // Layout

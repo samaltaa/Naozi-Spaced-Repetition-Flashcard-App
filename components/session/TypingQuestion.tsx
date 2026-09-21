@@ -63,15 +63,16 @@ export function TypingQuestion({ question, result, disabled, onSubmit }: Props) 
           autoCorrect="off"
           autoCapitalize="off"
           spellCheck={false}
+          enterKeyHint="go"
           aria-label="Your answer"
           placeholder="Type the answer"
-          className={`min-w-0 flex-1 rounded-xl border-2 px-4 py-3.5 text-2xl font-bold outline-none placeholder:font-normal placeholder:text-ink/30 ${inputTone(result)}`}
+          className={`min-h-14 min-w-0 flex-1 rounded-xl border-2 px-4 py-3 text-xl font-bold sm:text-2xl outline-none placeholder:font-normal placeholder:text-ink/30 ${inputTone(result)}`}
         />
         <button
           type="button"
           onClick={submit}
           disabled={disabled || !value.trim()}
-          className="rounded-xl bg-water px-6 text-lg font-bold text-white shadow-[0_3px_0_rgba(0,0,0,0.18)] hover:bg-water-dark disabled:bg-ink/20 disabled:shadow-none"
+          className="min-h-14 shrink-0 rounded-xl bg-water px-4 text-lg font-bold sm:px-6 text-white shadow-[0_3px_0_rgba(0,0,0,0.18)] hover:bg-water-dark disabled:bg-ink/20 disabled:shadow-none"
         >
           Check
         </button>

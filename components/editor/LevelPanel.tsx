@@ -5,7 +5,7 @@ import { ConfirmButton } from "@/components/ui/ConfirmButton";
 import type { CourseLevel, ItemInput, UpdateItemInput } from "@/lib/client/types";
 import { AddItemRow } from "./AddItemRow";
 import { ImportDialog } from "./ImportDialog";
-import { ItemRow } from "./ItemRow";
+import { ItemRow, ROW_GRID } from "./ItemRow";
 
 type Props = {
   level: CourseLevel;
@@ -58,28 +58,32 @@ export function LevelPanel({
 
   return (
     <section className="overflow-hidden rounded-xl border border-ink/10 bg-white">
-      <header className="flex flex-wrap items-center gap-3 border-b border-ink/10 bg-ink/[0.03] px-4 py-3">
-        <span className="text-sm font-bold text-ink/50">Level {number}</span>
-        <input
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          onBlur={saveTitle}
-          onKeyDown={onTitleKey}
-          maxLength={120}
-          aria-label={`Level ${number} title`}
-          className="min-w-0 flex-1 rounded-md border-2 border-transparent bg-transparent px-2 py-1 text-lg font-extrabold outline-none hover:border-ink/10 focus:border-water focus:bg-white"
-        />
-        <span className="text-sm text-ink/50">
-          {count} {count === 1 ? "word" : "words"}
-        </span>
-        <button
-          type="button"
-          onClick={() => setImporting(true)}
-          className="rounded-lg border border-ink/20 bg-white px-3 py-1.5 text-sm font-bold hover:border-water hover:text-water"
-        >
-          Import CSV
-        </button>
-        <ConfirmButton label="Delete level" confirmLabel="Delete level and its words" onConfirm={onDelete} />
+      <header className="flex flex-col gap-2 border-b border-ink/10 bg-ink/[0.03] px-3 py-3 sm:flex-row sm:items-center sm:gap-3 sm:px-4">
+        <div className="flex min-w-0 flex-1 items-center gap-2">
+          <span className="shrink-0 text-sm font-bold text-ink/50">Level {number}</span>
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            onBlur={saveTitle}
+            onKeyDown={onTitleKey}
+            maxLength={120}
+            aria-label={`Level ${number} title`}
+            className="min-h-11 min-w-0 flex-1 rounded-md border-2 border-ink/10 bg-white px-2 py-1 text-lg font-extrabold outline-none focus:border-water sm:border-transparent sm:bg-transparent sm:hover:border-ink/10 sm:focus:bg-white"
+          />
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="mr-auto text-sm text-ink/50 sm:mr-1">
+            {count} {count === 1 ? "word" : "words"}
+          </span>
+          <button
+            type="button"
+            onClick={() => setImporting(true)}
+            className="min-h-11 rounded-lg border border-ink/20 bg-white px-4 text-sm font-bold hover:border-water hover:text-water"
+          >
+            Import CSV
+          </button>
+          <ConfirmButton label="Delete" confirmLabel="Confirm delete" onConfirm={onDelete} />
+        </div>
       </header>
 
       {importing ? (
@@ -95,35 +99,30 @@ export function LevelPanel({
         />
       ) : null}
 
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[44rem] text-left">
-          <thead>
-            <tr className="text-xs font-bold text-ink/50">
-              <th className="w-10 px-3 py-2">#</th>
-              <th className="px-2 py-2">{sourceLabel}</th>
-              <th className="px-2 py-2">{targetLabel}</th>
-              <th className="px-2 py-2">Also accepted</th>
-              <th className="px-2 py-2">Reading</th>
-              <th className="w-20 px-2 py-2">
-                <span className="sr-only">Actions</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {level.items.map((item, i) => (
-              <ItemRow
-                key={item.id}
-                item={item}
-                number={i + 1}
-                lang={lang}
-                onSave={onUpdateItem}
-                onDelete={onDeleteItem}
-              />
-            ))}
-            <AddItemRow lang={lang} onCreate={onCreateItem} />
-          </tbody>
-        </table>
+      <div aria-hidden="true" className={`hidden px-2 py-2 text-xs font-bold text-ink/50 ${ROW_GRID}`}>
+        <span className="px-1">#</span>
+        <span className="px-2">{sourceLabel}</span>
+        <span className="px-2">{targetLabel}</span>
+        <span className="px-2">Also accepted</span>
+        <span className="px-2">Reading</span>
+        <span />
       </div>
+
+      <ul className="divide-y divide-ink/5 md:divide-y-0">
+        {level.items.map((item, i) => (
+          <ItemRow
+            key={item.id}
+            item={item}
+            number={i + 1}
+            lang={lang}
+            sourceLabel={sourceLabel}
+            targetLabel={targetLabel}
+            onSave={onUpdateItem}
+            onDelete={onDeleteItem}
+          />
+        ))}
+        <AddItemRow lang={lang} sourceLabel={sourceLabel} targetLabel={targetLabel} onCreate={onCreateItem} />
+      </ul>
     </section>
   );
 }

@@ -26,8 +26,8 @@ export function FeedbackBar({ result, picked, lang, onContinue }: Props) {
 
   return (
     <div role="status" className={`animate-rise fixed inset-x-0 bottom-0 ${TONES[result.verdict]}`}>
-      <div className="mx-auto flex max-w-3xl flex-col gap-4 px-4 py-5 sm:flex-row sm:items-center">
-        <div className="min-w-0 flex-1">
+      <div className="mx-auto flex max-w-3xl flex-col gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 sm:flex-row sm:items-center sm:gap-4 sm:py-5">
+        <div className="min-w-0 flex-1 break-words">
           <p className="text-xl font-extrabold">{COPY[result.verdict]}</p>
           {showAnswer ? (
             <p className="mt-1">
@@ -49,7 +49,7 @@ export function FeedbackBar({ result, picked, lang, onContinue }: Props) {
         <button
           type="button"
           onClick={onContinue}
-          className="rounded-lg bg-white px-6 py-3 font-bold text-ink shadow-[0_3px_0_rgba(0,0,0,0.18)] active:translate-y-px active:shadow-none"
+          className="min-h-12 w-full rounded-lg bg-white px-6 py-3 font-bold text-ink sm:w-auto shadow-[0_3px_0_rgba(0,0,0,0.18)] active:translate-y-px active:shadow-none"
         >
           Continue
         </button>

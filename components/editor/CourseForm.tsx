@@ -23,7 +23,7 @@ type Status = { kind: "idle" } | { kind: "saving" } | { kind: "saved" } | { kind
 // Styles
 
 const INPUT =
-  "w-full rounded-lg border-2 border-ink/15 bg-white px-3 py-2 font-semibold outline-none focus:border-water";
+  "min-h-11 w-full rounded-lg border-2 border-ink/15 bg-white px-3 py-2 text-base font-semibold outline-none focus:border-water";
 const LABEL = "mb-1 block text-sm font-bold";
 
 const ACCENT_MODES: { value: DiacriticMode; title: string; body: string }[] = [
@@ -138,7 +138,7 @@ export function CourseForm({ initial, submitLabel, onSubmit }: Props) {
           {ACCENT_MODES.map((mode) => (
             <label
               key={mode.value}
-              className={`cursor-pointer rounded-lg border-2 p-3 ${
+              className={`block min-h-11 cursor-pointer rounded-lg border-2 p-3 ${
                 fields.diacriticMode === mode.value ? "border-water bg-water/5" : "border-ink/15 bg-white"
               }`}
             >
@@ -181,6 +181,7 @@ export function CourseForm({ initial, submitLabel, onSubmit }: Props) {
           <input
             id="course-new"
             type="number"
+            inputMode="numeric"
             min={1}
             max={100}
             value={fields.newPerDay}
@@ -195,6 +196,7 @@ export function CourseForm({ initial, submitLabel, onSubmit }: Props) {
           <input
             id="course-reviews"
             type="number"
+            inputMode="numeric"
             min={1}
             max={2000}
             value={fields.maxReviewsPerDay}
@@ -204,11 +206,11 @@ export function CourseForm({ initial, submitLabel, onSubmit }: Props) {
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
         <button
           type="submit"
           disabled={status.kind === "saving"}
-          className="rounded-lg bg-leaf px-6 py-3 font-bold text-white shadow-[0_3px_0_rgba(0,0,0,0.18)] hover:bg-leaf-dark disabled:opacity-60"
+          className="min-h-12 w-full rounded-lg bg-leaf px-6 py-3 font-bold text-white shadow-[0_3px_0_rgba(0,0,0,0.18)] hover:bg-leaf-dark disabled:opacity-60 sm:w-auto"
         >
           {status.kind === "saving" ? "Saving" : submitLabel}
         </button>

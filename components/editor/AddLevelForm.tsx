@@ -24,19 +24,19 @@ export function AddLevelForm({ nextNumber, onAdd }: Props) {
   };
 
   return (
-    <form onSubmit={submit} className="flex gap-2 rounded-xl border-2 border-dashed border-ink/20 p-3">
+    <form onSubmit={submit} className="flex flex-col gap-2 rounded-xl border-2 border-dashed border-ink/20 p-3 sm:flex-row">
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         maxLength={120}
         placeholder={`Level ${nextNumber} title`}
         aria-label="New level title"
-        className="min-w-0 flex-1 rounded-lg border-2 border-ink/15 bg-white px-3 py-2 font-semibold outline-none focus:border-water"
+        className="min-h-11 min-w-0 flex-1 rounded-lg border-2 border-ink/15 bg-white px-3 py-2 text-base font-semibold outline-none focus:border-water"
       />
       <button
         type="submit"
         disabled={busy}
-        className="rounded-lg bg-ink px-4 py-2 font-bold text-white hover:bg-ink-soft disabled:opacity-50"
+        className="min-h-11 rounded-lg bg-ink px-4 py-2 font-bold text-white hover:bg-ink-soft disabled:opacity-50"
       >
         Add level
       </button>

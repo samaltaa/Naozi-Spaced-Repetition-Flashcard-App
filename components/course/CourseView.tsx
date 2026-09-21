@@ -18,9 +18,9 @@ function LevelSection({ level, number }: { level: CourseLevel; number: number })
   return (
     <section className="overflow-hidden rounded-xl border border-ink/10 bg-white">
       <header className="flex items-baseline gap-3 border-b border-ink/10 px-4 py-3">
-        <span className="text-sm font-bold text-ink/50">Level {number}</span>
-        <h2 className="text-lg font-extrabold">{level.title}</h2>
-        <span className="ml-auto text-sm text-ink/50">
+        <span className="shrink-0 text-sm font-bold text-ink/50">Level {number}</span>
+        <h2 className="min-w-0 break-words text-lg font-extrabold">{level.title}</h2>
+        <span className="ml-auto shrink-0 text-sm text-ink/50">
           {level.items.length} {level.items.length === 1 ? "word" : "words"}
         </span>
       </header>
@@ -29,13 +29,15 @@ function LevelSection({ level, number }: { level: CourseLevel; number: number })
       ) : (
         <ul className="divide-y divide-ink/5">
           {level.items.map((item) => (
-            <li key={item.id} className="grid grid-cols-2 gap-4 px-4 py-2.5">
-              <span dir="auto" className="text-ink/80">
+            <li key={item.id} className="grid grid-cols-2 gap-4 px-4 py-3">
+              <span dir="auto" className="min-w-0 break-words text-ink/80">
                 {item.prompt}
               </span>
-              <span dir="auto" className="font-bold">
+              <span dir="auto" className="min-w-0 break-words font-bold">
                 {item.answer}
-                {item.reading ? <span className="ml-2 text-sm font-normal text-ink/50">{item.reading}</span> : null}
+                {item.reading ? (
+                  <span className="block text-sm font-normal text-ink/50 sm:ml-2 sm:inline">{item.reading}</span>
+                ) : null}
               </span>
             </li>
           ))}
@@ -90,28 +92,31 @@ export function CourseView({ courseId }: { courseId: string }) {
       <Header />
 
       <div className="bg-ink-soft text-white">
-        <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-center">
-          <LanguageTile code={course.target_lang} size="lg" />
-          <div className="min-w-0 flex-1">
-            <h1 className="text-3xl font-extrabold">{course.title}</h1>
-            <p className="mt-1 text-white/70">
-              {languageName(course.target_lang)} from {languageName(course.source_lang)}
-            </p>
-            {course.description ? <p className="mt-2 max-w-prose text-white/85">{course.description}</p> : null}
-            <div className="mt-4 max-w-sm">
-              <ProgressBar value={total === 0 ? 0 : learned / total} color="bg-sun" label="Course progress" />
-              <p className="mt-1 text-sm text-white/70">
-                {learned} of {total} words learned
+        <div className="mx-auto flex max-w-5xl flex-col gap-5 px-4 py-6 sm:flex-row sm:items-center sm:gap-6 sm:py-8">
+          <div className="flex min-w-0 flex-1 items-start gap-4 sm:items-center sm:gap-6">
+            <LanguageTile code={course.target_lang} size="lg" />
+            <div className="min-w-0 flex-1">
+              <h1 className="break-words text-2xl font-extrabold leading-tight sm:text-3xl">{course.title}</h1>
+              <p className="mt-1 text-white/70">
+                {languageName(course.target_lang)} from {languageName(course.source_lang)}
               </p>
+              {course.description ? <p className="mt-2 max-w-prose text-white/85">{course.description}</p> : null}
+              <div className="mt-4 max-w-sm">
+                <ProgressBar value={total === 0 ? 0 : learned / total} color="bg-sun" label="Course progress" />
+                <p className="mt-1 text-sm text-white/70">
+                  {learned} of {total} words learned
+                </p>
+              </div>
             </div>
           </div>
-          <div className="flex gap-2 sm:flex-col">
+          <div className="flex flex-col gap-2">
             <StudyButton
               href={`/courses/${course.id}/learn`}
               kind="learn"
               size="lg"
               label="Learn new words"
               disabled={fresh === 0}
+              fullWidth
             />
             <StudyButton
               href={`/courses/${course.id}/review`}
@@ -119,10 +124,11 @@ export function CourseView({ courseId }: { courseId: string }) {
               size="lg"
               label={due === 0 ? "Nothing to review" : `Review ${due}`}
               disabled={due === 0}
+              fullWidth
             />
             <Link
               href={`/courses/${course.id}/edit`}
-              className="inline-flex items-center justify-center rounded-lg border-2 border-white/40 px-6 py-3 text-base font-bold text-white hover:border-white hover:bg-white/10"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border-2 border-white/40 px-6 font-bold text-white hover:border-white hover:bg-white/10 sm:w-auto"
             >
               Add or edit words
             </Link>
@@ -130,11 +136,14 @@ export function CourseView({ courseId }: { courseId: string }) {
         </div>
       </div>
 
-      <main className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8">
+      <main className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-6 sm:py-8">
         {course.levels.length === 0 ? (
           <div className="rounded-xl border border-dashed border-ink/20 bg-white p-8 text-center">
             <p className="text-ink/70">This course has no words yet.</p>
-            <Link href={`/courses/${course.id}/edit`} className="mt-3 inline-block font-bold text-water hover:underline">
+            <Link
+              href={`/courses/${course.id}/edit`}
+              className="mt-2 inline-flex min-h-11 items-center font-bold text-water hover:underline"
+            >
               Add words
             </Link>
           </div>
@@ -145,7 +154,7 @@ export function CourseView({ courseId }: { courseId: string }) {
             ))}
             <Link
               href={`/courses/${course.id}/edit`}
-              className="rounded-xl border-2 border-dashed border-ink/20 p-4 text-center font-bold text-water hover:border-water hover:bg-water/5"
+              className="flex min-h-14 items-center justify-center rounded-xl border-2 border-dashed border-ink/20 p-4 font-bold text-water hover:border-water hover:bg-water/5"
             >
               Add more words
             </Link>

@@ -227,10 +227,10 @@ export function SessionRunner({ courseId, mode }: Props) {
   // Session
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-dvh flex-col">
       <SessionTopBar courseId={courseId} done={index} total={queue.length} />
 
-      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center justify-center px-4 pb-40 pt-6">
+      <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center px-4 pb-56 pt-4 sm:justify-center sm:pb-40 sm:pt-6">
         {step.type === "intro" ? (
           <IntroCard key={index} step={step} lang={lang} onContinue={advance} />
         ) : (
@@ -239,11 +239,11 @@ export function SessionRunner({ courseId, mode }: Props) {
             <p className="text-sm font-semibold text-ink/50">
               {step.question.kind === "multiple_choice" ? "Pick the translation" : "Type the translation"}
             </p>
-            <p dir="auto" className="mt-3 text-4xl font-extrabold leading-tight sm:text-5xl">
+            <p dir="auto" className="mt-2 break-words text-3xl font-extrabold leading-tight sm:mt-3 sm:text-5xl">
               {step.question.prompt}
             </p>
 
-            <div className="mt-10">
+            <div className="mt-6 sm:mt-10">
               {step.question.kind === "multiple_choice" ? (
                 <MultipleChoice
                   question={step.question}

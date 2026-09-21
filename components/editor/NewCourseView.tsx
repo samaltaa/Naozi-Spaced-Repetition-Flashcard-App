@@ -20,13 +20,13 @@ export function NewCourseView() {
   return (
     <>
       <Header />
-      <main className="mx-auto max-w-2xl px-4 py-8">
-        <Link href="/" className="text-sm font-semibold text-ink/60 hover:text-ink">
+      <main className="mx-auto max-w-2xl px-4 pb-[max(2rem,env(safe-area-inset-bottom))] pt-6 sm:py-8">
+        <Link href="/" className="inline-flex min-h-11 items-center text-sm font-semibold text-ink/60 hover:text-ink">
           Back to courses
         </Link>
-        <h1 className="mt-2 text-3xl font-extrabold">Create a course</h1>
+        <h1 className="text-2xl font-extrabold sm:text-3xl">Create a course</h1>
         <p className="mt-1 text-ink/70">Set up the basics. You&apos;ll add levels and words on the next screen.</p>
-        <div className="mt-8">
+        <div className="mt-6 sm:mt-8">
           <CourseForm initial={DEFAULT_COURSE} submitLabel="Create course" onSubmit={create} />
         </div>
       </main>

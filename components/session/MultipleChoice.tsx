@@ -49,12 +49,12 @@ export function MultipleChoice({ question, lang, picked, result, disabled, onPic
           type="button"
           disabled={disabled}
           onClick={() => onPick(option)}
-          className={`flex items-center gap-3 rounded-xl border-2 px-4 py-4 text-left text-xl font-bold transition-colors disabled:cursor-default ${optionTone(option, picked, result)}`}
+          className={`flex min-h-14 items-center gap-3 rounded-xl border-2 px-4 py-3 text-left text-lg font-bold sm:py-4 sm:text-xl transition-colors disabled:cursor-default ${optionTone(option, picked, result)}`}
         >
-          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-current text-sm opacity-60">
+          <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-current text-sm opacity-60 pointer-coarse:hidden">
             {i + 1}
           </span>
-          <span dir="auto" lang={lang}>
+          <span dir="auto" lang={lang} className="min-w-0 break-words">
             {option}
           </span>
         </button>
