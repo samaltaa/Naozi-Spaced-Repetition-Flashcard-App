@@ -13,9 +13,17 @@ export function CourseRow({ course }: { course: DashboardCourse }) {
       <LanguageTile code={course.targetLang} />
 
       <div className="min-w-0 flex-1">
-        <Link href={`/courses/${course.courseId}`} className="text-lg font-extrabold hover:underline">
-          {course.title}
-        </Link>
+        <div className="flex flex-wrap items-baseline gap-x-3">
+          <Link href={`/courses/${course.courseId}`} className="text-lg font-extrabold hover:underline">
+            {course.title}
+          </Link>
+          <Link
+            href={`/courses/${course.courseId}/edit`}
+            className="text-sm font-bold text-water hover:underline"
+          >
+            Edit
+          </Link>
+        </div>
         <p className="text-sm text-ink/60">
           {languageName(course.targetLang)}, {course.learnedCount} of {course.totalItems} words learned
         </p>

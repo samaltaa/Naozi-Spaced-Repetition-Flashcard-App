@@ -93,15 +93,7 @@ export function CourseView({ courseId }: { courseId: string }) {
         <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-8 sm:flex-row sm:items-center">
           <LanguageTile code={course.target_lang} size="lg" />
           <div className="min-w-0 flex-1">
-            <div className="flex flex-wrap items-baseline gap-x-4">
-              <h1 className="text-3xl font-extrabold">{course.title}</h1>
-              <Link
-                href={`/courses/${course.id}/edit`}
-                className="text-sm font-bold text-white/70 underline-offset-4 hover:text-white hover:underline"
-              >
-                Edit course
-              </Link>
-            </div>
+            <h1 className="text-3xl font-extrabold">{course.title}</h1>
             <p className="mt-1 text-white/70">
               {languageName(course.target_lang)} from {languageName(course.source_lang)}
             </p>
@@ -128,6 +120,12 @@ export function CourseView({ courseId }: { courseId: string }) {
               label={due === 0 ? "Nothing to review" : `Review ${due}`}
               disabled={due === 0}
             />
+            <Link
+              href={`/courses/${course.id}/edit`}
+              className="inline-flex items-center justify-center rounded-lg border-2 border-white/40 px-6 py-3 text-base font-bold text-white hover:border-white hover:bg-white/10"
+            >
+              Add or edit words
+            </Link>
           </div>
         </div>
       </div>
@@ -141,7 +139,17 @@ export function CourseView({ courseId }: { courseId: string }) {
             </Link>
           </div>
         ) : (
-          course.levels.map((level, i) => <LevelSection key={level.id} level={level} number={i + 1} />)
+          <>
+            {course.levels.map((level, i) => (
+              <LevelSection key={level.id} level={level} number={i + 1} />
+            ))}
+            <Link
+              href={`/courses/${course.id}/edit`}
+              className="rounded-xl border-2 border-dashed border-ink/20 p-4 text-center font-bold text-water hover:border-water hover:bg-water/5"
+            >
+              Add more words
+            </Link>
+          </>
         )}
       </main>
     </>
