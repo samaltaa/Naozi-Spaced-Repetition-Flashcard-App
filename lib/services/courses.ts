@@ -47,6 +47,8 @@ function newItemColumns(input: ItemInput) {
 
 const touched = () => ({ updated_at: new Date().toISOString() });
 
+export type CourseWithLevels = { owner_id: string } & Record<string, unknown>;
+
 // Ownership
 
 async function assertCourseOwner(userId: string, courseId: string): Promise<void> {
@@ -95,8 +97,8 @@ export async function listCourses(userId: string) {
   );
 }
 
-export async function getCourse(userId: string, courseId: string) {
-  return unwrap(
+export async function getCourse(userId: string, courseId: string): Promise<CourseWithLevels> {
+  return unwrap<CourseWithLevels>(
     await supabase
       .from("courses")
       .select("*, levels(*, items(*))")

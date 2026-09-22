@@ -251,7 +251,25 @@ export function CourseEditor({ courseId }: { courseId: string }) {
   const load = useCallback(() => api.course(courseId), [courseId]);
   const { state, reload } = useAsync(load);
 
-  if (state.status === "ready") return <EditorBody key={state.data.id} initial={state.data} />;
+  if (state.status === "ready" && state.data.is_owner) {
+    return <EditorBody key={state.data.id} initial={state.data} />;
+  }
+
+  if (state.status === "ready") {
+    return (
+      <>
+        <Header />
+        <StatusMessage
+          title="You can only edit your own courses"
+          action={
+            <Link href={`/courses/${state.data.id}`} className="rounded-lg bg-ink px-4 py-2 font-bold text-white">
+              Back to course
+            </Link>
+          }
+        />
+      </>
+    );
+  }
 
   return (
     <>

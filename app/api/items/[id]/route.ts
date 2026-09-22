@@ -1,18 +1,20 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { getUserId, noContent, parseId, parseJson, route } from "@/lib/api";
+import { noContent, parseId, parseJson, requireUserId, route } from "@/lib/api";
 import { deleteItem, updateItem } from "@/lib/services/courses";
 import { UpdateItemInput } from "@/lib/validation";
 
 type Context = { params: Promise<{ id: string }> };
 
 export const PATCH = route(async (req: NextRequest, { params }: Context) => {
+  const userId = await requireUserId(req);
   const id = parseId((await params).id);
   const input = await parseJson(req, UpdateItemInput);
-  return NextResponse.json(await updateItem(getUserId(), id, input));
+  return NextResponse.json(await updateItem(userId, id, input));
 });
 
-export const DELETE = route(async (_req: NextRequest, { params }: Context) => {
+export const DELETE = route(async (req: NextRequest, { params }: Context) => {
+  const userId = await requireUserId(req);
   const id = parseId((await params).id);
-  await deleteItem(getUserId(), id);
+  await deleteItem(userId, id);
   return noContent();
 });

@@ -83,7 +83,25 @@ export interface CourseRecord {
 }
 
 export interface CourseDetail extends CourseRecord {
+  is_owner: boolean;
   levels: CourseLevel[];
+}
+
+// Account
+
+export interface Me {
+  id: string;
+  email: string | null;
+  username: string;
+  timezone: string;
+}
+
+export interface SignUpRequest {
+  username: string;
+  email: string;
+  password: string;
+  timezone: string;
+  acceptTerms: boolean;
 }
 
 // Editor

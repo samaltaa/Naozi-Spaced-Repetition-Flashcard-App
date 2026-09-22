@@ -49,6 +49,34 @@ export const CreateItemsInput = z.union([ItemInput, z.array(ItemInput).min(1).ma
 
 export const UpdateItemInput = ItemInput.partial();
 
+// Accounts
+
+function isTimeZone(value: string): boolean {
+  try {
+    new Intl.DateTimeFormat("en", { timeZone: value });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export const Username = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .regex(/^[a-z0-9_]{3,20}$/, "Usernames use 3 to 20 lowercase letters, numbers or underscores.");
+
+export const SignUpInput = z.object({
+  username: Username,
+  email: z.email("Enter a valid email address."),
+  password: z
+    .string()
+    .min(8, "Passwords need at least 8 characters.")
+    .max(72, "Passwords can be at most 72 characters."),
+  timezone: z.string().max(64).refine(isTimeZone).catch("UTC"),
+  acceptTerms: z.literal(true, "Accept the terms to create an account."),
+});
+
 // Reviews
 
 export const ReviewSubmission = z.object({
@@ -69,3 +97,4 @@ export type ItemInput = z.infer<typeof ItemInput>;
 export type CreateItemsInput = z.infer<typeof CreateItemsInput>;
 export type UpdateItemInput = z.infer<typeof UpdateItemInput>;
 export type ReviewSubmission = z.infer<typeof ReviewSubmission>;
+export type SignUpInput = z.infer<typeof SignUpInput>;

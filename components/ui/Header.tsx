@@ -2,6 +2,7 @@ import Link from "next/link";
 import { APP_NAME, DEV_TOOLS } from "@/lib/client/config";
 import { DevTimeTravel } from "./DevTimeTravel";
 import { FlowerIcon, PlusIcon } from "./icons";
+import { UserMenu } from "./UserMenu";
 
 export function Header() {
   return (
@@ -23,11 +24,13 @@ export function Header() {
             className="inline-flex min-h-11 items-center gap-1.5 rounded-lg px-3 text-white/80 hover:bg-white/10 hover:text-white"
           >
             <PlusIcon className="h-4 w-4" />
-            New course
+            <span className="hidden min-[400px]:inline">New course</span>
+            <span className="min-[400px]:hidden">New</span>
           </Link>
           <div className="ml-2 hidden md:block">
             <DevTimeTravel />
           </div>
+          <UserMenu />
         </nav>
       </div>
       {DEV_TOOLS ? (

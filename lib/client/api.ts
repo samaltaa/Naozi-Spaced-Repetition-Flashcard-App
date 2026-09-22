@@ -8,10 +8,12 @@ import type {
   Dashboard,
   ItemInput,
   LevelRecord,
+  Me,
   ReviewRequest,
   ReviewResult,
   SessionMode,
   SessionPayload,
+  SignUpRequest,
   UpdateCourseInput,
   UpdateItemInput,
   UpdateLevelInput,
@@ -41,6 +43,10 @@ async function request<T>(path: string, options: { method?: string; body?: unkno
     body: options.body === undefined ? undefined : JSON.stringify(options.body),
     cache: "no-store",
   });
+  if (res.status === 401 && typeof window !== "undefined" && !path.startsWith("/api/auth/")) {
+    const next = encodeURIComponent(window.location.pathname + window.location.search);
+    window.location.assign(`/sign-in?next=${next}`);
+  }
   if (!res.ok) {
     const body = (await res.json().catch(() => null)) as { error?: string } | null;
     throw new ApiError(res.status, body?.error ?? `Request failed with status ${res.status}`);
@@ -49,9 +55,12 @@ async function request<T>(path: string, options: { method?: string; body?: unkno
   return (await res.json()) as T;
 }
 
-// Study
+// Endpoints
 
 export const api = {
+  me: () => request<Me>("/api/me"),
+  signUp: (body: SignUpRequest) => request<{ signedIn: boolean }>("/api/auth/sign-up", { method: "POST", body }),
+
   dashboard: () => request<Dashboard>("/api/dashboard"),
   course: (courseId: string) => request<CourseDetail>(`/api/courses/${courseId}`),
   session: (courseId: string, mode: SessionMode) => request<SessionPayload>(`/api/courses/${courseId}/${mode}`),

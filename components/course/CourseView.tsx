@@ -126,12 +126,14 @@ export function CourseView({ courseId }: { courseId: string }) {
               disabled={due === 0}
               fullWidth
             />
-            <Link
-              href={`/courses/${course.id}/edit`}
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border-2 border-white/40 px-6 font-bold text-white hover:border-white hover:bg-white/10 sm:w-auto"
-            >
-              Add or edit words
-            </Link>
+            {course.is_owner ? (
+              <Link
+                href={`/courses/${course.id}/edit`}
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-lg border-2 border-white/40 px-6 font-bold text-white hover:border-white hover:bg-white/10 sm:w-auto"
+              >
+                Add or edit words
+              </Link>
+            ) : null}
           </div>
         </div>
       </div>
@@ -140,24 +142,28 @@ export function CourseView({ courseId }: { courseId: string }) {
         {course.levels.length === 0 ? (
           <div className="rounded-xl border border-dashed border-ink/20 bg-white p-8 text-center">
             <p className="text-ink/70">This course has no words yet.</p>
-            <Link
-              href={`/courses/${course.id}/edit`}
-              className="mt-2 inline-flex min-h-11 items-center font-bold text-water hover:underline"
-            >
-              Add words
-            </Link>
+            {course.is_owner ? (
+              <Link
+                href={`/courses/${course.id}/edit`}
+                className="mt-2 inline-flex min-h-11 items-center font-bold text-water hover:underline"
+              >
+                Add words
+              </Link>
+            ) : null}
           </div>
         ) : (
           <>
             {course.levels.map((level, i) => (
               <LevelSection key={level.id} level={level} number={i + 1} />
             ))}
-            <Link
-              href={`/courses/${course.id}/edit`}
-              className="flex min-h-14 items-center justify-center rounded-xl border-2 border-dashed border-ink/20 p-4 font-bold text-water hover:border-water hover:bg-water/5"
-            >
-              Add more words
-            </Link>
+            {course.is_owner ? (
+              <Link
+                href={`/courses/${course.id}/edit`}
+                className="flex min-h-14 items-center justify-center rounded-xl border-2 border-dashed border-ink/20 p-4 font-bold text-water hover:border-water hover:bg-water/5"
+              >
+                Add more words
+              </Link>
+            ) : null}
           </>
         )}
       </main>

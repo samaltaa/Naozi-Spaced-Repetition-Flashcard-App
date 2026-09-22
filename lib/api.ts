@@ -1,6 +1,8 @@
 import "server-only";
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
+import { createAuthClient } from "@/lib/auth/server";
+import { supabase } from "@/lib/supabase";
 
 // Errors
 
@@ -16,10 +18,26 @@ export class HttpError extends Error {
 
 // Request context
 
-export function getUserId(): string {
-  const id = process.env.DEV_USER_ID;
-  if (!id) throw new HttpError(500, "DEV_USER_ID is not set");
-  return id;
+export interface AuthUser {
+  id: string;
+  email: string | null;
+}
+
+export async function requireAuth(req: NextRequest): Promise<AuthUser> {
+  const header = req.headers.get("authorization");
+  const bearer = header?.startsWith("Bearer ") ? header.slice(7) : null;
+
+  const { data, error } = bearer
+    ? await supabase.auth.getClaims(bearer)
+    : await (await createAuthClient()).auth.getClaims();
+
+  const claims = data?.claims;
+  if (error || !claims?.sub) throw new HttpError(401, "Sign in to continue");
+  return { id: claims.sub, email: typeof claims.email === "string" ? claims.email : null };
+}
+
+export async function requireUserId(req: NextRequest): Promise<string> {
+  return (await requireAuth(req)).id;
 }
 
 export function getNow(req: NextRequest): Date {
