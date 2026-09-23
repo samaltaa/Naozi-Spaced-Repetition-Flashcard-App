@@ -6,13 +6,14 @@ type IntroStep = Extract<SessionStep, { type: "intro" }>;
 type Props = {
   step: IntroStep;
   lang: string | undefined;
+  steps: number;
   onContinue: () => void;
 };
 
-export function IntroCard({ step, lang, onContinue }: Props) {
+export function IntroCard({ step, lang, steps, onContinue }: Props) {
   return (
     <div className="animate-pop flex w-full flex-col items-center text-center">
-      <GrowthMeter stage={0} />
+      <GrowthMeter stage={0} steps={steps} />
       <p className="text-sm font-bold text-leaf-dark">New word</p>
       <p dir="auto" className="mt-4 break-words text-xl text-ink/70 sm:mt-6 sm:text-2xl">
         {step.prompt}

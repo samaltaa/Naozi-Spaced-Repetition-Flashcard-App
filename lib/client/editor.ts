@@ -1,3 +1,4 @@
+import { LEARNING_STEPS } from "@/lib/srs/constants";
 import type { CourseFormValues, CourseItem, CourseRecord, ItemDraft, ItemInput, UpdateItemInput } from "./types";
 
 // Courses
@@ -11,6 +12,8 @@ export const DEFAULT_COURSE: CourseFormValues = {
   diacriticMode: "lenient",
   newPerDay: 10,
   maxReviewsPerDay: 200,
+  learningSteps: LEARNING_STEPS,
+  wordsPerSession: 10,
 };
 
 export function toFormValues(course: CourseRecord): CourseFormValues {
@@ -23,6 +26,8 @@ export function toFormValues(course: CourseRecord): CourseFormValues {
     diacriticMode: course.diacritic_mode,
     newPerDay: course.new_per_day,
     maxReviewsPerDay: course.max_reviews_per_day,
+    learningSteps: course.learning_steps,
+    wordsPerSession: course.words_per_session,
   };
 }
 
