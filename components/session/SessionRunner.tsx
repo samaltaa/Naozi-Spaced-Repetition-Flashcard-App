@@ -56,6 +56,7 @@ export function SessionRunner({ courseId, mode }: Props) {
   const [tally, setTally] = useState({ correct: 0, wrong: 0 });
   const [missed, setMissed] = useState<string[]>([]);
   const [learningSteps, setLearningSteps] = useState(LEARNING_STEPS);
+  const [remaining, setRemaining] = useState(0);
   const shownAt = useRef(0);
 
   const step = queue[index];
@@ -71,6 +72,7 @@ export function SessionRunner({ courseId, mode }: Props) {
         if (!active) return;
         setQueue(payload.steps);
         setLearningSteps(payload.learningSteps);
+        setRemaining(payload.remainingToday);
         setIndex(0);
         setPicked(null);
         setResult(null);
@@ -222,6 +224,7 @@ export function SessionRunner({ courseId, mode }: Props) {
         correct={tally.correct}
         wrong={tally.wrong}
         missed={missed}
+        remaining={remaining}
         onAgain={restart}
       />
     );
