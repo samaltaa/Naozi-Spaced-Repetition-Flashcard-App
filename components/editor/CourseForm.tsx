@@ -18,6 +18,9 @@ type Fields = Omit<CourseFormValues, "newPerDay" | "maxReviewsPerDay"> & {
   maxReviewsPerDay: string;
 };
 
+const ROUND_OPTIONS = [3, 4, 5, 6];
+const SESSION_SIZE_OPTIONS = [5, 8, 10, 12, 15, 20];
+
 type Status = { kind: "idle" } | { kind: "saving" } | { kind: "saved" } | { kind: "error"; message: string };
 
 // Styles
@@ -171,6 +174,45 @@ export function CourseForm({ initial, submitLabel, onSubmit }: Props) {
           <option value="unlisted">Anyone with the link</option>
           <option value="public">Everyone</option>
         </select>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="course-rounds" className={LABEL}>
+            Rounds per new word
+          </label>
+          <select
+            id="course-rounds"
+            value={fields.learningSteps}
+            onChange={(e) => set("learningSteps", Number(e.target.value))}
+            className={INPUT}
+          >
+            {ROUND_OPTIONS.map((value) => (
+              <option key={value} value={value}>
+                {value} rounds
+              </option>
+            ))}
+          </select>
+          <p className="mt-1 text-sm text-ink/60">How many times a new word is tested before it enters reviews.</p>
+        </div>
+        <div>
+          <label htmlFor="course-session-size" className={LABEL}>
+            Words per learning session
+          </label>
+          <select
+            id="course-session-size"
+            value={fields.wordsPerSession}
+            onChange={(e) => set("wordsPerSession", Number(e.target.value))}
+            className={INPUT}
+          >
+            {SESSION_SIZE_OPTIONS.map((value) => (
+              <option key={value} value={value}>
+                {value} words
+              </option>
+            ))}
+          </select>
+          <p className="mt-1 text-sm text-ink/60">New words introduced in one sitting, up to the daily limit.</p>
+        </div>
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">

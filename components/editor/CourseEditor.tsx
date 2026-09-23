@@ -49,6 +49,8 @@ function stripLevels(course: CourseDetail): CourseRecord {
     diacritic_mode: course.diacritic_mode,
     new_per_day: course.new_per_day,
     max_reviews_per_day: course.max_reviews_per_day,
+    learning_steps: course.learning_steps,
+    words_per_session: course.words_per_session,
   };
 }
 

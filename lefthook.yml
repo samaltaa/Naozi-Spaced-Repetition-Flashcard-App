@@ -1,0 +1,17 @@
+pre-push:
+  parallel: false
+  commands:
+    branch-policy:
+      run: bash scripts/git/check-push.sh
+    checks:
+      run: npm run check
+
+commit-msg:
+  commands:
+    commitlint:
+      run: npx --no -- commitlint --edit {1}
+
+pre-merge-commit:
+  commands:
+    merge-policy:
+      run: bash scripts/git/check-merge.sh
