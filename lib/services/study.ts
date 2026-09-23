@@ -25,7 +25,6 @@ import {
 
 // Constants
 
-const LEARN_BATCH = 5;
 const REVIEW_BATCH = 25;
 const POOL_LIMIT = 500;
 
@@ -44,6 +43,8 @@ interface CourseRow {
   diacritic_mode: DiacriticMode;
   new_per_day: number;
   max_reviews_per_day: number;
+  learning_steps: number;
+  words_per_session: number;
 }
 
 interface ItemRow {
@@ -88,6 +89,7 @@ export interface SessionPayload {
   courseId: string;
   steps: SessionStep[];
   remainingToday: number;
+  learningSteps: number;
 }
 
 export interface ReviewResult {
@@ -149,7 +151,9 @@ async function loadContext(userId: string, courseId: string) {
     supabase.from("users").select("timezone, day_rollover_hour").eq("id", userId).maybeSingle(),
     supabase
       .from("courses")
-      .select("id, owner_id, visibility, target_lang, diacritic_mode, new_per_day, max_reviews_per_day")
+      .select(
+        "id, owner_id, visibility, target_lang, diacritic_mode, new_per_day, max_reviews_per_day, learning_steps, words_per_session",
+      )
       .eq("id", courseId)
       .maybeSingle(),
   ]);
@@ -158,7 +162,7 @@ async function loadContext(userId: string, courseId: string) {
   if (course.owner_id !== userId && course.visibility === "private") throw new HttpError(404, "Not found");
 
   const settings: SrsSettings = {
-    learningSteps: LEARNING_STEPS,
+    learningSteps: course.learning_steps ?? LEARNING_STEPS,
     graduatingIntervalDays: GRADUATING_INTERVAL_DAYS,
     timezone: user.timezone,
     rolloverHour: user.day_rollover_hour,
@@ -194,8 +198,10 @@ export async function getLearnSession(userId: string, courseId: string, now: Dat
   const dayStart = startOfUserDay(now, settings.timezone, settings.rolloverHour);
   const introduced = await countToday(userId, courseId, dayStart, ["new"]);
   const remaining = Math.max(0, course.new_per_day - introduced);
-  const batch = Math.min(LEARN_BATCH, remaining);
-  if (batch === 0) return { mode: "learn", courseId, steps: [], remainingToday: 0 };
+  const batch = Math.min(course.words_per_session, remaining);
+  if (batch === 0) {
+    return { mode: "learn", courseId, steps: [], remainingToday: 0, learningSteps: settings.learningSteps };
+  }
 
   const [items, pool] = await Promise.all([
     supabase.rpc("new_items", { p_user_id: userId, p_course_id: courseId, p_limit: batch }),
@@ -203,7 +209,13 @@ export async function getLearnSession(userId: string, courseId: string, now: Dat
   ]);
   const rows = unwrap<ItemRow[]>(items);
   const steps = planLearnSession(rows.map(toSessionItem), pool, settings);
-  return { mode: "learn", courseId, steps, remainingToday: remaining - rows.length };
+  return {
+    mode: "learn",
+    courseId,
+    steps,
+    remainingToday: remaining - rows.length,
+    learningSteps: settings.learningSteps,
+  };
 }
 
 export async function getReviewSession(userId: string, courseId: string, now: Date): Promise<SessionPayload> {
@@ -212,7 +224,9 @@ export async function getReviewSession(userId: string, courseId: string, now: Da
   const reviewed = await countToday(userId, courseId, dayStart, ["review", "relearning"]);
   const remaining = Math.max(0, course.max_reviews_per_day - reviewed);
   const limit = Math.min(REVIEW_BATCH, remaining);
-  if (limit === 0) return { mode: "review", courseId, steps: [], remainingToday: 0 };
+  if (limit === 0) {
+    return { mode: "review", courseId, steps: [], remainingToday: 0, learningSteps: settings.learningSteps };
+  }
 
   const [due, pool] = await Promise.all([
     supabase
@@ -229,7 +243,13 @@ export async function getReviewSession(userId: string, courseId: string, now: Da
   const rows = unwrap<(StateRow & { items: ItemRow })[]>(due);
   const entries = rows.map((row) => ({ item: toSessionItem(row.items), card: toCard(row) }));
   const steps = planReviewSession(entries, pool, settings);
-  return { mode: "review", courseId, steps, remainingToday: remaining - rows.length };
+  return {
+    mode: "review",
+    courseId,
+    steps,
+    remainingToday: remaining - rows.length,
+    learningSteps: settings.learningSteps,
+  };
 }
 
 // Reviews

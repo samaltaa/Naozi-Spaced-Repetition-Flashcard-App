@@ -80,6 +80,8 @@ export interface CourseRecord {
   diacritic_mode: DiacriticMode;
   new_per_day: number;
   max_reviews_per_day: number;
+  learning_steps: number;
+  words_per_session: number;
 }
 
 export interface CourseDetail extends CourseRecord {
@@ -115,6 +117,8 @@ export interface CourseFormValues {
   diacriticMode: DiacriticMode;
   newPerDay: number;
   maxReviewsPerDay: number;
+  learningSteps: number;
+  wordsPerSession: number;
 }
 
 export interface ItemDraft {

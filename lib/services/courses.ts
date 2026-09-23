@@ -23,6 +23,8 @@ function courseColumns(input: UpdateCourseInput) {
     diacritic_mode: input.diacriticMode,
     new_per_day: input.newPerDay,
     max_reviews_per_day: input.maxReviewsPerDay,
+    learning_steps: input.learningSteps,
+    words_per_session: input.wordsPerSession,
   };
 }
 
