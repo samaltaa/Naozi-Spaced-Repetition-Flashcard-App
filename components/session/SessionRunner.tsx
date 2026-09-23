@@ -5,6 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { StatusMessage } from "@/components/ui/StatusMessage";
 import { api, errorMessage } from "@/lib/client/api";
 import type { ReviewResult, SessionMode, SessionStep } from "@/lib/client/types";
+import { LEARNING_STEPS } from "@/lib/srs/constants";
 import { FeedbackBar } from "./FeedbackBar";
 import { GrowthMeter } from "./GrowthMeter";
 import { IntroCard } from "./IntroCard";
@@ -54,6 +55,7 @@ export function SessionRunner({ courseId, mode }: Props) {
   const [growth, setGrowth] = useState<Record<string, number>>({});
   const [tally, setTally] = useState({ correct: 0, wrong: 0 });
   const [missed, setMissed] = useState<string[]>([]);
+  const [learningSteps, setLearningSteps] = useState(LEARNING_STEPS);
   const shownAt = useRef(0);
 
   const step = queue[index];
@@ -68,6 +70,7 @@ export function SessionRunner({ courseId, mode }: Props) {
       .then((payload) => {
         if (!active) return;
         setQueue(payload.steps);
+        setLearningSteps(payload.learningSteps);
         setIndex(0);
         setPicked(null);
         setResult(null);
@@ -232,10 +235,12 @@ export function SessionRunner({ courseId, mode }: Props) {
 
       <main className="mx-auto flex w-full max-w-2xl flex-1 flex-col items-center px-4 pb-56 pt-4 sm:justify-center sm:pb-40 sm:pt-6">
         {step.type === "intro" ? (
-          <IntroCard key={index} step={step} lang={lang} onContinue={advance} />
+          <IntroCard key={index} step={step} lang={lang} steps={learningSteps} onContinue={advance} />
         ) : (
           <div key={index} className="animate-pop w-full text-center">
-            {mode === "learn" ? <GrowthMeter stage={growth[step.question.itemId] ?? 0} /> : null}
+            {mode === "learn" ? (
+              <GrowthMeter stage={growth[step.question.itemId] ?? 0} steps={learningSteps} />
+            ) : null}
             <p className="text-sm font-semibold text-ink/50">
               {step.question.kind === "multiple_choice" ? "Pick the translation" : "Type the translation"}
             </p>

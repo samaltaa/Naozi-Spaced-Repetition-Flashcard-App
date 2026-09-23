@@ -1,4 +1,10 @@
 import { z } from "zod";
+import {
+  MAX_LEARNING_STEPS,
+  MAX_WORDS_PER_SESSION,
+  MIN_LEARNING_STEPS,
+  MIN_WORDS_PER_SESSION,
+} from "@/lib/srs/constants";
 
 // Primitives
 
@@ -20,6 +26,8 @@ export const CreateCourseInput = z.object({
   diacriticMode: DiacriticMode.optional(),
   newPerDay: z.int().min(1).max(100).optional(),
   maxReviewsPerDay: z.int().min(1).max(2000).optional(),
+  learningSteps: z.int().min(MIN_LEARNING_STEPS).max(MAX_LEARNING_STEPS).optional(),
+  wordsPerSession: z.int().min(MIN_WORDS_PER_SESSION).max(MAX_WORDS_PER_SESSION).optional(),
 });
 
 export const UpdateCourseInput = CreateCourseInput.partial();
