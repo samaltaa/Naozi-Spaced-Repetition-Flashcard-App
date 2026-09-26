@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+src/curator/__init__.py
+src/curator/cli.py
+src/curator/config.py
+src/curator/extract.py
+src/curator/schema.py
+src/curator.egg-info/PKG-INFO
+src/curator.egg-info/SOURCES.txt
+src/curator.egg-info/dependency_links.txt
+src/curator.egg-info/top_level.txt
+src/curator/nlp/__init__.py
+src/curator/nlp/frequency.py
+src/curator/nlp/tokenize.py
+src/curator/sources/__init__.py
+src/curator/sources/fetch.py
+tests/test_extract.py
