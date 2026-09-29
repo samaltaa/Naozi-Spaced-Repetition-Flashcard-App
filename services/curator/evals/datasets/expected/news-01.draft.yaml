@@ -1,0 +1,165 @@
+name: news-01
+language: es
+notes: ''
+required: []
+optional:
+- answer: selectivo
+  prompt:
+  - selective
+- answer: la retirada
+  prompt:
+  - withdrawal, retreat
+- answer: denunciar
+  prompt:
+  - to denounce, to report
+- answer: exigir
+  prompt:
+  - to demand, to require
+- answer: la aplicación
+  prompt:
+  - application, implementation
+- answer: el territorio
+  prompt:
+  - territory
+- answer: el distrito
+  prompt:
+  - district
+- answer: incluir
+  prompt:
+  - to include
+- answer: chií
+  prompt:
+  - Shia, Shiite
+- answer: el sur
+  prompt:
+  - south
+- answer: la frontera
+  prompt:
+  - border, frontier
+- answer: el viernes
+  prompt:
+  - Friday
+- answer: el ataque
+  prompt:
+  - attack
+- answer: el restablecimiento
+  prompt:
+  - restoration, re-establishment
+- answer: el desarme
+  prompt:
+  - disarmament
+- answer: alegar
+  prompt:
+  - to allege, to claim
+- answer: el fuego
+  prompt:
+  - fire
+- answer: el ministro
+  prompt:
+  - minister
+- answer: la mediación
+  prompt:
+  - mediation
+- answer: sentar
+  prompt:
+  - to seat, to set down
+- answer: el bombardeo
+  prompt:
+  - bombing, bombardment
+- answer: la medianoche
+  prompt:
+  - midnight
+- answer: la base
+  prompt:
+  - base, basis
+- answer: registrarse
+  prompt:
+  - to be recorded, to occur
+- answer: la artillería
+  prompt:
+  - artillery
+- answer: rechazar
+  prompt:
+  - to reject, to refuse
+- answer: la gobernación
+  prompt:
+  - governorate, province
+- answer: alto
+  prompt:
+  - ceasefire (alto el fuego); high, tall
+- answer: afectar
+  prompt:
+  - to affect
+- answer: justificar
+  prompt:
+  - to justify
+- answer: informar
+  prompt:
+  - to report, to inform
+- answer: recoger
+  prompt:
+  - to report, to pick up, to collect
+- answer: la soberanía
+  prompt:
+  - sovereignty
+- answer: la negativa
+  prompt:
+  - refusal, denial
+- answer: atacar
+  prompt:
+  - to attack
+- answer: el pleno
+  prompt:
+  - 'full, complete (de pleno: fully, outright)'
+- answer: permanente
+  prompt:
+  - permanent
+- answer: continuar
+  prompt:
+  - to continue
+- answer: la agencia
+  prompt:
+  - agency, news agency
+- answer: alcanzar
+  prompt:
+  - to reach, to achieve
+- answer: el municipio
+  prompt:
+  - municipality, town
+- answer: la autoridad
+  prompt:
+  - authority
+- answer: el sábado
+  prompt:
+  - Saturday
+- answer: la operación
+  prompt:
+  - operation
+- answer: la noticia
+  prompt:
+  - news, piece of news
+- answer: la cuestión
+  prompt:
+  - question, issue, matter
+- answer: militar
+  prompt:
+  - military
+- answer: el principio
+  prompt:
+  - principle; beginning
+- answer: volver
+  prompt:
+  - to return; to do again (volver a + infinitive)
+- answer: la fuerza
+  prompt:
+  - force, strength
+- answer: la zona
+  prompt:
+  - zone, area
+- answer: la seguridad
+  prompt:
+  - security, safety
+- answer: la razón
+  prompt:
+  - reason
+forbidden: []
