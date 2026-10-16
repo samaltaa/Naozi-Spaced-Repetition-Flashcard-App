@@ -75,6 +75,7 @@ class TranslationRow(Base):
     gloss: Mapped[str] = mapped_column(Text, nullable=False, server_default="")
     form: Mapped[str | None] = mapped_column(Text)
     alternates: Mapped[list[str]] = mapped_column(ARRAY(Text), nullable=False, server_default="{}")
+    reading: Mapped[str | None] = mapped_column(Text)
     skip_reason: Mapped[str | None] = mapped_column(Text)
     model: Mapped[str] = mapped_column(Text, nullable=False)
     hit_count: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")

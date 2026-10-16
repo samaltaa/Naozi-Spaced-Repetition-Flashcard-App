@@ -14,14 +14,31 @@ MAX_READING = 200
 MAX_ALTERNATES = 20
 
 PartOfSpeech = Literal["noun", "verb", "adjective", "adverb"]
-Gender = Literal["masculine", "feminine", "common"]
+Gender = Literal["masculine", "feminine", "neuter", "common"]
 
 # Text folding
 
+BREVE = "\u0306"
+STRESS_MARKS = {"\u0301", "\u0300"}
+
+def is_cyrillic(ch: str) -> bool:
+    return "\u0400" <= ch <= "\u04ff"
+
 def fold(text: str) -> str:
     decomposed = unicodedata.normalize("NFD", text.casefold())
-    stripped = "".join(ch for ch in decomposed if not unicodedata.combining(ch))
-    return " ".join(unicodedata.normalize("NFC", stripped).split())
+    kept: list[str] = []
+    base = ""
+    for ch in decomposed:
+        if not unicodedata.combining(ch):
+            base = ch
+            kept.append(ch)
+        elif ch == BREVE and is_cyrillic(base):
+            kept.append(ch)
+    return " ".join(unicodedata.normalize("NFC", "".join(kept)).split())
+
+def without_stress(text: str) -> str:
+    decomposed = unicodedata.normalize("NFD", text)
+    return unicodedata.normalize("NFC", "".join(ch for ch in decomposed if ch not in STRESS_MARKS))
 
 # Candidate from the source text
 
@@ -43,6 +60,7 @@ class ExtractedItem(BaseModel):
     alternates: list[str] = Field(default_factory=list, max_length=MAX_ALTERNATES)
     pos: PartOfSpeech
     context: str = Field(default="", max_length=MAX_NOTES)
+    reading: str | None = Field(default=None, max_length=MAX_READING)
     skip_reason: str | None = None
 
     @field_validator("lemma", "answer", "prompt", "context")
@@ -90,7 +108,7 @@ def to_draft(item: ExtractedItem) -> CourseItemDraft:
         prompt=item.prompt,
         answer=item.answer,
         alternates=item.alternates,
-        reading=None,
+        reading=item.reading,
         notes=item.context or None,
     )
 
@@ -118,3 +136,18 @@ class ReplyItem(BaseModel):
 
 class ReplyBatch(BaseModel):
     items: list[ReplyItem] = Field(default_factory=list)
+
+class ReadingItem(BaseModel):
+    id: int
+    reading: str | None = None
+
+    @field_validator("reading")
+    @classmethod
+    def strip_reading(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        cleaned = " ".join(value.split())
+        return cleaned or None
+
+class ReadingBatch(BaseModel):
+    items: list[ReadingItem] = Field(default_factory=list)

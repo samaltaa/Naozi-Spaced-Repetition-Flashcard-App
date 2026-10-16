@@ -99,6 +99,7 @@ class DbTranslationStore:
                 gloss=row.gloss,
                 form=row.form,
                 alternates=tuple(row.alternates),
+                reading=row.reading,
                 skip_reason=row.skip_reason,
                 model=row.model,
             )
@@ -129,6 +130,7 @@ class DbTranslationStore:
                         "gloss": t.gloss,
                         "form": t.form,
                         "alternates": list(t.alternates),
+                        "reading": t.reading,
                         "skip_reason": t.skip_reason,
                     }
                     for t in translations
@@ -241,7 +243,7 @@ def item_row(position: int, item: ExtractedItem) -> ExtractedItemRow:
         prompt=item.prompt,
         answer=item.answer,
         alternates=list(item.alternates),
-        reading=None,
+        reading=item.reading,
         notes=item.context or None,
         original=item.model_dump(mode="json"),
     )

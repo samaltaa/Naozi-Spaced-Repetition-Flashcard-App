@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import functools
+import unicodedata
 from collections import defaultdict
 
 import spacy
@@ -8,11 +9,10 @@ from spacy.language import Language
 from spacy.tokens import Doc, Token
 from wordfreq import zipf_frequency
 
+from curator.languages import SPANISH, LanguageProfile, profile_for
 from curator.schema import Candidate, Gender, PartOfSpeech, fold
 
 # Configuration
-
-MODELS = {"es": "es_core_news_md"}
 
 KEEP_POS: dict[str, PartOfSpeech] = {
     "NOUN": "noun",
@@ -21,79 +21,108 @@ KEEP_POS: dict[str, PartOfSpeech] = {
     "ADV": "adverb",
 }
 
-VERB_ENDINGS = ("ar", "er", "ir", "ár", "ér", "ír")
+GENDERS: dict[str, Gender] = {
+    "Masc": "masculine",
+    "Fem": "feminine",
+    "Neut": "neuter",
+}
+
 BREAKS = {",", ";", ":"}
 
-MIN_ZIPF = 2.0
-MAX_ZIPF = 5.5
-MIN_LENGTH = 3
 MIN_CONTEXT_WORDS = 4
 MAX_CONTEXT_WORDS = 18
 SALIENCE_CEILING = 6.5
 
-FOREIGN_LANG = "en"
 FOREIGN_MARGIN = 1.0
 FOREIGN_SENTENCE_SHARE = 0.5
 MIN_SENTENCE_WORDS = 3
 
 # Model loading
 
-@functools.lru_cache(maxsize=4)
-def load_model(lang: str) -> Language:
-    name = MODELS.get(lang)
-    if name is None:
-        raise ValueError(f"No spaCy model configured for '{lang}'")
+@functools.lru_cache(maxsize=8)
+def load_model(name: str) -> Language:
     return spacy.load(name)
 
 # Token filters
 
-def has_infinitive_shape(lemma: str) -> bool:
-    return lemma.removesuffix("se").endswith(VERB_ENDINGS)
+def in_script(word: str, script: str | None) -> bool:
+    if script is None:
+        return True
+    return all(unicodedata.name(ch, "").startswith(script) for ch in word if ch.isalpha())
+
+def has_infinitive_shape(lemma: str, profile: LanguageProfile) -> bool:
+    if not profile.verb_endings:
+        return True
+    stem = lemma.removesuffix(profile.reflexive_suffix) if profile.reflexive_suffix else lemma
+    return stem.endswith(profile.verb_endings)
 
 def is_participle(token: Token) -> bool:
-    return token.morph.get("VerbForm") == ["Part"]
+    return token.morph.get("VerbForm", []) == ["Part"]
 
-def is_candidate(token: Token) -> bool:
+def is_abbreviation(token: Token) -> bool:
+    if token.whitespace_ or token.i + 1 >= len(token.doc):
+        return False
+    period = token.doc[token.i + 1]
+    return period.text == "." and period.i + 1 < period.sent.end
+
+def is_candidate(token: Token, profile: LanguageProfile) -> bool:
     if token.pos_ not in KEEP_POS:
+        return False
+    if is_abbreviation(token):
         return False
     if token.is_stop or token.is_punct or token.is_digit or token.like_num or token.like_url:
         return False
-    if not token.lemma_ or not token.lemma_.isalpha():
+    lemma = token.lemma_
+    if not lemma or not lemma.isalpha() or len(lemma) < profile.min_length:
         return False
-    if len(token.lemma_) < MIN_LENGTH:
+    if not in_script(lemma, profile.script):
         return False
     if token.ent_type_:
         return False
     if token.pos_ == "ADJ" and is_participle(token):
         return False
-    if token.pos_ == "VERB" and not has_infinitive_shape(token.lemma_.lower()):
-        return False
-    return True
+    return not (token.pos_ == "VERB" and not has_infinitive_shape(lemma.lower(), profile))
 
 def gender_of(token: Token) -> Gender | None:
     if token.pos_ != "NOUN":
         return None
-    values = token.morph.get("Gender")
-    if values == ["Masc"]:
-        return "masculine"
-    if values == ["Fem"]:
-        return "feminine"
-    return None
+    values = token.morph.get("Gender", [])
+    return GENDERS.get(values[0]) if len(values) == 1 else None
 
-def is_reflexive(token: Token) -> bool:
+def is_reflexive(token: Token, profile: LanguageProfile) -> bool:
+    if not profile.reflexive_pronouns:
+        return False
     for child in token.children:
-        if child.lower_ != "se":
+        if child.lower_ not in profile.reflexive_pronouns:
             continue
-        if child.dep_ in {"obj", "iobj", "expl:pv", "obl"} or child.morph.get("Reflex") == ["Yes"]:
+        if child.dep_ in {"obj", "iobj", "expl:pv", "obl"} or child.morph.get("Reflex", []) == ["Yes"]:
             return True
     return False
 
+def phrasal_particle(token: Token, profile: LanguageProfile) -> str | None:
+    if not profile.phrasal_verbs or token.pos_ != "VERB":
+        return None
+    return next((child.lower_ for child in token.children if child.dep_ == "prt"), None)
+
+def lemma_of(token: Token, profile: LanguageProfile) -> str:
+    lemma = token.lemma_.lower()
+    if token.pos_ == "VERB" and is_reflexive(token, profile):
+        return f"{lemma}{profile.reflexive_suffix}"
+    particle = phrasal_particle(token, profile)
+    if particle:
+        return f"{lemma} {particle}"
+    return lemma
+
+def frequency_base(lemma: str, pos: str, profile: LanguageProfile) -> str:
+    suffix = profile.reflexive_suffix
+    if pos == "VERB" and suffix and lemma.endswith(suffix):
+        return lemma.removesuffix(suffix)
+    return lemma
+
 # Citation forms
 
-ARTICLES = {"masculine": "el", "feminine": "la"}
-
-def citation_form(candidate: Candidate) -> str:
-    article = ARTICLES.get(candidate.gender or "")
+def citation_form(candidate: Candidate, profile: LanguageProfile = SPANISH) -> str:
+    article = profile.noun_articles.get(candidate.gender or "")
     if candidate.pos == "noun" and article:
         return f"{article} {candidate.lemma}"
     return candidate.lemma
@@ -134,20 +163,22 @@ def window_around(token: Token) -> str:
 
 # Foreign words
 
-def looks_foreign(lemma: str, zipf: float, lang: str) -> bool:
-    if lang == FOREIGN_LANG:
+def looks_foreign(lemma: str, zipf: float, profile: LanguageProfile) -> bool:
+    if profile.foreign_lang is None:
         return False
-    return zipf_frequency(lemma, FOREIGN_LANG) - zipf >= FOREIGN_MARGIN
+    return zipf_frequency(lemma, profile.foreign_lang) - zipf >= FOREIGN_MARGIN
 
-def foreign_sentences(doc: Doc, lang: str) -> set[int]:
-    if lang == FOREIGN_LANG:
-        return set()
+def foreign_sentences(doc: Doc, profile: LanguageProfile) -> set[int]:
     starts: set[int] = set()
     for sentence in doc.sents:
         words = [t.lower_ for t in sentence if t.is_alpha]
         if len(words) < MIN_SENTENCE_WORDS:
             continue
-        foreign = sum(1 for w in words if looks_foreign(w, zipf_frequency(w, lang), lang))
+        foreign = sum(
+            1
+            for w in words
+            if not in_script(w, profile.script) or looks_foreign(w, zipf_frequency(w, profile.code), profile)
+        )
         if foreign / len(words) >= FOREIGN_SENTENCE_SHARE:
             starts.add(sentence.start)
     return starts
@@ -155,32 +186,28 @@ def foreign_sentences(doc: Doc, lang: str) -> set[int]:
 # Extraction
 
 def candidates_from_text(text: str, lang: str = "es") -> list[Candidate]:
-    nlp = load_model(lang)
+    profile = profile_for(lang)
+    nlp = load_model(profile.spacy_model)
     doc: Doc = nlp(text)
 
-    foreign = foreign_sentences(doc, lang)
+    foreign = foreign_sentences(doc, profile)
     grouped: dict[str, list[Token]] = defaultdict(list)
     for token in doc:
-        if token.sent.start in foreign:
+        if token.sent.start in foreign or not is_candidate(token, profile):
             continue
-        if is_candidate(token):
-            lemma = token.lemma_.lower()
-            if token.pos_ == "VERB" and is_reflexive(token):
-                lemma = f"{lemma}se"
-            grouped[lemma].append(token)
+        grouped[lemma_of(token, profile)].append(token)
 
     candidates: list[Candidate] = []
     for lemma, tokens in grouped.items():
-        base = lemma.removesuffix("se") if lemma.endswith("se") else lemma
-        zipf = zipf_frequency(base, lang)
-        if zipf < MIN_ZIPF or zipf > MAX_ZIPF:
-            continue
-        if looks_foreign(base, zipf, lang):
-            continue
-
         first = tokens[0]
-        context = next((c for c in (context_of(t) for t in tokens) if c), "")
+        zipf = zipf_frequency(frequency_base(lemma, first.pos_, profile), profile.code)
+        phrase = " " in lemma
+        if zipf < profile.min_zipf or (zipf > profile.max_zipf and not phrase):
+            continue
+        if looks_foreign(lemma, zipf, profile):
+            continue
 
+        context = next((c for c in (context_of(t) for t in tokens) if c), "")
         candidates.append(
             Candidate(
                 lemma=lemma,

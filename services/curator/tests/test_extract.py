@@ -20,6 +20,7 @@ from curator.extract import (
     extract_from_text,
     translation_key,
 )
+from curator.languages import RUSSIAN, SPANISH
 from curator.nlp.tokenize import citation_form
 from curator.schema import Candidate
 
@@ -66,7 +67,7 @@ REPLIES = {
 def fake_model(monkeypatch: pytest.MonkeyPatch) -> Iterator[list[list[str]]]:
     calls: list[list[str]] = []
 
-    def fake_request(client: object, group: list[Candidate], system: str, model: str):
+    def fake_request(client: object, group: list[Candidate], system: str, model: str, profile: object = None):
         calls.append([c.lemma for c in group])
         found = [REPLIES[c.lemma] for c in group if c.lemma in REPLIES]
         missing = [Rejection(lemma=c.lemma, reason="no reply from the model") for c in group if c.lemma not in REPLIES]
@@ -178,7 +179,7 @@ def test_same_spelling_words_are_cached_skips(fake_model: list[list[str]], monke
 def flaky(failing: set[str]):
     calls: list[str] = []
 
-    def fake_request(client: object, group: list[Candidate], system: str, model: str):
+    def fake_request(client: object, group: list[Candidate], system: str, model: str, profile: object = None):
         calls.append(model)
         if model in failing:
             raise APIConnectionError(request=Request("POST", "https://api.anthropic.com"))
@@ -255,3 +256,67 @@ def test_words_with_the_same_answer_appear_once(fake_model: list[list[str]], mon
     result = extract_from_text("texto", store=store)
     assert [i.answer for i in result.items] == ["atacar"]
     assert {t.lemma for t in store.saved} == {"atacar", "atacarse"}
+
+# Readings
+
+def test_valid_stress_reading_is_kept() -> None:
+
+    noun = candidate("молоко", gender="neuter")
+    item = build_item(noun, Translation(lemma="молоко", pos="noun", gloss="milk", reading="молоко́"), RUSSIAN)
+    assert item.answer == "молоко"
+    assert item.reading == "молоко́"
+
+def test_reading_with_different_letters_is_dropped() -> None:
+
+    noun = candidate("молоко", gender="neuter")
+    item = build_item(noun, Translation(lemma="молоко", pos="noun", gloss="milk", reading="мо́локо́в"), RUSSIAN)
+    assert item.reading is None
+
+def test_readings_are_ignored_for_spanish() -> None:
+    item = build_item(CANDIDATES[0], Translation(lemma="guiso", pos="noun", gloss="stew", reading="guíso"))
+    assert item.reading is None
+
+# Readings
+
+def test_one_syllable_words_need_no_reading() -> None:
+    assert not extract.needs_reading("штаб", RUSSIAN)
+    assert extract.needs_reading("боевой", RUSSIAN)
+    assert extract.needs_reading("чай с молоком", RUSSIAN)
+
+def test_readings_come_from_the_reading_model(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(get_settings(), "reading_model", "claude-sonnet-4-6")
+    sent: list[list[str]] = []
+
+    def fake_readings(client: object, words: list[str], system: str, model: str):
+        sent.append(words)
+        return {1: "боево́й"}, BatchUsage(size=len(words), input_tokens=10, output_tokens=5, model=model, purpose="reading")
+
+    monkeypatch.setattr(extract, "request_readings", fake_readings)
+    candidates = [candidate("боевой", pos="adjective"), candidate("штаб")]
+    translations = [
+        Translation(lemma="боевой", pos="adjective", gloss="combat"),
+        Translation(lemma="штаб", pos="noun", gloss="headquarters"),
+    ]
+    result = extract.ExtractionResult()
+    updated = extract.add_readings(object(), translations, candidates, RUSSIAN, "Russian", result)
+
+    assert sent == [["боевой"]]
+    assert updated[0].reading == "боево́й"
+    assert updated[1].reading is None
+    assert result.batches[0].purpose == "reading"
+
+def test_failed_readings_keep_the_translations(monkeypatch: pytest.MonkeyPatch) -> None:
+    def broken(client: object, words: list[str], system: str, model: str):
+        raise APIConnectionError(request=Request("POST", "https://api.anthropic.com"))
+
+    monkeypatch.setattr(extract, "request_readings", broken)
+    translations = [Translation(lemma="боевой", pos="adjective", gloss="combat")]
+    result = extract.ExtractionResult()
+    updated = extract.add_readings(object(), translations, [candidate("боевой", pos="adjective")], RUSSIAN, "Russian", result)
+    assert updated == translations
+    assert not result.batches
+
+def test_readings_are_skipped_for_spanish() -> None:
+    translations = [Translation(lemma="guiso", pos="noun", gloss="stew")]
+    result = extract.ExtractionResult()
+    assert extract.add_readings(object(), translations, CANDIDATES, SPANISH, "Spanish", result) == translations
