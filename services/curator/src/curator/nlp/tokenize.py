@@ -6,7 +6,7 @@ from collections import defaultdict
 
 import spacy
 from spacy.language import Language
-from spacy.tokens import Doc, Token
+from spacy.tokens import Doc, Span, Token
 from wordfreq import zipf_frequency
 
 from curator.languages import SPANISH, LanguageProfile, profile_for
@@ -27,7 +27,7 @@ GENDERS: dict[str, Gender] = {
     "Neut": "neuter",
 }
 
-BREAKS = {",", ";", ":"}
+BREAKS = {",", ";", ":", "，", "；", "：", "、"}
 
 MIN_CONTEXT_WORDS = 4
 MAX_CONTEXT_WORDS = 18
@@ -56,6 +56,9 @@ def has_infinitive_shape(lemma: str, profile: LanguageProfile) -> bool:
     stem = lemma.removesuffix(profile.reflexive_suffix) if profile.reflexive_suffix else lemma
     return stem.endswith(profile.verb_endings)
 
+def base_lemma(token: Token) -> str:
+    return token.lemma_ or token.text
+
 def is_participle(token: Token) -> bool:
     return token.morph.get("VerbForm", []) == ["Part"]
 
@@ -72,7 +75,7 @@ def is_candidate(token: Token, profile: LanguageProfile) -> bool:
         return False
     if token.is_stop or token.is_punct or token.is_digit or token.like_num or token.like_url:
         return False
-    lemma = token.lemma_
+    lemma = base_lemma(token)
     if not lemma or not lemma.isalpha() or len(lemma) < profile.min_length:
         return False
     if not in_script(lemma, profile.script):
@@ -105,7 +108,7 @@ def phrasal_particle(token: Token, profile: LanguageProfile) -> str | None:
     return next((child.lower_ for child in token.children if child.dep_ == "prt"), None)
 
 def lemma_of(token: Token, profile: LanguageProfile) -> str:
-    lemma = token.lemma_.lower()
+    lemma = base_lemma(token).lower()
     if token.pos_ == "VERB" and is_reflexive(token, profile):
         return f"{lemma}{profile.reflexive_suffix}"
     particle = phrasal_particle(token, profile)
@@ -129,12 +132,21 @@ def citation_form(candidate: Candidate, profile: LanguageProfile = SPANISH) -> s
 
 # Context
 
-def context_of(token: Token) -> str:
+def word_count(span: Span, profile: LanguageProfile) -> int:
+    if profile.spaced:
+        return len(span.text.split())
+    return sum(1 for t in span if not t.is_punct and not t.is_space)
+
+def span_text(span: Span, profile: LanguageProfile) -> str:
+    joiner = " " if profile.spaced else ""
+    return joiner.join(span.text.split())
+
+def context_of(token: Token, profile: LanguageProfile = SPANISH) -> str:
     doc = token.doc
     sentence = token.sent
 
-    if len(sentence.text.split()) <= MAX_CONTEXT_WORDS:
-        return " ".join(sentence.text.split())
+    if word_count(sentence, profile) <= MAX_CONTEXT_WORDS:
+        return span_text(sentence, profile)
 
     start, end = sentence.start, sentence.end
     for i in range(token.i, sentence.start - 1, -1):
@@ -146,16 +158,19 @@ def context_of(token: Token) -> str:
             end = i
             break
 
-    words = doc[start:end].text.split()
-    if MIN_CONTEXT_WORDS <= len(words) <= MAX_CONTEXT_WORDS:
-        return " ".join(words)
-    return window_around(token)
+    clause = doc[start:end]
+    if MIN_CONTEXT_WORDS <= word_count(clause, profile) <= MAX_CONTEXT_WORDS:
+        return span_text(clause, profile)
+    return window_around(token, profile)
 
-def window_around(token: Token) -> str:
+def window_around(token: Token, profile: LanguageProfile = SPANISH) -> str:
     doc = token.doc
     sentence = token.sent
     end = min(sentence.end, max(token.i - MAX_CONTEXT_WORDS // 2, sentence.start) + MAX_CONTEXT_WORDS)
     start = max(sentence.start, end - MAX_CONTEXT_WORDS)
+    if not profile.spaced:
+        window = doc[start:end]
+        return span_text(window, profile) if word_count(window, profile) >= MIN_CONTEXT_WORDS else ""
     words = doc[start:end].text.split()[:MAX_CONTEXT_WORDS]
     if len(words) < MIN_CONTEXT_WORDS:
         return ""
@@ -207,7 +222,7 @@ def candidates_from_text(text: str, lang: str = "es") -> list[Candidate]:
         if looks_foreign(lemma, zipf, profile):
             continue
 
-        context = next((c for c in (context_of(t) for t in tokens) if c), "")
+        context = next((c for c in (context_of(t, profile) for t in tokens) if c), "")
         candidates.append(
             Candidate(
                 lemma=lemma,
