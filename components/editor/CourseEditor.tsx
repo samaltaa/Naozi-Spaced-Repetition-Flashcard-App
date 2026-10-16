@@ -138,6 +138,11 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
     setNotice(`Added ${created.length} ${created.length === 1 ? "word" : "words"}.`);
   };
 
+  const addImported = (levelId: string, items: CourseItem[]) => {
+    setLevels((ls) => mapItems(ls, levelId, (existing) => [...existing, ...items]));
+    setNotice(`Added ${items.length} ${items.length === 1 ? "word" : "words"}.`);
+  };
+
   // Course
 
   const saveSettings = async (values: CourseFormValues) => {
@@ -221,6 +226,7 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
                 onUpdateItem={(itemId, changes) => updateItem(level.id, itemId, changes)}
                 onDeleteItem={(itemId) => deleteItem(level.id, itemId)}
                 onImport={(items, onProgress) => importItems(level.id, items, onProgress)}
+                onImported={(items) => addImported(level.id, items)}
               />
             ))}
             <AddLevelForm nextNumber={levels.length + 1} onAdd={addLevel} />
