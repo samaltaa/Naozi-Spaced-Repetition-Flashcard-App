@@ -8,6 +8,7 @@ MODEL_PRICES: dict[str, tuple[Decimal, Decimal]] = {
     "claude-opus-5-5": (Decimal(4), Decimal(20)),
     "claude-sonnet-5-5": (Decimal(2), Decimal(10)),
     "claude-sonnet-4-6": (Decimal(3), Decimal(15)),
+    "claude-haiku-5-5": (Decimal("0.10"), Decimal("0.50")),
     "claude-haiku-4-5": (Decimal(1), Decimal(5)),
 }
 

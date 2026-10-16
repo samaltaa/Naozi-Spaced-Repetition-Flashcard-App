@@ -1,0 +1,169 @@
+from __future__ import annotations
+
+import json
+from collections.abc import Iterator
+
+import pytest
+
+from curator import extract
+from curator.extract import (
+    BatchUsage,
+    Rejection,
+    Translation,
+    TranslationKey,
+    build_item,
+    candidates_payload,
+    extract_from_text,
+    translation_key,
+)
+from curator.nlp.tokenize import citation_form
+from curator.schema import Candidate
+
+# Helpers
+
+def candidate(lemma: str, pos: str = "noun", gender: str | None = None, context: str = "") -> Candidate:
+    return Candidate(
+        lemma=lemma,
+        surface=lemma,
+        pos=pos,  # type: ignore[arg-type]
+        gender=gender,  # type: ignore[arg-type]
+        zipf=3.0,
+        context=context or f"Una frase con {lemma} dentro.",
+    )
+
+CANDIDATES = [
+    candidate("guiso", gender="masculine"),
+    candidate("agua", gender="feminine"),
+    candidate("amasar", pos="verb"),
+    candidate("madrid", gender="masculine"),
+]
+
+class MemoryStore:
+    def __init__(self, entries: list[Translation] | None = None) -> None:
+        self.entries = {translation_key(t.lemma, t.pos): t for t in entries or []}
+        self.saved: list[Translation] = []
+
+    def lookup(self, candidates: list[Candidate]) -> dict[TranslationKey, Translation]:
+        wanted = {translation_key(c.lemma, c.pos) for c in candidates}
+        return {k: v for k, v in self.entries.items() if k in wanted}
+
+    def save(self, translations: list[Translation]) -> None:
+        self.saved.extend(translations)
+        self.entries.update({translation_key(t.lemma, t.pos): t for t in translations})
+
+REPLIES = {
+    "guiso": Translation(lemma="guiso", pos="noun", gloss="stew"),
+    "agua": Translation(lemma="agua", pos="noun", gloss="water", form="el agua"),
+    "amasar": Translation(lemma="amasar", pos="verb", gloss="to knead"),
+    "madrid": Translation(lemma="madrid", pos="noun", gloss="", skip_reason="proper noun"),
+}
+
+@pytest.fixture
+def fake_model(monkeypatch: pytest.MonkeyPatch) -> Iterator[list[list[str]]]:
+    calls: list[list[str]] = []
+
+    def fake_request(client: object, group: list[Candidate], system: str):
+        calls.append([c.lemma for c in group])
+        found = [REPLIES[c.lemma] for c in group if c.lemma in REPLIES]
+        missing = [Rejection(lemma=c.lemma, reason="no reply from the model") for c in group if c.lemma not in REPLIES]
+        return found, missing, BatchUsage(size=len(group), input_tokens=100, output_tokens=10 * len(group))
+
+    monkeypatch.setattr(extract, "request_batch", fake_request)
+    monkeypatch.setattr(extract, "build_client", lambda: object())
+    monkeypatch.setattr(extract, "candidates_from_text", lambda text, lang: list(CANDIDATES))
+    yield calls
+
+# Citation forms
+
+def test_citation_form_adds_article_from_gender() -> None:
+    assert citation_form(candidate("casa", gender="feminine")) == "la casa"
+    assert citation_form(candidate("problema", gender="masculine")) == "el problema"
+
+def test_citation_form_without_gender_is_the_lemma() -> None:
+    assert citation_form(candidate("casa")) == "casa"
+    assert citation_form(candidate("comer", pos="verb")) == "comer"
+
+# Requests
+
+def test_payload_is_compact_and_numbered() -> None:
+    payload = candidates_payload(CANDIDATES[:2])
+    assert ", " not in payload and "\n" not in payload
+    data = json.loads(payload)
+    assert [d["id"] for d in data] == [1, 2]
+    assert data[0]["form"] == "el guiso"
+    assert set(data[0]) == {"id", "lemma", "pos", "form", "sentence"}
+
+# Building items
+
+def test_build_item_uses_default_form_and_adds_bare_alternate() -> None:
+    item = build_item(CANDIDATES[0], REPLIES["guiso"])
+    assert item.answer == "el guiso"
+    assert item.prompt == "stew"
+    assert item.alternates == ["guiso"]
+    assert item.context == CANDIDATES[0].context
+
+def test_build_item_prefers_the_model_correction() -> None:
+    item = build_item(CANDIDATES[1], REPLIES["agua"])
+    assert item.answer == "el agua"
+    assert item.alternates == ["agua"]
+
+def test_build_item_rejects_an_empty_gloss() -> None:
+    with pytest.raises(ValueError):
+        build_item(CANDIDATES[0], Translation(lemma="guiso", pos="noun", gloss=""))
+
+# Extraction
+
+def test_extract_splits_items_and_skips(fake_model: list[list[str]]) -> None:
+    result = extract_from_text("texto")
+    assert [i.answer for i in result.items] == ["el guiso", "el agua", "amasar"]
+    assert [s.lemma for s in result.skipped] == ["madrid"]
+    assert result.input_tokens == 100
+    assert len(result.batches) == 1
+    assert result.model_called
+
+def test_second_run_is_served_from_the_store(fake_model: list[list[str]]) -> None:
+    store = MemoryStore()
+    extract_from_text("texto", store=store)
+    second = extract_from_text("texto", store=store)
+
+    assert len(fake_model) == 1
+    assert second.cached_items == 4
+    assert second.input_tokens == 0
+    assert not second.model_called
+    assert [i.answer for i in second.items] == ["el guiso", "el agua", "amasar"]
+
+def test_only_missing_words_are_sent(fake_model: list[list[str]]) -> None:
+    store = MemoryStore([REPLIES["guiso"], REPLIES["agua"]])
+    result = extract_from_text("texto", store=store)
+    assert fake_model == [["amasar", "madrid"]]
+    assert result.cached_items == 2
+
+def test_invalid_translations_are_not_cached(fake_model: list[list[str]], monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setitem(REPLIES, "amasar", Translation(lemma="amasar", pos="verb", gloss=""))
+    store = MemoryStore()
+    result = extract_from_text("texto", store=store)
+    assert [r.lemma for r in result.rejected] == ["amasar"]
+    assert "amasar" not in {t.lemma for t in store.saved}
+    assert "madrid" in {t.lemma for t in store.saved}
+
+def test_known_words_are_dropped_before_the_cap(fake_model: list[list[str]]) -> None:
+    result = extract_from_text("texto", known_lemmas={"guiso", "agua"})
+    assert fake_model == [["amasar", "madrid"]]
+    assert result.known_dropped == 2
+
+def test_payload_leaves_out_empty_sentences() -> None:
+    bare = Candidate(lemma="colina", surface="colina", pos="noun", gender="feminine", zipf=3.9, context="")
+    data = json.loads(candidates_payload([bare, CANDIDATES[0]]))
+    assert "sentence" not in data[0]
+    assert data[1]["sentence"] == CANDIDATES[0].context
+
+def test_same_spelling_words_are_cached_skips(fake_model: list[list[str]], monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setitem(REPLIES, "amasar", Translation(lemma="amasar", pos="verb", gloss="Amasar"))
+    store = MemoryStore()
+    first = extract_from_text("texto", store=store)
+    second = extract_from_text("texto", store=store)
+
+    assert "amasar" in {s.lemma for s in first.skipped}
+    assert "amasar" not in {r.lemma for r in first.rejected}
+    assert len(fake_model) == 1
+    assert not second.model_called
