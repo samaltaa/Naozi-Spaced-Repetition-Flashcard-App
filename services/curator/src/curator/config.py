@@ -33,6 +33,17 @@ class Settings(BaseSettings):
     min_zipf: float = Field(default=2.5)
     max_zipf: float = Field(default=5.5)
 
+    database_url: str = Field(default="")
+    service_token: str = Field(default="")
+
+    @property
+    def sqlalchemy_url(self) -> str:
+        url = self.database_url
+        for prefix in ("postgresql://", "postgres://"):
+            if url.startswith(prefix):
+                return "postgresql+psycopg://" + url[len(prefix) :]
+        return url
+
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
     return Settings()

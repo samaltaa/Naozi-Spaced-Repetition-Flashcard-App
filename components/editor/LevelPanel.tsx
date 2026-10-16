@@ -2,8 +2,10 @@
 
 import { useState, type KeyboardEvent } from "react";
 import { ConfirmButton } from "@/components/ui/ConfirmButton";
-import type { CourseLevel, ItemInput, UpdateItemInput } from "@/lib/client/types";
+import { ARTICLE_LANGS } from "@/lib/client/config";
+import type { CourseItem, CourseLevel, ItemInput, UpdateItemInput } from "@/lib/client/types";
 import { AddItemRow } from "./AddItemRow";
+import { ArticleImportDialog } from "./ArticleImportDialog";
 import { ImportDialog } from "./ImportDialog";
 import { ItemRow, ROW_GRID } from "./ItemRow";
 
@@ -19,6 +21,7 @@ type Props = {
   onUpdateItem: (itemId: string, changes: UpdateItemInput) => Promise<void>;
   onDeleteItem: (itemId: string) => Promise<void>;
   onImport: (items: ItemInput[], onProgress: (done: number) => void) => Promise<void>;
+  onImported: (items: CourseItem[]) => void;
 };
 
 export function LevelPanel({
@@ -33,9 +36,12 @@ export function LevelPanel({
   onUpdateItem,
   onDeleteItem,
   onImport,
+  onImported,
 }: Props) {
   const [title, setTitle] = useState(level.title);
   const [importing, setImporting] = useState(false);
+  const [fromArticle, setFromArticle] = useState(false);
+  const articlesSupported = ARTICLE_LANGS.includes(lang.toLowerCase().split("-")[0] ?? "");
   const count = level.items.length;
 
   const saveTitle = async () => {
@@ -82,6 +88,15 @@ export function LevelPanel({
           >
             Import CSV
           </button>
+          {articlesSupported ? (
+            <button
+              type="button"
+              onClick={() => setFromArticle(true)}
+              className="min-h-11 rounded-lg border border-ink/20 bg-white px-4 text-sm font-bold hover:border-water hover:text-water"
+            >
+              From article
+            </button>
+          ) : null}
           <ConfirmButton label="Delete" confirmLabel="Confirm delete" onConfirm={onDelete} />
         </div>
       </header>
@@ -96,6 +111,20 @@ export function LevelPanel({
           lang={lang}
           onImport={onImport}
           onClose={() => setImporting(false)}
+        />
+      ) : null}
+
+      {fromArticle ? (
+        <ArticleImportDialog
+          levelId={level.id}
+          levelNumber={number}
+          levelTitle={level.title}
+          existing={level.items}
+          sourceLabel={sourceLabel}
+          targetLabel={targetLabel}
+          lang={lang}
+          onImported={onImported}
+          onClose={() => setFromArticle(false)}
         />
       ) : null}
 

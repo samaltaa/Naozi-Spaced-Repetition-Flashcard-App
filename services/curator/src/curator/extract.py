@@ -5,7 +5,8 @@ import logging
 from dataclasses import dataclass, field
 
 import instructor
-from anthropic import Anthropic
+from anthropic import Anthropic, APIError
+from instructor.core import InstructorRetryException
 from pydantic import ValidationError
 
 from curator.config import get_settings, load_prompt, prompt_version
@@ -39,6 +40,7 @@ class ExtractionResult:
     input_tokens: int = 0
     output_tokens: int = 0
     prompt_version: str = "0"
+    failed_batches: int = 0
 
     @property
     def drafts(self) -> list[CourseItemDraft]:
@@ -144,8 +146,9 @@ def extract_from_text(
             kept, rejected, input_tokens, output_tokens = extract_batch(
                 client, group, source, source_language, target_language
             )
-        except (ValidationError, Exception) as error:
+        except (InstructorRetryException, APIError, ValidationError) as error:
             logger.warning("batch failed: %s", error)
+            result.failed_batches += 1
             result.rejected.extend(Rejection(lemma=c.lemma, reason="batch failed") for c in group)
             continue
 
