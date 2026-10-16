@@ -3,10 +3,38 @@ from __future__ import annotations
 from pathlib import Path
 
 import trafilatura
+from lxml import html
+from lxml.etree import ParserError
 
 # Limits
 
 MAX_CHARS = 40_000
+
+# End matter
+
+END_MATTER = " | ".join(
+    [
+        "//ol[contains(@class, 'references')]",
+        "//div[contains(@class, 'reflist')]",
+        "//div[contains(@class, 'refbegin')]",
+        "//div[contains(@class, 'mw-references-wrap')]",
+        "//sup[contains(@class, 'reference')]",
+        "//span[contains(@class, 'mw-editsection')]",
+        "//*[contains(@class, 'navbox')]",
+        "//li[.//a[contains(@class, 'external')]]",
+    ]
+)
+
+def strip_end_matter(page: str) -> str:
+    try:
+        tree = html.fromstring(page)
+    except ParserError:
+        return page
+    found = tree.xpath(END_MATTER)
+    for element in found if isinstance(found, list) else []:
+        if isinstance(element, html.HtmlElement) and element.getparent() is not None:
+            element.drop_tree()
+    return html.tostring(tree, encoding="unicode")
 
 # Fetching
 
@@ -16,7 +44,7 @@ def from_url(url: str) -> str:
         raise RuntimeError(f"Could not download {url}")
 
     text = trafilatura.extract(
-        downloaded,
+        strip_end_matter(downloaded),
         include_comments=False,
         include_tables=False,
         favor_precision=True,

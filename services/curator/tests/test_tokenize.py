@@ -114,3 +114,15 @@ def test_chinese_words_and_contexts() -> None:
     assert "北京" not in found
     assert " " not in found["自行车"].context
     assert len(found["自行车"].context) < len(text)
+
+def test_traditional_text_is_segmented_as_simplified() -> None:
+    text = "幾何學是研究空間結構及性質的一門學科。黎曼在書中引入了流形的概念。"
+    lemmas = {c.lemma for c in candidates_from_text(text, lang="zh")}
+    assert "幾何學" in lemmas
+    assert "學" not in lemmas
+    assert not any(ch in lemma for lemma in lemmas for ch in "学间构")
+
+def test_traditional_contexts_keep_original_characters() -> None:
+    text = "黎曼在書中引入了流形的概念，數學家研究曲率。"
+    found = {c.lemma: c for c in candidates_from_text(text, lang="zh")}
+    assert "數學家" in found["概念"].context
