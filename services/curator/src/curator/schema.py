@@ -12,7 +12,6 @@ MAX_ANSWER = 500
 MAX_NOTES = 2000
 MAX_READING = 200
 MAX_ALTERNATES = 20
-MIN_CONTEXT_WORDS = 3
 
 PartOfSpeech = Literal["noun", "verb", "adjective", "adverb"]
 Gender = Literal["masculine", "feminine", "common"]
@@ -77,28 +76,6 @@ class ExtractedItem(BaseModel):
         self.alternates = [a for a in self.alternates if fold(a) != answer_key]
         return self
 
-# Source-aware validation
-
-class SourceText:
-    def __init__(self, text: str) -> None:
-        self.folded = fold(text)
-
-    def contains(self, sentence: str) -> bool:
-        candidate = fold(sentence)
-        if len(candidate.split()) < MIN_CONTEXT_WORDS:
-            return False
-        return candidate in self.folded
-
-def validate_against_source(item: ExtractedItem, source: SourceText) -> ExtractedItem:
-    if item.context and not source.contains(item.context):
-        raise ValueError(f"context sentence for '{item.lemma}' is not in the source text")
-    return item
-
-def enforce_candidates(item: ExtractedItem, allowed_lemmas: set[str]) -> ExtractedItem:
-    if fold(item.lemma) not in allowed_lemmas:
-        raise ValueError(f"'{item.lemma}' was not one of the candidates")
-    return item
-
 # What the app imports
 
 class CourseItemDraft(BaseModel):
@@ -117,7 +94,27 @@ def to_draft(item: ExtractedItem) -> CourseItemDraft:
         notes=item.context or None,
     )
 
-# Model response envelope
+# Model reply
 
-class ExtractionBatch(BaseModel):
-    items: list[ExtractedItem] = Field(default_factory=list)
+class ReplyItem(BaseModel):
+    id: int
+    gloss: str = ""
+    form: str | None = None
+    alternates: list[str] = Field(default_factory=list)
+    skip: str | None = None
+
+    @field_validator("gloss")
+    @classmethod
+    def strip_gloss(cls, value: str) -> str:
+        return " ".join(value.split())
+
+    @field_validator("form", "skip")
+    @classmethod
+    def blank_to_none(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        cleaned = " ".join(value.split())
+        return cleaned or None
+
+class ReplyBatch(BaseModel):
+    items: list[ReplyItem] = Field(default_factory=list)

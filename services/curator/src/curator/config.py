@@ -25,9 +25,9 @@ class Settings(BaseSettings):
     extraction_model: str = Field(default="claude-sonnet-4-6")
     max_tokens: int = Field(default=8000)
 
-    batch_size: int = Field(default=20)
+    batch_size: int = Field(default=60)
     max_items_per_text: int = Field(default=60)
-    max_retries: int = Field(default=2)
+    max_retries: int = Field(default=1)
     request_timeout_seconds: float = Field(default=120.0)
 
     min_zipf: float = Field(default=2.5)

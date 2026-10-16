@@ -51,39 +51,34 @@ def uuid_pk() -> Mapped[uuid.UUID]:
 def created_at() -> Mapped[datetime]:
     return mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
-# Content cache
+# Translations
 
-class ContentCache(Base):
-    __tablename__ = "content_cache"
+class TranslationRow(Base):
+    __tablename__ = "translations"
     __table_args__ = (
         UniqueConstraint(
-            "content_hash",
             "lang",
             "source_language",
-            "target_language",
             "prompt_version",
-            "model",
-            "item_limit",
-            name="content_cache_key",
+            "lemma",
+            "pos",
+            name="translations_key",
         ),
     )
 
     id: Mapped[uuid.UUID] = uuid_pk()
-    content_hash: Mapped[str] = mapped_column(String(64), nullable=False)
     lang: Mapped[str] = mapped_column(Text, nullable=False)
     source_language: Mapped[str] = mapped_column(Text, nullable=False)
-    target_language: Mapped[str] = mapped_column(Text, nullable=False)
     prompt_version: Mapped[str] = mapped_column(Text, nullable=False)
+    lemma: Mapped[str] = mapped_column(Text, nullable=False)
+    pos: Mapped[str] = mapped_column(Text, nullable=False)
+    gloss: Mapped[str] = mapped_column(Text, nullable=False, server_default="")
+    form: Mapped[str | None] = mapped_column(Text)
+    alternates: Mapped[list[str]] = mapped_column(ARRAY(Text), nullable=False, server_default="{}")
+    skip_reason: Mapped[str | None] = mapped_column(Text)
     model: Mapped[str] = mapped_column(Text, nullable=False)
-    item_limit: Mapped[int] = mapped_column(Integer, nullable=False)
-    source_text: Mapped[str] = mapped_column(Text, nullable=False)
-    result: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
-    input_tokens: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
-    output_tokens: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
-    cost_usd: Mapped[Decimal | None] = mapped_column(Numeric(10, 6))
     hit_count: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
     created_at: Mapped[datetime] = created_at()
-    last_hit_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
 # Extraction jobs
 
@@ -115,6 +110,8 @@ class ExtractionJob(Base):
     output_tokens: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
     cost_usd: Mapped[Decimal | None] = mapped_column(Numeric(10, 6))
     known_dropped: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
+    cached_items: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
+    batches: Mapped[list[dict[str, int]]] = mapped_column(JSONB, nullable=False, server_default="[]")
     skipped: Mapped[list[dict[str, str]]] = mapped_column(JSONB, nullable=False, server_default="[]")
     rejected: Mapped[list[dict[str, str]]] = mapped_column(JSONB, nullable=False, server_default="[]")
     error: Mapped[str | None] = mapped_column(Text)

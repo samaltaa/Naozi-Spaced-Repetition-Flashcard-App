@@ -75,7 +75,7 @@ def save_job(user_id: uuid.UUID, text: str, url: str | None, target: str, source
     cost = "unknown" if outcome.cost_usd is None else f"${outcome.cost_usd:.4f}"
     console.print(
         f"\n[bold]job {outcome.job_id}[/bold]  "
-        f"{'cache hit' if outcome.cache_hit else 'fresh extraction'}  "
+        f"{outcome.cached_items} from the word cache  "
         f"{outcome.known_dropped} already known  cost {cost}"
     )
 
@@ -172,7 +172,7 @@ def job(job_id: str = typer.Argument(..., help="Extraction job id.")) -> None:
             f"[dim]created {found.created_at:%Y-%m-%d %H:%M}  "
             f"{found.input_tokens} in / {found.output_tokens} out  "
             f"cost {found.cost_usd if found.cost_usd is not None else 'unknown'}  "
-            f"{'cache hit' if found.cache_hit else 'fresh'}  "
+            f"{found.cached_items} from the word cache  "
             f"{found.known_dropped} already known[/dim]"
         )
         if found.error:

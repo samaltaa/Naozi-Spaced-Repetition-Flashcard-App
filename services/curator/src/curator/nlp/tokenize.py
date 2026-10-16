@@ -31,6 +31,11 @@ MIN_CONTEXT_WORDS = 4
 MAX_CONTEXT_WORDS = 18
 SALIENCE_CEILING = 6.5
 
+FOREIGN_LANG = "en"
+FOREIGN_MARGIN = 1.0
+FOREIGN_SENTENCE_SHARE = 0.5
+MIN_SENTENCE_WORDS = 3
+
 # Model loading
 
 @functools.lru_cache(maxsize=4)
@@ -83,6 +88,16 @@ def is_reflexive(token: Token) -> bool:
             return True
     return False
 
+# Citation forms
+
+ARTICLES = {"masculine": "el", "feminine": "la"}
+
+def citation_form(candidate: Candidate) -> str:
+    article = ARTICLES.get(candidate.gender or "")
+    if candidate.pos == "noun" and article:
+        return f"{article} {candidate.lemma}"
+    return candidate.lemma
+
 # Context
 
 def context_of(token: Token) -> str:
@@ -103,9 +118,39 @@ def context_of(token: Token) -> str:
             break
 
     words = doc[start:end].text.split()
-    if len(words) < MIN_CONTEXT_WORDS or len(words) > MAX_CONTEXT_WORDS:
+    if MIN_CONTEXT_WORDS <= len(words) <= MAX_CONTEXT_WORDS:
+        return " ".join(words)
+    return window_around(token)
+
+def window_around(token: Token) -> str:
+    doc = token.doc
+    sentence = token.sent
+    end = min(sentence.end, max(token.i - MAX_CONTEXT_WORDS // 2, sentence.start) + MAX_CONTEXT_WORDS)
+    start = max(sentence.start, end - MAX_CONTEXT_WORDS)
+    words = doc[start:end].text.split()[:MAX_CONTEXT_WORDS]
+    if len(words) < MIN_CONTEXT_WORDS:
         return ""
     return " ".join(words)
+
+# Foreign words
+
+def looks_foreign(lemma: str, zipf: float, lang: str) -> bool:
+    if lang == FOREIGN_LANG:
+        return False
+    return zipf_frequency(lemma, FOREIGN_LANG) - zipf >= FOREIGN_MARGIN
+
+def foreign_sentences(doc: Doc, lang: str) -> set[int]:
+    if lang == FOREIGN_LANG:
+        return set()
+    starts: set[int] = set()
+    for sentence in doc.sents:
+        words = [t.lower_ for t in sentence if t.is_alpha]
+        if len(words) < MIN_SENTENCE_WORDS:
+            continue
+        foreign = sum(1 for w in words if looks_foreign(w, zipf_frequency(w, lang), lang))
+        if foreign / len(words) >= FOREIGN_SENTENCE_SHARE:
+            starts.add(sentence.start)
+    return starts
 
 # Extraction
 
@@ -113,8 +158,11 @@ def candidates_from_text(text: str, lang: str = "es") -> list[Candidate]:
     nlp = load_model(lang)
     doc: Doc = nlp(text)
 
+    foreign = foreign_sentences(doc, lang)
     grouped: dict[str, list[Token]] = defaultdict(list)
     for token in doc:
+        if token.sent.start in foreign:
+            continue
         if is_candidate(token):
             lemma = token.lemma_.lower()
             if token.pos_ == "VERB" and is_reflexive(token):
@@ -126,6 +174,8 @@ def candidates_from_text(text: str, lang: str = "es") -> list[Candidate]:
         base = lemma.removesuffix("se") if lemma.endswith("se") else lemma
         zipf = zipf_frequency(base, lang)
         if zipf < MIN_ZIPF or zipf > MAX_ZIPF:
+            continue
+        if looks_foreign(base, zipf, lang):
             continue
 
         first = tokens[0]

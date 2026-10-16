@@ -3,8 +3,7 @@ from __future__ import annotations
 from decimal import Decimal
 
 from curator.config import Settings
-from curator.extract import ExtractionResult, Rejection
-from curator.jobs import content_hash, result_from_dict, result_to_dict
+from curator.jobs import content_hash
 from curator.known import drop_known, known_keys, term_key
 from curator.pricing import cost_usd
 from curator.schema import ExtractedItem
@@ -58,24 +57,6 @@ def test_content_hash_ignores_whitespace_and_normalization() -> None:
 
 def test_content_hash_is_case_sensitive() -> None:
     assert content_hash("Casa") != content_hash("casa")
-
-# Serialization
-
-def test_result_round_trip() -> None:
-    result = ExtractionResult(
-        items=[item("guiso", "el guiso", "stew")],
-        skipped=[Rejection(lemma="respondía", reason="conjugated form")],
-        rejected=[Rejection(lemma="paño", reason="context missing")],
-        input_tokens=100,
-        output_tokens=50,
-        prompt_version="1",
-    )
-    restored = result_from_dict(result_to_dict(result))
-    assert restored.items == result.items
-    assert restored.skipped == result.skipped
-    assert restored.rejected == result.rejected
-    assert restored.input_tokens == 100
-    assert restored.prompt_version == "1"
 
 # Config
 

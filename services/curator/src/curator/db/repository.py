@@ -9,13 +9,14 @@ from sqlalchemy import func, select, text, update
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.orm import Session
 
-from curator.db.models import ContentCache, ExtractedItemRow, ExtractionJob
-from curator.schema import ExtractedItem
+from curator.db.models import ExtractedItemRow, ExtractionJob, TranslationRow
+from curator.extract import Translation, TranslationKey, translation_key
+from curator.schema import Candidate, ExtractedItem
 
-# Cache key
+# Job key
 
 @dataclass(frozen=True)
-class CacheKey:
+class JobKey:
     content_hash: str
     lang: str
     source_language: str
@@ -36,7 +37,7 @@ class CacheKey:
         }
 
     @classmethod
-    def from_job(cls, job: ExtractionJob) -> CacheKey:
+    def from_job(cls, job: ExtractionJob) -> JobKey:
         return cls(
             content_hash=job.content_hash,
             lang=job.lang,
@@ -66,51 +67,83 @@ def known_terms(session: Session, user_id: uuid.UUID, lang: str) -> list[str]:
     rows = session.execute(KNOWN_TERMS, {"user_id": user_id, "lang": lang.lower()})
     return [row.term for row in rows]
 
-# Content cache
+# Translations
 
-def cache_lookup(session: Session, key: CacheKey) -> ContentCache | None:
-    columns = key.columns()
-    statement = select(ContentCache).where(
-        *(getattr(ContentCache, name) == value for name, value in columns.items())
-    )
-    entry = session.scalars(statement).one_or_none()
-    if entry is not None:
-        session.execute(
-            update(ContentCache)
-            .where(ContentCache.id == entry.id)
-            .values(hit_count=ContentCache.hit_count + 1, last_hit_at=func.now())
-        )
-    return entry
+class DbTranslationStore:
+    def __init__(self, session: Session, key: JobKey) -> None:
+        self.session = session
+        self.key = key
 
-def cache_store(
-    session: Session,
-    key: CacheKey,
-    source_text: str,
-    result: dict[str, Any],
-    input_tokens: int,
-    output_tokens: int,
-    cost_usd: Decimal | None,
-) -> None:
-    statement = (
-        insert(ContentCache)
-        .values(
-            **key.columns(),
-            source_text=source_text,
-            result=result,
-            input_tokens=input_tokens,
-            output_tokens=output_tokens,
-            cost_usd=cost_usd,
+    def scope(self) -> tuple[Any, ...]:
+        return (
+            TranslationRow.lang == self.key.lang,
+            TranslationRow.source_language == self.key.source_language,
+            TranslationRow.prompt_version == self.key.prompt_version,
         )
-        .on_conflict_do_nothing(constraint="content_cache_key")
-    )
-    session.execute(statement)
+
+    def lookup(self, candidates: list[Candidate]) -> dict[TranslationKey, Translation]:
+        wanted = {translation_key(c.lemma, c.pos) for c in candidates}
+        lemmas = sorted({c.lemma for c in candidates})
+        rows = self.session.scalars(
+            select(TranslationRow).where(*self.scope(), TranslationRow.lemma.in_(lemmas))
+        ).all()
+
+        found: dict[TranslationKey, Translation] = {}
+        for row in rows:
+            key = translation_key(row.lemma, row.pos)
+            if key not in wanted:
+                continue
+            found[key] = Translation(
+                lemma=row.lemma,
+                pos=row.pos,
+                gloss=row.gloss,
+                form=row.form,
+                alternates=tuple(row.alternates),
+                skip_reason=row.skip_reason,
+            )
+
+        if rows:
+            self.session.execute(
+                update(TranslationRow)
+                .where(TranslationRow.id.in_([row.id for row in rows]))
+                .values(hit_count=TranslationRow.hit_count + 1)
+            )
+        self.session.commit()
+        return found
+
+    def save(self, translations: list[Translation]) -> None:
+        if not translations:
+            return
+        statement = (
+            insert(TranslationRow)
+            .values(
+                [
+                    {
+                        "lang": self.key.lang,
+                        "source_language": self.key.source_language,
+                        "prompt_version": self.key.prompt_version,
+                        "model": self.key.model,
+                        "lemma": t.lemma,
+                        "pos": t.pos,
+                        "gloss": t.gloss,
+                        "form": t.form,
+                        "alternates": list(t.alternates),
+                        "skip_reason": t.skip_reason,
+                    }
+                    for t in translations
+                ]
+            )
+            .on_conflict_do_nothing(constraint="translations_key")
+        )
+        self.session.execute(statement)
+        self.session.commit()
 
 # Jobs
 
 def create_job(
     session: Session,
     user_id: uuid.UUID,
-    key: CacheKey,
+    key: JobKey,
     source_url: str | None,
 ) -> ExtractionJob:
     job = ExtractionJob(
@@ -138,6 +171,8 @@ def finish_job(
     output_tokens: int,
     cost_usd: Decimal | None,
     known_dropped: int,
+    cached_items: int,
+    batches: list[dict[str, int]],
     skipped: list[dict[str, str]],
     rejected: list[dict[str, str]],
 ) -> None:
@@ -147,6 +182,8 @@ def finish_job(
     job.output_tokens = output_tokens
     job.cost_usd = cost_usd
     job.known_dropped = known_dropped
+    job.cached_items = cached_items
+    job.batches = batches
     job.skipped = skipped
     job.rejected = rejected
     job.finished_at = func.now()
