@@ -2,10 +2,14 @@ from __future__ import annotations
 
 import json
 from collections.abc import Iterator
+from decimal import Decimal
 
 import pytest
+from anthropic import APIConnectionError
+from httpx import Request
 
 from curator import extract
+from curator.config import get_settings
 from curator.extract import (
     BatchUsage,
     Rejection,
@@ -62,11 +66,12 @@ REPLIES = {
 def fake_model(monkeypatch: pytest.MonkeyPatch) -> Iterator[list[list[str]]]:
     calls: list[list[str]] = []
 
-    def fake_request(client: object, group: list[Candidate], system: str):
+    def fake_request(client: object, group: list[Candidate], system: str, model: str):
         calls.append([c.lemma for c in group])
         found = [REPLIES[c.lemma] for c in group if c.lemma in REPLIES]
         missing = [Rejection(lemma=c.lemma, reason="no reply from the model") for c in group if c.lemma not in REPLIES]
-        return found, missing, BatchUsage(size=len(group), input_tokens=100, output_tokens=10 * len(group))
+        usage = BatchUsage(size=len(group), input_tokens=100, output_tokens=10 * len(group), model=model)
+        return found, missing, usage
 
     monkeypatch.setattr(extract, "request_batch", fake_request)
     monkeypatch.setattr(extract, "build_client", lambda: object())
@@ -167,3 +172,86 @@ def test_same_spelling_words_are_cached_skips(fake_model: list[list[str]], monke
     assert "amasar" not in {r.lemma for r in first.rejected}
     assert len(fake_model) == 1
     assert not second.model_called
+
+# Model fallback
+
+def flaky(failing: set[str]):
+    calls: list[str] = []
+
+    def fake_request(client: object, group: list[Candidate], system: str, model: str):
+        calls.append(model)
+        if model in failing:
+            raise APIConnectionError(request=Request("POST", "https://api.anthropic.com"))
+        found = [REPLIES[c.lemma] for c in group if c.lemma in REPLIES]
+        return found, [], BatchUsage(size=len(group), input_tokens=1000, output_tokens=1000, model=model)
+
+    return fake_request, calls
+
+@pytest.fixture
+def chain(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(get_settings(), "extraction_model", "claude-haiku-5-5")
+    monkeypatch.setattr(get_settings(), "fallback_models", "claude-sonnet-4-6")
+    monkeypatch.setattr(extract, "build_client", lambda: object())
+    monkeypatch.setattr(extract, "candidates_from_text", lambda text, lang: list(CANDIDATES))
+
+def test_primary_model_is_used_when_it_works(chain: None, monkeypatch: pytest.MonkeyPatch) -> None:
+    fake, calls = flaky(set())
+    monkeypatch.setattr(extract, "request_batch", fake)
+    result = extract_from_text("texto")
+    assert calls == ["claude-haiku-5-5"]
+    assert result.batches[0].model == "claude-haiku-5-5"
+    assert result.batches[0].failed_models == []
+
+def test_falls_back_to_the_next_model(chain: None, monkeypatch: pytest.MonkeyPatch) -> None:
+    fake, calls = flaky({"claude-haiku-5-5"})
+    monkeypatch.setattr(extract, "request_batch", fake)
+    result = extract_from_text("texto")
+    assert calls == ["claude-haiku-5-5", "claude-sonnet-4-6"]
+    assert result.batches[0].model == "claude-sonnet-4-6"
+    assert result.batches[0].failed_models == ["claude-haiku-5-5"]
+    assert len(result.items) == 3
+
+def test_cost_uses_the_model_that_answered(chain: None, monkeypatch: pytest.MonkeyPatch) -> None:
+    fake, _ = flaky({"claude-haiku-5-5"})
+    monkeypatch.setattr(extract, "request_batch", fake)
+    assert extract_from_text("texto").cost_usd == Decimal("0.018")
+
+def test_every_model_failing_fails_the_batch(chain: None, monkeypatch: pytest.MonkeyPatch) -> None:
+    fake, calls = flaky({"claude-haiku-5-5", "claude-sonnet-4-6"})
+    monkeypatch.setattr(extract, "request_batch", fake)
+    result = extract_from_text("texto")
+    assert result.failed_batches == 1
+    assert not result.items
+    assert {r.reason for r in result.rejected} == {"every model failed"}
+    assert calls == ["claude-haiku-5-5", "claude-sonnet-4-6"]
+
+def test_model_chain_has_no_duplicates() -> None:
+    from curator.config import Settings
+
+    settings = Settings(extraction_model="a", fallback_models="b, a, ,c")
+    assert settings.model_chain == ["a", "b", "c"]
+
+# Reflexives
+
+def test_dropped_reflexive_is_accepted() -> None:
+    requerirse = candidate("requerirse", pos="verb")
+    item = build_item(requerirse, Translation(lemma="requerirse", pos="verb", gloss="to require", form="requerir"))
+    assert item.answer == "requerir"
+    assert item.lemma == "requerir"
+    assert item.alternates == []
+
+def test_kept_reflexive_is_unchanged() -> None:
+    darse = candidate("levantarse", pos="verb")
+    item = build_item(darse, Translation(lemma="levantarse", pos="verb", gloss="to get up"))
+    assert item.answer == "levantarse"
+    assert item.lemma == "levantarse"
+
+def test_words_with_the_same_answer_appear_once(fake_model: list[list[str]], monkeypatch: pytest.MonkeyPatch) -> None:
+    both = [candidate("atacar", pos="verb"), candidate("atacarse", pos="verb")]
+    monkeypatch.setattr(extract, "candidates_from_text", lambda text, lang: list(both))
+    monkeypatch.setitem(REPLIES, "atacar", Translation(lemma="atacar", pos="verb", gloss="to attack"))
+    monkeypatch.setitem(REPLIES, "atacarse", Translation(lemma="atacarse", pos="verb", gloss="to attack", form="atacar"))
+    store = MemoryStore()
+    result = extract_from_text("texto", store=store)
+    assert [i.answer for i in result.items] == ["atacar"]
+    assert {t.lemma for t in store.saved} == {"atacar", "atacarse"}

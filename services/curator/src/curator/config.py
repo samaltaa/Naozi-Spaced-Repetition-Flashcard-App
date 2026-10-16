@@ -22,7 +22,8 @@ class Settings(BaseSettings):
     )
 
     anthropic_api_key: str = Field(default="")
-    extraction_model: str = Field(default="claude-sonnet-4-6")
+    extraction_model: str = Field(default="claude-haiku-5-5")
+    fallback_models: str = Field(default="claude-sonnet-4-6")
     max_tokens: int = Field(default=8000)
 
     batch_size: int = Field(default=60)
@@ -35,6 +36,15 @@ class Settings(BaseSettings):
 
     database_url: str = Field(default="")
     service_token: str = Field(default="")
+
+    @property
+    def model_chain(self) -> list[str]:
+        chain: list[str] = []
+        for name in [self.extraction_model, *self.fallback_models.split(",")]:
+            name = name.strip()
+            if name and name not in chain:
+                chain.append(name)
+        return chain
 
     @property
     def sqlalchemy_url(self) -> str:

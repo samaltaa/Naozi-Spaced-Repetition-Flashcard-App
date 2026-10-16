@@ -14,7 +14,6 @@ from curator.db import repository
 from curator.db.repository import DbTranslationStore, JobKey
 from curator.extract import BatchUsage, ExtractionResult, Rejection, extract_from_text
 from curator.known import drop_known, known_keys
-from curator.pricing import cost_usd
 from curator.schema import ExtractedItem
 
 Extractor = Callable[..., ExtractionResult]
@@ -111,7 +110,7 @@ def process_job(
             batches=result.batches,
             input_tokens=result.input_tokens,
             output_tokens=result.output_tokens,
-            cost_usd=cost_usd(key.model, result.input_tokens, result.output_tokens),
+            cost_usd=result.cost_usd,
             prompt_version=key.prompt_version,
         )
 

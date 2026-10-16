@@ -111,7 +111,7 @@ class ExtractionJob(Base):
     cost_usd: Mapped[Decimal | None] = mapped_column(Numeric(10, 6))
     known_dropped: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
     cached_items: Mapped[int] = mapped_column(Integer, nullable=False, server_default="0")
-    batches: Mapped[list[dict[str, int]]] = mapped_column(JSONB, nullable=False, server_default="[]")
+    batches: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, nullable=False, server_default="[]")
     skipped: Mapped[list[dict[str, str]]] = mapped_column(JSONB, nullable=False, server_default="[]")
     rejected: Mapped[list[dict[str, str]]] = mapped_column(JSONB, nullable=False, server_default="[]")
     error: Mapped[str | None] = mapped_column(Text)
