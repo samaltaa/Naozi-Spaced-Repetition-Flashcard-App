@@ -2,7 +2,6 @@
 
 import { useState, type KeyboardEvent } from "react";
 import { ConfirmButton } from "@/components/ui/ConfirmButton";
-import { ARTICLE_LANGS } from "@/lib/client/config";
 import type { CourseItem, CourseLevel, ItemInput, UpdateItemInput } from "@/lib/client/types";
 import { AddItemRow } from "./AddItemRow";
 import { ArticleImportDialog } from "./ArticleImportDialog";
@@ -22,6 +21,7 @@ type Props = {
   onDeleteItem: (itemId: string) => Promise<void>;
   onImport: (items: ItemInput[], onProgress: (done: number) => void) => Promise<void>;
   onImported: (items: CourseItem[]) => void;
+  articlesSupported: boolean;
 };
 
 export function LevelPanel({
@@ -37,11 +37,11 @@ export function LevelPanel({
   onDeleteItem,
   onImport,
   onImported,
+  articlesSupported,
 }: Props) {
   const [title, setTitle] = useState(level.title);
   const [importing, setImporting] = useState(false);
   const [fromArticle, setFromArticle] = useState(false);
-  const articlesSupported = ARTICLE_LANGS.includes(lang.toLowerCase().split("-")[0] ?? "");
   const count = level.items.length;
 
   const saveTitle = async () => {

@@ -2,18 +2,10 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 
+from curator.languages import LEADING_ARTICLES, base_code
 from curator.schema import ExtractedItem, fold
 
 # Leading articles
-
-ARTICLES: dict[str, tuple[str, ...]] = {
-    "es": ("el", "la", "los", "las", "lo", "un", "una", "unos", "unas"),
-    "pt": ("o", "a", "os", "as", "um", "uma"),
-    "it": ("il", "lo", "la", "i", "gli", "le", "un", "uno", "una"),
-    "fr": ("le", "la", "les", "un", "une"),
-    "ca": ("el", "la", "els", "les", "un", "una"),
-    "de": ("der", "die", "das", "ein", "eine"),
-}
 
 ELIDED = ("l'", "l’")
 
@@ -25,7 +17,7 @@ def term_key(term: str, lang: str) -> str:
         if key.startswith(prefix):
             return key[len(prefix) :].strip()
     head, _, rest = key.partition(" ")
-    if rest and head in ARTICLES.get(lang, ()):
+    if rest and head in LEADING_ARTICLES.get(base_code(lang), ()):
         return rest
     return key
 

@@ -1,16 +1,39 @@
 from __future__ import annotations
 
-from curator.nlp.tokenize import candidates_from_text, looks_foreign
+import pytest
+
+from curator.languages import (
+    ENGLISH,
+    RUSSIAN,
+    SPANISH,
+    UnsupportedLanguage,
+    find_profile,
+    profile_for,
+)
+from curator.nlp.tokenize import candidates_from_text, citation_form, looks_foreign
+from curator.schema import Candidate, fold, without_stress
+
+# Profiles
+
+def test_known_languages_have_profiles() -> None:
+    assert profile_for("es") is SPANISH
+    assert profile_for("en-GB") is ENGLISH
+    assert profile_for("RU") is RUSSIAN
+
+def test_languages_without_a_model_are_unsupported() -> None:
+    assert find_profile("xx") is None
+    with pytest.raises(UnsupportedLanguage):
+        profile_for("xx")
 
 # Foreign words
 
 def test_english_words_look_foreign_in_spanish() -> None:
-    assert looks_foreign("police", 3.05, "es")
-    assert not looks_foreign("radical", 4.38, "es")
-    assert not looks_foreign("local", 5.11, "es")
+    assert looks_foreign("police", 3.05, SPANISH)
+    assert not looks_foreign("radical", 4.38, SPANISH)
+    assert not looks_foreign("local", 5.11, SPANISH)
 
 def test_nothing_looks_foreign_in_english() -> None:
-    assert not looks_foreign("police", 3.05, "en")
+    assert not looks_foreign("police", 3.05, ENGLISH)
 
 def test_english_sentences_are_ignored() -> None:
     text = (
@@ -33,3 +56,53 @@ def test_long_sentences_still_get_a_context() -> None:
     assert found
     assert all(c.context for c in found.values())
     assert all(len(c.context.split()) <= 18 for c in found.values())
+
+# Spanish
+
+def test_spanish_nouns_get_their_article() -> None:
+    noun = Candidate(lemma="casa", surface="casa", pos="noun", gender="feminine", zipf=5.0, context="")
+    assert citation_form(noun, SPANISH) == "la casa"
+
+def test_spanish_noun_ending_in_se_keeps_its_frequency() -> None:
+    found = {c.lemma: c for c in candidates_from_text("La base militar fue reforzada durante la guerra.", lang="es")}
+    assert found["base"].zipf > 4
+
+# English
+
+def test_english_phrasal_verbs_are_one_item() -> None:
+    text = "She finally gave up smoking after the doctors looked after her for months."
+    lemmas = {c.lemma for c in candidates_from_text(text, lang="en")}
+    assert "give up" in lemmas
+    assert "give" not in lemmas
+
+def test_english_nouns_have_no_article() -> None:
+    noun = Candidate(lemma="forest", surface="forests", pos="noun", zipf=4.7, context="")
+    assert citation_form(noun, ENGLISH) == "forest"
+
+# Russian
+
+def test_russian_lemmas_and_genders() -> None:
+    text = "Мальчики быстро бегали по старым улицам, а потом купили новое окно в магазине."
+    found = {c.lemma: c for c in candidates_from_text(text, lang="ru")}
+    assert {"мальчик", "бегать", "старый", "улица", "окно"} <= set(found)
+    assert found["окно"].gender == "neuter"
+    assert citation_form(found["улица"], RUSSIAN) == "улица"
+
+def test_russian_ignores_latin_words() -> None:
+    text = "Журналисты написали статью о компании Google и её новом продукте для школ."
+    lemmas = {c.lemma for c in candidates_from_text(text, lang="ru")}
+    assert not any(ch.isascii() for lemma in lemmas for ch in lemma)
+
+def test_fold_keeps_short_i_apart() -> None:
+    assert fold("мой") != fold("мои")
+    assert fold("пошёл") == fold("пошел")
+    assert fold("Canción") == "cancion"
+
+def test_stress_marks_are_removable() -> None:
+    assert without_stress("молоко́") == "молоко"
+
+def test_abbreviations_are_skipped() -> None:
+    text = "Доктрина Дахия (англ. Dahiya doctrine) — военная стратегия, которую применяет армия."
+    lemmas = {c.lemma for c in candidates_from_text(text, lang="ru")}
+    assert "англ" not in lemmas
+    assert "стратегия" in lemmas

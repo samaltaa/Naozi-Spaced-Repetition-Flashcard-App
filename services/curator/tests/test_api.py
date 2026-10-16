@@ -53,7 +53,7 @@ def test_unconfigured_token_refuses_everything(client: TestClient, monkeypatch: 
 # Validation
 
 def test_unsupported_language_is_rejected(client: TestClient) -> None:
-    response = client.post("/jobs", json=job_body(lang="ja"), headers={"x-curator-token": TOKEN})
+    response = client.post("/jobs", json=job_body(lang="xx"), headers={"x-curator-token": TOKEN})
     assert response.status_code == 422
     assert "not supported" in response.json()["detail"]
 
@@ -63,3 +63,15 @@ def test_needs_exactly_one_source(client: TestClient) -> None:
     for body in (both, neither):
         response = client.post("/jobs", json=body, headers={"x-curator-token": TOKEN})
         assert response.status_code == 422
+
+# Languages
+
+def test_language_support(client: TestClient) -> None:
+    headers = {"x-curator-token": TOKEN}
+    assert client.get("/languages/es", headers=headers).json() == {"supported": True}
+    assert client.get("/languages/ru", headers=headers).json() == {"supported": True}
+    assert client.get("/languages/en-GB", headers=headers).json() == {"supported": True}
+    assert client.get("/languages/xx", headers=headers).json() == {"supported": False}
+
+def test_language_support_needs_a_token(client: TestClient) -> None:
+    assert client.get("/languages/es").status_code == 401

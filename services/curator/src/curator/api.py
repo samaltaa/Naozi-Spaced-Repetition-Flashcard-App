@@ -23,7 +23,7 @@ from curator.db import repository
 from curator.db.models import ExtractedItemRow, ExtractionJob
 from curator.db.session import get_sessionmaker, session_scope
 from curator.jobs import process_job, submit_job
-from curator.nlp.tokenize import MODELS
+from curator.languages import UnsupportedLanguage, find_profile, profile_for
 from curator.schema import MAX_ALTERNATES, MAX_ANSWER, MAX_NOTES, MAX_PROMPT
 from curator.sources import fetch
 
@@ -107,6 +107,7 @@ class DraftView(BaseModel):
     prompt: str
     answer: str
     alternates: list[str]
+    reading: str | None
     notes: str | None
     status: str
     edited: bool
@@ -141,6 +142,7 @@ def draft_view(row: ExtractedItemRow) -> DraftView:
         prompt=row.prompt,
         answer=row.answer,
         alternates=list(row.alternates),
+        reading=row.reading,
         notes=row.notes,
         status=row.status,
         edited=was_edited(row),
@@ -186,11 +188,16 @@ def run_in_background(job_id: uuid.UUID, text: str) -> None:
 def health() -> dict[str, str]:
     return {"status": "ok"}
 
+@app.get("/languages/{lang}", dependencies=[Authorized])
+def language_support(lang: str) -> dict[str, bool]:
+    return {"supported": find_profile(lang) is not None}
+
 @app.post("/jobs", status_code=status.HTTP_202_ACCEPTED, dependencies=[Authorized])
 def create_job(body: SubmitJob, session: SessionDep, background: BackgroundTasks) -> JobView:
-    lang = body.lang.lower().split("-")[0]
-    if lang not in MODELS:
-        raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, f"Articles in '{lang}' are not supported yet")
+    try:
+        lang = profile_for(body.lang).code
+    except UnsupportedLanguage as error:
+        raise HTTPException(status.HTTP_422_UNPROCESSABLE_CONTENT, str(error)) from error
 
     url = str(body.url) if body.url else None
     try:

@@ -87,6 +87,8 @@ export const api = {
     request<CourseItem>(`/api/items/${itemId}`, { method: "PATCH", body }),
   deleteItem: (itemId: string) => request<void>(`/api/items/${itemId}`, { method: "DELETE" }),
 
+  articleSupport: (lang: string) =>
+    request<{ supported: boolean }>(`/api/extractions/languages/${encodeURIComponent(lang)}`),
   startExtraction: (levelId: string, body: StartExtractionInput) =>
     request<Extraction>(`/api/levels/${levelId}/extractions`, { method: "POST", body }),
   extraction: (extractionId: string) => request<Extraction>(`/api/extractions/${extractionId}`),

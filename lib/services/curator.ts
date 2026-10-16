@@ -22,6 +22,7 @@ export interface Draft {
   prompt: string;
   answer: string;
   alternates: string[];
+  reading: string | null;
   notes: string | null;
   status: DraftStatus;
   edited: boolean;
@@ -105,6 +106,17 @@ function toExtraction(raw: RawExtraction): Extraction {
   };
 }
 
+// Languages
+
+export async function articleSupport(lang: string): Promise<{ supported: boolean }> {
+  try {
+    return await curator<{ supported: boolean }>(`/languages/${encodeURIComponent(lang)}`);
+  } catch (err) {
+    if (err instanceof HttpError) return { supported: false };
+    throw err;
+  }
+}
+
 // Extractions
 
 export async function startExtraction(userId: string, levelId: string, input: StartExtractionInput) {
@@ -148,7 +160,13 @@ export async function importExtraction(userId: string, extractionId: string, inp
   if (drafts.length === 0) throw new HttpError(400, "Choose at least one word to add");
 
   const parsed = ItemInput.array().safeParse(
-    drafts.map((d) => ({ prompt: d.prompt, answer: d.answer, alternates: d.alternates, notes: d.notes })),
+    drafts.map((d) => ({
+      prompt: d.prompt,
+      answer: d.answer,
+      alternates: d.alternates,
+      reading: d.reading,
+      notes: d.notes,
+    })),
   );
   if (!parsed.success) throw new HttpError(400, "Some words are empty or too long. Edit them first.");
 

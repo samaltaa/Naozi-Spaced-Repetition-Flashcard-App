@@ -149,9 +149,14 @@ function DraftRow({
           <CloseIcon className="h-4 w-4" />
         </button>
       </div>
-      {draft.notes || duplicate ? (
+      {draft.notes || draft.reading || duplicate ? (
         <p className="mt-1 pl-8 text-sm text-ink/50">
           {duplicate ? <span className="mr-2 font-bold text-ink/60">Already in this level.</span> : null}
+          {draft.reading ? (
+            <span lang={lang} className="mr-2 font-semibold text-ink/70">
+              {draft.reading}
+            </span>
+          ) : null}
           {draft.notes ? (
             <span lang={lang} dir="auto" className="italic">
               {draft.notes}
