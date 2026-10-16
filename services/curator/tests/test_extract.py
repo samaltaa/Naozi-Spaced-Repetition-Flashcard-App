@@ -320,3 +320,14 @@ def test_readings_are_skipped_for_spanish() -> None:
     translations = [Translation(lemma="guiso", pos="noun", gloss="stew")]
     result = extract.ExtractionResult()
     assert extract.add_readings(object(), translations, CANDIDATES, SPANISH, "Spanish", result) == translations
+
+def test_chinese_readings_are_pinyin() -> None:
+    from curator.languages import CHINESE
+
+    item = build_item(candidate("银行"), Translation(lemma="银行", pos="noun", gloss="bank"), CHINESE)
+    assert item.reading == "yínháng"
+    assert item.answer == "银行"
+
+def test_traditional_characters_get_correct_pinyin() -> None:
+    assert extract.pinyin_of("長度") == "chángdù"
+    assert extract.pinyin_of("銀行") == "yínháng"

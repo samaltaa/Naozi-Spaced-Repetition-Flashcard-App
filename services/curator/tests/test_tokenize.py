@@ -106,3 +106,11 @@ def test_abbreviations_are_skipped() -> None:
     lemmas = {c.lemma for c in candidates_from_text(text, lang="ru")}
     assert "англ" not in lemmas
     assert "стратегия" in lemmas
+
+def test_chinese_words_and_contexts() -> None:
+    text = "近年来，这座城市的交通问题越来越严重，政府决定扩建地铁系统，并鼓励市民骑自行车上班。北京是中国的首都。"
+    found = {c.lemma: c for c in candidates_from_text(text, lang="zh")}
+    assert "自行车" in found
+    assert "北京" not in found
+    assert " " not in found["自行车"].context
+    assert len(found["自行车"].context) < len(text)

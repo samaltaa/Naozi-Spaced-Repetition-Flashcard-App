@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import functools
 import json
 import logging
 from dataclasses import dataclass, field, replace
@@ -9,7 +10,9 @@ from typing import Protocol
 import instructor
 from anthropic import Anthropic, APIError
 from instructor.core import InstructorRetryException
+from opencc import OpenCC  # type: ignore[import-untyped]
 from pydantic import ValidationError
+from pypinyin import Style, lazy_pinyin
 
 from curator.config import get_settings, load_prompt, prompt_version
 from curator.languages import SPANISH, LanguageProfile, profile_for
@@ -240,7 +243,7 @@ def add_readings(
     result: ExtractionResult,
 ) -> list[Translation]:
     model = get_settings().reading_model
-    if not profile.stress_reading or not model:
+    if profile.reading != "stress" or not model:
         return translations
 
     by_key = {translation_key(c.lemma, c.pos): c for c in candidates}
@@ -286,11 +289,24 @@ def item_lemma(candidate: Candidate, answer: str, profile: LanguageProfile = SPA
     return candidate.lemma.removesuffix(profile.reflexive_suffix)
 
 def checked_reading(answer: str, reading: str | None, profile: LanguageProfile) -> str | None:
-    if not profile.stress_reading or not reading:
+    if profile.reading != "stress" or not reading:
         return None
     if fold(without_stress(reading)) != fold(answer) or without_stress(reading) == reading:
         return None
     return reading
+
+@functools.lru_cache(maxsize=1)
+def simplifier() -> OpenCC:
+    return OpenCC("t2s")
+
+def pinyin_of(word: str) -> str | None:
+    syllables = lazy_pinyin(simplifier().convert(word), style=Style.TONE, errors="ignore")
+    return "".join(syllables) or None
+
+def reading_for(answer: str, translation: Translation, profile: LanguageProfile) -> str | None:
+    if profile.reading == "pinyin":
+        return pinyin_of(answer)
+    return checked_reading(answer, translation.reading, profile)
 
 def build_item(
     candidate: Candidate, translation: Translation, profile: LanguageProfile = SPANISH
@@ -307,7 +323,7 @@ def build_item(
         alternates=alternates,
         pos=candidate.pos,
         context=candidate.context,
-        reading=checked_reading(answer, translation.reading, profile),
+        reading=reading_for(answer, translation, profile),
     )
 
 # Extraction

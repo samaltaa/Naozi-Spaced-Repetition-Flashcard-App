@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import functools
 from dataclasses import dataclass, field
+from typing import Literal
 
 import spacy.util
 
@@ -24,6 +25,8 @@ LEADING_ARTICLES: dict[str, tuple[str, ...]] = {
 
 # Profile
 
+ReadingKind = Literal["stress", "pinyin"]
+
 @dataclass(frozen=True)
 class LanguageProfile:
     code: str
@@ -36,8 +39,9 @@ class LanguageProfile:
     noun_articles: dict[str, str] = field(default_factory=dict)
     leading_articles: tuple[str, ...] = ()
     phrasal_verbs: bool = False
-    stress_reading: bool = False
+    reading: ReadingKind | None = None
     vowels: str = ""
+    spaced: bool = True
     min_length: int = 3
     min_zipf: float = 2.0
     max_zipf: float = 5.5
@@ -78,7 +82,7 @@ RUSSIAN = LanguageProfile(
     spacy_model="ru_core_news_md",
     script="CYRILLIC",
     verb_endings=("ть", "ти", "чь", "ться", "тись", "чься"),
-    stress_reading=True,
+    reading="stress",
     vowels="аеёиоуыэюя",
     form_rules="""\
 - Nouns: nominative singular. Use the plural only for nouns that have no singular: "ножницы".
@@ -86,7 +90,21 @@ RUSSIAN = LanguageProfile(
 - Adjectives: masculine nominative singular.""",
 )
 
-PROFILES = {profile.code: profile for profile in (SPANISH, ENGLISH, RUSSIAN)}
+CHINESE = LanguageProfile(
+    code="zh",
+    spacy_model="zh_core_web_md",
+    script="CJK",
+    reading="pinyin",
+    spaced=False,
+    min_length=1,
+    max_zipf=6.0,
+    form_rules="""\
+- Keep the characters the text uses, simplified or traditional. Never send pinyin in `form`.
+- Nouns: the word alone, without a measure word. "书", not "一本书".
+- Verbs and adjectives: the word alone, without 了, 过, 着 or 的.""",
+)
+
+PROFILES = {profile.code: profile for profile in (SPANISH, ENGLISH, RUSSIAN, CHINESE)}
 
 GENERIC_MODELS = ("{code}_core_news_md", "{code}_core_web_md", "{code}_core_news_sm", "{code}_core_web_sm")
 
