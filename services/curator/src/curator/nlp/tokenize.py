@@ -2,11 +2,12 @@ from __future__ import annotations
 
 import functools
 import unicodedata
-from collections import defaultdict
+from collections import Counter, defaultdict
 
 import spacy
 from spacy.language import Language
 from spacy.tokens import Doc, Span, Token
+from opencc import OpenCC  # type: ignore[import-untyped]
 from wordfreq import zipf_frequency
 
 from curator.languages import SPANISH, LanguageProfile, profile_for
@@ -43,6 +44,34 @@ MIN_SENTENCE_WORDS = 3
 def load_model(name: str) -> Language:
     return spacy.load(name)
 
+@functools.lru_cache(maxsize=1)
+def simplifier() -> OpenCC:
+    return OpenCC("t2s")
+
+def to_simplified(text: str) -> str:
+    return str(simplifier().convert(text))
+
+# Source text
+
+def parse(text: str, profile: LanguageProfile) -> Doc:
+    nlp = load_model(profile.spacy_model)
+    if not profile.parse_simplified:
+        return nlp(text)
+    simplified = to_simplified(text)
+    if len(simplified) != len(text):
+        return nlp(text)
+    doc = nlp(simplified)
+    doc.user_data["source"] = text
+    return doc
+
+def source_text(span: Span | Token) -> str:
+    source = span.doc.user_data.get("source")
+    if source is None:
+        return span.text
+    if isinstance(span, Token):
+        return str(source[span.idx : span.idx + len(span.text)])
+    return str(source[span.start_char : span.end_char])
+
 # Token filters
 
 def in_script(word: str, script: str | None) -> bool:
@@ -57,7 +86,7 @@ def has_infinitive_shape(lemma: str, profile: LanguageProfile) -> bool:
     return stem.endswith(profile.verb_endings)
 
 def base_lemma(token: Token) -> str:
-    return token.lemma_ or token.text
+    return token.lemma_ or source_text(token)
 
 def is_participle(token: Token) -> bool:
     return token.morph.get("VerbForm", []) == ["Part"]
@@ -139,7 +168,7 @@ def word_count(span: Span, profile: LanguageProfile) -> int:
 
 def span_text(span: Span, profile: LanguageProfile) -> str:
     joiner = " " if profile.spaced else ""
-    return joiner.join(span.text.split())
+    return joiner.join(source_text(span).split())
 
 def context_of(token: Token, profile: LanguageProfile = SPANISH) -> str:
     doc = token.doc
@@ -202,8 +231,7 @@ def foreign_sentences(doc: Doc, profile: LanguageProfile) -> set[int]:
 
 def candidates_from_text(text: str, lang: str = "es") -> list[Candidate]:
     profile = profile_for(lang)
-    nlp = load_model(profile.spacy_model)
-    doc: Doc = nlp(text)
+    doc = parse(text, profile)
 
     foreign = foreign_sentences(doc, profile)
     grouped: dict[str, list[Token]] = defaultdict(list)
@@ -214,7 +242,8 @@ def candidates_from_text(text: str, lang: str = "es") -> list[Candidate]:
 
     candidates: list[Candidate] = []
     for lemma, tokens in grouped.items():
-        first = tokens[0]
+        pos = Counter(t.pos_ for t in tokens).most_common(1)[0][0]
+        first = next(t for t in tokens if t.pos_ == pos)
         zipf = zipf_frequency(frequency_base(lemma, first.pos_, profile), profile.code)
         phrase = " " in lemma
         if zipf < profile.min_zipf or (zipf > profile.max_zipf and not phrase):
@@ -226,7 +255,7 @@ def candidates_from_text(text: str, lang: str = "es") -> list[Candidate]:
         candidates.append(
             Candidate(
                 lemma=lemma,
-                surface=first.text,
+                surface=source_text(first),
                 pos=KEEP_POS[first.pos_],
                 gender=gender_of(first),
                 zipf=zipf,

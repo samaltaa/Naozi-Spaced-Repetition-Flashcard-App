@@ -42,6 +42,7 @@ class LanguageProfile:
     reading: ReadingKind | None = None
     vowels: str = ""
     spaced: bool = True
+    parse_simplified: bool = False
     min_length: int = 3
     min_zipf: float = 2.0
     max_zipf: float = 5.5
@@ -96,12 +97,14 @@ CHINESE = LanguageProfile(
     script="CJK",
     reading="pinyin",
     spaced=False,
+    parse_simplified=True,
     min_length=1,
     max_zipf=6.0,
     form_rules="""\
 - Keep the characters the text uses, simplified or traditional. Never send pinyin in `form`.
 - Nouns: the word alone, without a measure word. "书", not "一本书".
-- Verbs and adjectives: the word alone, without 了, 过, 着 or 的.""",
+- Verbs and adjectives: the word alone, without 了, 过, 着 or 的.
+- The part of speech comes from an automatic tagger and is often wrong for Chinese. Gloss the word's most common meaning whatever the tag says: 引入 is "to introduce", not "introduction". Never skip a word because its part of speech is wrong.""",
 )
 
 PROFILES = {profile.code: profile for profile in (SPANISH, ENGLISH, RUSSIAN, CHINESE)}

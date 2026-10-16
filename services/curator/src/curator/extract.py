@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import functools
 import json
 import logging
 from dataclasses import dataclass, field, replace
@@ -10,13 +9,12 @@ from typing import Protocol
 import instructor
 from anthropic import Anthropic, APIError
 from instructor.core import InstructorRetryException
-from opencc import OpenCC  # type: ignore[import-untyped]
 from pydantic import ValidationError
 from pypinyin import Style, lazy_pinyin
 
 from curator.config import get_settings, load_prompt, prompt_version
 from curator.languages import SPANISH, LanguageProfile, profile_for
-from curator.nlp.tokenize import candidates_from_text, citation_form, rank_candidates
+from curator.nlp.tokenize import candidates_from_text, citation_form, rank_candidates, to_simplified
 from curator.pricing import cost_usd
 from curator.schema import (
     Candidate,
@@ -295,12 +293,8 @@ def checked_reading(answer: str, reading: str | None, profile: LanguageProfile) 
         return None
     return reading
 
-@functools.lru_cache(maxsize=1)
-def simplifier() -> OpenCC:
-    return OpenCC("t2s")
-
 def pinyin_of(word: str) -> str | None:
-    syllables = lazy_pinyin(simplifier().convert(word), style=Style.TONE, errors="ignore")
+    syllables = lazy_pinyin(to_simplified(word), style=Style.TONE, errors="ignore")
     return "".join(syllables) or None
 
 def reading_for(answer: str, translation: Translation, profile: LanguageProfile) -> str | None:
