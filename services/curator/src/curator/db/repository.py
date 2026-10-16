@@ -100,6 +100,7 @@ class DbTranslationStore:
                 form=row.form,
                 alternates=tuple(row.alternates),
                 skip_reason=row.skip_reason,
+                model=row.model,
             )
 
         if rows:
@@ -122,7 +123,7 @@ class DbTranslationStore:
                         "lang": self.key.lang,
                         "source_language": self.key.source_language,
                         "prompt_version": self.key.prompt_version,
-                        "model": self.key.model,
+                        "model": t.model or self.key.model,
                         "lemma": t.lemma,
                         "pos": t.pos,
                         "gloss": t.gloss,
@@ -172,7 +173,7 @@ def finish_job(
     cost_usd: Decimal | None,
     known_dropped: int,
     cached_items: int,
-    batches: list[dict[str, int]],
+    batches: list[dict[str, Any]],
     skipped: list[dict[str, str]],
     rejected: list[dict[str, str]],
 ) -> None:

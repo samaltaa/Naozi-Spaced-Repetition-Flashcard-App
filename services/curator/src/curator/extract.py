@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import logging
 from dataclasses import dataclass, field
+from decimal import Decimal
 from typing import Protocol
 
 import instructor
@@ -12,6 +13,7 @@ from pydantic import ValidationError
 
 from curator.config import get_settings, load_prompt, prompt_version
 from curator.nlp.tokenize import candidates_from_text, citation_form, rank_candidates
+from curator.pricing import cost_usd
 from curator.schema import (
     Candidate,
     CourseItemDraft,
@@ -36,6 +38,14 @@ class BatchUsage:
     size: int
     input_tokens: int
     output_tokens: int
+    model: str = ""
+    failed_models: list[str] = field(default_factory=list)
+
+    @property
+    def cost_usd(self) -> Decimal | None:
+        return cost_usd(self.model, self.input_tokens, self.output_tokens)
+
+FAILURES = (InstructorRetryException, APIError, ValidationError)
 
 @dataclass
 class ExtractionResult:
@@ -58,6 +68,16 @@ class ExtractionResult:
     def model_called(self) -> bool:
         return bool(self.batches) or self.failed_batches > 0
 
+    @property
+    def cost_usd(self) -> Decimal | None:
+        total = Decimal(0)
+        for batch in self.batches:
+            cost = batch.cost_usd
+            if cost is None:
+                return None
+            total += cost
+        return total
+
 # Translations
 
 @dataclass(frozen=True)
@@ -68,6 +88,7 @@ class Translation:
     form: str | None = None
     alternates: tuple[str, ...] = ()
     skip_reason: str | None = None
+    model: str = ""
 
 TranslationKey = tuple[str, str]
 
@@ -107,10 +128,11 @@ def request_batch(
     client: instructor.Instructor,
     candidates: list[Candidate],
     system: str,
+    model: str,
 ) -> tuple[list[Translation], list[Rejection], BatchUsage]:
     settings = get_settings()
     reply, completion = client.chat.completions.create_with_completion(
-        model=settings.extraction_model,
+        model=model,
         max_tokens=settings.max_tokens,
         max_retries=settings.max_retries,
         system=system,
@@ -137,6 +159,7 @@ def request_batch(
                 form=entry.form,
                 alternates=tuple(entry.alternates),
                 skip_reason=entry.skip,
+                model=model,
             )
         )
 
@@ -148,8 +171,27 @@ def request_batch(
             size=len(candidates),
             input_tokens=getattr(usage, "input_tokens", 0),
             output_tokens=getattr(usage, "output_tokens", 0),
+            model=model,
         ),
     )
+
+def request_with_fallback(
+    client: instructor.Instructor,
+    candidates: list[Candidate],
+    system: str,
+    models: list[str],
+) -> tuple[list[Translation], list[Rejection], BatchUsage] | None:
+    failed: list[str] = []
+    for model in models:
+        try:
+            translations, rejected, usage = request_batch(client, candidates, system, model)
+        except FAILURES as error:
+            logger.warning("batch of %d failed on %s: %s", len(candidates), model, error)
+            failed.append(model)
+            continue
+        usage.failed_models = failed
+        return translations, rejected, usage
+    return None
 
 # Building items
 
@@ -159,13 +201,19 @@ def same_as_gloss(candidate: Candidate, translation: Translation) -> bool:
     answer = translation.form or citation_form(candidate)
     return bool(translation.gloss) and fold(answer) == fold(translation.gloss)
 
+def item_lemma(candidate: Candidate, answer: str) -> str:
+    if fold(candidate.lemma) in fold(answer):
+        return candidate.lemma
+    return candidate.lemma.removesuffix("se")
+
 def build_item(candidate: Candidate, translation: Translation) -> ExtractedItem:
     answer = translation.form or citation_form(candidate)
+    lemma = item_lemma(candidate, answer)
     alternates = list(translation.alternates)
-    if fold(answer) != fold(candidate.lemma):
-        alternates.insert(0, candidate.lemma)
+    if fold(answer) != fold(lemma):
+        alternates.insert(0, lemma)
     return ExtractedItem(
-        lemma=candidate.lemma,
+        lemma=lemma,
         answer=answer,
         prompt=translation.gloss,
         alternates=alternates,
@@ -191,14 +239,13 @@ def translate(
     fresh: list[Translation] = []
 
     for group in batched(candidates, settings.batch_size):
-        try:
-            translations, rejected, usage = request_batch(client, group, system)
-        except (InstructorRetryException, APIError, ValidationError) as error:
-            logger.warning("batch failed: %s", error)
+        reply = request_with_fallback(client, group, system, settings.model_chain)
+        if reply is None:
             result.failed_batches += 1
-            result.rejected.extend(Rejection(lemma=c.lemma, reason="batch failed") for c in group)
+            result.rejected.extend(Rejection(lemma=c.lemma, reason="every model failed") for c in group)
             continue
 
+        translations, rejected, usage = reply
         result.batches.append(usage)
         result.input_tokens += usage.input_tokens
         result.output_tokens += usage.output_tokens
@@ -234,6 +281,7 @@ def extract_from_text(
     translations.update({translation_key(t.lemma, t.pos): t for t in fresh})
 
     usable: set[TranslationKey] = set()
+    answers: set[str] = set()
     for candidate in candidates:
         key = translation_key(candidate.lemma, candidate.pos)
         translation = translations.get(key)
@@ -245,11 +293,15 @@ def extract_from_text(
             usable.add(key)
             continue
         try:
-            result.items.append(build_item(candidate, translation))
+            item = build_item(candidate, translation)
         except ValueError as error:
             result.rejected.append(Rejection(lemma=candidate.lemma, reason=str(error)))
             continue
         usable.add(key)
+        if fold(item.answer) in answers:
+            continue
+        answers.add(fold(item.answer))
+        result.items.append(item)
 
     if store:
         store.save([t for t in fresh if translation_key(t.lemma, t.pos) in usable])

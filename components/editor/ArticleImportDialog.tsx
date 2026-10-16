@@ -177,6 +177,7 @@ export function ArticleImportDialog({
   onClose,
 }: Props) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const inFlight = useRef(false);
   const [mode, setMode] = useState<Mode>("url");
   const [url, setUrl] = useState("");
   const [text, setText] = useState("");
@@ -236,7 +237,8 @@ export function ArticleImportDialog({
 
   const start = async (e: FormEvent) => {
     e.preventDefault();
-    if (!canSubmit) return;
+    if (!canSubmit || inFlight.current) return;
+    inFlight.current = true;
     setBusy(true);
     setError(null);
     try {
@@ -245,6 +247,7 @@ export function ArticleImportDialog({
     } catch (err) {
       setError(errorMessage(err, "Could not start the import."));
     } finally {
+      inFlight.current = false;
       setBusy(false);
     }
   };
@@ -308,7 +311,8 @@ export function ArticleImportDialog({
   };
 
   const importChosen = async () => {
-    if (!extraction || !canImport) return;
+    if (!extraction || !canImport || inFlight.current) return;
+    inFlight.current = true;
     setBusy(true);
     setError(null);
     try {
@@ -322,6 +326,7 @@ export function ArticleImportDialog({
     } catch (err) {
       setError(errorMessage(err, "The words could not be added."));
     } finally {
+      inFlight.current = false;
       setBusy(false);
     }
   };
