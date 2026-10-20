@@ -1,0 +1,621 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v1/services/curator/src/curator/extract.py",
+  "prompt_version": "1",
+  "model": "claude-sonnet-4-6",
+  "seconds": 50.99,
+  "batches": [
+    {
+      "model": "claude-sonnet-4-6",
+      "purpose": "translate",
+      "input_tokens": 8011,
+      "output_tokens": 5013,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 8011,
+  "output_tokens": 5013,
+  "cost_usd": 0.099228,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "exclamar",
+      "answer": "exclamar",
+      "prompt": "to exclaim, to cry out",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "exclamó al fin Alonso rompiendo el largo silencio en que se encontraban"
+    },
+    {
+      "lemma": "ánima",
+      "answer": "el ánima",
+      "prompt": "soul (of the dead)",
+      "alternates": [
+        "ánima"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y las ánimas de los difuntos comenzarán á tañer su campana en la capilla del monte."
+    },
+    {
+      "lemma": "difunto",
+      "answer": "el difunto",
+      "prompt": "the deceased, dead person",
+      "alternates": [
+        "difunto"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "a noche de difuntos me despertó á no sé qué hora el doble de las campanas"
+    },
+    {
+      "lemma": "campana",
+      "answer": "la campana",
+      "prompt": "bell",
+      "alternates": [
+        "campana"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "a noche de difuntos me despertó á no sé qué hora el doble de las campanas"
+    },
+    {
+      "lemma": "monte",
+      "answer": "el monte",
+      "prompt": "mountain, hill, woodland",
+      "alternates": [
+        "monte"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y las ánimas de los difuntos comenzarán á tañer su campana en la capilla del monte."
+    },
+    {
+      "lemma": "doblar",
+      "answer": "doblar",
+      "prompt": "to toll (a bell)",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "se oye doblar sola la campana de la capilla"
+    },
+    {
+      "lemma": "crujir",
+      "answer": "crujir",
+      "prompt": "to creak, to crackle",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "y el zumbido del aire que hacía crujir los vidrios de las ojivas"
+    },
+    {
+      "lemma": "sonar",
+      "answer": "sonar",
+      "prompt": "to sound, to ring",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Dentro de poco sonará la oración en los Templarios"
+    },
+    {
+      "lemma": "monótono",
+      "answer": "monótono",
+      "prompt": "monotonous, dreary",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "su tañido monótono y eterno me trajo á las mientes esta tradición que oí hace poco en Soria."
+    },
+    {
+      "lemma": "lecho",
+      "answer": "el lecho",
+      "prompt": "bed",
+      "alternates": [
+        "lecho"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "— ¡Habrá tenido miedo! exclamó la joven cerrando su libro de oraciones y encaminándose á su lecho"
+    },
+    {
+      "lemma": "oir",
+      "answer": "oír",
+      "prompt": "to hear",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "su tañido monótono y eterno me trajo á las mientes esta tradición que oí hace poco en Soria."
+    },
+    {
+      "lemma": "hermoso",
+      "answer": "hermoso",
+      "prompt": "beautiful, lovely",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "¡Qué hermoso estaría sujetando un velo sobre tu oscura cabellera!"
+    },
+    {
+      "lemma": "rumor",
+      "answer": "el rumor",
+      "prompt": "murmur, sound, rustle",
+      "alternates": [
+        "rumor"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "A los pocos minutos se oyó el rumor de un caballo que se alejaba al galope."
+    },
+    {
+      "lemma": "capilla",
+      "answer": "la capilla",
+      "prompt": "chapel",
+      "alternates": [
+        "capilla"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y las ánimas de los difuntos comenzarán á tañer su campana en la capilla del monte."
+    },
+    {
+      "lemma": "tornar",
+      "answer": "tornar",
+      "prompt": "to return, to resume",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "el interrumpido diálogo tornó á anudarse de este modo"
+    },
+    {
+      "lemma": "labio",
+      "answer": "el labio",
+      "prompt": "lip",
+      "alternates": [
+        "labio"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "todo un carácter de mujer se reveló en aquella desdeñosa contracción de sus delgados labios."
+    },
+    {
+      "lemma": "ojo",
+      "answer": "el ojo",
+      "prompt": "eye",
+      "alternates": [
+        "ojo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Beatriz seguía con los ojos, absorta en un vago pensamiento, los caprichos de la llama."
+    },
+    {
+      "lemma": "mano",
+      "answer": "la mano",
+      "prompt": "hand",
+      "alternates": [
+        "mano"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Beatriz se mordió ligeramente los labios, y extendió la mano para tomar la joya, sin añadir una palabra."
+    },
+    {
+      "lemma": "lejano",
+      "answer": "lejano",
+      "prompt": "distant, far-off",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "el rey los hizo venir de lejanas tierras para defender la ciudad por la parte del puente"
+    },
+    {
+      "lemma": "caballo",
+      "answer": "el caballo",
+      "prompt": "horse",
+      "alternates": [
+        "caballo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "es un caballo que se desboca y al que no sirve tirarle de la rienda."
+    },
+    {
+      "lemma": "silencio",
+      "answer": "el silencio",
+      "prompt": "silence",
+      "alternates": [
+        "silencio"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Ambos guardaban hacía rato un profundo silencio."
+    },
+    {
+      "lemma": "fiera",
+      "answer": "la fiera",
+      "prompt": "wild beast",
+      "alternates": [
+        "fiera"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "No se acordaron de ella las fieras"
+    },
+    {
+      "lemma": "joven",
+      "answer": "el joven",
+      "prompt": "young man, youth",
+      "alternates": [
+        "joven"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "se apresuró á añadir el joven."
+    },
+    {
+      "lemma": "lobo",
+      "answer": "el lobo",
+      "prompt": "wolf",
+      "alternates": [
+        "lobo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "los lobos á quienes se quiso exterminar tuvieron un sangriento festín."
+    },
+    {
+      "lemma": "volver",
+      "answer": "volver",
+      "prompt": "to return, to go back",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Los dos jóvenes volvieron á quedarse en silencio"
+    },
+    {
+      "lemma": "vidrio",
+      "answer": "el vidrio",
+      "prompt": "glass (pane)",
+      "alternates": [
+        "vidrio"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y el viento azotaba los emplomados vidrios de las ojivas del salón."
+    },
+    {
+      "lemma": "sangriento",
+      "answer": "sangriento",
+      "prompt": "bloody",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "los lobos á quienes se quiso exterminar tuvieron un sangriento festín."
+    },
+    {
+      "lemma": "tañido",
+      "answer": "el tañido",
+      "prompt": "toll, chime (of a bell)",
+      "alternates": [
+        "tañido"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "su tañido monótono y eterno me trajo á las mientes esta tradición que oí hace poco en Soria."
+    },
+    {
+      "lemma": "acercarse",
+      "answer": "acercarse",
+      "prompt": "to approach, to draw near",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "La noche se acerca, es día de Todos los Santos y estamos en el monte de las Animas."
+    },
+    {
+      "lemma": "querer",
+      "answer": "querer",
+      "prompt": "to want",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Sea de ello lo que quiera, ahí va, como el caballo de copas. —"
+    },
+    {
+      "lemma": "arrojar",
+      "answer": "arrojar",
+      "prompt": "to throw, to hurl",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "arrojando chispas de mil colores"
+    },
+    {
+      "lemma": "oración",
+      "answer": "la oración",
+      "prompt": "prayer; (here) evening bell",
+      "alternates": [
+        "oración"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Dentro de poco sonará la oración en los Templarios"
+    },
+    {
+      "lemma": "cacería",
+      "answer": "la cacería",
+      "prompt": "hunt, hunting party",
+      "alternates": [
+        "cacería"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Aquello no fué una cacería"
+    },
+    {
+      "lemma": "sordo",
+      "answer": "sordo",
+      "prompt": "muffled, hushed; deaf",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "en el Monte de las Animas! Luego prosiguió con voz entrecortada y sorda"
+    },
+    {
+      "lemma": "prima",
+      "answer": "la prima",
+      "prompt": "female cousin",
+      "alternates": [
+        "prima"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "dijo él clavando una mirada en la de su prima"
+    },
+    {
+      "lemma": "azul",
+      "answer": "azul",
+      "prompt": "blue",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Alonso miraba el reflejo de la hoguera chispear en las azules pupilas de Beatriz."
+    },
+    {
+      "lemma": "cazador",
+      "answer": "el cazador",
+      "prompt": "hunter",
+      "alternates": [
+        "cazador"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "haced la señal con las trompas para que se reúnan los cazadores"
+    },
+    {
+      "lemma": "murmurar",
+      "answer": "murmurar",
+      "prompt": "to murmur, to whisper",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "murmuró palideciendo y dejándose caer sobre el sitial"
+    },
+    {
+      "lemma": "balcón",
+      "answer": "el balcón",
+      "prompt": "balcony",
+      "alternates": [
+        "balcón"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "el aire zumbaba en los vidrios del balcón"
+    },
+    {
+      "lemma": "ladrido",
+      "answer": "el ladrido",
+      "prompt": "bark, barking (of a dog)",
+      "alternates": [
+        "ladrido"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "lejanos ladridos de perros"
+    },
+    {
+      "lemma": "voz",
+      "answer": "la voz",
+      "prompt": "voice; word (news)",
+      "alternates": [
+        "voz"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Cundió la voz del reto"
+    },
+    {
+      "lemma": "oirse",
+      "answer": "oírse",
+      "prompt": "to be heard, to hear (oneself)",
+      "alternates": [
+        "oír"
+      ],
+      "pos": "verb",
+      "reading": null,
+      "context": "se oye doblar sola la campana de la capilla"
+    },
+    {
+      "lemma": "concluir",
+      "answer": "concluir",
+      "prompt": "to end, to conclude",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "— Y antes que concluya el día de Todos los Santos"
+    },
+    {
+      "lemma": "perderse",
+      "answer": "perderse",
+      "prompt": "to get lost, to disappear",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "se perdió por entre las estrechas y oscuras calles de Soria."
+    },
+    {
+      "lemma": "pisada",
+      "answer": "la pisada",
+      "prompt": "footstep",
+      "alternates": [
+        "pisada"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y unas pisadas lentas sonaban sobre la alfombra"
+    },
+    {
+      "lemma": "azotar",
+      "answer": "azotar",
+      "prompt": "to lash, to beat (as wind)",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "y el viento azotaba los emplomados vidrios de las ojivas del salón."
+    },
+    {
+      "lemma": "imperceptible",
+      "answer": "imperceptible",
+      "prompt": "imperceptible, barely noticeable",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "una sonrisa imperceptible se dibujó en los labios de Beatriz"
+    },
+    {
+      "lemma": "aire",
+      "answer": "el aire",
+      "prompt": "air",
+      "alternates": [
+        "aire"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "estremecidos por el aire frío de la noche."
+    },
+    {
+      "lemma": "lejos",
+      "answer": "lejos",
+      "prompt": "far, far away",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": null,
+      "context": "porque aún no hace un año que has venido á él desde muy lejos."
+    },
+    {
+      "lemma": "atrio",
+      "answer": "el atrio",
+      "prompt": "atrium; churchyard, forecourt",
+      "alternates": [
+        "atrio"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "situada en el mismo monte y en cuyo atrio se enterraron juntos amigos y enemigos"
+    },
+    {
+      "lemma": "maleza",
+      "answer": "la maleza",
+      "prompt": "undergrowth, brushwood",
+      "alternates": [
+        "maleza"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "que á la mañana había aparecido devorado por los lobos entre las malezas del Monte de las Animas"
+    },
+    {
+      "lemma": "llamar",
+      "answer": "llamar",
+      "prompt": "to call, to name",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "—Ese monte que hoy llaman de las Ánimas"
+    },
+    {
+      "lemma": "referir",
+      "answer": "referir",
+      "prompt": "to tell, to recount",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "sujetar",
+      "answer": "sujetar",
+      "prompt": "to fasten, to hold in place",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "El joyel que sujetaba la pluma de mi gorra cautivó tu atención."
+    },
+    {
+      "lemma": "inmóvil",
+      "answer": "inmóvil",
+      "prompt": "motionless, still",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Beatriz, inmóvil, temblorosa, adelantó la cabeza fuera de las cortinillas y escuchó un momento."
+    },
+    {
+      "lemma": "temor",
+      "answer": "el temor",
+      "prompt": "fear, dread",
+      "alternates": [
+        "temor"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "preguntó Alonso incorporándose de su asiento, y con una indescriptible expresión de temor y esperanza."
+    },
+    {
+      "lemma": "inquieto",
+      "answer": "inquieto",
+      "prompt": "restless, uneasy",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "se durmió con un sueño inquieto"
+    },
+    {
+      "lemma": "pie",
+      "answer": "el pie",
+      "prompt": "foot",
+      "alternates": [
+        "pie"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "á pie y á caballo"
+    }
+  ],
+  "skipped": [
+    {
+      "lemma": "ojiva",
+      "reason": "highly specialized architectural term; a general learner would not need it"
+    },
+    {
+      "lemma": "pupila",
+      "reason": "candidate is tagged as adjective but is clearly a noun; treating as noun — no skip, but noting the POS mismatch"
+    }
+  ],
+  "rejected": [],
+  "version": "v1",
+  "commit": "10894ede",
+  "text": "es-literary",
+  "language": "es",
+  "run": 1
+}

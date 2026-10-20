@@ -1,0 +1,575 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v6/services/curator/src/curator/extract.py",
+  "prompt_version": "6",
+  "model": "claude-haiku-5-5",
+  "seconds": 16.6,
+  "batches": [
+    {
+      "model": "claude-haiku-5-5",
+      "purpose": "translate",
+      "input_tokens": 5741,
+      "output_tokens": 1109,
+      "failed_models": []
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "purpose": "reading",
+      "input_tokens": 1548,
+      "output_tokens": 747,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 7289,
+  "output_tokens": 1856,
+  "cost_usd": 0.016978,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "станция",
+      "answer": "станция",
+      "prompt": "station",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "ста́нция",
+      "context": "- Ижевск — пригородные поезда, состыкованные по станции Кизнер, дважды в день, 6.5 часов."
+    },
+    {
+      "lemma": "город",
+      "answer": "город",
+      "prompt": "city, town",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "го́род",
+      "context": "Город расположен в Среднем Поволжье при впадении реки Казанка в Волгу."
+    },
+    {
+      "lemma": "татарский",
+      "answer": "татарский",
+      "prompt": "Tatar",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "тата́рский",
+      "context": "Казань интересна своей тысячелетней историей, свидетельством гармоничного сочетания русской и татарской культур."
+    },
+    {
+      "lemma": "вокзал",
+      "answer": "вокзал",
+      "prompt": "railway station, terminal",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "вокза́л",
+      "context": "отправляющимися от вокзала Казань-1 каждые 2-3 часа"
+    },
+    {
+      "lemma": "поезд",
+      "answer": "поезд",
+      "prompt": "train",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "по́езд",
+      "context": "всего лишь ночь на поезде из Москвы"
+    },
+    {
+      "lemma": "проходить",
+      "answer": "проходить",
+      "prompt": "to pass, to run through",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "проходи́ть",
+      "context": "С востока на запад через весь центр проходит улица Пушкина, после пл. Тукая превращающаяся в ул. Татарстан."
+    },
+    {
+      "lemma": "кинотеатр",
+      "answer": "кинотеатр",
+      "prompt": "cinema, movie theater",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "кинотеа́тр",
+      "context": "В Казани 11 кинотеатров (на сентябрь 2011), 10 из них мультиплексы, всего более 50 кинозалов."
+    },
+    {
+      "lemma": "автобус",
+      "answer": "автобус",
+      "prompt": "bus",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "авто́бус",
+      "context": "Альтернативой поезду является автобус 97 от Проспект Победы"
+    },
+    {
+      "lemma": "автовокзал",
+      "answer": "автовокзал",
+      "prompt": "bus station",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "автовокза́л",
+      "context": "В Казани два автовокзала: Тем не менее, список казанских автостанций этим далеко не исчерпывается."
+    },
+    {
+      "lemma": "казанский",
+      "answer": "казанский",
+      "prompt": "Kazan",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "каза́нский",
+      "context": "Зилант изображён на гербе и флаге Казани и встречается в качестве декоративного элемента казанских фонтанов, решёток и зданий."
+    },
+    {
+      "lemma": "гостиница",
+      "answer": "гостиница",
+      "prompt": "hotel",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "гости́ница",
+      "context": "(в просторечии Кольцо), средоточие общественной жизни города со множеством ресторанов, клубов и гостиниц."
+    },
+    {
+      "lemma": "маршрут",
+      "answer": "маршрут",
+      "prompt": "route",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "маршру́т",
+      "context": "Авиакомпания «Оренбуржье» выполняет ежедневные перелёты по региональным маршрутам в Киров, Оренбург, Самару и другие города Поволжья."
+    },
+    {
+      "lemma": "центр",
+      "answer": "центр",
+      "prompt": "center",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "Город был крупным центром в составе Золотой Орды, после её распада стал столицей самостоятельного Казанского ханства."
+    },
+    {
+      "lemma": "интересный",
+      "answer": "интересный",
+      "prompt": "interesting",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "интере́сный",
+      "context": "Казань интересна своей тысячелетней историей, свидетельством гармоничного сочетания русской и татарской культур."
+    },
+    {
+      "lemma": "метро",
+      "answer": "метро",
+      "prompt": "metro, subway",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "метро́",
+      "context": "причём автобус может у метро вообще не остановиться (отправляется же он от ДК им. Ленина в Соцгороде)."
+    },
+    {
+      "lemma": "мечеть",
+      "answer": "мечеть",
+      "prompt": "mosque",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "мече́ть",
+      "context": "и можно наблюдать удивительное соседство древнего Казанского кремля и мечетей в центральной части города."
+    },
+    {
+      "lemma": "являться",
+      "answer": "являться",
+      "prompt": "to be, to constitute",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "явля́ться",
+      "context": "Казань с населением более одного миллиона человек является одним из самых динамично развивающихся городов России."
+    },
+    {
+      "lemma": "иметься",
+      "answer": "иметься",
+      "prompt": "to have, to be available",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "име́ться",
+      "context": "Всего в Казани имеется 9 театров, из них 3 академических."
+    },
+    {
+      "lemma": "больший",
+      "answer": "больший",
+      "prompt": "bigger, larger",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "бо́льший",
+      "context": "В Казани два железнодорожных вокзала: После реконструкции на привокзальной площади просторно, выложенные плиткой дорожки и большая подземная стоянка."
+    },
+    {
+      "lemma": "район",
+      "answer": "район",
+      "prompt": "district, area",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "райо́н",
+      "context": "железнодорожными путями с юга и ул. Эсперанто/Вишневского (район м."
+    },
+    {
+      "lemma": "колонна",
+      "answer": "колонна",
+      "prompt": "column, pillar",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "коло́нна",
+      "context": "Два ряда колонн, металлическая облицовка."
+    },
+    {
+      "lemma": "находиться",
+      "answer": "находиться",
+      "prompt": "to be located",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "находи́ться",
+      "context": "Казань находится в Татарстане."
+    },
+    {
+      "lemma": "улица",
+      "answer": "улица",
+      "prompt": "street",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "у́лица",
+      "context": "Главная пешеходная улица Русской слободы и всего города — Баумана — отходит от кремля на юг и упирается"
+    },
+    {
+      "lemma": "транспортный",
+      "answer": "транспортный",
+      "prompt": "transport, transportation",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "тра́нспортный",
+      "context": "К этому событию город претерпел существенное преображение с точки зрения спортивной, гостиничной и транспортной инфраструктуры."
+    },
+    {
+      "lemma": "открыть",
+      "answer": "открыть",
+      "prompt": "to open",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "откры́ть",
+      "context": "Казанский метрополитен открыт в 2005 году и в настоящее время имеет 1 линию и 11 станций."
+    },
+    {
+      "lemma": "слобода",
+      "answer": "слобода",
+      "prompt": "settlement, quarter",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "слобода́",
+      "context": "Суконная слобода) с востока."
+    },
+    {
+      "lemma": "железнодорожный",
+      "answer": "железнодорожный",
+      "prompt": "railway, railroad",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "железнодоро́жный",
+      "context": "железнодорожными путями с юга и ул. Эсперанто/Вишневского (район м."
+    },
+    {
+      "lemma": "основный",
+      "answer": "основный",
+      "prompt": "main, basic",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "осно́вный",
+      "context": "Самолёты в Казань летают в основном из Москвы (Аэрофлот"
+    },
+    {
+      "lemma": "дорога",
+      "answer": "дорога",
+      "prompt": "road, way",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "доро́га",
+      "context": "поскольку из Казани железная дорога уходит на северо-восток в сторону Арска"
+    },
+    {
+      "lemma": "старый",
+      "answer": "старый",
+      "prompt": "old",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "ста́рый",
+      "context": "Для перекуса подойдут расположенная прямо на привокзальной площади «Добрая столовая» или кафе в старом здании вокзала."
+    },
+    {
+      "lemma": "отправляться",
+      "answer": "отправляться",
+      "prompt": "to depart, to leave",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "отправля́ться",
+      "context": "причём автобус может у метро вообще не остановиться (отправляется же он от ДК им. Ленина в Соцгороде)."
+    },
+    {
+      "lemma": "стена",
+      "answer": "стена",
+      "prompt": "wall",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "стена́",
+      "context": "мозаики на стенах и потолке с фольклорными мотивами."
+    },
+    {
+      "lemma": "фестивальный",
+      "answer": "фестивальный",
+      "prompt": "festival",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "фестива́льный",
+      "context": "В кинотеатре «Мир» показывают фестивальное кино, серии короткометражек."
+    },
+    {
+      "lemma": "цена",
+      "answer": "цена",
+      "prompt": "price, cost",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "цена́",
+      "context": "2-3 часа, в пути 30 мин, цена: 30 руб (2015)."
+    },
+    {
+      "lemma": "мина",
+      "answer": "мина",
+      "prompt": "minute",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "ми́на",
+      "context": "в пути 30 мин"
+    },
+    {
+      "lemma": "музей",
+      "answer": "музей",
+      "prompt": "museum",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "музе́й",
+      "context": "В русской части находятся Кремль, церкви и большинство музеев, в татарской — около десятка исторических мечетей."
+    },
+    {
+      "lemma": "русский",
+      "answer": "русский",
+      "prompt": "Russian",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "ру́сский",
+      "context": "Казань интересна своей тысячелетней историей, свидетельством гармоничного сочетания русской и татарской культур."
+    },
+    {
+      "lemma": "пригородный",
+      "answer": "пригородный",
+      "prompt": "suburban",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "приго́родный",
+      "context": "Сообщение с соседними областями устроено следующим образом: - Йошкар-Ола — один пригородный поезд в день, 3½ часа."
+    },
+    {
+      "lemma": "окраина",
+      "answer": "окраина",
+      "prompt": "outskirts, edge",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "окра́ина",
+      "context": "Оставшееся татарское население было выселено за окраину города"
+    },
+    {
+      "lemma": "площадь",
+      "answer": "площадь",
+      "prompt": "square",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "пло́щадь",
+      "context": "— отходит от кремля на юг и упирается в площадь Тукая (в просторечии Кольцо), средоточие"
+    },
+    {
+      "lemma": "направление",
+      "answer": "направление",
+      "prompt": "direction",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "направле́ние",
+      "context": "Примерно в середине этого района в направлении с севера на юг протекает протока Булак"
+    },
+    {
+      "lemma": "исторический",
+      "answer": "исторический",
+      "prompt": "historical",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "истори́ческий",
+      "context": "Такое разделение имеет историческое основание"
+    },
+    {
+      "lemma": "достопримечательность",
+      "answer": "достопримечательность",
+      "prompt": "landmark, sight",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "достопримеча́тельность",
+      "context": "Самой старой достопримечательностью Казани является кремль"
+    },
+    {
+      "lemma": "век",
+      "answer": "век",
+      "prompt": "century, age",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "Движение трамвая было открыто в конце XIX века вместо казанской конки."
+    },
+    {
+      "lemma": "путь",
+      "answer": "путь",
+      "prompt": "path, track",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "железнодорожными путями с юга и ул. Эсперанто/Вишневского (район м."
+    },
+    {
+      "lemma": "стоить",
+      "answer": "стоить",
+      "prompt": "to cost",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "сто́ить",
+      "context": "Такси до центра города стоит 500-600 руб при заказе по телефону или через интернет."
+    },
+    {
+      "lemma": "дальний",
+      "answer": "дальний",
+      "prompt": "distant, long-distance",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "да́льний",
+      "context": "Можно уехать и дальним поездом."
+    },
+    {
+      "lemma": "зал",
+      "answer": "зал",
+      "prompt": "hall, room",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "В центре находится 3 мультиплекса на 6 залов в ТЦ «Кольцо» и на Баумана ТЦ «"
+    },
+    {
+      "lemma": "восток",
+      "answer": "восток",
+      "prompt": "east",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "восто́к",
+      "context": "удобства путешественника центр можно разделить на Русскую слободу к востоку от Булака и озера Кабан и Татарскую слободу"
+    },
+    {
+      "lemma": "разный",
+      "answer": "разный",
+      "prompt": "various, different",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "ра́зный",
+      "context": "- Добрая столовая - Старый амбар - Катык - Кондитерские: Гостиниц в Казани много и разных."
+    },
+    {
+      "lemma": "суконный",
+      "answer": "суконный",
+      "prompt": "woolen cloth, cloth",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "суко́нный",
+      "context": "Суконная слобода) с востока."
+    },
+    {
+      "lemma": "показывать",
+      "answer": "показывать",
+      "prompt": "to show",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "пока́зывать",
+      "context": "чтобы показывать интересные экспозиции из собрания"
+    },
+    {
+      "lemma": "рейс",
+      "answer": "рейс",
+      "prompt": "flight, trip",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "UTair — не меньше 10 рейсов в день)"
+    },
+    {
+      "lemma": "путешественник",
+      "answer": "путешественник",
+      "prompt": "traveler",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "путеше́ственник",
+      "context": "Для удобства путешественника центр можно разделить на Русскую слободу к востоку от Булака и озера Кабан и Татарскую"
+    },
+    {
+      "lemma": "житель",
+      "answer": "житель",
+      "prompt": "resident, inhabitant",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "жи́тель",
+      "context": "Жители города дружелюбны к гостям"
+    },
+    {
+      "lemma": "север",
+      "answer": "север",
+      "prompt": "north",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "се́вер",
+      "context": "Центр города примерно определён рекой Казанкой с севера"
+    },
+    {
+      "lemma": "привокзальный",
+      "answer": "привокзальный",
+      "prompt": "station, railway-station",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "привокза́льный",
+      "context": "В Казани два железнодорожных вокзала: После реконструкции на привокзальной площади просторно, выложенные плиткой дорожки и большая подземная стоянка."
+    },
+    {
+      "lemma": "центральный",
+      "answer": "центральный",
+      "prompt": "central",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "центра́льный",
+      "context": "и можно наблюдать удивительное соседство древнего Казанского кремля и мечетей в центральной части города."
+    },
+    {
+      "lemma": "отличаться",
+      "answer": "отличаться",
+      "prompt": "to differ, to stand out",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "отлича́ться",
+      "context": "Высоким уровнем комфорта не отличается, но зачастую альтернативы ему нет, так что придётся терпеть."
+    },
+    {
+      "lemma": "полуфабрикат",
+      "answer": "полуфабрикат",
+      "prompt": "semi-finished product, convenience food",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "полуфабрика́т",
+      "context": "Здесь есть и конина (во всех возможных видах), и полуфабрикаты, и конечно же выпечка."
+    }
+  ],
+  "skipped": [],
+  "rejected": [],
+  "version": "v6",
+  "commit": "d8d9cd22",
+  "text": "ru-travel",
+  "language": "ru",
+  "run": 1
+}

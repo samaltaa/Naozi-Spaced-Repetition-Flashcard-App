@@ -1,0 +1,519 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v1/services/curator/src/curator/extract.py",
+  "prompt_version": "1",
+  "model": "claude-sonnet-4-6",
+  "seconds": 48.88,
+  "batches": [
+    {
+      "model": "claude-sonnet-4-6",
+      "purpose": "translate",
+      "input_tokens": 10922,
+      "output_tokens": 5005,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 10922,
+  "output_tokens": 5005,
+  "cost_usd": 0.107841,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "glaciación",
+      "answer": "la glaciación",
+      "prompt": "ice age, glaciation",
+      "alternates": [
+        "glaciación"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "desértico",
+      "answer": "desértico",
+      "prompt": "desert-like, arid",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "averiguación",
+      "answer": "la averiguación",
+      "prompt": "investigation, inquiry",
+      "alternates": [
+        "averiguación"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "quedar",
+      "answer": "quedar",
+      "prompt": "to remain, to be left",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "boreal",
+      "answer": "boreal",
+      "prompt": "boreal, northern",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "hectárea",
+      "answer": "la hectárea",
+      "prompt": "hectare",
+      "alternates": [
+        "hectárea"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "España y que consumió unas 2.600 hectáreas (26 km2) ya fue controlado."
+    },
+    {
+      "lemma": "habitar",
+      "answer": "habitar",
+      "prompt": "to inhabit, to live in",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "realizarse",
+      "answer": "realizarse",
+      "prompt": "to be carried out, to take place",
+      "alternates": [
+        "realizar"
+      ],
+      "pos": "verb",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "ártico",
+      "answer": "ártico",
+      "prompt": "arctic",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "hoguera",
+      "answer": "la hoguera",
+      "prompt": "bonfire, fire",
+      "alternates": [
+        "hoguera"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "habitante",
+      "answer": "el habitante",
+      "prompt": "inhabitant, resident",
+      "alternates": [
+        "habitante"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "de manera que no se realizaron evacuaciones de habitantes."
+    },
+    {
+      "lemma": "castaño",
+      "answer": "el castaño",
+      "prompt": "chestnut tree",
+      "alternates": [
+        "castaño"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "El incendio consumió zonas de pinares de repoblación con más de 50 años y castaños muy antiguos."
+    },
+    {
+      "lemma": "evacuación",
+      "answer": "la evacuación",
+      "prompt": "evacuation",
+      "alternates": [
+        "evacuación"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "de manera que no se realizaron evacuaciones de habitantes."
+    },
+    {
+      "lemma": "turista",
+      "answer": "el turista",
+      "prompt": "tourist",
+      "alternates": [
+        "turista",
+        "la turista"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "cercanía",
+      "answer": "la cercanía",
+      "prompt": "nearness, proximity; (plural) surroundings",
+      "alternates": [
+        "cercanía"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "vegetal",
+      "answer": "vegetal",
+      "prompt": "plant, vegetable (relating to plants)",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "consumir",
+      "answer": "consumir",
+      "prompt": "to consume, to destroy",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "España y que consumió unas 2.600 hectáreas (26 km2) ya fue controlado."
+    },
+    {
+      "lemma": "pertenecer",
+      "answer": "pertenecer",
+      "prompt": "to belong to",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "40 % del área afectada pertenece al parque."
+    },
+    {
+      "lemma": "fatal",
+      "answer": "fatal",
+      "prompt": "fatal, deadly",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "zona",
+      "answer": "la zona",
+      "prompt": "zone, area",
+      "alternates": [
+        "zona"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "ocurrir",
+      "answer": "ocurrir",
+      "prompt": "to occur, to happen",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Casi todos los daños ocurrieron el primer día."
+    },
+    {
+      "lemma": "declararse",
+      "answer": "declararse",
+      "prompt": "to break out, to declare itself",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "ocupar",
+      "answer": "ocupar",
+      "prompt": "to occupy, to cover (an area)",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "El Parque Nacional Sierra Nevada ocupa 862 km2."
+    },
+    {
+      "lemma": "representar",
+      "answer": "representar",
+      "prompt": "to represent",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "paisaje",
+      "answer": "el paisaje",
+      "prompt": "landscape, scenery",
+      "alternates": [
+        "paisaje"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "incluir",
+      "answer": "incluir",
+      "prompt": "to include",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "urbano",
+      "answer": "urbano",
+      "prompt": "urban",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "pico",
+      "answer": "el pico",
+      "prompt": "peak, summit",
+      "alternates": [
+        "pico"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "oriental",
+      "answer": "oriental",
+      "prompt": "eastern",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "reserva",
+      "answer": "la reserva",
+      "prompt": "reserve, reservation",
+      "alternates": [
+        "reserva"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "controlar",
+      "answer": "controlar",
+      "prompt": "to control, to bring under control",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "España y que consumió unas 2.600 hectáreas (26 km2) ya fue controlado."
+    },
+    {
+      "lemma": "víctima",
+      "answer": "la víctima",
+      "prompt": "victim",
+      "alternates": [
+        "víctima"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "metro",
+      "answer": "el metro",
+      "prompt": "metre, meter",
+      "alternates": [
+        "metro"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "alcanzar",
+      "answer": "alcanzar",
+      "prompt": "to reach, to hit",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "jueves",
+      "answer": "el jueves",
+      "prompt": "Thursday",
+      "alternates": [
+        "jueves"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "antiguo",
+      "answer": "antiguo",
+      "prompt": "old, ancient",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "El incendio consumió zonas de pinares de repoblación con más de 50 años y castaños muy antiguos."
+    },
+    {
+      "lemma": "altura",
+      "answer": "la altura",
+      "prompt": "height, altitude",
+      "alternates": [
+        "altura"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "planta",
+      "answer": "la planta",
+      "prompt": "plant",
+      "alternates": [
+        "planta"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "así como plantas de origen africano y asiático."
+    },
+    {
+      "lemma": "parque",
+      "answer": "el parque",
+      "prompt": "park",
+      "alternates": [
+        "parque"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "40 % del área afectada pertenece al parque."
+    },
+    {
+      "lemma": "daño",
+      "answer": "el daño",
+      "prompt": "damage, harm",
+      "alternates": [
+        "daño"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Casi todos los daños ocurrieron el primer día."
+    },
+    {
+      "lemma": "especie",
+      "answer": "la especie",
+      "prompt": "species",
+      "alternates": [
+        "especie"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "pareja",
+      "answer": "la pareja",
+      "prompt": "couple, partner",
+      "alternates": [
+        "pareja"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "origen",
+      "answer": "el origen",
+      "prompt": "origin",
+      "alternates": [
+        "origen"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "así como plantas de origen africano y asiático."
+    },
+    {
+      "lemma": "área",
+      "answer": "el área",
+      "prompt": "area",
+      "alternates": [
+        "área"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "40 % del área afectada pertenece al parque."
+    },
+    {
+      "lemma": "palabra",
+      "answer": "la palabra",
+      "prompt": "word; (here) word, promise (bajo palabra = on one's word)",
+      "alternates": [
+        "palabra"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "libertad",
+      "answer": "la libertad",
+      "prompt": "freedom, liberty",
+      "alternates": [
+        "libertad"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "importante",
+      "answer": "importante",
+      "prompt": "important",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": ""
+    }
+  ],
+  "skipped": [
+    {
+      "lemma": "africano",
+      "reason": "proper adjective derived from a proper noun (Africa)"
+    },
+    {
+      "lemma": "asiático",
+      "reason": "proper adjective derived from a proper noun (Asia)"
+    },
+    {
+      "lemma": "septiembre",
+      "reason": "proper noun (name of a month)"
+    }
+  ],
+  "rejected": [],
+  "version": "v1",
+  "commit": "10894ede",
+  "text": "es-news",
+  "language": "es",
+  "run": 1
+}

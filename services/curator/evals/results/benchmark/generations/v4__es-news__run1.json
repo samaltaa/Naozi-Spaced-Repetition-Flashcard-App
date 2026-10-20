@@ -1,0 +1,530 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v4/services/curator/src/curator/extract.py",
+  "prompt_version": "4",
+  "model": "claude-haiku-5-5",
+  "seconds": 6.25,
+  "batches": [
+    {
+      "model": "claude-haiku-5-5",
+      "purpose": "translate",
+      "input_tokens": 5133,
+      "output_tokens": 1328,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 5133,
+  "output_tokens": 1328,
+  "cost_usd": 0.001177,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "glaciación",
+      "answer": "la glaciación",
+      "prompt": "glaciation, ice age",
+      "alternates": [
+        "glaciación"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "boreales árticas que quedaron atrapadas allí durante las últimas glaciaciones y debieron adaptarse desde entonces, así como"
+    },
+    {
+      "lemma": "desértico",
+      "answer": "desértico",
+      "prompt": "desert-like, arid",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Incluye paisajes desérticos en su zona oriental y picos de 3.000 metros de altura y representa una importante"
+    },
+    {
+      "lemma": "averiguación",
+      "answer": "la averiguación",
+      "prompt": "investigation, inquiry",
+      "alternates": [
+        "averiguación"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "quedar",
+      "answer": "quedar",
+      "prompt": "to remain, to be left",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "boreal",
+      "answer": "boreal",
+      "prompt": "boreal, northern",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "El parque es habitado por especies vegetales boreales árticas que quedaron atrapadas allí durante las últimas glaciaciones y"
+    },
+    {
+      "lemma": "hectárea",
+      "answer": "la hectárea",
+      "prompt": "hectare",
+      "alternates": [
+        "hectárea"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "España y que consumió unas 2.600 hectáreas (26 km2) ya fue controlado."
+    },
+    {
+      "lemma": "habitar",
+      "answer": "habitar",
+      "prompt": "to inhabit, to live in",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "El parque es habitado por especies vegetales boreales árticas que quedaron atrapadas allí durante las últimas glaciaciones y"
+    },
+    {
+      "lemma": "realizar",
+      "answer": "realizar",
+      "prompt": "to be carried out, to take place",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "ártico",
+      "answer": "ártico",
+      "prompt": "arctic",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "El parque es habitado por especies vegetales boreales árticas que quedaron atrapadas allí durante las últimas glaciaciones y"
+    },
+    {
+      "lemma": "hoguera",
+      "answer": "la hoguera",
+      "prompt": "bonfire",
+      "alternates": [
+        "hoguera"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "La causa del incendio fue una hoguera encendida por una pareja de turistas perdidos para que otro grupo"
+    },
+    {
+      "lemma": "habitante",
+      "answer": "el habitante",
+      "prompt": "inhabitant, resident",
+      "alternates": [
+        "habitante"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "de manera que no se realizaron evacuaciones de habitantes."
+    },
+    {
+      "lemma": "castaño",
+      "answer": "el castaño",
+      "prompt": "chestnut tree",
+      "alternates": [
+        "castaño"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "El incendio consumió zonas de pinares de repoblación con más de 50 años y castaños muy antiguos."
+    },
+    {
+      "lemma": "evacuación",
+      "answer": "la evacuación",
+      "prompt": "evacuation",
+      "alternates": [
+        "evacuación"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "de manera que no se realizaron evacuaciones de habitantes."
+    },
+    {
+      "lemma": "turista",
+      "answer": "el turista",
+      "prompt": "tourist",
+      "alternates": [
+        "turista"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "incendio fue una hoguera encendida por una pareja de turistas perdidos para que otro grupo pudiera localizarlos."
+    },
+    {
+      "lemma": "cercanía",
+      "answer": "la cercanía",
+      "prompt": "proximity, vicinity",
+      "alternates": [
+        "cercanía"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "forestal que se declaró el jueves 22 en las cercanías del Parque Nacional Sierra Nevada, España y"
+    },
+    {
+      "lemma": "vegetal",
+      "answer": "vegetal",
+      "prompt": "plant, vegetable",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "El parque es habitado por especies vegetales boreales árticas que quedaron atrapadas allí durante las últimas glaciaciones y"
+    },
+    {
+      "lemma": "africano",
+      "answer": "africano",
+      "prompt": "African",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "así como plantas de origen africano y asiático."
+    },
+    {
+      "lemma": "consumir",
+      "answer": "consumir",
+      "prompt": "to consume, to burn up",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "España y que consumió unas 2.600 hectáreas (26 km2) ya fue controlado."
+    },
+    {
+      "lemma": "asiático",
+      "answer": "asiático",
+      "prompt": "Asian",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "así como plantas de origen africano y asiático."
+    },
+    {
+      "lemma": "pertenecer",
+      "answer": "pertenecer",
+      "prompt": "to belong to",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "40 % del área afectada pertenece al parque."
+    },
+    {
+      "lemma": "fatal",
+      "answer": "fatal",
+      "prompt": "fatal, deadly",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "zona",
+      "answer": "la zona",
+      "prompt": "zone, area",
+      "alternates": [
+        "zona"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "ocurrir",
+      "answer": "ocurrir",
+      "prompt": "to occur, to happen",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Casi todos los daños ocurrieron el primer día."
+    },
+    {
+      "lemma": "declararse",
+      "answer": "declararse",
+      "prompt": "to break out, to be declared",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "2005 España — Un incendio forestal que se declaró el jueves 22 en las cercanías del Parque"
+    },
+    {
+      "lemma": "ocupar",
+      "answer": "ocupar",
+      "prompt": "to occupy, to cover",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "El Parque Nacional Sierra Nevada ocupa 862 km2."
+    },
+    {
+      "lemma": "representar",
+      "answer": "representar",
+      "prompt": "to represent, to be",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "oriental y picos de 3.000 metros de altura y representa una importante reserva de biodiversidad para Europa."
+    },
+    {
+      "lemma": "paisaje",
+      "answer": "el paisaje",
+      "prompt": "landscape",
+      "alternates": [
+        "paisaje"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Incluye paisajes desérticos en su zona oriental y picos de 3.000 metros de altura y representa una importante"
+    },
+    {
+      "lemma": "incluir",
+      "answer": "incluir",
+      "prompt": "to include",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Incluye paisajes desérticos en su zona oriental y picos de 3.000 metros de altura y representa una importante"
+    },
+    {
+      "lemma": "urbano",
+      "answer": "urbano",
+      "prompt": "urban",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "pico",
+      "answer": "el pico",
+      "prompt": "peak, summit",
+      "alternates": [
+        "pico"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Incluye paisajes desérticos en su zona oriental y picos de 3.000 metros de altura y representa una importante"
+    },
+    {
+      "lemma": "oriental",
+      "answer": "oriental",
+      "prompt": "eastern",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Incluye paisajes desérticos en su zona oriental y picos de 3.000 metros de altura y representa una importante"
+    },
+    {
+      "lemma": "reserva",
+      "answer": "la reserva",
+      "prompt": "reserve, reservoir",
+      "alternates": [
+        "reserva"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "oriental y picos de 3.000 metros de altura y representa una importante reserva de biodiversidad para Europa."
+    },
+    {
+      "lemma": "controlar",
+      "answer": "controlar",
+      "prompt": "to control",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "España y que consumió unas 2.600 hectáreas (26 km2) ya fue controlado."
+    },
+    {
+      "lemma": "víctima",
+      "answer": "la víctima",
+      "prompt": "victim",
+      "alternates": [
+        "víctima"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "metro",
+      "answer": "el metro",
+      "prompt": "meter",
+      "alternates": [
+        "metro"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "desérticos en su zona oriental y picos de 3.000 metros de altura y representa una importante reserva de"
+    },
+    {
+      "lemma": "alcanzar",
+      "answer": "alcanzar",
+      "prompt": "to reach, to hit",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Afortunadamente no hubo víctimas fatales y ninguna zona urbana fue alcanzada"
+    },
+    {
+      "lemma": "jueves",
+      "answer": "el jueves",
+      "prompt": "Thursday",
+      "alternates": [
+        "jueves"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "España — Un incendio forestal que se declaró el jueves 22 en las cercanías del Parque Nacional Sierra"
+    },
+    {
+      "lemma": "antiguo",
+      "answer": "antiguo",
+      "prompt": "old, ancient",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "El incendio consumió zonas de pinares de repoblación con más de 50 años y castaños muy antiguos."
+    },
+    {
+      "lemma": "altura",
+      "answer": "la altura",
+      "prompt": "height",
+      "alternates": [
+        "altura"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "su zona oriental y picos de 3.000 metros de altura y representa una importante reserva de biodiversidad para"
+    },
+    {
+      "lemma": "planta",
+      "answer": "la planta",
+      "prompt": "plant",
+      "alternates": [
+        "planta"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "así como plantas de origen africano y asiático."
+    },
+    {
+      "lemma": "parque",
+      "answer": "el parque",
+      "prompt": "park",
+      "alternates": [
+        "parque"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "40 % del área afectada pertenece al parque."
+    },
+    {
+      "lemma": "daño",
+      "answer": "el daño",
+      "prompt": "damage",
+      "alternates": [
+        "daño"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Casi todos los daños ocurrieron el primer día."
+    },
+    {
+      "lemma": "especie",
+      "answer": "la especie",
+      "prompt": "species",
+      "alternates": [
+        "especie"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "El parque es habitado por especies vegetales boreales árticas que quedaron atrapadas allí durante las últimas glaciaciones y"
+    },
+    {
+      "lemma": "pareja",
+      "answer": "la pareja",
+      "prompt": "couple, pair",
+      "alternates": [
+        "pareja"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "causa del incendio fue una hoguera encendida por una pareja de turistas perdidos para que otro grupo pudiera"
+    },
+    {
+      "lemma": "origen",
+      "answer": "el origen",
+      "prompt": "origin",
+      "alternates": [
+        "origen"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "así como plantas de origen africano y asiático."
+    },
+    {
+      "lemma": "área",
+      "answer": "el área",
+      "prompt": "area",
+      "alternates": [
+        "área"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "40 % del área afectada pertenece al parque."
+    },
+    {
+      "lemma": "septiembre",
+      "answer": "septiembre",
+      "prompt": "September",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "26 de septiembre de 2005 España — Un incendio forestal que se declaró el jueves 22 en"
+    },
+    {
+      "lemma": "palabra",
+      "answer": "la palabra",
+      "prompt": "word",
+      "alternates": [
+        "palabra"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "libertad",
+      "answer": "la libertad",
+      "prompt": "freedom, liberty",
+      "alternates": [
+        "libertad"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Los supuestos causantes del incendio quedaron en libertad bajo palabra mientras se realizan las averiguaciones."
+    },
+    {
+      "lemma": "importante",
+      "answer": "importante",
+      "prompt": "important",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "oriental y picos de 3.000 metros de altura y representa una importante reserva de biodiversidad para Europa."
+    }
+  ],
+  "skipped": [],
+  "rejected": [],
+  "version": "v4",
+  "commit": "630a73a1",
+  "text": "es-news",
+  "language": "es",
+  "run": 1
+}
