@@ -1,0 +1,106 @@
+texts:
+- name: es-wiki
+  language: es
+  kind: encyclopedia
+  title: Café
+  url: https://es.wikipedia.org/wiki/Café
+  license: CC BY-SA 4.0
+  chars: 40000
+- name: es-news
+  language: es
+  kind: news
+  title: Controlado fuego en parque nacional de España
+  url: https://es.wikinews.org/wiki/Controlado_fuego_en_parque_nacional_de_España
+  license: CC BY 2.5 / CC BY 4.0
+  chars: 1172
+- name: es-travel
+  language: es
+  kind: travel
+  title: Sevilla
+  url: https://es.wikivoyage.org/wiki/Sevilla
+  license: CC BY-SA 4.0
+  chars: 29980
+- name: es-fiction
+  language: es
+  kind: fiction
+  title: Los ojos verdes (Bécquer)
+  url: https://es.wikisource.org/wiki/Los_ojos_verdes
+  license: Public domain
+  chars: 14886
+- name: es-literary
+  language: es
+  kind: literary
+  title: El monte de las ánimas (Bécquer)
+  url: https://es.wikisource.org/wiki/El_monte_de_las_ánimas
+  license: Public domain
+  chars: 15636
+- name: ru-wiki
+  language: ru
+  kind: encyclopedia
+  title: Байкал
+  url: https://ru.wikipedia.org/wiki/Байкал
+  license: CC BY-SA 4.0
+  chars: 40000
+- name: ru-news
+  language: ru
+  kind: news
+  title: После взрыва на «Казцинке»…
+  url: https://ru.wikinews.org/wiki/После_взрыва_на_«Казцинке»_врачи_борются_за_жизнь_рабочего_с_ожогами_90%_тела
+  license: CC BY 2.5 / CC BY 4.0
+  chars: 2500
+- name: ru-travel
+  language: ru
+  kind: travel
+  title: Казань
+  url: https://ru.wikivoyage.org/wiki/Казань
+  license: CC BY-SA 4.0
+  chars: 19627
+- name: ru-fiction
+  language: ru
+  kind: fiction
+  title: Толстый и тонкий (Чехов)
+  url: https://ru.wikisource.org/wiki/Толстый_и_тонкий_(Чехов)/ПСС_1975
+  license: Public domain
+  chars: 3457
+- name: ru-literary
+  language: ru
+  kind: literary
+  title: Хамелеон (Чехов)
+  url: https://ru.wikisource.org/wiki/Хамелеон_(Чехов)/Вариант_ПСС_Чехова_1974—1982
+  license: Public domain
+  chars: 5882
+- name: zh-wiki
+  language: zh
+  kind: encyclopedia
+  title: 大熊猫
+  url: https://zh.wikipedia.org/zh-cn/大熊猫
+  license: CC BY-SA 4.0
+  chars: 10256
+- name: zh-news
+  language: zh
+  kind: news
+  title: 中國湖南瀏陽一煙花廠發生爆炸
+  url: https://zh.wikinews.org/wiki/中國湖南瀏陽一煙花廠發生爆炸，致26死61傷
+  license: CC BY 2.5 / CC BY 4.0
+  chars: 315
+- name: zh-travel
+  language: zh
+  kind: travel
+  title: 杭州
+  url: https://zh.wikivoyage.org/zh-cn/杭州
+  license: CC BY-SA 4.0
+  chars: 7837
+- name: zh-fiction
+  language: zh
+  kind: fiction
+  title: 孔乙己 (魯迅)
+  url: https://zh.wikisource.org/wiki/孔乙己
+  license: Public domain
+  chars: 3097
+- name: zh-literary
+  language: zh
+  kind: literary
+  title: 背影 (朱自清)
+  url: https://zh.wikisource.org/wiki/背影
+  license: Public domain
+  chars: 1335

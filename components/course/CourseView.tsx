@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import { Header } from "@/components/ui/Header";
 import { LanguageTile } from "@/components/ui/LanguageTile";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { SpeakButton } from "@/components/ui/SpeakButton";
 import { StatusMessage } from "@/components/ui/StatusMessage";
 import { StudyButton } from "@/components/ui/StudyButton";
 import { api } from "@/lib/client/api";
@@ -14,7 +15,7 @@ import { useAsync } from "@/lib/client/useAsync";
 
 // Level list
 
-function LevelSection({ level, number }: { level: CourseLevel; number: number }) {
+function LevelSection({ level, number, lang }: { level: CourseLevel; number: number; lang: string }) {
   return (
     <section className="overflow-hidden rounded-xl border border-ink/10 bg-white">
       <header className="flex items-baseline gap-3 border-b border-ink/10 px-4 py-3">
@@ -29,15 +30,18 @@ function LevelSection({ level, number }: { level: CourseLevel; number: number })
       ) : (
         <ul className="divide-y divide-ink/5">
           {level.items.map((item) => (
-            <li key={item.id} className="grid grid-cols-2 gap-4 px-4 py-3">
+            <li key={item.id} className="grid grid-cols-2 items-center gap-4 px-4 py-1.5">
               <span dir="auto" className="min-w-0 break-words text-ink/80">
                 {item.prompt}
               </span>
-              <span dir="auto" className="min-w-0 break-words font-bold">
-                {item.answer}
-                {item.reading ? (
-                  <span className="block text-sm font-normal text-ink/50 sm:ml-2 sm:inline">{item.reading}</span>
-                ) : null}
+              <span className="flex min-w-0 items-center gap-1">
+                <span dir="auto" lang={lang} className="min-w-0 flex-1 break-words font-bold">
+                  {item.answer}
+                  {item.reading ? (
+                    <span className="block text-sm font-normal text-ink/50 sm:ml-2 sm:inline">{item.reading}</span>
+                  ) : null}
+                </span>
+                <SpeakButton text={item.answer} lang={lang} className="text-ink/50" />
               </span>
             </li>
           ))}
@@ -154,7 +158,7 @@ export function CourseView({ courseId }: { courseId: string }) {
         ) : (
           <>
             {course.levels.map((level, i) => (
-              <LevelSection key={level.id} level={level} number={i + 1} />
+              <LevelSection key={level.id} level={level} number={i + 1} lang={course.target_lang} />
             ))}
             {course.is_owner ? (
               <Link

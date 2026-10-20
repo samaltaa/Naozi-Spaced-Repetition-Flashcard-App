@@ -1,0 +1,543 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v6/services/curator/src/curator/extract.py",
+  "prompt_version": "6",
+  "model": "claude-haiku-5-5",
+  "seconds": 6.77,
+  "batches": [
+    {
+      "model": "claude-haiku-5-5",
+      "purpose": "translate",
+      "input_tokens": 5274,
+      "output_tokens": 1387,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 5274,
+  "output_tokens": 1387,
+  "cost_usd": 0.001221,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "掌櫃",
+      "answer": "掌櫃",
+      "prompt": "shopkeeper, manager of a shop",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhǎngguì",
+      "context": "便在鎭口的咸亨酒店裏當夥計，掌櫃說，樣子太儍，怕侍候"
+    },
+    {
+      "lemma": "茴",
+      "answer": "茴香",
+      "prompt": "fennel",
+      "alternates": [
+        "茴"
+      ],
+      "pos": "adjective",
+      "reading": "huíxiāng",
+      "context": "便可以買一碟鹽煑筍，或者茴香豆，做下酒物了，如果出到"
+    },
+    {
+      "lemma": "香豆",
+      "answer": "茴香豆",
+      "prompt": "fennel bean, spiced broad bean",
+      "alternates": [
+        "香豆"
+      ],
+      "pos": "noun",
+      "reading": "huíxiāngdòu",
+      "context": "可以買一碟鹽煑筍，或者茴香豆，做下酒物了，如果出到了"
+    },
+    {
+      "lemma": "長衫",
+      "answer": "長衫",
+      "prompt": "long gown, traditional long robe",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "chángshān",
+      "context": "只有穿長衫的，纔踱進店面隔壁的房子裏，要酒要菜，慢慢地坐喝。"
+    },
+    {
+      "lemma": "酒",
+      "answer": "酒",
+      "prompt": "wine, liquor",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jiǔ",
+      "context": "買一碗酒——這是二十多年前的事"
+    },
+    {
+      "lemma": "說道",
+      "answer": "說道",
+      "prompt": "to say",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "shuōdào",
+      "context": "他們便接着說道"
+    },
+    {
+      "lemma": "粉板",
+      "answer": "粉板",
+      "prompt": "chalkboard, slate for recording debts",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fěnbǎn",
+      "context": "暫時記在粉板上"
+    },
+    {
+      "lemma": "顯出",
+      "answer": "顯出",
+      "prompt": "to show, to reveal",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "xiǎnchū",
+      "context": "孔乙己看着問他的人，顯出不屑置辯的神氣。"
+    },
+    {
+      "lemma": "打折",
+      "answer": "打折",
+      "prompt": "to break a leg",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "dǎzhé",
+      "context": "他打折了腿了。』"
+    },
+    {
+      "lemma": "法人",
+      "answer": "法人",
+      "prompt": "legal person, juridical person",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fǎrén",
+      "context": "法人或者非法人組織的作品"
+    },
+    {
+      "lemma": "主顧",
+      "answer": "主顧",
+      "prompt": "regular customer, patron",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhǔgù",
+      "context": "怕侍候不了長衫主顧"
+    },
+    {
+      "lemma": "快活",
+      "answer": "快活",
+      "prompt": "happy, cheerful",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "kuàihuó",
+      "context": "店內外充滿了快活的空氣。"
+    },
+    {
+      "lemma": "腿",
+      "answer": "腿",
+      "prompt": "leg",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "tuǐ",
+      "context": "他打折了腿了。』"
+    },
+    {
+      "lemma": "欠",
+      "answer": "欠",
+      "prompt": "to owe",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "qiàn",
+      "context": "還欠十九個錢呢！』"
+    },
+    {
+      "lemma": "櫃臺",
+      "answer": "櫃臺",
+      "prompt": "counter, bar counter",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "guìtái",
+      "context": "我從此便整天的站在櫃臺裏，專管我的職務。"
+    },
+    {
+      "lemma": "取下",
+      "answer": "取下",
+      "prompt": "to take down, to remove",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "qǔxià",
+      "context": "替他取下一個綽號"
+    },
+    {
+      "lemma": "公有",
+      "answer": "公有",
+      "prompt": "public, common-owned",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "gōngyǒu",
+      "context": "（一九一九年三月。）PublicdomainPublicdomainfalsefalse本作品現時在兩岸因著作權保護期屆滿而屬於公有領域。"
+    },
+    {
+      "lemma": "竊書",
+      "answer": "竊書",
+      "prompt": "stealing books",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "qièshū",
+      "context": "『竊書不能算偸……竊書！……"
+    },
+    {
+      "lemma": "碟子",
+      "answer": "碟子",
+      "prompt": "small dish, plate",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "diézi",
+      "context": "孩子喫完豆，仍然不散，眼睛都望着碟子。"
+    },
+    {
+      "lemma": "哄笑",
+      "answer": "哄笑",
+      "prompt": "to roar with laughter",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "hōngxiào",
+      "context": "引得衆人都哄笑起來"
+    },
+    {
+      "lemma": "慢慢",
+      "answer": "慢慢",
+      "prompt": "slowly",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "mànmàn",
+      "context": "只有穿長衫的，纔踱進店面隔壁的房子裏，要酒要菜，慢慢地坐喝。"
+    },
+    {
+      "lemma": "討飯",
+      "answer": "討飯",
+      "prompt": "to beg for food",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "tǎofàn",
+      "context": "弄到將要討飯了。"
+    },
+    {
+      "lemma": "長久",
+      "answer": "長久",
+      "prompt": "for a long time",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "chángjiǔ",
+      "context": "『孔乙己長久沒有來了。"
+    },
+    {
+      "lemma": "短衣",
+      "answer": "短衣",
+      "prompt": "short jacket, short-clothes worker",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "duǎnyī",
+      "context": "多是短衣幫"
+    },
+    {
+      "lemma": "店",
+      "answer": "店",
+      "prompt": "shop, store",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "diàn",
+      "context": "只有孔乙己到店"
+    },
+    {
+      "lemma": "喝酒",
+      "answer": "喝酒",
+      "prompt": "to drink",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "hējiǔ",
+      "context": "孔乙己是站着喝酒而穿長衫的唯一的人。"
+    },
+    {
+      "lemma": "大錢",
+      "answer": "大錢",
+      "prompt": "copper coin, cash",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dàqián",
+      "context": "』便排出九文大錢。"
+    },
+    {
+      "lemma": "愈",
+      "answer": "愈",
+      "prompt": "more and more, the more ... the more",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "yù",
+      "context": "于是愈過愈窮"
+    },
+    {
+      "lemma": "管轄區",
+      "answer": "管轄區",
+      "prompt": "jurisdiction, administrative area",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "guǎnxiáqū",
+      "context": "著作权法》第二十三條第二款（司法管轄區為中國大陸，不包括香港和"
+    },
+    {
+      "lemma": "不耐煩",
+      "answer": "不耐煩",
+      "prompt": "to be impatient",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "bùnàifán",
+      "context": "將茴香豆上帳；又好笑，又不耐煩，嬾嬾的答他道：『"
+    },
+    {
+      "lemma": "文",
+      "answer": "文",
+      "prompt": "wen, unit of old copper coin",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "wén",
+      "context": "每每花四文銅錢"
+    },
+    {
+      "lemma": "喝",
+      "answer": "喝",
+      "prompt": "to drink",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "hē",
+      "context": "熱熱的喝了休息"
+    },
+    {
+      "lemma": "臉上",
+      "answer": "臉上",
+      "prompt": "face",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "liǎnshàng",
+      "context": "你臉上又添上新傷疤了！』"
+    },
+    {
+      "lemma": "坐",
+      "answer": "坐",
+      "prompt": "to sit",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zuò",
+      "context": "坐不到幾天，便連人和書籍紙張筆硯，一齊失蹤。"
+    },
+    {
+      "lemma": "樣子",
+      "answer": "樣子",
+      "prompt": "appearance, look, style",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yàngzi",
+      "context": "的咸亨酒店裏當夥計，掌櫃說，樣子太儍，怕侍候不了長衫"
+    },
+    {
+      "lemma": "專管",
+      "answer": "專管",
+      "prompt": "to be in charge of exclusively",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zhuānguǎn",
+      "context": "幸虧薦頭的情面大，辭退不得，便改爲專管温酒的一種無聊職務了。"
+    },
+    {
+      "lemma": "取笑",
+      "answer": "取笑",
+      "prompt": "to tease, to mock",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "qǔxiào",
+      "context": "但他這回卻不十分分辯，單說了一句『不要取笑！』"
+    },
+    {
+      "lemma": "指甲",
+      "answer": "指甲",
+      "prompt": "fingernail",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhǐjiǎ",
+      "context": "孔乙己顯出極高興的樣子，將兩個指頭的長指甲敲着櫃臺，點頭說：『"
+    },
+    {
+      "lemma": "熱水",
+      "answer": "熱水",
+      "prompt": "hot water",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "rèshuǐ",
+      "context": "櫃裏面豫備着熱水"
+    },
+    {
+      "lemma": "臉色",
+      "answer": "臉色",
+      "prompt": "complexion",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "liǎnsè",
+      "context": "他身材很高大；靑白臉色，皺紋間時常夾些傷痕；一部亂蓬蓬的花白的鬍子。"
+    },
+    {
+      "lemma": "笑聲",
+      "answer": "笑聲",
+      "prompt": "laughter, sound of laughing",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xiàoshēng",
+      "context": "有幾回，鄰舍孩子聽得笑聲，也趕熱鬧，圍住了孔乙己。"
+    },
+    {
+      "lemma": "穿",
+      "answer": "穿",
+      "prompt": "to wear",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "chuān",
+      "context": "只有穿長衫的，纔踱進店面隔壁的房子裏，要酒要菜，慢慢地坐喝。"
+    },
+    {
+      "lemma": "笑",
+      "answer": "笑",
+      "prompt": "to laugh",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "xiào",
+      "context": "纔可以笑幾聲"
+    },
+    {
+      "lemma": "現錢",
+      "answer": "現錢",
+      "prompt": "cash on hand, ready money",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xiànqián",
+      "context": "雖然間或沒有現錢"
+    },
+    {
+      "lemma": "教人",
+      "answer": "教人",
+      "prompt": "to make people feel",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jiàorén",
+      "context": "一副凶臉孔，主顧也沒有好聲氣，教人活潑不得；只有孔乙己到店，"
+    },
+    {
+      "lemma": "年關",
+      "answer": "年關",
+      "prompt": "year-end, end of the year",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "niánguān",
+      "context": "到了年關，掌櫃取下粉板說：『孔乙己還欠十九個錢呢！』"
+    },
+    {
+      "lemma": "門檻",
+      "answer": "門檻",
+      "prompt": "threshold, doorsill",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "ménkǎn",
+      "context": "站起來向外一望，那孔乙己便在櫃臺下對了門檻坐着。"
+    },
+    {
+      "lemma": "跌",
+      "answer": "跌",
+      "prompt": "to fall",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "diē",
+      "context": "孔乙己低聲說道：『跌斷，跌，跌……』他的眼色，很像懇求掌櫃，不要再提。"
+    },
+    {
+      "lemma": "嚷道",
+      "answer": "嚷道",
+      "prompt": "to shout, to cry out",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "rǎngdào",
+      "context": "他們又故意的高聲嚷道：『你一定又偸了人家的東西了！』"
+    },
+    {
+      "lemma": "整天",
+      "answer": "整天",
+      "prompt": "all day long, the whole day",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "zhěngtiān",
+      "context": "我從此便整天的站在櫃臺裏，專管我的職務。"
+    },
+    {
+      "lemma": "作品",
+      "answer": "作品",
+      "prompt": "work, piece of writing",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zuòpǐn",
+      "context": "（一九一九年三月。）PublicdomainPublicdomainfalsefalse本作品現時在兩岸因著作權保護期屆滿而屬於公有領域。"
+    },
+    {
+      "lemma": "內外",
+      "answer": "內外",
+      "prompt": "inside and outside",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "nèiwài",
+      "context": "店內外充滿了快活的空氣。"
+    },
+    {
+      "lemma": "讀",
+      "answer": "讀",
+      "prompt": "to read, to study",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "dú",
+      "context": "孔乙己原來也讀過書"
+    },
+    {
+      "lemma": "葷菜",
+      "answer": "葷菜",
+      "prompt": "meat dish",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "hūncài",
+      "context": "那就能買一樣葷菜"
+    }
+  ],
+  "skipped": [],
+  "rejected": [
+    {
+      "lemma": "淸",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer '清' does not contain the lemma '淸' [type=value_error, input_value={'lemma': '淸', 'answer'...', 'reading': 'qīng'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "温",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer '溫' does not contain the lemma '温' [type=value_error, input_value={'lemma': '温', 'answer'...』', 'reading': 'wēn'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "温酒",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer '溫酒' does not contain the lemma '温酒' [type=value_error, input_value={'lemma': '温酒', 'answ..., 'reading': 'wēnjiǔ'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "記着",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer '記著' does not contain the lemma '記着' [type=value_error, input_value={'lemma': '記着', 'answ...', 'reading': 'jìzhù'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "权法",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer '著作權法' does not contain the lemma '权法' [type=value_error, input_value={'lemma': '权法', 'answ...ng': 'zhùzuòquánfǎ'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "回字",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer '回' does not contain the lemma '回字' [type=value_error, input_value={'lemma': '回字', 'answ...』', 'reading': 'huí'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    }
+  ],
+  "version": "v6",
+  "commit": "d8d9cd22",
+  "text": "zh-fiction",
+  "language": "zh",
+  "run": 2
+}

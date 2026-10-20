@@ -6,6 +6,8 @@ import type {
   CourseRecord,
   CreateLevelInput,
   Dashboard,
+  Draft,
+  Extraction,
   ItemInput,
   LevelRecord,
   Me,
@@ -14,7 +16,9 @@ import type {
   SessionMode,
   SessionPayload,
   SignUpRequest,
+  StartExtractionInput,
   UpdateCourseInput,
+  UpdateDraftInput,
   UpdateItemInput,
   UpdateLevelInput,
 } from "./types";
@@ -82,4 +86,16 @@ export const api = {
   updateItem: (itemId: string, body: UpdateItemInput) =>
     request<CourseItem>(`/api/items/${itemId}`, { method: "PATCH", body }),
   deleteItem: (itemId: string) => request<void>(`/api/items/${itemId}`, { method: "DELETE" }),
+
+  articleSupport: (lang: string) =>
+    request<{ supported: boolean }>(`/api/extractions/languages/${encodeURIComponent(lang)}`),
+  startExtraction: (levelId: string, body: StartExtractionInput) =>
+    request<Extraction>(`/api/levels/${levelId}/extractions`, { method: "POST", body }),
+  extraction: (extractionId: string) => request<Extraction>(`/api/extractions/${extractionId}`),
+  updateDraft: (extractionId: string, draftId: string, body: UpdateDraftInput) =>
+    request<Draft>(`/api/extractions/${extractionId}/items/${draftId}`, { method: "PATCH", body }),
+  discardExtraction: (extractionId: string) =>
+    request<Extraction>(`/api/extractions/${extractionId}/discard`, { method: "POST" }),
+  importExtraction: (extractionId: string, levelId: string, draftIds: string[]) =>
+    request<CourseItem[]>(`/api/extractions/${extractionId}/import`, { method: "POST", body: { levelId, draftIds } }),
 };

@@ -1,3 +1,4 @@
+import { SpeakButton } from "@/components/ui/SpeakButton";
 import type { ReviewResult } from "@/lib/client/types";
 
 type Props = {
@@ -28,7 +29,10 @@ export function FeedbackBar({ result, picked, lang, onContinue }: Props) {
     <div role="status" className={`animate-rise fixed inset-x-0 bottom-0 ${TONES[result.verdict]}`}>
       <div className="mx-auto flex max-w-3xl flex-col gap-3 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 sm:flex-row sm:items-center sm:gap-4 sm:py-5">
         <div className="min-w-0 flex-1 break-words">
-          <p className="text-xl font-extrabold">{COPY[result.verdict]}</p>
+          <div className="flex items-center gap-1">
+            <p className="text-xl font-extrabold">{COPY[result.verdict]}</p>
+            <SpeakButton text={result.correctAnswer} lang={lang} />
+          </div>
           {showAnswer ? (
             <p className="mt-1">
               Answer:{" "}

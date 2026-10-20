@@ -1,3 +1,4 @@
+import { SpeakButton } from "@/components/ui/SpeakButton";
 import type { SessionStep } from "@/lib/client/types";
 import { GrowthMeter } from "./GrowthMeter";
 
@@ -18,9 +19,12 @@ export function IntroCard({ step, lang, steps, onContinue }: Props) {
       <p dir="auto" className="mt-4 break-words text-xl text-ink/70 sm:mt-6 sm:text-2xl">
         {step.prompt}
       </p>
-      <p dir="auto" lang={lang} className="mt-3 max-w-full break-words text-4xl font-extrabold leading-tight sm:text-6xl">
-        {step.answer}
-      </p>
+      <div className="mt-3 flex max-w-full items-center justify-center gap-2">
+        <p dir="auto" lang={lang} className="min-w-0 break-words text-4xl font-extrabold leading-tight sm:text-6xl">
+          {step.answer}
+        </p>
+        <SpeakButton text={step.answer} lang={lang} className="text-ink/60" />
+      </div>
       {step.reading ? (
         <p lang={lang} className="mt-2 text-xl text-ink/60">
           {step.reading}

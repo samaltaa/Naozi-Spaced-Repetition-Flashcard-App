@@ -1,0 +1,186 @@
+name: recipe-01
+language: es
+notes: ''
+required: []
+optional:
+- answer: el azúcar
+  prompt:
+  - sugar
+- answer: el churro
+  prompt:
+  - churro (fried dough pastry)
+- answer: la taza
+  prompt:
+  - cup
+- answer: colocar
+  prompt:
+  - to place, to put
+- answer: la canela
+  prompt:
+  - cinnamon
+- answer: el sirope
+  prompt:
+  - syrup
+- answer: la cucharadita
+  prompt:
+  - teaspoon
+- answer: el aceite
+  prompt:
+  - oil
+- answer: la cucharada
+  prompt:
+  - tablespoon
+- answer: la masa
+  prompt:
+  - dough
+- answer: la vainilla
+  prompt:
+  - vanilla
+- answer: la olla
+  prompt:
+  - pot, saucepan
+- answer: la mezcla
+  prompt:
+  - mixture, mix
+- answer: pastelero
+  prompt:
+  - pastry (used in cooking contexts, e.g. piping bag)
+- answer: el plato
+  prompt:
+  - plate, dish
+- answer: la pizca
+  prompt:
+  - pinch (of a spice or seasoning)
+- answer: el fuego
+  prompt:
+  - fire; heat (on a stove)
+- answer: la sal
+  prompt:
+  - salt
+- answer: calentar
+  prompt:
+  - to heat up, to warm up
+- answer: mezclar
+  prompt:
+  - to mix
+- answer: el cacao
+  prompt:
+  - cocoa, cacao
+- answer: la mantequilla
+  prompt:
+  - butter
+- answer: el agua
+  prompt:
+  - water
+- answer: el trigo
+  prompt:
+  - wheat
+- answer: la harina
+  prompt:
+  - flour
+- answer: agregar
+  prompt:
+  - to add
+- answer: la salsa
+  prompt:
+  - sauce
+- answer: la manga
+  prompt:
+  - piping bag (manga pastelera)
+- answer: el chocolate
+  prompt:
+  - chocolate
+- answer: el polvo
+  prompt:
+  - powder
+- answer: el huevo
+  prompt:
+  - egg
+- answer: salpicar
+  prompt:
+  - to splatter, to splash
+- answer: escurrir
+  prompt:
+  - to drain, to drip dry
+- answer: servir
+  prompt:
+  - to serve
+- answer: caliente
+  prompt:
+  - hot, warm
+- answer: la batidora
+  prompt:
+  - electric mixer, blender
+- answer: adherirse
+  prompt:
+  - to stick, to adhere
+- answer: el minuto
+  prompt:
+  - minute
+- answer: el caldero
+  prompt:
+  - pot, cauldron
+- answer: eléctrico
+  prompt:
+  - electric
+- answer: dejar
+  prompt:
+  - to let, to leave (something)
+- answer: la boquilla
+  prompt:
+  - nozzle, tip (for a piping bag)
+- answer: listo
+  prompt:
+  - ready
+- answer: freír
+  prompt:
+  - to fry
+- answer: lleno
+  prompt:
+  - full
+- answer: molido
+  prompt:
+  - ground, ground up
+- answer: enfriar
+  prompt:
+  - to cool, to cool down
+- answer: tibio
+  prompt:
+  - warm, lukewarm
+- answer: despegarse
+  prompt:
+  - to come off, to detach
+- answer: el ingrediente
+  prompt:
+  - ingredient
+- answer: el bol
+  prompt:
+  - bowl
+- answer: hondo
+  prompt:
+  - deep
+- answer: recomendarse
+  prompt:
+  - to be recommended
+- answer: la toalla
+  prompt:
+  - towel
+- answer: el disfrute
+  prompt:
+  - enjoyment, pleasure
+- answer: desear
+  prompt:
+  - to want, to wish
+- answer: retirar
+  prompt:
+  - to remove, to take off
+- answer: cocinar
+  prompt:
+  - to cook
+- answer: la grasa
+  prompt:
+  - fat, grease
+- answer: la esencia
+  prompt:
+  - essence, extract
+forbidden: []

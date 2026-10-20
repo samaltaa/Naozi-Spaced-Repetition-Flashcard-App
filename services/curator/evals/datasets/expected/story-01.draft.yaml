@@ -1,0 +1,186 @@
+name: story-01
+language: es
+notes: ''
+required: []
+optional:
+- answer: querer
+  prompt:
+  - to want
+- answer: levantarse
+  prompt:
+  - to get up
+- answer: la mirada
+  prompt:
+  - look, gaze
+- answer: volver
+  prompt:
+  - to return, to go back
+- answer: despertar
+  prompt:
+  - to daydream, to be wide awake dreaming
+- answer: sonrojarse
+  prompt:
+  - to blush
+- answer: reconvertir
+  prompt:
+  - to convert, to repurpose
+- answer: el polluelo
+  prompt:
+  - chick (baby bird)
+- answer: los borbotones
+  prompt:
+  - gushes, bursts (a borbotones = pouring out)
+- answer: acoplarse
+  prompt:
+  - to fit together, to connect
+- answer: el puzle
+  prompt:
+  - puzzle, jigsaw puzzle
+- answer: canoso
+  prompt:
+  - grey-haired, white-haired
+- answer: la alegría
+  prompt:
+  - joy, happiness
+- answer: categórico
+  prompt:
+  - categorical, unequivocal
+- answer: la pisada
+  prompt:
+  - footstep
+- answer: coquetear
+  prompt:
+  - to flirt
+- answer: la vorágine
+  prompt:
+  - whirlpool, vortex; frantic rush
+- answer: la quietud
+  prompt:
+  - stillness, quietness
+- answer: flotar
+  prompt:
+  - to float
+- answer: la hamaca
+  prompt:
+  - hammock
+- answer: la mano
+  prompt:
+  - hand
+- answer: parecer
+  prompt:
+  - to seem, to look like
+- answer: modular
+  prompt:
+  - to adjust, to shape (one's life)
+- answer: la tez
+  prompt:
+  - complexion, skin tone
+- answer: el regazo
+  prompt:
+  - lap
+- answer: las cuestas
+  prompt:
+  - on one's back, as a burden (a cuestas)
+- answer: el paño
+  prompt:
+  - cloth; (paños calientes) half measures, kid gloves
+- answer: tender
+  prompt:
+  - to extend, to hold out (one's hand)
+- answer: tímido
+  prompt:
+  - shy, timid
+- answer: acoger
+  prompt:
+  - to take in, to welcome
+- answer: abrazar
+  prompt:
+  - to hug, to embrace
+- answer: tragar
+  prompt:
+  - 'to swallow (here: to hold back, to suppress)'
+- answer: pronunciar
+  prompt:
+  - to say, to utter
+- answer: desviar
+  prompt:
+  - to avert, to turn away (one's gaze)
+- answer: el aire
+  prompt:
+  - 'air; breath (coger aire: to take a breath)'
+- answer: buscar
+  prompt:
+  - to look for, to seek
+- answer: interminable
+  prompt:
+  - endless, never-ending
+- answer: pequeño
+  prompt:
+  - small, little
+- answer: combinar
+  prompt:
+  - to match, to go well together
+- answer: el labio
+  prompt:
+  - lip
+- answer: el garaje
+  prompt:
+  - garage
+- answer: sugerir
+  prompt:
+  - to suggest
+- answer: la terraza
+  prompt:
+  - terrace, patio
+- answer: el armario
+  prompt:
+  - wardrobe, cupboard
+- answer: callarse
+  prompt:
+  - to stay quiet, to say nothing
+- answer: reaccionar
+  prompt:
+  - to react
+- answer: la vista
+  prompt:
+  - 'gaze, eyes (in the expression levantar la vista: to look up)'
+- answer: creativo
+  prompt:
+  - creative
+- answer: el nido
+  prompt:
+  - nest
+- answer: soñar
+  prompt:
+  - to dream
+- answer: fuerte
+  prompt:
+  - strong
+- answer: ponerse
+  prompt:
+  - to put on (clothing)
+- answer: faltar
+  prompt:
+  - to lack, to be missing
+- answer: ordenar
+  prompt:
+  - to tidy, to organize
+- answer: romántico
+  prompt:
+  - romantic
+- answer: la densidad
+  prompt:
+  - density
+- answer: sostener
+  prompt:
+  - to hold, to support
+- answer: el ejemplar
+  prompt:
+  - copy (of a book)
+- answer: necesitar
+  prompt:
+  - to need
+- answer: explotar
+  prompt:
+  - to explode, to blow up
+forbidden: []

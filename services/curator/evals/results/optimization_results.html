@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curator Optimization Results</title>
+<style>
+  :root {
+    --ink: #1f2a37;
+    --ink-soft: #4b5563;
+    --ink-faint: #9ca3af;
+    --paper: #f7f6f2;
+    --card: #ffffff;
+    --line: #e5e7eb;
+    --grid: #eef0f2;
+    --sonnet: #c2410c;
+    --sonnet-soft: #fdba74;
+    --haiku: #15803d;
+    --haiku-soft: #86efac;
+    --cache: #2563eb;
+    --cache-soft: #93c5fd;
+    --stress: #7c3aed;
+    --accent: #0f766e;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  main {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 40px 20px 64px;
+  }
+
+  /* Header */
+
+  header.page {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+
+  .eyebrow {
+    margin: 0 0 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -.01em;
+  }
+
+  .lede {
+    margin: 10px 0 0;
+    max-width: 720px;
+    color: var(--ink-soft);
+    font-size: 16px;
+  }
+
+  h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+  }
+
+  .sub {
+    margin: 0 0 18px;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+
+  section { margin-top: 28px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 22px 18px;
+    break-inside: avoid;
+  }
+
+  /* Headline numbers */
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .kpi {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px 16px 14px;
+    break-inside: avoid;
+  }
+
+  .kpi .label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--ink-soft);
+  }
+
+  .kpi .value {
+    margin-top: 6px;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--haiku);
+  }
+
+  .kpi .detail {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .kpi .detail s { color: var(--ink-faint); }
+
+  /* Bar charts */
+
+  .chart {
+    --height: 260px;
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    gap: 0 10px;
+  }
+
+  .y-axis {
+    position: relative;
+    height: var(--height);
+  }
+
+  .y-axis span {
+    position: absolute;
+    right: 0;
+    transform: translateY(50%);
+    font-size: 11px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  .plot {
+    position: relative;
+    height: var(--height);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 12px;
+    padding: 0 8px;
+    border-bottom: 2px solid var(--ink);
+    background-image: linear-gradient(to top, var(--grid) 1px, transparent 1px);
+    background-size: 100% 25%;
+  }
+
+  .plot.decades { background-size: 100% 25%; }
+
+  .group {
+    flex: 1 1 0;
+    max-width: 150px;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .bar {
+    position: relative;
+    flex: 1 1 0;
+    max-width: 64px;
+    height: max(var(--h), 3px);
+    border-radius: 6px 6px 0 0;
+    background: var(--c, var(--ink));
+  }
+
+  .bar.zero {
+    height: 3px;
+    background: repeating-linear-gradient(90deg, var(--c) 0 4px, transparent 4px 7px);
+  }
+
+  .bar .val {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    color: var(--ink);
+  }
+
+  .bar.stack {
+    display: flex;
+    flex-direction: column-reverse;
+    background: none;
+    height: var(--h);
+  }
+
+  .bar.stack .seg { width: 100%; }
+  .bar.stack .seg:last-of-type { border-radius: 6px 6px 0 0; }
+
+  .x-axis {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-around;
+    gap: 12px;
+    padding: 8px 8px 0;
+  }
+
+  .x-axis div {
+    flex: 1 1 0;
+    max-width: 150px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--ink-soft);
+  }
+
+  .x-axis b {
+    display: block;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .legend span::before {
+    content: "";
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin-right: 6px;
+    border-radius: 3px;
+    vertical-align: -1px;
+    background: var(--c);
+  }
+
+  .note {
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .two {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .three {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .mini .chart { --height: 170px; grid-template-columns: 44px 1fr; }
+  .mini h3 { margin: 0 0 2px; font-size: 15px; }
+  .mini .sub { margin-bottom: 14px; font-size: 13px; }
+
+  .saving {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    background: #dcfce7;
+    color: var(--haiku);
+    font-size: 12px;
+    font-weight: 800;
+  }
+
+  /* Versions */
+
+  .timeline {
+    display: grid;
+    gap: 12px;
+  }
+
+  .version {
+    display: grid;
+    grid-template-columns: 92px 1fr auto;
+    gap: 16px;
+    align-items: start;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--c);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    break-inside: avoid;
+  }
+
+  .version .tag {
+    font-weight: 800;
+    font-size: 15px;
+  }
+
+  .version .tag small {
+    display: block;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .version ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+
+  .version .cost {
+    text-align: right;
+    font-weight: 800;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .version .cost small {
+    display: block;
+    font-weight: 600;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  /* Tables */
+
+  .table-wrap { overflow-x: auto; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  th, td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--line);
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  th:first-child, td:first-child,
+  th:nth-child(2), td:nth-child(2) { text-align: left; }
+
+  thead th {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--ink-soft);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  tbody tr.highlight td { background: #f0fdf4; font-weight: 700; }
+
+  .pill {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    background: var(--c);
+  }
+
+  footer {
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  footer p { margin: 4px 0; }
+
+  /* Small screens */
+
+  @media (max-width: 760px) {
+    .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .two, .three { grid-template-columns: 1fr; }
+    .version { grid-template-columns: 1fr; }
+    .version .cost { text-align: left; }
+    h1 { font-size: 26px; }
+  }
+
+  /* Print */
+
+  @page {
+    size: A4;
+    margin: 14mm 12mm;
+  }
+
+  @media print {
+    body { background: #fff; font-size: 13px; }
+    main { max-width: none; padding: 0; }
+    .card, .kpi, .version { border-color: #d1d5db; }
+    section { break-inside: avoid; }
+    section.page-break { break-before: page; }
+    .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header class="page">
+    <p class="eyebrow">Naozi · Curator service · October 2026</p>
+    <h1>Article-to-vocabulary extraction: optimization results</h1>
+    <p class="lede">
+      Cost and token usage of turning one article into roughly 55 vocabulary items, across every prompt version.
+      The benchmark is the Spanish Wikipedia article <em>Doctrina Dahiya</em>, which was run at prompt v1, v3 and v4.
+      All numbers come from the token counts the API reported for each job.
+    </p>
+  </header>
+
+  <!-- Headline numbers -->
+
+  <section class="kpis">
+    <div class="kpi">
+      <div class="label">Cost per article</div>
+      <div class="value">−99.4%</div>
+      <div class="detail"><s>$0.2086</s> → <b>$0.0012</b><br>167× cheaper</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Output tokens</div>
+      <div class="value">−86.4%</div>
+      <div class="detail"><s>9,653</s> → <b>1,309</b> per article</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Total tokens</div>
+      <div class="value">−76.7%</div>
+      <div class="detail"><s>30,925</s> → <b>7,219</b> per article</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Repeat article</div>
+      <div class="value">$0</div>
+      <div class="detail">All 60 words served from the shared word cache</div>
+    </div>
+  </section>
+
+  <!-- Cost per article -->
+
+  <section>
+    <div class="two">
+      <div class="card">
+        <h2>Cost per article</h2>
+        <p class="sub">Doctrina Dahiya, linear scale</p>
+        <div class="chart">
+          <div class="y-axis">
+            <span style="bottom:100%">$0.25</span>
+            <span style="bottom:75%">$0.1875</span>
+            <span style="bottom:50%">$0.125</span>
+            <span style="bottom:25%">$0.0625</span>
+            <span style="bottom:0%">$0</span>
+          </div>
+          <div class="plot">
+            <div class="group"><div class="bar" style="--h:83.4%; --c:var(--sonnet)"><span class="val">$0.2086</span></div></div>
+            <div class="group"><div class="bar" style="--h:11.3%; --c:var(--sonnet)"><span class="val">$0.0282</span></div></div>
+            <div class="group"><div class="bar" style="--h:0.5%; --c:var(--haiku)"><span class="val">$0.0012</span></div></div>
+            <div class="group"><div class="bar zero" style="--c:var(--cache)"><span class="val">$0</span></div></div>
+          </div>
+          <div class="x-axis">
+            <div><b>v1</b>Sonnet 4.6</div>
+            <div><b>v3</b>Sonnet 4.6</div>
+            <div><b>v4</b>Haiku 5.5</div>
+            <div><b>v4 repeat</b>cached</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Cost per article, log scale</h2>
+        <p class="sub">Each gridline is 10× cheaper than the one above it</p>
+        <div class="chart">
+          <div class="y-axis">
+            <span style="bottom:100%">$1</span>
+            <span style="bottom:75%">$0.10</span>
+            <span style="bottom:50%">$0.01</span>
+            <span style="bottom:25%">$0.001</span>
+            <span style="bottom:0%">$0.0001</span>
+          </div>
+          <div class="plot decades">
+            <div class="group"><div class="bar" style="--h:83.0%; --c:var(--sonnet)"><span class="val">$0.2086</span></div></div>
+            <div class="group"><div class="bar" style="--h:61.2%; --c:var(--sonnet)"><span class="val">$0.0282</span></div></div>
+            <div class="group"><div class="bar" style="--h:27.4%; --c:var(--haiku)"><span class="val">$0.0012</span></div></div>
+          </div>
+          <div class="x-axis">
+            <div><b>v1</b>Sonnet 4.6</div>
+            <div><b>v3</b>Sonnet 4.6</div>
+            <div><b>v4</b>Haiku 5.5</div>
+          </div>
+        </div>
+        <p class="note">v1 → v3: −86.5% (slimmer replies). v3 → v4: −95.6% (model switch).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tokens -->
+
+  <section>
+    <div class="two">
+      <div class="card">
+        <h2>Tokens per article</h2>
+        <p class="sub">Input and output tokens, Doctrina Dahiya</p>
+        <div class="chart">
+          <div class="y-axis">
+            <span style="bottom:100%">25k</span>
+            <span style="bottom:75%">18.75k</span>
+            <span style="bottom:50%">12.5k</span>
+            <span style="bottom:25%">6.25k</span>
+            <span style="bottom:0%">0</span>
+          </div>
+          <div class="plot">
+            <div class="group">
+              <div class="bar" style="--h:85.1%; --c:var(--sonnet-soft)"><span class="val">21,272</span></div>
+              <div class="bar" style="--h:38.6%; --c:var(--sonnet)"><span class="val">9,653</span></div>
+            </div>
+            <div class="group">
+              <div class="bar" style="--h:16.6%; --c:var(--sonnet-soft)"><span class="val">4,151</span></div>
+              <div class="bar" style="--h:4.2%; --c:var(--sonnet)"><span class="val">1,048</span></div>
+            </div>
+            <div class="group">
+              <div class="bar" style="--h:23.6%; --c:var(--haiku-soft)"><span class="val">5,910</span></div>
+              <div class="bar" style="--h:5.2%; --c:var(--haiku)"><span class="val">1,309</span></div>
+            </div>
+          </div>
+          <div class="x-axis">
+            <div><b>v1</b>54 words</div>
+            <div><b>v3</b>56 words</div>
+            <div><b>v4</b>55 words</div>
+          </div>
+        </div>
+        <div class="legend">
+          <span style="--c:var(--sonnet-soft)">Input (Sonnet)</span>
+          <span style="--c:var(--sonnet)">Output (Sonnet)</span>
+          <span style="--c:var(--haiku-soft)">Input (Haiku)</span>
+          <span style="--c:var(--haiku)">Output (Haiku)</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Tokens per word</h2>
+        <p class="sub">Tokens spent per vocabulary item produced, input and output stacked</p>
+        <div class="chart">
+          <div class="y-axis">
+            <span style="bottom:100%">600</span>
+            <span style="bottom:75%">450</span>
+            <span style="bottom:50%">300</span>
+            <span style="bottom:25%">150</span>
+            <span style="bottom:0%">0</span>
+          </div>
+          <div class="plot">
+            <div class="group">
+              <div class="bar stack" style="--h:95.5%">
+                <span class="val">573</span>
+                <div class="seg" style="height:68.8%; background:var(--sonnet-soft)"></div>
+                <div class="seg" style="height:31.2%; background:var(--sonnet)"></div>
+              </div>
+            </div>
+            <div class="group">
+              <div class="bar stack" style="--h:15.5%">
+                <span class="val">93</span>
+                <div class="seg" style="height:79.8%; background:var(--sonnet-soft)"></div>
+                <div class="seg" style="height:20.2%; background:var(--sonnet)"></div>
+              </div>
+            </div>
+            <div class="group">
+              <div class="bar stack" style="--h:21.9%">
+                <span class="val">131</span>
+                <div class="seg" style="height:81.9%; background:var(--haiku-soft)"></div>
+                <div class="seg" style="height:18.1%; background:var(--haiku)"></div>
+              </div>
+            </div>
+          </div>
+          <div class="x-axis">
+            <div><b>v1</b>394 in · 179 out</div>
+            <div><b>v3</b>74 in · 19 out</div>
+            <div><b>v4</b>107 in · 24 out</div>
+          </div>
+        </div>
+        <p class="note">
+          v4 uses about 40% more tokens than v3: its prompt is longer (rules for the shared cache), and Haiku counts the same text as more tokens.
+          Each Haiku token costs a thirtieth of a Sonnet token, so the bill still fell 96%.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cache -->
+
+  <section class="page-break">
+    <div class="card">
+      <h2>Shared word cache: cost of running an article again</h2>
+      <p class="sub">Translations are saved per word and reused for every user and article, so a rerun only pays for words not seen before</p>
+      <div class="three mini">
+        <div>
+          <h3>Política de etiqueta de precios</h3>
+          <p class="sub">Spanish · Sonnet 4.6 · prompt v2 · 58 of 60 words cached</p>
+          <div class="chart">
+            <div class="y-axis">
+              <span style="bottom:100%">$0.03</span>
+              <span style="bottom:50%">$0.015</span>
+              <span style="bottom:0%">$0</span>
+            </div>
+            <div class="plot">
+              <div class="group"><div class="bar" style="--h:92.1%; --c:var(--sonnet)"><span class="val">$0.0276</span></div></div>
+              <div class="group"><div class="bar" style="--h:15.9%; --c:var(--cache)"><span class="val">$0.0048</span></div></div>
+            </div>
+            <div class="x-axis"><div><b>First run</b></div><div><b>Rerun</b></div></div>
+          </div>
+          <span class="saving">−82.7%</span>
+        </div>
+        <div>
+          <h3>Doctrina Dahiya</h3>
+          <p class="sub">Spanish · Haiku 5.5 · prompt v4 · 60 of 60 words cached</p>
+          <div class="chart">
+            <div class="y-axis">
+              <span style="bottom:100%">$0.0015</span>
+              <span style="bottom:50%">$0.00075</span>
+              <span style="bottom:0%">$0</span>
+            </div>
+            <div class="plot">
+              <div class="group"><div class="bar" style="--h:83.1%; --c:var(--haiku)"><span class="val">$0.0012</span></div></div>
+              <div class="group"><div class="bar zero" style="--c:var(--cache)"><span class="val">$0</span></div></div>
+            </div>
+            <div class="x-axis"><div><b>First run</b></div><div><b>Rerun</b></div></div>
+          </div>
+          <span class="saving">−100%</span>
+        </div>
+        <div>
+          <h3>数学 (Mathematics)</h3>
+          <p class="sub">Chinese · Haiku 5.5 · prompt v6 · 45 of 60 words cached</p>
+          <div class="chart">
+            <div class="y-axis">
+              <span style="bottom:100%">$0.001</span>
+              <span style="bottom:50%">$0.0005</span>
+              <span style="bottom:0%">$0</span>
+            </div>
+            <div class="plot">
+              <div class="group"><div class="bar" style="--h:92.3%; --c:var(--haiku)"><span class="val">$0.00092</span></div></div>
+              <div class="group"><div class="bar" style="--h:42.3%; --c:var(--cache)"><span class="val">$0.00042</span></div></div>
+            </div>
+            <div class="x-axis"><div><b>First run</b></div><div><b>Rerun</b></div></div>
+          </div>
+          <span class="saving">−54.2%</span>
+        </div>
+      </div>
+      <p class="note">
+        A rerun still sends the instructions once, so a nearly fully cached article costs a little rather than nothing.
+        The Chinese rerun came after a tokenizer change that produced 15 new word keys.
+      </p>
+    </div>
+  </section>
+
+  <!-- Languages -->
+
+  <section>
+    <div class="card">
+      <h2>Cost per article by language</h2>
+      <p class="sub">Haiku 5.5 on the language-agnostic prompt (v4–v6). Russian with stress marks adds a Sonnet 4.6 pass for readings.</p>
+      <div class="chart" style="--height:240px">
+        <div class="y-axis">
+          <span style="bottom:100%">$0.016</span>
+          <span style="bottom:75%">$0.012</span>
+          <span style="bottom:50%">$0.008</span>
+          <span style="bottom:25%">$0.004</span>
+          <span style="bottom:0%">$0</span>
+        </div>
+        <div class="plot">
+          <div class="group"><div class="bar" style="--h:7.8%; --c:var(--haiku)"><span class="val">$0.0012</span></div></div>
+          <div class="group"><div class="bar" style="--h:6.9%; --c:var(--haiku)"><span class="val">$0.0011</span></div></div>
+          <div class="group"><div class="bar" style="--h:7.9%; --c:var(--haiku)"><span class="val">$0.0013</span></div></div>
+          <div class="group"><div class="bar" style="--h:7.9%; --c:var(--haiku)"><span class="val">$0.0013</span></div></div>
+          <div class="group">
+            <div class="bar stack" style="--h:94.8%">
+              <span class="val">$0.0152</span>
+              <div class="seg" style="height:7.4%; background:var(--haiku)"></div>
+              <div class="seg" style="height:92.6%; background:var(--stress)"></div>
+            </div>
+          </div>
+        </div>
+        <div class="x-axis">
+          <div><b>Spanish</b>Dahiya · 55 words</div>
+          <div><b>English</b>Sourdough · 57 words</div>
+          <div><b>Russian</b>Dahiya · 51 words</div>
+          <div><b>Chinese</b>Geometry · 46 words</div>
+          <div><b>Russian + stress</b>Dahiya · 50 words</div>
+        </div>
+      </div>
+      <div class="legend">
+        <span style="--c:var(--haiku)">Haiku 5.5 translation</span>
+        <span style="--c:var(--stress)">Sonnet 4.6 stress readings</span>
+      </div>
+      <p class="note">
+        Chinese pinyin is generated in code, so it costs nothing. Russian stress marks cost about 12× as much as the translation itself,
+        but each word is marked only once and then cached.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projection -->
+
+  <section>
+    <div class="card">
+      <h2>Projected cost per 1,000 articles</h2>
+      <p class="sub">First-run cost multiplied out, before any cache savings</p>
+      <div class="chart" style="--height:220px">
+        <div class="y-axis">
+          <span style="bottom:100%">$250</span>
+          <span style="bottom:75%">$187.50</span>
+          <span style="bottom:50%">$125</span>
+          <span style="bottom:25%">$62.50</span>
+          <span style="bottom:0%">$0</span>
+        </div>
+        <div class="plot">
+          <div class="group"><div class="bar" style="--h:83.4%; --c:var(--sonnet)"><span class="val">$208.61</span></div></div>
+          <div class="group"><div class="bar" style="--h:11.3%; --c:var(--sonnet)"><span class="val">$28.17</span></div></div>
+          <div class="group"><div class="bar" style="--h:0.5%; --c:var(--haiku)"><span class="val">$1.25</span></div></div>
+          <div class="group"><div class="bar" style="--h:6.1%; --c:var(--stress)"><span class="val">$15.17</span></div></div>
+        </div>
+        <div class="x-axis">
+          <div><b>v1</b>Sonnet 4.6</div>
+          <div><b>v3</b>Sonnet 4.6</div>
+          <div><b>v4–v6</b>Haiku 5.5</div>
+          <div><b>v6 Russian</b>with stress pass</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Versions -->
+
+  <section class="page-break">
+    <h2>What changed in each version</h2>
+    <p class="sub">Cost is per article on the benchmark text unless noted</p>
+    <div class="timeline">
+      <div class="version" style="--c:var(--sonnet)">
+        <div class="tag">v1<small>Baseline</small></div>
+        <ul>
+          <li>Sonnet 4.6 wrote every field of every item: prompt, answer, alternates, context sentence and notes.</li>
+          <li>Cache keyed on the whole article, so any other article paid full price.</li>
+        </ul>
+        <div class="cost">$0.2086<small>21,272 in · 9,653 out</small></div>
+      </div>
+      <div class="version" style="--c:var(--sonnet)">
+        <div class="tag">v2<small>Slim replies</small></div>
+        <ul>
+          <li>Model replies only with <code>{id, gloss, form?, alternates?, skip?}</code>; code builds the citation form, article and context.</li>
+          <li>Compact JSON input; empty sentences left out.</li>
+          <li>Shared word-level translation cache replaced the per-article cache.</li>
+        </ul>
+        <div class="cost">$0.0276<small>Etiqueta article · 3,592 in · 1,124 out</small></div>
+      </div>
+      <div class="version" style="--c:var(--sonnet)">
+        <div class="tag">v3<small>Fewer rejects</small></div>
+        <ul>
+          <li>Words are no longer rejected for a missing sentence; a window around the word is used instead.</li>
+          <li>English words filtered before the model call; same-spelling words cached as skips.</li>
+        </ul>
+        <div class="cost">$0.0282<small>4,151 in · 1,048 out</small></div>
+      </div>
+      <div class="version" style="--c:var(--haiku)">
+        <div class="tag">v4<small>Model switch</small></div>
+        <ul>
+          <li>Haiku 5.5 as the main model, with automatic fallback to Sonnet 4.6 if a batch fails.</li>
+          <li>Prompt rewritten for the shared cache: general dictionary meaning, at most two senses.</li>
+        </ul>
+        <div class="cost">$0.0012<small>5,910 in · 1,309 out</small></div>
+      </div>
+      <div class="version" style="--c:var(--haiku)">
+        <div class="tag">v5<small>Any language</small></div>
+        <ul>
+          <li>Language profiles for Spanish, English, Russian and a generic fallback for any spaCy language.</li>
+          <li>Prompt no longer assumes the learner speaks English.</li>
+        </ul>
+        <div class="cost">$0.0013<small>Russian · 5,146 in · 1,500 out</small></div>
+      </div>
+      <div class="version" style="--c:var(--stress)">
+        <div class="tag">v6<small>Readings</small></div>
+        <ul>
+          <li>Russian stress marks moved to a separate Sonnet 4.6 pass, sent only multi-syllable words.</li>
+          <li>Chinese support with pinyin generated in code, and traditional text parsed as simplified.</li>
+        </ul>
+        <div class="cost">$0.0013<small>Chinese · 5,089 in · 1,506 out</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Job log -->
+
+  <section>
+    <div class="card">
+      <h2>Every extraction job</h2>
+      <p class="sub">From <code>curator.extraction_jobs</code>, oldest first</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Article</th>
+              <th>Prompt</th>
+              <th>Model</th>
+              <th>Cached</th>
+              <th>Words</th>
+              <th>Input</th>
+              <th>Output</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Oct 8</td><td>Doctrina Dahiya (es)</td><td>v1</td><td><span class="pill" style="--c:var(--sonnet)">Sonnet 4.6</span></td><td>0</td><td>54</td><td>21,272</td><td>9,653</td><td>$0.208611</td></tr>
+            <tr><td>Oct 16</td><td>Etiqueta de precios (es)</td><td>v2</td><td><span class="pill" style="--c:var(--sonnet)">Sonnet 4.6</span></td><td>0</td><td>36</td><td>3,592</td><td>1,124</td><td>$0.027636</td></tr>
+            <tr><td>Oct 16</td><td>Etiqueta de precios (es)</td><td>v2</td><td><span class="pill" style="--c:var(--sonnet)">Sonnet 4.6</span></td><td>58</td><td>36</td><td>1,344</td><td>50</td><td>$0.004782</td></tr>
+            <tr><td>Oct 16</td><td>Etiqueta de precios (es)</td><td>v3</td><td><span class="pill" style="--c:var(--sonnet)">Sonnet 4.6</span></td><td>0</td><td>58</td><td>4,170</td><td>1,053</td><td>$0.028305</td></tr>
+            <tr><td>Oct 16</td><td>Doctrina Dahiya (es)</td><td>v3</td><td><span class="pill" style="--c:var(--sonnet)">Sonnet 4.6</span></td><td>2</td><td>56</td><td>4,151</td><td>1,048</td><td>$0.028173</td></tr>
+            <tr class="highlight"><td>Oct 16</td><td>Doctrina Dahiya (es)</td><td>v4</td><td><span class="pill" style="--c:var(--haiku)">Haiku 5.5</span></td><td>0</td><td>55</td><td>5,910</td><td>1,309</td><td>$0.001246</td></tr>
+            <tr><td>Oct 16</td><td>Doctrina Dahiya (es)</td><td>v4</td><td><span class="pill" style="--c:var(--haiku)">Haiku 5.5</span></td><td>0</td><td>57</td><td>5,910</td><td>1,559</td><td>$0.001370</td></tr>
+            <tr class="highlight"><td>Oct 16</td><td>Doctrina Dahiya (es)</td><td>v4</td><td><span class="pill" style="--c:var(--cache)">Cache only</span></td><td>60</td><td>55</td><td>0</td><td>0</td><td>$0.000000</td></tr>
+            <tr><td>Oct 16</td><td>Доктрина Дахия (ru)</td><td>v5</td><td><span class="pill" style="--c:var(--haiku)">Haiku 5.5</span></td><td>0</td><td>51</td><td>5,146</td><td>1,500</td><td>$0.001265</td></tr>
+            <tr><td>Oct 16</td><td>Доктрина Дахия (ru)</td><td>v6</td><td><span class="pill" style="--c:var(--stress)">Haiku + Sonnet</span></td><td>0</td><td>50</td><td>6,412</td><td>1,908</td><td>$0.015170</td></tr>
+            <tr><td>Oct 16</td><td>幾何學 Geometry (zh)</td><td>v6</td><td><span class="pill" style="--c:var(--haiku)">Haiku 5.5</span></td><td>0</td><td>46</td><td>5,089</td><td>1,506</td><td>$0.001262</td></tr>
+            <tr><td>Oct 16</td><td>数学 Mathematics (zh)</td><td>v6</td><td><span class="pill" style="--c:var(--haiku)">Haiku 5.5</span></td><td>14</td><td>51</td><td>4,228</td><td>1,001</td><td>$0.000923</td></tr>
+            <tr><td>Oct 16</td><td>数学 Mathematics (zh)</td><td>v6</td><td><span class="pill" style="--c:var(--haiku)">Haiku 5.5</span></td><td>45</td><td>56</td><td>2,503</td><td>345</td><td>$0.000423</td></tr>
+            <tr><td>Oct 16</td><td>数学 Mathematics, zh-cn (zh)</td><td>v6</td><td><span class="pill" style="--c:var(--haiku)">Haiku 5.5</span></td><td>33</td><td>56</td><td>3,298</td><td>553</td><td>$0.000606</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">The two v4 Dahiya runs a few milliseconds apart were a double submit, since fixed. The English Sourdough figure in the language chart comes from a command-line test that was not saved to the database.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Pricing used</b> (US$ per million tokens, input / output): Sonnet 4.6 $3 / $15 · Haiku 5.5 $0.10 / $0.50.</p>
+    <p><b>Method</b>: token counts are the usage the API reported for each batch; cost is computed from those counts and the prices above. "Words" is the number of vocabulary items the job produced.</p>
+  </footer>
+
+</main>
+</body>
+</html>
