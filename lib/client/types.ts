@@ -1,15 +1,19 @@
+import type { Draft, DraftStatus, Extraction, ExtractionStatus } from "@/lib/services/curator";
 import type { ReviewResult, SessionPayload } from "@/lib/services/study";
 import type { Question, SessionStep, TestType, Verdict } from "@/lib/srs/types";
 import type {
   CreateLevelInput,
   ItemInput,
+  StartExtractionInput,
   UpdateCourseInput,
+  UpdateDraftInput,
   UpdateItemInput,
   UpdateLevelInput,
 } from "@/lib/validation";
 
 export type { Question, ReviewResult, SessionPayload, SessionStep, TestType, Verdict };
 export type { CreateLevelInput, ItemInput, UpdateCourseInput, UpdateItemInput, UpdateLevelInput };
+export type { Draft, DraftStatus, Extraction, ExtractionStatus, StartExtractionInput, UpdateDraftInput };
 
 // Sessions
 

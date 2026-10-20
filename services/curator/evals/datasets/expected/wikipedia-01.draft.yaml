@@ -1,0 +1,177 @@
+name: wikipedia-01
+language: es
+notes: ''
+required: []
+optional:
+- answer: la doctrina
+  prompt:
+  - doctrine
+- answer: la base
+  prompt:
+  - basis, base
+- answer: la fase
+  prompt:
+  - phase, stage
+- answer: ocurrir
+  prompt:
+  - to happen, to occur
+- answer: la aldea
+  prompt:
+  - village
+- answer: propugnar
+  prompt:
+  - to advocate, to champion
+- answer: militar
+  prompt:
+  - military
+- answer: el objetivo
+  prompt:
+  - target, objective
+- answer: civil
+  prompt:
+  - civilian, civil
+- answer: disuasorio
+  prompt:
+  - deterrent, dissuasive
+- answer: asimétrico
+  prompt:
+  - asymmetric
+- answer: consistir
+  prompt:
+  - to consist (in), to involve
+- answer: correcto
+  prompt:
+  - correct, right
+- answer: la entrevista
+  prompt:
+  - interview
+- answer: plasmar
+  prompt:
+  - to set down, to express in writing
+- answer: la represalia
+  prompt:
+  - reprisal, retaliation
+- answer: detenidamente
+  prompt:
+  - carefully, thoroughly
+- answer: relacionarse
+  prompt:
+  - to be related, to relate to
+- answer: la guerra
+  prompt:
+  - war
+- answer: periodístico
+  prompt:
+  - journalistic, press-related
+- answer: moralmente
+  prompt:
+  - morally
+- answer: requerirse
+  prompt:
+  - to be required, to be needed
+- answer: la formulación
+  prompt:
+  - formulation
+- answer: la evacuación
+  prompt:
+  - evacuation
+- answer: letal
+  prompt:
+  - lethal, deadly
+- answer: el tiroteo
+  prompt:
+  - shooting, gunfight
+- answer: octubre
+  prompt:
+  - October
+- answer: la fuerza
+  prompt:
+  - force, strength
+- answer: transformar
+  prompt:
+  - to transform, to turn into
+- answer: la población
+  prompt:
+  - population
+- answer: disparar
+  prompt:
+  - to shoot, to fire
+- answer: la recomendación
+  prompt:
+  - recommendation
+- answer: reflexionar
+  prompt:
+  - to reflect, to think carefully
+- answer: la distinción
+  prompt:
+  - distinction
+- answer: recurrir
+  prompt:
+  - to resort to, to turn to
+- answer: el secuestro
+  prompt:
+  - kidnapping, abduction
+- answer: público
+  prompt:
+  - public
+- answer: aprobar
+  prompt:
+  - to approve, to pass
+- answer: la comprensión
+  prompt:
+  - understanding, comprehension
+- answer: representar
+  prompt:
+  - to represent
+- answer: el patrón
+  prompt:
+  - pattern
+- answer: urbano
+  prompt:
+  - urban
+- answer: atacar
+  prompt:
+  - to attack
+- answer: la destrucción
+  prompt:
+  - destruction
+- answer: el terror
+  prompt:
+  - terror
+- answer: el anuncio
+  prompt:
+  - announcement, advertisement
+- answer: el elemento
+  prompt:
+  - element
+- answer: el combate
+  prompt:
+  - combat, battle
+- answer: inmediato
+  prompt:
+  - immediate
+- answer: la amenaza
+  prompt:
+  - threat
+- answer: actuar
+  prompt:
+  - to act
+- answer: el comandante
+  prompt:
+  - commander
+- answer: el periódico
+  prompt:
+  - newspaper
+- answer: la agencia
+  prompt:
+  - agency
+- answer: el método
+  prompt:
+  - method
+- answer: el escenario
+  prompt:
+  - scene, setting, stage
+- answer: utilizar
+  prompt:
+  - to use, to utilize
+forbidden: []

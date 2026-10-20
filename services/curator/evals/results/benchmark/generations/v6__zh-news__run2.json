@@ -1,0 +1,534 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v6/services/curator/src/curator/extract.py",
+  "prompt_version": "6",
+  "model": "claude-haiku-5-5",
+  "seconds": 6.24,
+  "batches": [
+    {
+      "model": "claude-haiku-5-5",
+      "purpose": "translate",
+      "input_tokens": 5360,
+      "output_tokens": 1303,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 5360,
+  "output_tokens": 1303,
+  "cost_usd": 0.001187,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "遇難者",
+      "answer": "遇難者",
+      "prompt": "victim of an accident or disaster",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yùnànzhě",
+      "context": "發布會前，參會人員向瀏陽煙花廠爆炸事故遇難者默哀。"
+    },
+    {
+      "lemma": "事故",
+      "answer": "事故",
+      "prompt": "accident",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shìgù",
+      "context": "截止5月5日事故已造成26死61傷。"
+    },
+    {
+      "lemma": "爆炸",
+      "answer": "爆炸",
+      "prompt": "explosion, to explode",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "bàozhà",
+      "context": "湖南瀏陽市官渡鎮的華盛煙花製造燃放有限公司[[發生爆炸"
+    },
+    {
+      "lemma": "燃放",
+      "answer": "燃放",
+      "prompt": "to release, to set off (fireworks)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "ránfàng",
+      "context": "湖南瀏陽市官渡鎮的華盛煙花製造燃放有限公司[[發生爆炸"
+    },
+    {
+      "lemma": "煙花廠",
+      "answer": "煙花廠",
+      "prompt": "fireworks factory",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yānhuāchǎng",
+      "context": "當局於5月5日在長沙召開新聞發佈會，並介紹瀏陽煙花廠爆炸事故最新救援進展。"
+    },
+    {
+      "lemma": "震碎",
+      "answer": "震碎",
+      "prompt": "to shatter by shaking",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zhènsuì",
+      "context": "有兩公里外的居民表示家中玻璃被震碎。"
+    },
+    {
+      "lemma": "灰白",
+      "answer": "灰白",
+      "prompt": "greyish white",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "huībái",
+      "context": "爆炸產生的灰白色煙柱直衝百米高空"
+    },
+    {
+      "lemma": "默哀",
+      "answer": "默哀",
+      "prompt": "to observe a moment of silence",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "mòāi",
+      "context": "發布會前，參會人員向瀏陽煙花廠爆炸事故遇難者默哀。"
+    },
+    {
+      "lemma": "自責",
+      "answer": "自責",
+      "prompt": "to blame oneself, to feel guilty",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zìzé",
+      "context": "無比自責。」北京中央政府亦對此事做出指示。频道文章"
+    },
+    {
+      "lemma": "最新",
+      "answer": "最新",
+      "prompt": "newest, latest",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "zuìxīn",
+      "context": "據官方最新通報"
+    },
+    {
+      "lemma": "痛心",
+      "answer": "痛心",
+      "prompt": "to feel heartbroken, distressing",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "tòngxīn",
+      "context": "「我們感到極為痛心"
+    },
+    {
+      "lemma": "煙花",
+      "answer": "煙花",
+      "prompt": "fireworks",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yānhuā",
+      "context": "湖南瀏陽市官渡鎮的華盛煙花製造燃放有限公司[[發生爆炸"
+    },
+    {
+      "lemma": "誠懇",
+      "answer": "誠懇",
+      "prompt": "sincere",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "chéngkěn",
+      "context": "向全社會作出誠懇道歉！」長沙市委副書記"
+    },
+    {
+      "lemma": "搜救",
+      "answer": "搜救",
+      "prompt": "search and rescue",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "sōujiù",
+      "context": "搜救工作目前已基本完成。"
+    },
+    {
+      "lemma": "哀悼",
+      "answer": "哀悼",
+      "prompt": "condolence, mourning",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "āidào",
+      "context": "市政府向所有遇難者表示哀悼"
+    },
+    {
+      "lemma": "受災",
+      "answer": "受災",
+      "prompt": "affected by a disaster",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "shòuzāi",
+      "context": "受傷人員和其他受災群眾"
+    },
+    {
+      "lemma": "高空",
+      "answer": "高空",
+      "prompt": "high altitude, sky",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gāokōng",
+      "context": "爆炸產生的灰白色煙柱直衝百米高空"
+    },
+    {
+      "lemma": "副書記",
+      "answer": "副書記",
+      "prompt": "deputy secretary",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fùshūjì",
+      "context": "向全社會作出誠懇道歉！」長沙市委副書記"
+    },
+    {
+      "lemma": "當日",
+      "answer": "當日",
+      "prompt": "the same day, that day",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dāngrì",
+      "context": "據事故當日報道"
+    },
+    {
+      "lemma": "無比",
+      "answer": "無比",
+      "prompt": "extremely, incomparably",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "wúbǐ",
+      "context": "無比自責。」北京中央政府亦對此事做出指示。频道文章"
+    },
+    {
+      "lemma": "救援",
+      "answer": "救援",
+      "prompt": "to rescue, to aid",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "jiùyuán",
+      "context": "當局於5月5日在長沙召開新聞發佈會，並介紹瀏陽煙花廠爆炸事故最新救援進展。"
+    },
+    {
+      "lemma": "發佈會",
+      "answer": "發佈會",
+      "prompt": "press conference",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fābùhuì",
+      "context": "當局於5月5日在長沙召開新聞發佈會，並介紹瀏陽煙花廠爆炸事故最新救援進展。"
+    },
+    {
+      "lemma": "發布會",
+      "answer": "發布會",
+      "prompt": "press conference",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fābùhuì",
+      "context": "發布會前，參會人員向瀏陽煙花廠爆炸事故遇難者默哀。"
+    },
+    {
+      "lemma": "人員",
+      "answer": "人員",
+      "prompt": "personnel, staff",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "rényuán",
+      "context": "發布會前，參會人員向瀏陽煙花廠爆炸事故遇難者默哀。"
+    },
+    {
+      "lemma": "通報",
+      "answer": "通報",
+      "prompt": "bulletin, report",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "tōngbào",
+      "context": "據官方最新通報"
+    },
+    {
+      "lemma": "家屬",
+      "answer": "家屬",
+      "prompt": "family members (of the deceased or injured)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jiāshǔ",
+      "context": "向所有遇難者家屬"
+    },
+    {
+      "lemma": "家中",
+      "answer": "家中",
+      "prompt": "at home, household",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jiāzhōng",
+      "context": "有兩公里外的居民表示家中玻璃被震碎。"
+    },
+    {
+      "lemma": "玻璃",
+      "answer": "玻璃",
+      "prompt": "glass",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "bōlí",
+      "context": "有兩公里外的居民表示家中玻璃被震碎。"
+    },
+    {
+      "lemma": "指示",
+      "answer": "指示",
+      "prompt": "instruction, directive",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhǐshì",
+      "context": "無比自責。」北京中央政府亦對此事做出指示。频道文章"
+    },
+    {
+      "lemma": "進展",
+      "answer": "進展",
+      "prompt": "progress, development",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jìnzhǎn",
+      "context": "當局於5月5日在長沙召開新聞發佈會，並介紹瀏陽煙花廠爆炸事故最新救援進展。"
+    },
+    {
+      "lemma": "道歉",
+      "answer": "道歉",
+      "prompt": "apology, to apologize",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dàoqiàn",
+      "context": "向全社會作出誠懇道歉！」長沙市委副書記"
+    },
+    {
+      "lemma": "對此",
+      "answer": "對此",
+      "prompt": "in response to this, regarding this",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "duìcǐ",
+      "context": "無比自責。」北京中央政府亦對此事做出指示。频道文章"
+    },
+    {
+      "lemma": "傷",
+      "answer": "傷",
+      "prompt": "injury, to be injured",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shāng",
+      "context": "截止5月5日事故已造成26死61傷。"
+    },
+    {
+      "lemma": "有限",
+      "answer": "有限",
+      "prompt": "limited",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "yǒuxiàn",
+      "context": "湖南瀏陽市官渡鎮的華盛煙花製造燃放有限公司[[發生爆炸"
+    },
+    {
+      "lemma": "作出",
+      "answer": "作出",
+      "prompt": "to make, to produce",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zuòchū",
+      "context": "向全社會作出誠懇道歉！」長沙市委副書記"
+    },
+    {
+      "lemma": "市長",
+      "answer": "市長",
+      "prompt": "mayor",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shìzhǎng",
+      "context": "作出誠懇道歉！」長沙市委副書記、市長陳博彰說，「我們感到極為痛心"
+    },
+    {
+      "lemma": "做出",
+      "answer": "做出",
+      "prompt": "to make, to produce",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zuòchū",
+      "context": "無比自責。」北京中央政府亦對此事做出指示。频道文章"
+    },
+    {
+      "lemma": "當局",
+      "answer": "當局",
+      "prompt": "authorities",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dāngjú",
+      "context": "當局於5月5日在長沙召開新聞發佈會，並介紹瀏陽煙花廠爆炸事故最新救援進展。"
+    },
+    {
+      "lemma": "受傷",
+      "answer": "受傷",
+      "prompt": "injured",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "shòushāng",
+      "context": "受傷人員和其他受災群眾"
+    },
+    {
+      "lemma": "製造",
+      "answer": "製造",
+      "prompt": "to manufacture",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zhìzào",
+      "context": "湖南瀏陽市官渡鎮的華盛煙花製造燃放有限公司[[發生爆炸"
+    },
+    {
+      "lemma": "報道",
+      "answer": "報道",
+      "prompt": "to report, report",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "bàodào",
+      "context": "據事故當日報道"
+    },
+    {
+      "lemma": "感到",
+      "answer": "感到",
+      "prompt": "to feel",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "gǎndào",
+      "context": "「我們感到極為痛心"
+    },
+    {
+      "lemma": "居民",
+      "answer": "居民",
+      "prompt": "resident",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jūmín",
+      "context": "有兩公里外的居民表示家中玻璃被震碎。"
+    },
+    {
+      "lemma": "文章",
+      "answer": "文章",
+      "prompt": "article, essay",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "wénzhāng",
+      "context": "無比自責。」北京中央政府亦對此事做出指示。频道文章"
+    },
+    {
+      "lemma": "介紹",
+      "answer": "介紹",
+      "prompt": "to introduce",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "jièshào",
+      "context": "當局於5月5日在長沙召開新聞發佈會，並介紹瀏陽煙花廠爆炸事故最新救援進展。"
+    },
+    {
+      "lemma": "官方",
+      "answer": "官方",
+      "prompt": "official, government",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "guānfāng",
+      "context": "據官方最新通報"
+    },
+    {
+      "lemma": "群眾",
+      "answer": "群眾",
+      "prompt": "the masses, public",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "qúnzhòng",
+      "context": "受傷人員和其他受災群眾"
+    },
+    {
+      "lemma": "新聞",
+      "answer": "新聞",
+      "prompt": "news",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xīnwén",
+      "context": "當局於5月5日在長沙召開新聞發佈會，並介紹瀏陽煙花廠爆炸事故最新救援進展。"
+    },
+    {
+      "lemma": "死",
+      "answer": "死",
+      "prompt": "death",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "sǐ",
+      "context": "截止5月5日事故已造成26死61傷。"
+    },
+    {
+      "lemma": "事",
+      "answer": "事",
+      "prompt": "matter, affair",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shì",
+      "context": "無比自責。」北京中央政府亦對此事做出指示。频道文章"
+    },
+    {
+      "lemma": "發生",
+      "answer": "發生",
+      "prompt": "to happen, to occur",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "fāshēng",
+      "context": "湖南瀏陽市官渡鎮的華盛煙花製造燃放有限公司[[發生爆炸"
+    },
+    {
+      "lemma": "工作",
+      "answer": "工作",
+      "prompt": "work",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gōngzuò",
+      "context": "搜救工作目前已基本完成。"
+    },
+    {
+      "lemma": "社會",
+      "answer": "社會",
+      "prompt": "society",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shèhuì",
+      "context": "向全社會作出誠懇道歉！」長沙市委副書記"
+    }
+  ],
+  "skipped": [
+    {
+      "lemma": "瀏陽市",
+      "reason": "place name"
+    },
+    {
+      "lemma": "柱直",
+      "reason": "tagging mistake: fragment of 直衝"
+    },
+    {
+      "lemma": "參會",
+      "reason": "tagging mistake: fragment, 參會 is a noun/adjective term for attendees"
+    },
+    {
+      "lemma": "衝百",
+      "reason": "tagging mistake: fragment of 直衝百米"
+    },
+    {
+      "lemma": "色煙",
+      "reason": "tagging mistake: fragment of 灰白色煙柱"
+    },
+    {
+      "lemma": "讯",
+      "reason": "tagging mistake: dateline fragment, not a standalone word"
+    },
+    {
+      "lemma": "频道",
+      "reason": "tagging mistake: fragment of website name 频道文章"
+    }
+  ],
+  "rejected": [],
+  "version": "v6",
+  "commit": "d8d9cd22",
+  "text": "zh-news",
+  "language": "zh",
+  "run": 2
+}

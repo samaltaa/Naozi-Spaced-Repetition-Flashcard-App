@@ -1,0 +1,15 @@
+name: CHANGE_ME
+language: es
+notes: What this text stresses and any borderline decisions made here.
+
+required:
+  - answer: la palabra
+    prompt: [the word]
+
+optional:
+  - answer: otra palabra
+    prompt: [another word, other word]
+
+forbidden:
+  - NombrePropio
+  - que

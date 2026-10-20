@@ -1,0 +1,564 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v6/services/curator/src/curator/extract.py",
+  "prompt_version": "6",
+  "model": "claude-haiku-5-5",
+  "seconds": 6.1,
+  "batches": [
+    {
+      "model": "claude-haiku-5-5",
+      "purpose": "translate",
+      "input_tokens": 5267,
+      "output_tokens": 1336,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 5267,
+  "output_tokens": 1336,
+  "cost_usd": 0.001195,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "橘子",
+      "answer": "橘子",
+      "prompt": "tangerine, orange",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "júzi",
+      "context": "他望車外看了看，說，「我買幾個橘子去。"
+    },
+    {
+      "lemma": "父親",
+      "answer": "父親",
+      "prompt": "father",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fùqīn",
+      "context": "我與父親不相見已二年餘了"
+    },
+    {
+      "lemma": "茶房",
+      "answer": "茶房",
+      "prompt": "attendant, waiter",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "cháfáng",
+      "context": "叫旅館裏一個熟識的茶房陪我同去。"
+    },
+    {
+      "lemma": "喪事",
+      "answer": "喪事",
+      "prompt": "funeral",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "sāngshì",
+      "context": "囘家變賣典質，父親還了虧空；又借錢辦了喪事。"
+    },
+    {
+      "lemma": "背影",
+      "answer": "背影",
+      "prompt": "back view, figure from behind",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "bèiyǐng",
+      "context": "我最不能忘記的是他的背影。"
+    },
+    {
+      "lemma": "鐵道",
+      "answer": "鐵道",
+      "prompt": "railway track",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "tiědào",
+      "context": "走到那邊月臺，須穿過鐵道，須跳下去又爬上去。"
+    },
+    {
+      "lemma": "月臺",
+      "answer": "月臺",
+      "prompt": "platform",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yuètái",
+      "context": "我看那邊月臺的柵欄外有幾個賣東西的等着顧客。"
+    },
+    {
+      "lemma": "黑布",
+      "answer": "黑布",
+      "prompt": "black cloth",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "hēibù",
+      "context": "我看見他戴着黑布小帽"
+    },
+    {
+      "lemma": "棉袍",
+      "answer": "棉袍",
+      "prompt": "cotton-padded robe",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "miánpáo",
+      "context": "小帽，穿着黑布大馬褂，深靑布棉袍，蹣跚地走到鐵道邊，慢慢"
+    },
+    {
+      "lemma": "惦記",
+      "answer": "惦記",
+      "prompt": "to think of, to miss",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "diànjì",
+      "context": "只是惦記着我"
+    },
+    {
+      "lemma": "光景",
+      "answer": "光景",
+      "prompt": "situation, circumstances",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "guāngjǐng",
+      "context": "這些日子，家中光景很是慘澹，一半爲了喪事，一半爲了父親賦閒。"
+    },
+    {
+      "lemma": "一會",
+      "answer": "一會",
+      "prompt": "a while, a moment",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "yīhuì",
+      "context": "但他終於不放心，怕茶房不妥帖；頗躊躇了一會。"
+    },
+    {
+      "lemma": "走",
+      "answer": "走",
+      "prompt": "to go, to leave",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zǒu",
+      "context": "我說道，「爸爸，你走吧。」"
+    },
+    {
+      "lemma": "走到",
+      "answer": "走到",
+      "prompt": "to walk to, to reach",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zǒudào",
+      "context": "走到那邊月臺，須穿過鐵道，須跳下去又爬上去。"
+    },
+    {
+      "lemma": "相見",
+      "answer": "相見",
+      "prompt": "to meet, to see each other",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "xiāngjiàn",
+      "context": "我與父親不相見已二年餘了"
+    },
+    {
+      "lemma": "忙着",
+      "answer": "忙着",
+      "prompt": "busily, busy with",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "mángzhe",
+      "context": "我買票，他忙着照看行李。"
+    },
+    {
+      "lemma": "肥胖",
+      "answer": "肥胖",
+      "prompt": "fat, obese",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "féipàng",
+      "context": "他肥胖的身子向左微傾"
+    },
+    {
+      "lemma": "祖母",
+      "answer": "祖母",
+      "prompt": "grandmother",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zǔmǔ",
+      "context": "那年冬天，祖母死了，父親的差使也交卸了，正是禍不單行的日子"
+    },
+    {
+      "lemma": "終於",
+      "answer": "終於",
+      "prompt": "in the end, finally",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "zhōngyú",
+      "context": "但他終於不放心，怕茶房不妥帖；頗躊躇了一會。"
+    },
+    {
+      "lemma": "淚",
+      "answer": "淚",
+      "prompt": "tears",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "lèi",
+      "context": "這時我看見他的背影，我的淚很快地流下來了。"
+    },
+    {
+      "lemma": "行李",
+      "answer": "行李",
+      "prompt": "luggage, baggage",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xínglǐ",
+      "context": "我買票，他忙着照看行李。"
+    },
+    {
+      "lemma": "價錢",
+      "answer": "價錢",
+      "prompt": "price",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jiàqián",
+      "context": "他便又忙着和他們講價錢。"
+    },
+    {
+      "lemma": "發之於外",
+      "answer": "發之於外",
+      "prompt": "to express outwardly",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "fāzhīyúwài",
+      "context": "情鬱於中，自然要發之於外；家庭瑣屑便往往觸他之怒。"
+    },
+    {
+      "lemma": "穿過",
+      "answer": "穿過",
+      "prompt": "to pass through, to go through",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "chuānguò",
+      "context": "走到那邊月臺，須穿過鐵道，須跳下去又爬上去。"
+    },
+    {
+      "lemma": "情鬱",
+      "answer": "情鬱",
+      "prompt": "pent-up emotion",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "qíngyù",
+      "context": "情鬱於中，自然要發之於外；家庭瑣屑便往往觸他之怒。"
+    },
+    {
+      "lemma": "奔喪",
+      "answer": "奔喪",
+      "prompt": "to rush home for a funeral",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "bēnsāng",
+      "context": "打算跟着父親奔喪囘家。"
+    },
+    {
+      "lemma": "交卸",
+      "answer": "交卸",
+      "prompt": "to hand over, to be relieved of duty",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "jiāoxiè",
+      "context": "父親的差使也交卸了"
+    },
+    {
+      "lemma": "揀定",
+      "answer": "揀定",
+      "prompt": "to choose and settle on",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "jiǎndìng",
+      "context": "他給我揀定了靠車門的一張椅子"
+    },
+    {
+      "lemma": "眼淚",
+      "answer": "眼淚",
+      "prompt": "tears",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "yǎnlèi",
+      "context": "到徐州見着父親，看見滿院狼藉的東西，又想起祖母，不禁簌簌地流下眼淚。"
+    },
+    {
+      "lemma": "妥帖",
+      "answer": "妥帖",
+      "prompt": "appropriate, proper",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "tuǒtiē",
+      "context": "但他終於不放心，怕茶房不妥帖；頗躊躇了一會。"
+    },
+    {
+      "lemma": "拭",
+      "answer": "拭",
+      "prompt": "to wipe",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "shì",
+      "context": "我趕緊拭乾了淚，怕他看見，也怕別人看見。"
+    },
+    {
+      "lemma": "皮大衣",
+      "answer": "皮大衣",
+      "prompt": "fur coat, leather coat",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "pídàyī",
+      "context": "他和我走到車上，將橘子一股腦兒放在我的皮大衣上。"
+    },
+    {
+      "lemma": "家中",
+      "answer": "家中",
+      "prompt": "at home, in the family",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jiāzhōng",
+      "context": "這些日子，家中光景很是慘澹，一半爲了喪事，一半爲了父親賦閒。"
+    },
+    {
+      "lemma": "賦閒",
+      "answer": "賦閒",
+      "prompt": "to be unemployed, to be out of work",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "fùxián",
+      "context": "這些日子，家中光景很是慘澹，一半爲了喪事，一半爲了父親賦閒。"
+    },
+    {
+      "lemma": "攙",
+      "answer": "攙",
+      "prompt": "to help support, to hold up",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "chān",
+      "context": "到這邊時，我趕緊去攙他。"
+    },
+    {
+      "lemma": "說道",
+      "answer": "說道",
+      "prompt": "to say",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "shuōdào",
+      "context": "我說道，「爸爸，你走吧。」"
+    },
+    {
+      "lemma": "趕緊",
+      "answer": "趕緊",
+      "prompt": "hurriedly, promptly",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "gǎnjǐn",
+      "context": "我趕緊拭乾了淚，怕他看見，也怕別人看見。"
+    },
+    {
+      "lemma": "迂",
+      "answer": "迂",
+      "prompt": "pedantic, old-fashioned",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yū",
+      "context": "我心裏暗笑他的迂；他們只認得錢，託他們直是白託！"
+    },
+    {
+      "lemma": "勾留",
+      "answer": "勾留",
+      "prompt": "to linger, to stay",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "gōuliú",
+      "context": "南京時，有朋友約去游逛，勾留了一日；第二日上午便須渡江到"
+    },
+    {
+      "lemma": "囑",
+      "answer": "囑",
+      "prompt": "to urge, to instruct",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zhǔ",
+      "context": "他囑我路上小心，夜裏要警醒些，不要受涼。"
+    },
+    {
+      "lemma": "觸目",
+      "answer": "觸目",
+      "prompt": "at the sight of, upon seeing",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "chùmù",
+      "context": "他觸目傷懷，自然情不能自已。"
+    },
+    {
+      "lemma": "聰明",
+      "answer": "聰明",
+      "prompt": "clever, intelligent",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "cōngmíng",
+      "context": "我那時眞是聰明過分，總覺他說話不大漂亮，非自己插嘴不可。"
+    },
+    {
+      "lemma": "游逛",
+      "answer": "游逛",
+      "prompt": "to stroll, to roam about",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "yóuguàng",
+      "context": "有朋友約去游逛"
+    },
+    {
+      "lemma": "小帽",
+      "answer": "小帽",
+      "prompt": "small cap",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "xiǎomào",
+      "context": "我看見他戴着黑布小帽"
+    },
+    {
+      "lemma": "來來往往",
+      "answer": "來來往往",
+      "prompt": "to come and go, bustling",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "láiláiwǎngwǎng",
+      "context": "等他的背影混入來來往往的人裏"
+    },
+    {
+      "lemma": "自然",
+      "answer": "自然",
+      "prompt": "naturally, of course",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "zìrán",
+      "context": "父親是一個胖子，走過去自然要費事些。"
+    },
+    {
+      "lemma": "不能自已",
+      "answer": "不能自已",
+      "prompt": "unable to control oneself",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "bùnéngzìyǐ",
+      "context": "他觸目傷懷，自然情不能自已。"
+    },
+    {
+      "lemma": "慢慢",
+      "answer": "慢慢",
+      "prompt": "slowly",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "mànmàn",
+      "context": "深靑布棉袍，蹣跚地走到鐵道邊，慢慢探身下去，尚不大難。"
+    },
+    {
+      "lemma": "典質",
+      "answer": "典質",
+      "prompt": "to pawn, pawned goods",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "diǎnzhì",
+      "context": "囘家變賣典質，父親還了虧空；又借錢辦了喪事。"
+    },
+    {
+      "lemma": "上縮",
+      "answer": "上縮",
+      "prompt": "to draw back, to pull up",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "shàngsuō",
+      "context": "兩腳再向上縮"
+    },
+    {
+      "lemma": "傷懷",
+      "answer": "傷懷",
+      "prompt": "to feel sad, to be grieved",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "shānghuái",
+      "context": "他觸目傷懷，自然情不能自已。"
+    },
+    {
+      "lemma": "淚光",
+      "answer": "淚光",
+      "prompt": "tear-glistening light",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "lèiguāng",
+      "context": "在晶瑩的淚光中"
+    },
+    {
+      "lemma": "受涼",
+      "answer": "受涼",
+      "prompt": "to catch cold",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "shòuliáng",
+      "context": "他囑我路上小心，夜裏要警醒些，不要受涼。"
+    },
+    {
+      "lemma": "送",
+      "answer": "送",
+      "prompt": "to see off, to send",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "sòng",
+      "context": "本已說定不送我"
+    },
+    {
+      "lemma": "提筆",
+      "answer": "提筆",
+      "prompt": "to pick up a pen, to write",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "tíbǐ",
+      "context": "身體平安，惟膀子疼痛利害，舉箸提筆，諸多不便，大約大去之"
+    },
+    {
+      "lemma": "警醒",
+      "answer": "警醒",
+      "prompt": "to stay alert, to be watchful",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "jǐngxǐng",
+      "context": "他囑我路上小心，夜裏要警醒些，不要受涼。"
+    },
+    {
+      "lemma": "狼藉",
+      "answer": "狼藉",
+      "prompt": "in disarray, scattered",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "lángjí",
+      "context": "到徐州見着父親，看見滿院狼藉的東西，又想起祖母，不禁簌簌地流下眼淚。"
+    },
+    {
+      "lemma": "探身",
+      "answer": "探身",
+      "prompt": "to lean the body forward",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "tànshēn",
+      "context": "深靑布棉袍，蹣跚地走到鐵道邊，慢慢探身下去，尚不大難。"
+    },
+    {
+      "lemma": "虧空",
+      "answer": "虧空",
+      "prompt": "deficit, shortfall",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "kuīkōng",
+      "context": "囘家變賣典質，父親還了虧空；又借錢辦了喪事。"
+    }
+  ],
+  "skipped": [
+    {
+      "lemma": "外看",
+      "reason": "tagging error: fragment of 外看 within a sentence, not a standalone word"
+    }
+  ],
+  "rejected": [],
+  "version": "v6",
+  "commit": "d8d9cd22",
+  "text": "zh-literary",
+  "language": "zh",
+  "run": 2
+}

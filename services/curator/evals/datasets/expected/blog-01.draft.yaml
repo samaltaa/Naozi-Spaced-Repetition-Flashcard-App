@@ -1,0 +1,183 @@
+name: blog-01
+language: es
+notes: ''
+required: []
+optional:
+- answer: el contenedor
+  prompt:
+  - container
+- answer: la aplicación
+  prompt:
+  - application, app
+- answer: el concepto
+  prompt:
+  - concept
+- answer: el almacenamiento
+  prompt:
+  - storage
+- answer: ejecutar
+  prompt:
+  - to execute, to run
+- answer: la instancia
+  prompt:
+  - instance
+- answer: básico
+  prompt:
+  - basic, fundamental
+- answer: orquestar
+  prompt:
+  - to orchestrate
+- answer: permitir
+  prompt:
+  - to allow, to enable
+- answer: el clúster
+  prompt:
+  - cluster
+- answer: la clave
+  prompt:
+  - key, clue
+- answer: el nodo
+  prompt:
+  - node
+- answer: replicar
+  prompt:
+  - to replicate
+- answer: la abstracción
+  prompt:
+  - abstraction
+- answer: la inactividad
+  prompt:
+  - inactivity, downtime
+- answer: encargarse
+  prompt:
+  - to be in charge of, to take care of
+- answer: la unidad
+  prompt:
+  - unit
+- answer: el cómputo
+  prompt:
+  - computing, computation
+- answer: el controlador
+  prompt:
+  - controller
+- answer: conceptual
+  prompt:
+  - relating to concepts, theoretical
+- answer: escalar
+  prompt:
+  - to scale
+- answer: la red
+  prompt:
+  - network
+- answer: la réplica
+  prompt:
+  - replica, copy
+- answer: múltiple
+  prompt:
+  - more than one, several
+- answer: el combinado
+  prompt:
+  - combination, mix
+- answer: actualizar
+  prompt:
+  - to update
+- answer: el despliegue
+  prompt:
+  - deployment
+- answer: consistente
+  prompt:
+  - consistent
+- answer: confiable
+  prompt:
+  - reliable
+- answer: el componente
+  prompt:
+  - component
+- answer: la curva
+  prompt:
+  - curve
+- answer: implementar
+  prompt:
+  - to implement, to deploy
+- answer: el comando
+  prompt:
+  - command
+- answer: liberar
+  prompt:
+  - to release, to free
+- answer: productivo
+  prompt:
+  - productive
+- answer: ejecutarse
+  prompt:
+  - to run, to execute
+- answer: la implementación
+  prompt:
+  - implementation, deployment
+- answer: operativo
+  prompt:
+  - operational, operative
+- answer: la dependencia
+  prompt:
+  - dependency
+- answer: el proyecto
+  prompt:
+  - project
+- answer: representar
+  prompt:
+  - to represent
+- answer: específico
+  prompt:
+  - specific
+- answer: la actualización
+  prompt:
+  - update, upgrade
+- answer: la composición
+  prompt:
+  - composition
+- answer: incluir
+  prompt:
+  - to include
+- answer: virtual
+  prompt:
+  - existing in a simulated or digital form
+- answer: el aprendizaje
+  prompt:
+  - learning
+- answer: garantizar
+  prompt:
+  - to guarantee
+- answer: la arquitectura
+  prompt:
+  - architecture
+- answer: comprender
+  prompt:
+  - to understand
+- answer: manejar
+  prompt:
+  - to manage, to handle
+- answer: la infraestructura
+  prompt:
+  - infrastructure
+- answer: el funcionamiento
+  prompt:
+  - functioning, operation
+- answer: el entorno
+  prompt:
+  - environment, surroundings
+- answer: físico
+  prompt:
+  - physical
+- answer: la pieza
+  prompt:
+  - piece, part
+- answer: la máquina
+  prompt:
+  - machine
+- answer: la escala
+  prompt:
+  - scale
+- answer: el software
+  prompt:
+  - software
+forbidden: []

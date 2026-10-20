@@ -71,6 +71,9 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
   const totalWords = levels.reduce((sum, level) => sum + level.items.length, 0);
   const sourceLabel = languageName(course.source_lang);
   const targetLabel = languageName(course.target_lang);
+  const loadSupport = useCallback(() => api.articleSupport(course.target_lang), [course.target_lang]);
+  const { state: support } = useAsync(loadSupport);
+  const articlesSupported = support.status === "ready" && support.data.supported;
 
   const run = useCallback(async (action: () => Promise<void>): Promise<boolean> => {
     setError(null);
@@ -136,6 +139,11 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
       }
     }
     setNotice(`Added ${created.length} ${created.length === 1 ? "word" : "words"}.`);
+  };
+
+  const addImported = (levelId: string, items: CourseItem[]) => {
+    setLevels((ls) => mapItems(ls, levelId, (existing) => [...existing, ...items]));
+    setNotice(`Added ${items.length} ${items.length === 1 ? "word" : "words"}.`);
   };
 
   // Course
@@ -221,6 +229,8 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
                 onUpdateItem={(itemId, changes) => updateItem(level.id, itemId, changes)}
                 onDeleteItem={(itemId) => deleteItem(level.id, itemId)}
                 onImport={(items, onProgress) => importItems(level.id, items, onProgress)}
+                onImported={(items) => addImported(level.id, items)}
+                articlesSupported={articlesSupported}
               />
             ))}
             <AddLevelForm nextNumber={levels.length + 1} onAdd={addLevel} />

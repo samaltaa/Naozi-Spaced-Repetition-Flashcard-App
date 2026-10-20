@@ -1,0 +1,568 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v6/services/curator/src/curator/extract.py",
+  "prompt_version": "6",
+  "model": "claude-haiku-5-5",
+  "seconds": 15.22,
+  "batches": [
+    {
+      "model": "claude-haiku-5-5",
+      "purpose": "translate",
+      "input_tokens": 5303,
+      "output_tokens": 1174,
+      "failed_models": []
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "purpose": "reading",
+      "input_tokens": 1599,
+      "output_tokens": 797,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 6902,
+  "output_tokens": 1971,
+  "cost_usd": 0.017869,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "тонкий",
+      "answer": "тонкий",
+      "prompt": "thin",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "то́нкий",
+      "context": "На вокзале Николаевской железной дороги встретились два приятеля: один толстый, другой тонкий."
+    },
+    {
+      "lemma": "толстый",
+      "answer": "толстый",
+      "prompt": "fat",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "то́лстый",
+      "context": "На вокзале Николаевской железной дороги встретились два приятеля: один толстый, другой тонкий."
+    },
+    {
+      "lemma": "жена",
+      "answer": "жена",
+      "prompt": "wife",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "жена́",
+      "context": "Из-за его спины выглядывала худенькая женщина с длинным подбородком — его жена"
+    },
+    {
+      "lemma": "превосходительство",
+      "answer": "превосходительство",
+      "prompt": "excellency",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "превосходи́тельство",
+      "context": "Нафанаил вытянулся во фрунт и застегнул все пуговки своего мундира… — Я, ваше превосходительство…"
+    },
+    {
+      "lemma": "детство",
+      "answer": "детство",
+      "prompt": "childhood",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "де́тство",
+      "context": "Друг детства!"
+    },
+    {
+      "lemma": "дослужиться",
+      "answer": "дослужиться",
+      "prompt": "to rise through the ranks, to attain rank",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "дослужи́ться",
+      "context": "Дослужился? — Служу, милый мой!"
+    },
+    {
+      "lemma": "портсигар",
+      "answer": "портсигар",
+      "prompt": "cigarette case",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "портсига́р",
+      "context": "Жена уроки музыки даёт, я портсигары приватно из дерева делаю."
+    },
+    {
+      "lemma": "длинный",
+      "answer": "длинный",
+      "prompt": "long",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "дли́нный",
+      "context": "Из-за его спины выглядывала худенькая женщина с длинным подбородком — его жена"
+    },
+    {
+      "lemma": "пахнуть",
+      "answer": "пахнуть",
+      "prompt": "to smell",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "па́хнуть",
+      "context": "Пахло от него хересом и флёр-д’оранжем."
+    },
+    {
+      "lemma": "дразнить",
+      "answer": "дразнить",
+      "prompt": "to tease",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "дразни́ть",
+      "context": "— Помнишь, как тебя дразнили?"
+    },
+    {
+      "lemma": "женатый",
+      "answer": "женатый",
+      "prompt": "married",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "жена́тый",
+      "context": "Женат?"
+    },
+    {
+      "lemma": "служить",
+      "answer": "служить",
+      "prompt": "to serve",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "служи́ть",
+      "context": "— Служишь где?"
+    },
+    {
+      "lemma": "гимназия",
+      "answer": "гимназия",
+      "prompt": "gymnasium, secondary school",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "В гимназии вместе учились!"
+    },
+    {
+      "lemma": "подбородок",
+      "answer": "подбородок",
+      "prompt": "chin",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "подборо́док",
+      "context": "Из-за его спины выглядывала худенькая женщина с длинным подбородком — его жена"
+    },
+    {
+      "lemma": "милый",
+      "answer": "милый",
+      "prompt": "dear, nice",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "ми́лый",
+      "context": "— Милый мой! — начал тонкий после лобызания."
+    },
+    {
+      "lemma": "приятель",
+      "answer": "приятель",
+      "prompt": "friend, buddy",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "На вокзале Николаевской железной дороги встретились два приятеля: один толстый, другой тонкий."
+    },
+    {
+      "lemma": "тайный",
+      "answer": "тайный",
+      "prompt": "secret",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "та́йный",
+      "context": "— Я уже до тайного дослужился…"
+    },
+    {
+      "lemma": "друг",
+      "answer": "друг",
+      "prompt": "friend",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "Друг детства!"
+    },
+    {
+      "lemma": "чемодан",
+      "answer": "чемодан",
+      "prompt": "suitcase",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "чемода́н",
+      "context": "Тонкий же только что вышел из вагона и был навьючен чемоданами, узлами и картонками."
+    },
+    {
+      "lemma": "узел",
+      "answer": "узел",
+      "prompt": "bundle, knot",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "у́зел",
+      "context": "Тонкий же только что вышел из вагона и был навьючен чемоданами, узлами и картонками."
+    },
+    {
+      "lemma": "спина",
+      "answer": "спина",
+      "prompt": "back",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "спина́",
+      "context": "Из-за его спины выглядывала худенькая женщина с длинным подбородком — его жена"
+    },
+    {
+      "lemma": "глаз",
+      "answer": "глаз",
+      "prompt": "eye",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "и высокий гимназист с прищуренным глазом — его сын."
+    },
+    {
+      "lemma": "вокзал",
+      "answer": "вокзал",
+      "prompt": "railway station",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "вокза́л",
+      "context": "На вокзале Николаевской железной дороги встретились два приятеля: один толстый, другой тонкий."
+    },
+    {
+      "lemma": "штука",
+      "answer": "штука",
+      "prompt": "piece, item",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "шту́ка",
+      "context": "По рублю за штуку продаю."
+    },
+    {
+      "lemma": "троекратно",
+      "answer": "троекратно",
+      "prompt": "three times, thrice",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "троекра́тно",
+      "context": "Приятели троекратно облобызались и устремили друг на друга глаза, полные слёз."
+    },
+    {
+      "lemma": "живительный",
+      "answer": "живительный",
+      "prompt": "life-giving, invigorating",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "живи́тельный",
+      "context": "вроде как бы живительной влаги…"
+    },
+    {
+      "lemma": "гуща",
+      "answer": "гуща",
+      "prompt": "grounds, dregs",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "гу́ща",
+      "context": "Пахло от него ветчиной и кофейной гущей."
+    },
+    {
+      "lemma": "асессор",
+      "answer": "асессор",
+      "prompt": "collegiate assessor",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "асе́ссор",
+      "context": "Коллежским асессором уже второй год и Станислава имею."
+    },
+    {
+      "lemma": "пуговка",
+      "answer": "пуговка",
+      "prompt": "button",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "пу́говка",
+      "context": "Нафанаил вытянулся во фрунт и застегнул все пуговки своего мундира… — Я, ваше превосходительство…"
+    },
+    {
+      "lemma": "гимназист",
+      "answer": "гимназист",
+      "prompt": "gymnasium student, high school pupil",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "гимнази́ст",
+      "context": "и высокий гимназист с прищуренным глазом — его сын."
+    },
+    {
+      "lemma": "воскликнуть",
+      "answer": "воскликнуть",
+      "prompt": "to exclaim",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "воскли́кнуть",
+      "context": "— Порфирий! — воскликнул толстый, увидев тонкого."
+    },
+    {
+      "lemma": "благоговение",
+      "answer": "благоговение",
+      "prompt": "reverence, awe",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "благогове́ние",
+      "context": "но на лице у тонкого было написано столько благоговения"
+    },
+    {
+      "lemma": "приватно",
+      "answer": "приватно",
+      "prompt": "privately",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "прива́тно",
+      "context": "Жена уроки музыки даёт, я портсигары приватно из дерева делаю."
+    },
+    {
+      "lemma": "лицо",
+      "answer": "лицо",
+      "prompt": "face",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "лицо́",
+      "context": "но скоро лицо его искривилось во все стороны широчайшей улыбкой"
+    },
+    {
+      "lemma": "спелый",
+      "answer": "спелый",
+      "prompt": "ripe",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "спе́лый",
+      "context": "Толстый только что пообедал на вокзале, и губы его, подёрнутые маслом, лоснились, как спелые вишни."
+    },
+    {
+      "lemma": "худенький",
+      "answer": "худенький",
+      "prompt": "thin, skinny",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "худе́нький",
+      "context": "Из-за его спины выглядывала худенькая женщина с длинным подбородком — его жена"
+    },
+    {
+      "lemma": "учиться",
+      "answer": "учиться",
+      "prompt": "to study, to learn",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "учи́ться",
+      "context": "В гимназии вместе учились!"
+    },
+    {
+      "lemma": "застегнуть",
+      "answer": "застегнуть",
+      "prompt": "to fasten, to button",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "застегну́ть",
+      "context": "Нафанаил вытянулся во фрунт и застегнул все пуговки своего мундира… — Я, ваше превосходительство…"
+    },
+    {
+      "lemma": "подумать",
+      "answer": "подумать",
+      "prompt": "to think",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "поду́мать",
+      "context": "Нафанаил немного подумал и снял шапку."
+    },
+    {
+      "lemma": "коллежский",
+      "answer": "коллежский",
+      "prompt": "collegiate",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "колле́жский",
+      "context": "Коллежским асессором уже второй год и Станислава имею."
+    },
+    {
+      "lemma": "херес",
+      "answer": "херес",
+      "prompt": "sherry",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "хе́рес",
+      "context": "Пахло от него хересом и флёр-д’оранжем."
+    },
+    {
+      "lemma": "уступка",
+      "answer": "уступка",
+      "prompt": "discount, concession",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "усту́пка",
+      "context": "Если кто берёт десять штук и более, тому, понимаешь, уступка."
+    },
+    {
+      "lemma": "статский",
+      "answer": "статский",
+      "prompt": "civilian, non-military",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "ста́тский",
+      "context": "Небось, уже статский?"
+    },
+    {
+      "lemma": "фуражка",
+      "answer": "фуражка",
+      "prompt": "cap",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "фура́жка",
+      "context": "Нафанаил шаркнул ногой и уронил фуражку."
+    },
+    {
+      "lemma": "кофейный",
+      "answer": "кофейный",
+      "prompt": "coffee",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "кофе́йный",
+      "context": "Пахло от него ветчиной и кофейной гущей."
+    },
+    {
+      "lemma": "влага",
+      "answer": "влага",
+      "prompt": "moisture, liquid",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "вла́га",
+      "context": "вроде как бы живительной влаги…"
+    },
+    {
+      "lemma": "уронить",
+      "answer": "уронить",
+      "prompt": "to drop",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "урони́ть",
+      "context": "Нафанаил шаркнул ногой и уронил фуражку."
+    },
+    {
+      "lemma": "отвернуться",
+      "answer": "отвернуться",
+      "prompt": "to turn away",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "отверну́ться",
+      "context": "Он отвернулся от тонкого и подал ему на прощанье руку."
+    },
+    {
+      "lemma": "жалование",
+      "answer": "жалование",
+      "prompt": "salary, pay",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "жа́лование",
+      "context": "Жалованье плохое…"
+    },
+    {
+      "lemma": "восторженно",
+      "answer": "восторженно",
+      "prompt": "enthusiastically, rapturously",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "восто́рженно",
+      "context": "— Ну, как живёшь, друг? — спросил толстый, восторженно глядя на друга."
+    },
+    {
+      "lemma": "поклониться",
+      "answer": "поклониться",
+      "prompt": "to bow",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "поклони́ться",
+      "context": "Тонкий пожал три пальца, поклонился всем туловищем и захихикал, как китаец: «хи-хи-хи»."
+    },
+    {
+      "lemma": "мундир",
+      "answer": "мундир",
+      "prompt": "uniform",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "мунди́р",
+      "context": "Нафанаил вытянулся во фрунт и застегнул все пуговки своего мундира… — Я, ваше превосходительство…"
+    },
+    {
+      "lemma": "глядеть",
+      "answer": "глядеть",
+      "prompt": "to look, to gaze",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "гляде́ть",
+      "context": "— Ну, как живёшь, друг? — спросил толстый, восторженно глядя на друга."
+    },
+    {
+      "lemma": "голубчик",
+      "answer": "голубчик",
+      "prompt": "dear fellow, buddy",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "го́лубчик",
+      "context": "Голубчик мой!"
+    },
+    {
+      "lemma": "зим",
+      "answer": "зима",
+      "prompt": "years",
+      "alternates": [
+        "зим"
+      ],
+      "pos": "noun",
+      "reading": "зима́",
+      "context": "Сколько зим, сколько лет! — Батюшки! — изумился тонкий."
+    },
+    {
+      "lemma": "милостивый",
+      "answer": "милостивый",
+      "prompt": "gracious, kind",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "ми́лостивый",
+      "context": "— Милостивое внимание вашего превосходительства…"
+    },
+    {
+      "lemma": "пожать",
+      "answer": "пожать",
+      "prompt": "to shake",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "пожа́ть",
+      "context": "Тонкий пожал три пальца, поклонился всем туловищем и захихикал, как китаец: «хи-хи-хи»."
+    },
+    {
+      "lemma": "пообедать",
+      "answer": "пообедать",
+      "prompt": "to have dinner, to dine",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "пообе́дать",
+      "context": "Толстый только что пообедал на вокзале, и губы его, подёрнутые маслом, лоснились, как спелые вишни."
+    }
+  ],
+  "skipped": [],
+  "rejected": [
+    {
+      "lemma": "вельможи",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer 'вельможа' does not contain the lemma 'вельможи' [type=value_error, input_value={'lemma': 'вельмож...': 'вельмо́жа'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "ветчиной",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer 'ветчина' does not contain the lemma 'ветчиной' [type=value_error, input_value={'lemma': 'ветчино...ng': 'ветчина́'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    }
+  ],
+  "version": "v6",
+  "commit": "d8d9cd22",
+  "text": "ru-fiction",
+  "language": "ru",
+  "run": 1
+}

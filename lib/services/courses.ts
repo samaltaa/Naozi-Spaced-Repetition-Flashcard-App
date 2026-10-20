@@ -68,6 +68,21 @@ async function getOwnedLevel(userId: string, levelId: string): Promise<{ id: str
   );
 }
 
+export async function getLevelLanguages(
+  userId: string,
+  levelId: string,
+): Promise<{ sourceLang: string; targetLang: string }> {
+  const level = unwrap(
+    await supabase
+      .from("levels")
+      .select("id, courses!inner(owner_id, source_lang, target_lang)")
+      .eq("id", levelId)
+      .eq("courses.owner_id", userId)
+      .maybeSingle(),
+  ) as unknown as { courses: { source_lang: string; target_lang: string } };
+  return { sourceLang: level.courses.source_lang, targetLang: level.courses.target_lang };
+}
+
 async function assertItemOwner(userId: string, itemId: string): Promise<void> {
   unwrap(
     await supabase
