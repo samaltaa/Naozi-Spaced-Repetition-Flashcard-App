@@ -1,0 +1,572 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v6/services/curator/src/curator/extract.py",
+  "prompt_version": "6",
+  "model": "claude-haiku-5-5",
+  "seconds": 5.65,
+  "batches": [
+    {
+      "model": "claude-haiku-5-5",
+      "purpose": "translate",
+      "input_tokens": 5448,
+      "output_tokens": 1222,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 5448,
+  "output_tokens": 1222,
+  "cost_usd": 0.001156,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "大熊猫",
+      "answer": "大熊猫",
+      "prompt": "giant panda",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dàxióngmāo",
+      "context": "属于食肉目熊科，是中国的特有种，也是大熊猫亚科的仅存物种。"
+    },
+    {
+      "lemma": "熊猫",
+      "answer": "熊猫",
+      "prompt": "panda",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xióngmāo",
+      "context": "物种的称谓并未得到统一，存在白熊、熊猫、猫熊等多种称法。"
+    },
+    {
+      "lemma": "猫熊",
+      "answer": "猫熊",
+      "prompt": "panda (lit. cat bear)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "māoxióng",
+      "context": "猫熊等多种称法。"
+    },
+    {
+      "lemma": "野外",
+      "answer": "野外",
+      "prompt": "wild, field (outdoors)",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "yěwài",
+      "context": "全世界约75%的野外大熊猫种群于此栖息。"
+    },
+    {
+      "lemma": "种群",
+      "answer": "种群",
+      "prompt": "population, group (of a species)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhǒngqún",
+      "context": "根据基因组信息，现有的大熊猫种群可分为秦岭、岷山与邛崃山-大小相岭-"
+    },
+    {
+      "lemma": "熊科",
+      "answer": "熊科",
+      "prompt": "bear family",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xióngkē",
+      "context": "与其他熊科动物相比，大熊猫的的鼻骨和吻部较短。"
+    },
+    {
+      "lemma": "动物",
+      "answer": "动物",
+      "prompt": "animal",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dòngwù",
+      "context": "是昼夜兼行的独栖动物。"
+    },
+    {
+      "lemma": "竹子",
+      "answer": "竹子",
+      "prompt": "bamboo",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhúzi",
+      "context": "在这一过程中，大熊猫适应了亚热带竹林生活，体型逐渐增大，依赖竹子为生。"
+    },
+    {
+      "lemma": "巢域",
+      "answer": "巢域",
+      "prompt": "home range",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "cháoyù",
+      "context": "待到大熊猫建立巢域后，它们每日的活动距离会变得更短。"
+    },
+    {
+      "lemma": "雄性",
+      "answer": "雄性",
+      "prompt": "male",
+      "alternates": [
+        "雄"
+      ],
+      "pos": "verb",
+      "reading": "xióngxìng",
+      "context": "雌性个体稍小于雄性个体（约10-20％）。"
+    },
+    {
+      "lemma": "指代",
+      "answer": "指代",
+      "prompt": "to refer to, to denote",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zhǐdài",
+      "context": "指代现今所知的大熊猫。"
+    },
+    {
+      "lemma": "粪便",
+      "answer": "粪便",
+      "prompt": "feces, droppings",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fènbiàn",
+      "context": "大熊猫的粪便长约10厘米"
+    },
+    {
+      "lemma": "雌性",
+      "answer": "雌性",
+      "prompt": "female",
+      "alternates": [
+        "雌"
+      ],
+      "pos": "adjective",
+      "reading": "cíxìng",
+      "context": "雌性个体稍小于雄性个体（约10-20％）。"
+    },
+    {
+      "lemma": "竹类",
+      "answer": "竹类",
+      "prompt": "bamboo (plant type)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhúlèi",
+      "context": "主要以竹类植物为食"
+    },
+    {
+      "lemma": "栖息地",
+      "answer": "栖息地",
+      "prompt": "habitat",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "qīxīdì",
+      "context": "其栖息地面积共计258万公顷（不含潜在栖息地面积91万公顷）。"
+    },
+    {
+      "lemma": "圈养",
+      "answer": "圈养",
+      "prompt": "to keep in captivity, to pen up",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "quānyǎng",
+      "context": "的称谓和形象，这可能与大熊猫甚少被人捕获、圈养相关。"
+    },
+    {
+      "lemma": "个体",
+      "answer": "个体",
+      "prompt": "individual",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gètǐ",
+      "context": "雌性个体稍小于雄性个体（约10-20％）。"
+    },
+    {
+      "lemma": "棕色",
+      "answer": "棕色",
+      "prompt": "brown",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "zōngsè",
+      "context": "大熊猫的吻部稍显浅棕色"
+    },
+    {
+      "lemma": "动物学家",
+      "answer": "动物学家",
+      "prompt": "zoologist",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dòngwùxuéjiā",
+      "context": "台湾动物学家夏元瑜在《联合报》上发文《一错五十年——为猫熊正名》"
+    },
+    {
+      "lemma": "始熊猫",
+      "answer": "始熊猫",
+      "prompt": "Ailurarctos (extinct panda ancestor)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shǐxióngmāo",
+      "context": "大熊猫的祖先是始熊猫（Ailuaractoslufengensis）"
+    },
+    {
+      "lemma": "竹叶",
+      "answer": "竹叶",
+      "prompt": "bamboo leaves",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhúyè",
+      "context": "大熊猫还兼食竹叶和竹梢"
+    },
+    {
+      "lemma": "人工",
+      "answer": "人工",
+      "prompt": "artificial, man-made",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "réngōng",
+      "context": "5-20厘米，体重为60-125千克（人工饲养的大熊猫略重于野外的大熊猫）。"
+    },
+    {
+      "lemma": "饲养",
+      "answer": "饲养",
+      "prompt": "raising, breeding (in captivity)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "sìyǎng",
+      "context": "5-20厘米，体重为60-125千克（人工饲养的大熊猫略重于野外的大熊猫）。"
+    },
+    {
+      "lemma": "食肉",
+      "answer": "食肉",
+      "prompt": "carnivorous",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "shíròu",
+      "context": "属于食肉目熊科，是中国的特有种，也是大熊猫亚科的仅存物种。"
+    },
+    {
+      "lemma": "交配",
+      "answer": "交配",
+      "prompt": "mating",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jiāopèi",
+      "context": "交配季节为每年3－5月"
+    },
+    {
+      "lemma": "约",
+      "answer": "约",
+      "prompt": "approximately, about",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "yuē",
+      "context": "其每日的活动时间中，约有一半用于进食，另一半则用于睡眠。"
+    },
+    {
+      "lemma": "繁殖",
+      "answer": "繁殖",
+      "prompt": "reproduction, breeding",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fánzhí",
+      "context": "除繁殖季节外"
+    },
+    {
+      "lemma": "黑色",
+      "answer": "黑色",
+      "prompt": "black",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "hēisè",
+      "context": "雄性大熊猫的颈部与头部毛色以白色为主，仅眼圈、耳部呈黑色。"
+    },
+    {
+      "lemma": "基因",
+      "answer": "基因",
+      "prompt": "gene",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jīyīn",
+      "context": "经学者研究，棕白毛色是Bace2基因缺失突变导致的。"
+    },
+    {
+      "lemma": "动物园",
+      "answer": "动物园",
+      "prompt": "zoo",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dòngwùyuán",
+      "context": "亦有部分动物园采用让熊猫观看熊猫交配影片的方式。"
+    },
+    {
+      "lemma": "词",
+      "answer": "词",
+      "prompt": "word, term",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "cí",
+      "context": "“熊猫”一词最早见于1908年的《英华大辞典》，用以称呼小熊猫。"
+    },
+    {
+      "lemma": "称谓",
+      "answer": "称谓",
+      "prompt": "name, designation",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "chēngwèi",
+      "context": "该物种的称谓并未得到统一"
+    },
+    {
+      "lemma": "亚种",
+      "answer": "亚种",
+      "prompt": "subspecies",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yàzhǒng",
+      "context": "故被认为是独立的亚种。"
+    },
+    {
+      "lemma": "体型",
+      "answer": "体型",
+      "prompt": "body shape, build",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "tǐxíng",
+      "context": "其体型肥硕，皮毛厚韧，头圆尾短，通体多呈黑白两色。"
+    },
+    {
+      "lemma": "正名",
+      "answer": "正名",
+      "prompt": "to rectify a name, to restore the proper name",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zhèngmíng",
+      "context": "台湾动物学家夏元瑜在《联合报》上发文《一错五十年——为猫熊正名》"
+    },
+    {
+      "lemma": "白熊",
+      "answer": "白熊",
+      "prompt": "white bear (name for panda)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "báixióng",
+      "context": "物种的称谓并未得到统一，存在白熊、熊猫、猫熊等多种称法。"
+    },
+    {
+      "lemma": "野生",
+      "answer": "野生",
+      "prompt": "wild",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "yěshēng",
+      "context": "其中，绵阳市平武县拥有全世界约20%的野生大熊猫，被誉为“天下大熊猫第一县”。"
+    },
+    {
+      "lemma": "呈",
+      "answer": "呈",
+      "prompt": "to present, to show",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "chéng",
+      "context": "其体型肥硕，皮毛厚韧，头圆尾短，通体多呈黑白两色。"
+    },
+    {
+      "lemma": "雌体",
+      "answer": "雌体",
+      "prompt": "female (animal)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "cítǐ",
+      "context": "巢域面积为3.9－6.4km2不定，个体之间巢域有重叠现象，雄体的巢域略大于雌体。"
+    },
+    {
+      "lemma": "植物",
+      "answer": "植物",
+      "prompt": "plant",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhíwù",
+      "context": "主要以竹类植物为食"
+    },
+    {
+      "lemma": "消化",
+      "answer": "消化",
+      "prompt": "digestion, digestive system",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xiāohuà",
+      "context": "但它们的消化系统仍然是食肉动物的消化系统"
+    },
+    {
+      "lemma": "分布",
+      "answer": "分布",
+      "prompt": "distribution",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fēnbù",
+      "context": "最早离开中国的大熊猫。大熊猫仅分布于中国四川省、陕西省与甘肃省南部"
+    },
+    {
+      "lemma": "亚科",
+      "answer": "亚科",
+      "prompt": "subfamily",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yàkē",
+      "context": "属于食肉目熊科，是中国的特有种，也是大熊猫亚科的仅存物种。"
+    },
+    {
+      "lemma": "毛色",
+      "answer": "毛色",
+      "prompt": "coat color, fur color",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "máosè",
+      "context": "四川穆坪有一种毛色黑白相间的“白熊”。"
+    },
+    {
+      "lemma": "吉祥物",
+      "answer": "吉祥物",
+      "prompt": "mascot",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jíxiángwù",
+      "context": "其被作为吉祥物或其它代表物也层出不穷。"
+    },
+    {
+      "lemma": "物种",
+      "answer": "物种",
+      "prompt": "species",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "wùzhǒng",
+      "context": "但其仍被视为生态保护的标志性物种"
+    },
+    {
+      "lemma": "用于",
+      "answer": "用于",
+      "prompt": "to be used for, to apply to",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "yòngyú",
+      "context": "其每日的活动时间中，约有一半用于进食，另一半则用于睡眠。"
+    },
+    {
+      "lemma": "食物",
+      "answer": "食物",
+      "prompt": "food",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shíwù",
+      "context": "低营养的竹类食物。大熊猫的头骨粗大坚实"
+    },
+    {
+      "lemma": "保护",
+      "answer": "保护",
+      "prompt": "protection, conservation",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "bǎohù",
+      "context": "但其仍被视为生态保护的标志性物种"
+    },
+    {
+      "lemma": "山系",
+      "answer": "山系",
+      "prompt": "mountain range system",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shānxì",
+      "context": "大熊猫的栖息地分属秦岭、岷山、邛崃山、大相岭与小相岭、凉山六大山系"
+    },
+    {
+      "lemma": "黑白熊",
+      "answer": "黑白熊",
+      "prompt": "black-and-white bear (panda)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "hēibáixióng",
+      "context": "戴维于3月23日采集到一只幼年的“黑白熊”尸体"
+    },
+    {
+      "lemma": "每日",
+      "answer": "每日",
+      "prompt": "daily, every day",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "měirì",
+      "context": "其每日的活动时间中，约有一半用于进食，另一半则用于睡眠。"
+    },
+    {
+      "lemma": "学者",
+      "answer": "学者",
+      "prompt": "scholar",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xuézhě",
+      "context": "胡锦矗等中国学者认为"
+    },
+    {
+      "lemma": "古人",
+      "answer": "古人",
+      "prompt": "ancient people",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gǔrén",
+      "context": "古人对大熊猫的认识可追溯至先秦时期"
+    },
+    {
+      "lemma": "小熊猫",
+      "answer": "小熊猫",
+      "prompt": "red panda",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xiǎoxióngmāo",
+      "context": "“熊猫”一词最早见于1908年的《英华大辞典》，用以称呼小熊猫。"
+    },
+    {
+      "lemma": "基因组",
+      "answer": "基因组",
+      "prompt": "genome",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jīyīnzǔ",
+      "context": "经研究发现，大熊猫共有21对染色体，基因组与狗类似（相似性达到78.2%）。"
+    },
+    {
+      "lemma": "高达",
+      "answer": "高达",
+      "prompt": "to reach as high as, to amount to",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "gāodá",
+      "context": "大熊猫在野外觅食的动植物种类高达110多种"
+    },
+    {
+      "lemma": "低",
+      "answer": "低",
+      "prompt": "low, to lower",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "dī",
+      "context": "故拥有极低的能量代谢率（与树懒相当）。"
+    },
+    {
+      "lemma": "繁育",
+      "answer": "繁育",
+      "prompt": "breeding, reproduction",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fányù",
+      "context": "为解决繁育问题与巢域问题"
+    },
+    {
+      "lemma": "软实力",
+      "answer": "软实力",
+      "prompt": "soft power",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "ruǎnshílì",
+      "context": "大熊猫被普遍认为是中国的软实力象征。"
+    }
+  ],
+  "skipped": [],
+  "rejected": [],
+  "version": "v6",
+  "commit": "d8d9cd22",
+  "text": "zh-wiki",
+  "language": "zh",
+  "run": 1
+}

@@ -1,0 +1,623 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v1/services/curator/src/curator/extract.py",
+  "prompt_version": "1",
+  "model": "claude-sonnet-4-6",
+  "seconds": 87.57,
+  "batches": [
+    {
+      "model": "claude-sonnet-4-6",
+      "purpose": "translate",
+      "input_tokens": 16769,
+      "output_tokens": 8006,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 16769,
+  "output_tokens": 8006,
+  "cost_usd": 0.170397,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "bar",
+      "answer": "el bar",
+      "prompt": "bar, pub",
+      "alternates": [
+        "bar"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "hay más de una docena de bares/restaurantes de gran calidad"
+    },
+    {
+      "lemma": "antiguo",
+      "answer": "antiguo",
+      "prompt": "old, ancient, former",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "el antiguo minarete de la mezquita aljama (la Giralda) y la Torre del Oro"
+    },
+    {
+      "lemma": "autobús",
+      "answer": "el autobús",
+      "prompt": "bus",
+      "alternates": [
+        "autobús"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "La red urbana de autobuses en la ciudad de Sevilla presta muy buen servicio"
+    },
+    {
+      "lemma": "numeroso",
+      "answer": "numeroso",
+      "prompt": "numerous, many",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "existiendo numerosas líneas que nos pueden llevar desde cualquier punto de la ciudad a otro"
+    },
+    {
+      "lemma": "zona",
+      "answer": "la zona",
+      "prompt": "area, zone",
+      "alternates": [
+        "zona"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "En la época prerromana habitaba la zona un pueblo relativamente desconocido hasta hoy día, los Tartessos."
+    },
+    {
+      "lemma": "barrio",
+      "answer": "el barrio",
+      "prompt": "neighbourhood, district",
+      "alternates": [
+        "barrio"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y los barrios de Triana y los Remedios al oeste"
+    },
+    {
+      "lemma": "pasar",
+      "answer": "pasar",
+      "prompt": "to pass through",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "- Sevilla - Barcelona, pasando por Córdoba, Puertollano, Ciudad Real, Zaragoza, Lérida y Tarragona."
+    },
+    {
+      "lemma": "siglo",
+      "answer": "el siglo",
+      "prompt": "century",
+      "alternates": [
+        "siglo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "a pesar de que se ha perdido mucho patrimonio artístico en el último siglo."
+    },
+    {
+      "lemma": "recomendable",
+      "answer": "recomendable",
+      "prompt": "recommendable, advisable",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "es muy recomendable visitar la ciudad en primavera"
+    },
+    {
+      "lemma": "calle",
+      "answer": "la calle",
+      "prompt": "street",
+      "alternates": [
+        "calle"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Además de toda la historia que albergan sus calles"
+    },
+    {
+      "lemma": "bicicleta",
+      "answer": "la bicicleta",
+      "prompt": "bicycle, bike",
+      "alternates": [
+        "bicicleta"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Especialmente agradable es el paseo en bicicleta por la margen del río"
+    },
+    {
+      "lemma": "centro",
+      "answer": "el centro",
+      "prompt": "centre, downtown",
+      "alternates": [
+        "centro"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y el centro y resto de los barrios al este."
+    },
+    {
+      "lemma": "datar",
+      "answer": "datar",
+      "prompt": "to date from",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "- Torre del Oro - Torre vigía que data del siglo XIII"
+    },
+    {
+      "lemma": "turístico",
+      "answer": "turístico",
+      "prompt": "tourist, touristic",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "A pesar de la gran afluencia turística de estas épocas"
+    },
+    {
+      "lemma": "recorrido",
+      "answer": "el recorrido",
+      "prompt": "journey, route, distance",
+      "alternates": [
+        "recorrido"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Además la estación da servicio a trenes de cercanías, regionales y de largo recorrido."
+    },
+    {
+      "lemma": "restaurante",
+      "answer": "el restaurante",
+      "prompt": "restaurant",
+      "alternates": [
+        "restaurante"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "hay más de una docena de bares/restaurantes de gran calidad"
+    },
+    {
+      "lemma": "tapa",
+      "answer": "la tapa",
+      "prompt": "tapa (small dish of food served with drinks)",
+      "alternates": [
+        "tapa"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "con bares de tapas históricos como La Alicantina"
+    },
+    {
+      "lemma": "línea",
+      "answer": "la línea",
+      "prompt": "line, route",
+      "alternates": [
+        "línea"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Existen varios tipos de líneas"
+    },
+    {
+      "lemma": "cercanía",
+      "answer": "la cercanía",
+      "prompt": "proximity; (plural) suburban/commuter trains",
+      "alternates": [
+        "cercanía"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Además la estación da servicio a trenes de cercanías, regionales y de largo recorrido."
+    },
+    {
+      "lemma": "tren",
+      "answer": "el tren",
+      "prompt": "train",
+      "alternates": [
+        "tren"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Llegar En tren La estación de Santa Justa está situada en la parte norte de la ciudad"
+    },
+    {
+      "lemma": "bohemio",
+      "answer": "bohemio",
+      "prompt": "bohemian",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "En la zona de la Alameda se pueden encontrar tiendas más alternativas y cercanas a lo bohemio."
+    },
+    {
+      "lemma": "época",
+      "answer": "la época",
+      "prompt": "era, age, period",
+      "alternates": [
+        "época"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "En la época prerromana habitaba la zona un pueblo relativamente desconocido hasta hoy día, los Tartessos."
+    },
+    {
+      "lemma": "estación",
+      "answer": "la estación",
+      "prompt": "station",
+      "alternates": [
+        "estación"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Llegar En tren La estación de Santa Justa está situada en la parte norte de la ciudad"
+    },
+    {
+      "lemma": "procedente",
+      "answer": "procedente",
+      "prompt": "coming from, originating from",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "También los autobuses procedentes del resto de provincias andaluzas (excepto Huelva)."
+    },
+    {
+      "lemma": "conectar",
+      "answer": "conectar",
+      "prompt": "to connect",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "- Hay una línea de norte a sur que conecta Cádiz con Jaén"
+    },
+    {
+      "lemma": "tramo",
+      "answer": "el tramo",
+      "prompt": "stretch, section (of a road or route)",
+      "alternates": [
+        "tramo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Quedan por inaugurar tres tramos en la provincia de Zamora."
+    },
+    {
+      "lemma": "desempleado",
+      "answer": "el desempleado",
+      "prompt": "unemployed person",
+      "alternates": [
+        "desempleado"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "La entrada cuesta 3 euros (no hay descuento para desempleados)."
+    },
+    {
+      "lemma": "resultar",
+      "answer": "resultar",
+      "prompt": "to turn out to be, to prove to be",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Pasear A pie Caminar por la ciudad suele resultar la opción más cómoda"
+    },
+    {
+      "lemma": "cultural",
+      "answer": "cultural",
+      "prompt": "relating to culture",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "De esta época fue una de las épocas de esplendor cultural de Sevilla"
+    },
+    {
+      "lemma": "casco",
+      "answer": "el casco",
+      "prompt": "old quarter (as in casco antiguo)",
+      "alternates": [
+        "casco"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "la mayoría de las calles del centro y del casco antiguo"
+    },
+    {
+      "lemma": "arquitectónico",
+      "answer": "arquitectónico",
+      "prompt": "architectural",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "en variantes arquitectónicas con el regionalismo y culturales como la generación del 27"
+    },
+    {
+      "lemma": "tranvía",
+      "answer": "el tranvía",
+      "prompt": "tram, streetcar",
+      "alternates": [
+        "tranvía"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Tras medio siglo sin tranvía, desde 2007 Sevilla vuelve a disfrutar de un tranvía en la zona centro."
+    },
+    {
+      "lemma": "encontrarse",
+      "answer": "encontrarse",
+      "prompt": "to be located, to find oneself",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Durante el primer milenio d.C. se encontraba a la sombra del poder y esplendor de Córdoba"
+    },
+    {
+      "lemma": "tienda",
+      "answer": "la tienda",
+      "prompt": "shop, store",
+      "alternates": [
+        "tienda"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "gran número de tiendas turísticas"
+    },
+    {
+      "lemma": "albergar",
+      "answer": "albergar",
+      "prompt": "to hold, to house, to harbour",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Además de toda la historia que albergan sus calles"
+    },
+    {
+      "lemma": "típico",
+      "answer": "típico",
+      "prompt": "typical, traditional",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "en los que se sirven numerosas tapas típicas de Sevilla"
+    },
+    {
+      "lemma": "esplendor",
+      "answer": "el esplendor",
+      "prompt": "splendour, glory",
+      "alternates": [
+        "esplendor"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Durante el primer milenio d.C. se encontraba a la sombra del poder y esplendor de Córdoba"
+    },
+    {
+      "lemma": "musulmán",
+      "answer": "musulmán",
+      "prompt": "Muslim",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "se divide todo el territorio musulmán de la Península en reinos de taifas"
+    },
+    {
+      "lemma": "discoteca",
+      "answer": "la discoteca",
+      "prompt": "nightclub, disco",
+      "alternates": [
+        "discoteca"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y puede preguntar sobre las discotecas y centros nocturnos más cercanos (muy abundantes en la ciudad)."
+    },
+    {
+      "lemma": "mezquita",
+      "answer": "la mezquita",
+      "prompt": "mosque",
+      "alternates": [
+        "mezquita"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "el antiguo minarete de la mezquita aljama (la Giralda) y la Torre del Oro"
+    },
+    {
+      "lemma": "servicio",
+      "answer": "el servicio",
+      "prompt": "service",
+      "alternates": [
+        "servicio"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Además la estación da servicio a trenes de cercanías, regionales y de largo recorrido."
+    },
+    {
+      "lemma": "paseo",
+      "answer": "el paseo",
+      "prompt": "walk, stroll, ride",
+      "alternates": [
+        "paseo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Especialmente agradable es el paseo en bicicleta por la margen del río"
+    },
+    {
+      "lemma": "minarete",
+      "answer": "el minarete",
+      "prompt": "minaret",
+      "alternates": [
+        "minarete"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "el antiguo minarete de la mezquita aljama (la Giralda) y la Torre del Oro"
+    },
+    {
+      "lemma": "cercano",
+      "answer": "cercano",
+      "prompt": "nearby, close",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "un pueblo cercano a Sevilla"
+    },
+    {
+      "lemma": "ofrecer",
+      "answer": "ofrecer",
+      "prompt": "to offer",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "ofrece buenas vistas de antiguos pabellones de la Exposición Iberoamericana de 1929."
+    },
+    {
+      "lemma": "variedad",
+      "answer": "la variedad",
+      "prompt": "variety",
+      "alternates": [
+        "variedad"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "podremos encontrar una gran variedad gastronómica donde elegir qué queremos comer."
+    },
+    {
+      "lemma": "alternativo",
+      "answer": "alternativo",
+      "prompt": "alternative, non-mainstream",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "En la zona de la Alameda se pueden encontrar tiendas más alternativas y cercanas a lo bohemio."
+    },
+    {
+      "lemma": "durar",
+      "answer": "durar",
+      "prompt": "to last",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "El imperio almorávide no duró mucho"
+    },
+    {
+      "lemma": "conquistar",
+      "answer": "conquistar",
+      "prompt": "to conquer",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "conquistando unos cuantos de los otros."
+    },
+    {
+      "lemma": "nocturno",
+      "answer": "nocturno",
+      "prompt": "nightly, nocturnal",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "y puede preguntar sobre las discotecas y centros nocturnos más cercanos (muy abundantes en la ciudad)."
+    },
+    {
+      "lemma": "acudir",
+      "answer": "acudir",
+      "prompt": "to go, to come, to attend",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Es preferible acudir en primavera, cuando las temperaturas rondan los 25 °C."
+    },
+    {
+      "lemma": "metro",
+      "answer": "el metro",
+      "prompt": "metro, subway",
+      "alternates": [
+        "metro"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "En tren Aparte del metro"
+    },
+    {
+      "lemma": "arquitecto",
+      "answer": "el arquitecto",
+      "prompt": "architect",
+      "alternates": [
+        "arquitecto"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "El edificio es un diseño de los arquitectos sevillanos Antonio Cruz y Antonio Ortiz."
+    },
+    {
+      "lemma": "degustar",
+      "answer": "degustar",
+      "prompt": "to taste, to savour",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "puede degustar gran variedad de tapas"
+    },
+    {
+      "lemma": "regional",
+      "answer": "regional",
+      "prompt": "relating to a region, not just the capital or national level",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Además la estación da servicio a trenes de cercanías, regionales y de largo recorrido."
+    },
+    {
+      "lemma": "gratuito",
+      "answer": "gratuito",
+      "prompt": "free of charge",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": ""
+    },
+    {
+      "lemma": "mercadillo",
+      "answer": "el mercadillo",
+      "prompt": "flea market, street market",
+      "alternates": [
+        "mercadillo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Los jueves hay un mercadillo de cosas antiguas y de segunda mano en la calle Feria."
+    },
+    {
+      "lemma": "construirse",
+      "answer": "construirse",
+      "prompt": "to be built",
+      "alternates": [
+        "construir"
+      ],
+      "pos": "verb",
+      "reading": null,
+      "context": "se construyó en los años 40."
+    }
+  ],
+  "skipped": [
+    {
+      "lemma": "sevillano",
+      "reason": "demonym/proper-noun-derived adjective referring specifically to the city of Seville; too narrow for a general learner"
+    },
+    {
+      "lemma": "taifa",
+      "reason": "Too specialised and historical for a general learner"
+    }
+  ],
+  "rejected": [],
+  "version": "v1",
+  "commit": "10894ede",
+  "text": "es-travel",
+  "language": "es",
+  "run": 1
+}

@@ -1,0 +1,622 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v3/services/curator/src/curator/extract.py",
+  "prompt_version": "3",
+  "model": "claude-sonnet-4-6",
+  "seconds": 17.29,
+  "batches": [
+    {
+      "model": "claude-sonnet-4-6",
+      "purpose": "translate",
+      "input_tokens": 3889,
+      "output_tokens": 1130,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 3889,
+  "output_tokens": 1130,
+  "cost_usd": 0.028617,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "café",
+      "answer": "el café",
+      "prompt": "coffee",
+      "alternates": [
+        "café"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "El café es una bebida que se obtiene mediante el percolado de agua caliente a través de los"
+    },
+    {
+      "lemma": "grano",
+      "answer": "el grano",
+      "prompt": "bean; grain",
+      "alternates": [
+        "grano"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "el percolado de agua caliente a través de los granos tostados y molidos de los frutos de la"
+    },
+    {
+      "lemma": "cafeína",
+      "answer": "la cafeína",
+      "prompt": "caffeine",
+      "alternates": [
+        "cafeína"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "es altamente estimulante por su contenido de cafeína"
+    },
+    {
+      "lemma": "fruto",
+      "answer": "el fruto",
+      "prompt": "fruit",
+      "alternates": [
+        "fruto"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "través de los granos tostados y molidos de los frutos de la planta del café (cafeto)"
+    },
+    {
+      "lemma": "plantación",
+      "answer": "la plantación",
+      "prompt": "plantation",
+      "alternates": [
+        "plantación"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "pero en agosto de 2004 vandalizaron la plantación y todos los cultivos fueron arrancados"
+    },
+    {
+      "lemma": "sabor",
+      "answer": "el sabor",
+      "prompt": "flavor, taste",
+      "alternates": [
+        "sabor"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "puesto que su sabor original es fuerte y amargo."
+    },
+    {
+      "lemma": "bebida",
+      "answer": "la bebida",
+      "prompt": "drink, beverage",
+      "alternates": [
+        "bebida"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "El café es una bebida que se obtiene mediante el percolado de agua caliente a través de los"
+    },
+    {
+      "lemma": "cultivo",
+      "answer": "el cultivo",
+      "prompt": "cultivation, growing",
+      "alternates": [
+        "cultivo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "El cultivo del café está culturalmente ligado a la historia y al progreso de muchos países que lo"
+    },
+    {
+      "lemma": "cafetería",
+      "answer": "la cafetería",
+      "prompt": "café, coffee shop",
+      "alternates": [
+        "cafetería"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "] Se le conoce también como café o cafetería a un establecimiento dedicado al consumo de café"
+    },
+    {
+      "lemma": "planta",
+      "answer": "la planta",
+      "prompt": "plant",
+      "alternates": [
+        "planta"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "granos tostados y molidos de los frutos de la planta del café (cafeto); es altamente"
+    },
+    {
+      "lemma": "siglo",
+      "answer": "el siglo",
+      "prompt": "century",
+      "alternates": [
+        "siglo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Las cualidades energéticas del café ya eran conocidas por la tribu Galla de Etiopía en el siglo XI"
+    },
+    {
+      "lemma": "arábigo",
+      "answer": "arábigo",
+      "prompt": "Arabic, Arabian",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "también llamado cafeto arábica o arábico o simplemente café arábigo) es la más cultivada desde la Antigüedad"
+    },
+    {
+      "lemma": "acidez",
+      "answer": "la acidez",
+      "prompt": "acidity",
+      "alternates": [
+        "acidez"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "especialmente aquellos valorados por su baja acidez"
+    },
+    {
+      "lemma": "numeroso",
+      "answer": "numeroso",
+      "prompt": "numerous, many",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "útil contra numerosos males"
+    },
+    {
+      "lemma": "estimulante",
+      "answer": "estimulante",
+      "prompt": "stimulating",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "es altamente estimulante por su contenido de cafeína"
+    },
+    {
+      "lemma": "cosecha",
+      "answer": "la cosecha",
+      "prompt": "harvest",
+      "alternates": [
+        "cosecha"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "puede comenzar la cosecha del café."
+    },
+    {
+      "lemma": "millón",
+      "answer": "el millón",
+      "prompt": "million",
+      "alternates": [
+        "millón"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Durante el periodo 2012-2013 se produjeron 87 millones de toneladas de café"
+    },
+    {
+      "lemma": "cereza",
+      "answer": "la cereza",
+      "prompt": "cherry",
+      "alternates": [
+        "cereza"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "brillantes y carnosas que asemejan a las cerezas."
+    },
+    {
+      "lemma": "aroma",
+      "answer": "el aroma",
+      "prompt": "aroma, scent",
+      "alternates": [
+        "aroma"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "lo que desarrolla su aroma y les da su color oscuro."
+    },
+    {
+      "lemma": "producción",
+      "answer": "la producción",
+      "prompt": "production",
+      "alternates": [
+        "producción"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Brasil concentra poco más de un tercio de la producción mundial."
+    },
+    {
+      "lemma": "productor",
+      "answer": "el productor",
+      "prompt": "producer",
+      "alternates": [
+        "productor"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Vietnam y Colombia (principales productores de café)."
+    },
+    {
+      "lemma": "variedad",
+      "answer": "la variedad",
+      "prompt": "variety",
+      "alternates": [
+        "variedad"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Se han creado variedades que producen menores cantidades de cafeína"
+    },
+    {
+      "lemma": "semilla",
+      "answer": "la semilla",
+      "prompt": "seed",
+      "alternates": [
+        "semilla"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "la semilla de la planta."
+    },
+    {
+      "lemma": "pergamino",
+      "answer": "el pergamino",
+      "prompt": "parchment (inner membrane of the coffee bean)",
+      "alternates": [
+        "pergamino"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "están envueltas por una membrana semirrígida transparente, llamada pergamino, que es la pared del núcleo,"
+    },
+    {
+      "lemma": "proceso",
+      "answer": "el proceso",
+      "prompt": "process",
+      "alternates": [
+        "proceso"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "como acelerar los procesos cerebrales y mejorar la memoria"
+    },
+    {
+      "lemma": "oscuro",
+      "answer": "oscuro",
+      "prompt": "dark",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Dicho café es una bola de color castaño oscuro en cuyo interior resuenan los granos."
+    },
+    {
+      "lemma": "consumo",
+      "answer": "el consumo",
+      "prompt": "consumption",
+      "alternates": [
+        "consumo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Portugal y Paraguay es frecuente el consumo de café torrado o torrefacto"
+    },
+    {
+      "lemma": "producir",
+      "answer": "producir",
+      "prompt": "to produce",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "la historia y al progreso de muchos países que lo han producido por más de un siglo."
+    },
+    {
+      "lemma": "comenzar",
+      "answer": "comenzar",
+      "prompt": "to begin, to start",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "En la década de 1650 comenzó a ser muy importado y consumido en Inglaterra y se comenzaron a"
+    },
+    {
+      "lemma": "hectárea",
+      "answer": "la hectárea",
+      "prompt": "hectare",
+      "alternates": [
+        "hectárea"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "se redujeron de 68 787 hectáreas a 14 170 hectáreas"
+    },
+    {
+      "lemma": "arbusto",
+      "answer": "el arbusto",
+      "prompt": "shrub, bush",
+      "alternates": [
+        "arbusto"
+      ],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Cafeto Los cafetos son arbustos de las regiones tropicales del género Coffea, de la familia de los rubiáceos."
+    },
+    {
+      "lemma": "pulpa",
+      "answer": "la pulpa",
+      "prompt": "pulp",
+      "alternates": [
+        "pulpa"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "que es una capa de pulpa azucarada."
+    },
+    {
+      "lemma": "dulzor",
+      "answer": "el dulzor",
+      "prompt": "sweetness",
+      "alternates": [
+        "dulzor"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "el dulzor y la acidez."
+    },
+    {
+      "lemma": "tostador",
+      "answer": "el tostador",
+      "prompt": "roaster",
+      "alternates": [
+        "tostador"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "es un indicador utilizado por tostadores y vendedores para definir el perfil sensorial que un café posee."
+    },
+    {
+      "lemma": "agua",
+      "answer": "el agua",
+      "prompt": "water",
+      "alternates": [
+        "agua"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "una bebida que se obtiene mediante el percolado de agua caliente a través de los granos tostados y"
+    },
+    {
+      "lemma": "introducir",
+      "answer": "introducir",
+      "prompt": "to introduce",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "sería introducido a Arabia"
+    },
+    {
+      "lemma": "principalmente",
+      "answer": "principalmente",
+      "prompt": "mainly, primarily",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": null,
+      "context": "la planta se cultiva principalmente en países tropicales y subtropicales como Brasil"
+    },
+    {
+      "lemma": "verde",
+      "answer": "verde",
+      "prompt": "green",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "frutos verdes y frutos maduros simultáneamente"
+    },
+    {
+      "lemma": "textura",
+      "answer": "la textura",
+      "prompt": "texture",
+      "alternates": [
+        "textura"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "mayor será la intensidad del cuerpo o la textura que una persona percibe en su paladar."
+    },
+    {
+      "lemma": "aumentar",
+      "answer": "aumentar",
+      "prompt": "to increase, to grow",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "si se tiene en cuenta que su resistencia a los insecticidas aumenta."
+    },
+    {
+      "lemma": "sustituto",
+      "answer": "el sustituto",
+      "prompt": "substitute",
+      "alternates": [
+        "sustituto"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "pues lo veían como un posible sustituto del vino"
+    },
+    {
+      "lemma": "húmedo",
+      "answer": "húmedo",
+      "prompt": "wet (method)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "ya sea mediante el método seco o el húmedo"
+    },
+    {
+      "lemma": "capa",
+      "answer": "la capa",
+      "prompt": "layer",
+      "alternates": [
+        "capa"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "que es una capa de pulpa azucarada."
+    },
+    {
+      "lemma": "cultivar",
+      "answer": "cultivar",
+      "prompt": "to cultivate, to grow",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "sino que casi siempre debe ser cultivado"
+    },
+    {
+      "lemma": "recolección",
+      "answer": "la recolección",
+      "prompt": "harvesting, collection",
+      "alternates": [
+        "recolección"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "ya que la recolección"
+    },
+    {
+      "lemma": "color",
+      "answer": "el color",
+      "prompt": "color",
+      "alternates": [
+        "color"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Las hojas afectadas adquieren una coloración característica de color anaranjado."
+    },
+    {
+      "lemma": "mejorar",
+      "answer": "mejorar",
+      "prompt": "to improve",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "que mejora algunas funciones cognitivas"
+    },
+    {
+      "lemma": "comercializarse",
+      "answer": "comercializarse",
+      "prompt": "to be traded, to be marketed",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "de los principales productos de origen agrícola que se comercializan en los mercados internacionales y a menudo suponen"
+    },
+    {
+      "lemma": "sensorial",
+      "answer": "sensorial",
+      "prompt": "sensory",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "es un indicador utilizado por tostadores y vendedores para definir el perfil sensorial que un café posee."
+    },
+    {
+      "lemma": "permitir",
+      "answer": "permitir",
+      "prompt": "to allow, to permit",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "no hay pruebas directas que permitan ubicar estos primeros cultivos ni saber qué tribus lo usaban como estimulante."
+    },
+    {
+      "lemma": "europeo",
+      "answer": "europeo",
+      "prompt": "European",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "los que los turcos se reunían a beber café y los comparó con las tabernas europeas."
+    },
+    {
+      "lemma": "prohibir",
+      "answer": "prohibir",
+      "prompt": "to prohibit, to ban",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "los imanes ortodoxos y conservadores postulaban que el Corán prohibía el café, tal como el vino y"
+    },
+    {
+      "lemma": "atribuirse",
+      "answer": "atribuirse",
+      "prompt": "to be attributed",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "se lo atribuía al café."
+    },
+    {
+      "lemma": "robusto",
+      "answer": "robusto",
+      "prompt": "robust, strong",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "- Coffea canephora (también llamado cafeto robusta) ofrece una bebida rica en cafeína"
+    },
+    {
+      "lemma": "efecto",
+      "answer": "el efecto",
+      "prompt": "effect",
+      "alternates": [
+        "efecto"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "de Abisinia, llamado Kaldi, que observó el efecto tonificante que unos pequeños frutos rojos de unos"
+    },
+    {
+      "lemma": "intensidad",
+      "answer": "la intensidad",
+      "prompt": "intensity",
+      "alternates": [
+        "intensidad"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "menor será la intensidad de la acidez."
+    }
+  ],
+  "skipped": [
+    {
+      "lemma": "xix",
+      "reason": "Roman numeral used as a proper label, not a standalone vocabulary item"
+    },
+    {
+      "lemma": "cultivarse",
+      "reason": "tagging mistake — same meaning as cultivar (id 46); reflexive form does not add a distinct meaning"
+    },
+    {
+      "lemma": "tropical",
+      "reason": "same word in both languages"
+    }
+  ],
+  "rejected": [
+    {
+      "lemma": "robusta",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer 'robusto' does not contain the lemma 'robusta' [type=value_error, input_value={'lemma': 'robusta', 'ans...n de café robusta son'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    }
+  ],
+  "version": "v3",
+  "commit": "1956a501",
+  "text": "es-wiki",
+  "language": "es",
+  "run": 1
+}

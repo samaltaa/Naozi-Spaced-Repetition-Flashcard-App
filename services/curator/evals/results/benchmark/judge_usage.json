@@ -1,0 +1,452 @@
+[
+  {
+    "kind": "reference",
+    "input_tokens": 1142,
+    "output_tokens": 906,
+    "cost_usd": 0.022688
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 1032,
+    "output_tokens": 855,
+    "cost_usd": 0.021228
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4237,
+    "output_tokens": 1511,
+    "cost_usd": 0.047168
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1756,
+    "output_tokens": 426,
+    "cost_usd": 0.015544
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1603,
+    "output_tokens": 282,
+    "cost_usd": 0.012052
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1280,
+    "output_tokens": 126,
+    "cost_usd": 0.00764
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4437,
+    "output_tokens": 2288,
+    "cost_usd": 0.063508
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2050,
+    "output_tokens": 783,
+    "cost_usd": 0.02386
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2731,
+    "output_tokens": 1469,
+    "cost_usd": 0.040304
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 16285,
+    "output_tokens": 907,
+    "cost_usd": 0.08328
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 13329,
+    "output_tokens": 916,
+    "cost_usd": 0.071636
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 7034,
+    "output_tokens": 913,
+    "cost_usd": 0.046396
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 7287,
+    "output_tokens": 896,
+    "cost_usd": 0.047068
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 16929,
+    "output_tokens": 855,
+    "cost_usd": 0.084816
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 1645,
+    "output_tokens": 906,
+    "cost_usd": 0.0247
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 8873,
+    "output_tokens": 903,
+    "cost_usd": 0.053552
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 2306,
+    "output_tokens": 904,
+    "cost_usd": 0.027304
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 3467,
+    "output_tokens": 899,
+    "cost_usd": 0.031848
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 12484,
+    "output_tokens": 869,
+    "cost_usd": 0.067316
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 9489,
+    "output_tokens": 898,
+    "cost_usd": 0.055916
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 4471,
+    "output_tokens": 1631,
+    "cost_usd": 0.050504
+  },
+  {
+    "kind": "reference",
+    "input_tokens": 2268,
+    "output_tokens": 922,
+    "cost_usd": 0.027512
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 3786,
+    "output_tokens": 1688,
+    "cost_usd": 0.048904
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2473,
+    "output_tokens": 695,
+    "cost_usd": 0.023792
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 3918,
+    "output_tokens": 1570,
+    "cost_usd": 0.047072
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1956,
+    "output_tokens": 516,
+    "cost_usd": 0.018144
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1904,
+    "output_tokens": 712,
+    "cost_usd": 0.021856
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4041,
+    "output_tokens": 1438,
+    "cost_usd": 0.044924
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2305,
+    "output_tokens": 794,
+    "cost_usd": 0.0251
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 3753,
+    "output_tokens": 1522,
+    "cost_usd": 0.045452
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1842,
+    "output_tokens": 658,
+    "cost_usd": 0.020528
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2450,
+    "output_tokens": 993,
+    "cost_usd": 0.02966
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2883,
+    "output_tokens": 1439,
+    "cost_usd": 0.040312
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1907,
+    "output_tokens": 687,
+    "cost_usd": 0.021368
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2906,
+    "output_tokens": 1088,
+    "cost_usd": 0.033384
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1979,
+    "output_tokens": 1033,
+    "cost_usd": 0.028576
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2594,
+    "output_tokens": 1104,
+    "cost_usd": 0.032456
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 3229,
+    "output_tokens": 1527,
+    "cost_usd": 0.043456
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2370,
+    "output_tokens": 848,
+    "cost_usd": 0.02644
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2442,
+    "output_tokens": 1140,
+    "cost_usd": 0.032568
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2066,
+    "output_tokens": 660,
+    "cost_usd": 0.021464
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1529,
+    "output_tokens": 324,
+    "cost_usd": 0.012596
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2190,
+    "output_tokens": 759,
+    "cost_usd": 0.02394
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1618,
+    "output_tokens": 544,
+    "cost_usd": 0.017352
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2413,
+    "output_tokens": 922,
+    "cost_usd": 0.028092
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1737,
+    "output_tokens": 505,
+    "cost_usd": 0.017048
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1940,
+    "output_tokens": 581,
+    "cost_usd": 0.01938
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1639,
+    "output_tokens": 539,
+    "cost_usd": 0.017336
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4246,
+    "output_tokens": 2273,
+    "cost_usd": 0.062444
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2557,
+    "output_tokens": 1101,
+    "cost_usd": 0.032248
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2430,
+    "output_tokens": 1121,
+    "cost_usd": 0.03214
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4436,
+    "output_tokens": 1998,
+    "cost_usd": 0.057704
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2479,
+    "output_tokens": 1432,
+    "cost_usd": 0.038556
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 3065,
+    "output_tokens": 1808,
+    "cost_usd": 0.04842
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4603,
+    "output_tokens": 2208,
+    "cost_usd": 0.062572
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2840,
+    "output_tokens": 1556,
+    "cost_usd": 0.04248
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 1785,
+    "output_tokens": 732,
+    "cost_usd": 0.02178
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4628,
+    "output_tokens": 2213,
+    "cost_usd": 0.062772
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2745,
+    "output_tokens": 1140,
+    "cost_usd": 0.03378
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2342,
+    "output_tokens": 766,
+    "cost_usd": 0.024688
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4583,
+    "output_tokens": 2103,
+    "cost_usd": 0.060392
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2279,
+    "output_tokens": 784,
+    "cost_usd": 0.024796
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2129,
+    "output_tokens": 767,
+    "cost_usd": 0.023856
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4239,
+    "output_tokens": 2760,
+    "cost_usd": 0.072156
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2310,
+    "output_tokens": 1176,
+    "cost_usd": 0.03276
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 3360,
+    "output_tokens": 2170,
+    "cost_usd": 0.05684
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4342,
+    "output_tokens": 2804,
+    "cost_usd": 0.073448
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2459,
+    "output_tokens": 1462,
+    "cost_usd": 0.039076
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 3290,
+    "output_tokens": 1929,
+    "cost_usd": 0.05174
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4454,
+    "output_tokens": 2395,
+    "cost_usd": 0.065716
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2549,
+    "output_tokens": 1470,
+    "cost_usd": 0.039596
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2460,
+    "output_tokens": 1306,
+    "cost_usd": 0.03596
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 4428,
+    "output_tokens": 2857,
+    "cost_usd": 0.074852
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2700,
+    "output_tokens": 1288,
+    "cost_usd": 0.03656
+  },
+  {
+    "kind": "grade",
+    "input_tokens": 2180,
+    "output_tokens": 1087,
+    "cost_usd": 0.03046
+  }
+]
