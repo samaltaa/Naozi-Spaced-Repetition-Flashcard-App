@@ -1,0 +1,640 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v3/services/curator/src/curator/extract.py",
+  "prompt_version": "3",
+  "model": "claude-sonnet-4-6",
+  "seconds": 14.8,
+  "batches": [
+    {
+      "model": "claude-sonnet-4-6",
+      "purpose": "translate",
+      "input_tokens": 3905,
+      "output_tokens": 1114,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 3905,
+  "output_tokens": 1114,
+  "cost_usd": 0.028425,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "exclamar",
+      "answer": "exclamar",
+      "prompt": "to exclaim",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "exclamó dirigiéndose á su montero"
+    },
+    {
+      "lemma": "ojo",
+      "answer": "el ojo",
+      "prompt": "eye",
+      "alternates": [
+        "ojo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Yo creo que he visto unos ojos como los que he pintado en esta leyenda."
+    },
+    {
+      "lemma": "amar",
+      "answer": "amar",
+      "prompt": "to love",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "—¡Por los que más amo!... murmuró el joven con una triste sonrisa."
+    },
+    {
+      "lemma": "fuente",
+      "answer": "la fuente",
+      "prompt": "spring, fountain",
+      "alternates": [
+        "fuente"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "perdiéndose entre los matorrales de una trocha que conducía á la fuente."
+    },
+    {
+      "lemma": "montero",
+      "answer": "el montero",
+      "prompt": "huntsman, gamekeeper",
+      "alternates": [
+        "montero"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Nuestro joven señor comienza por donde otros acaban... en cuarenta años de montero no he visto mejor golpe..."
+    },
+    {
+      "lemma": "ciervo",
+      "answer": "el ciervo",
+      "prompt": "stag, deer",
+      "alternates": [
+        "ciervo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "—Herido va el ciervo... herido va; no hay duda."
+    },
+    {
+      "lemma": "brillar",
+      "answer": "brillar",
+      "prompt": "to shine, to glitter",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Aquellas gotas que al desprenderse brillan como puntos de oro y suenan como las notas de un instrumento"
+    },
+    {
+      "lemma": "álamo",
+      "answer": "el álamo",
+      "prompt": "poplar tree",
+      "alternates": [
+        "álamo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "en que llegásteis á la fuente de los Álamos en pos de la res herida"
+    },
+    {
+      "lemma": "trompa",
+      "answer": "la trompa",
+      "prompt": "hunting horn",
+      "alternates": [
+        "trompa"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "soplad en esas trompas hasta echar los hígados"
+    },
+    {
+      "lemma": "proseguir",
+      "answer": "proseguir",
+      "prompt": "to continue, to go on",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "por qué? —Porque esa trocha, prosiguió el montero, conduce á la fuente de"
+    },
+    {
+      "lemma": "misterioso",
+      "answer": "misterioso",
+      "prompt": "mysterious",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Pieza que se refugia en esa fuente misteriosa, pieza perdida."
+    },
+    {
+      "lemma": "rumor",
+      "answer": "el rumor",
+      "prompt": "murmur, soft sound",
+      "alternates": [
+        "rumor"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "En el lago caen con un rumor indescriptible."
+    },
+    {
+      "lemma": "saltar",
+      "answer": "saltar",
+      "prompt": "to jump, to leap",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "y al saltar uno de esos lentiscos han flaqueado sus piernas..."
+    },
+    {
+      "lemma": "cazador",
+      "answer": "el cazador",
+      "prompt": "hunter",
+      "alternates": [
+        "cazador"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y los lebreles dejaron refunfuñando la pista á la voz de los cazadores."
+    },
+    {
+      "lemma": "hoja",
+      "answer": "la hoja",
+      "prompt": "leaf",
+      "alternates": [
+        "hoja"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "gotas de la lluvia que se resbalan sobre las hojas de los árboles después de una tempestad de"
+    },
+    {
+      "lemma": "pupila",
+      "answer": "la pupila",
+      "prompt": "pupil (of the eye)",
+      "alternates": [
+        "pupila"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y entre las pestañas volteaban inquietas unas pupilas que yo había visto... sí"
+    },
+    {
+      "lemma": "ballesta",
+      "answer": "la ballesta",
+      "prompt": "crossbow",
+      "alternates": [
+        "ballesta"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Hasta aquí llega el montero con su ballesta"
+    },
+    {
+      "lemma": "agua",
+      "answer": "el agua",
+      "prompt": "water",
+      "alternates": [
+        "agua"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "en cuyas aguas habita un espíritu del mal."
+    },
+    {
+      "lemma": "monte",
+      "answer": "el monte",
+      "prompt": "woodland, hillside, scrubland",
+      "alternates": [
+        "monte"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Se ve el rastro de la sangre entre las zarzas del monte"
+    },
+    {
+      "lemma": "gota",
+      "answer": "la gota",
+      "prompt": "drop",
+      "alternates": [
+        "gota"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "cuales ellos eran, luminosos, trasparentes como las gotas de la lluvia que se resbalan sobre las"
+    },
+    {
+      "lemma": "habitar",
+      "answer": "habitar",
+      "prompt": "to inhabit, to dwell in",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "en cuyas aguas habita un espíritu del mal."
+    },
+    {
+      "lemma": "pestaña",
+      "answer": "la pestaña",
+      "prompt": "eyelash",
+      "alternates": [
+        "pestaña"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "sus pestañas brillaban como hilos de luz"
+    },
+    {
+      "lemma": "onda",
+      "answer": "la onda",
+      "prompt": "wave, ripple",
+      "alternates": [
+        "onda"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "en las ondas del agua"
+    },
+    {
+      "lemma": "joven",
+      "answer": "el joven",
+      "prompt": "young man",
+      "alternates": [
+        "joven"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "Nuestro joven señor comienza por donde otros acaban... en cuarenta años de montero no he visto mejor golpe..."
+    },
+    {
+      "lemma": "caer",
+      "answer": "caer",
+      "prompt": "to fall",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "que es la primera que cae por mi mano"
+    },
+    {
+      "lemma": "espíritu",
+      "answer": "el espíritu",
+      "prompt": "spirit",
+      "alternates": [
+        "espíritu"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "en cuyas aguas habita un espíritu del mal."
+    },
+    {
+      "lemma": "esmeralda",
+      "answer": "la esmeralda",
+      "prompt": "emerald",
+      "alternates": [
+        "esmeralda"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y cuyos cálices parecen esmeraldas... no sé"
+    },
+    {
+      "lemma": "borde",
+      "answer": "el borde",
+      "prompt": "edge, bank",
+      "alternates": [
+        "borde"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "por entre las verdes y flotantes hojas de las plantas que crecen al borde de su cuna."
+    },
+    {
+      "lemma": "roca",
+      "answer": "la roca",
+      "prompt": "rock, cliff",
+      "alternates": [
+        "roca"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "encontrado por acaso una mujer que vive entre sus rocas? —¡Una mujer! exclamó"
+    },
+    {
+      "lemma": "labio",
+      "answer": "el labio",
+      "prompt": "lip",
+      "alternates": [
+        "labio"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "sin despegar los labios"
+    },
+    {
+      "lemma": "suspiro",
+      "answer": "el suspiro",
+      "prompt": "sigh",
+      "alternates": [
+        "suspiro"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y corren, unas veces con risa, otras con suspiros, hasta caer en un lago."
+    },
+    {
+      "lemma": "zumbar",
+      "answer": "zumbar",
+      "prompt": "to buzz, to hum",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "susurrando como un ruido semejante al de las abejas que zumban en torno de las flores"
+    },
+    {
+      "lemma": "extraño",
+      "answer": "extraño",
+      "prompt": "strange, odd",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "es una cosa extraña lo que me sucede"
+    },
+    {
+      "lemma": "morir",
+      "answer": "morir",
+      "prompt": "to die",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "los Álamos, y si la salva antes de morir podemos darle por perdido? Las cuencas"
+    },
+    {
+      "lemma": "beso",
+      "answer": "el beso",
+      "prompt": "kiss",
+      "alternates": [
+        "beso"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "los besos de la que me dió la vida"
+    },
+    {
+      "lemma": "lago",
+      "answer": "el lago",
+      "prompt": "lake",
+      "alternates": [
+        "lago"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "hasta caer en un lago."
+    },
+    {
+      "lemma": "murmurar",
+      "answer": "murmurar",
+      "prompt": "to murmur, to mutter",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "murmuró Iñigo entre dientes"
+    },
+    {
+      "lemma": "susurrar",
+      "answer": "susurrar",
+      "prompt": "to whisper, to murmur",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "instrumento, se reúnen entre los céspedes, y susurrando, susurrando como un ruido semejante al de"
+    },
+    {
+      "lemma": "resbalarse",
+      "answer": "resbalarse",
+      "prompt": "to slide, to slip",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "trasparentes como las gotas de la lluvia que se resbalan sobre las hojas de los árboles después de"
+    },
+    {
+      "lemma": "absorto",
+      "answer": "absorto",
+      "prompt": "absorbed, lost in thought",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "absorto en sus ideas"
+    },
+    {
+      "lemma": "corcel",
+      "answer": "el corcel",
+      "prompt": "steed, charger",
+      "alternates": [
+        "corcel"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "y hundidle á los corceles una cuarta de hierro en los ijares"
+    },
+    {
+      "lemma": "funesto",
+      "answer": "funesto",
+      "prompt": "ill-omened, fateful",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "que yo siempre tendré por funesto"
+    },
+    {
+      "lemma": "hermoso",
+      "answer": "hermoso",
+      "prompt": "beautiful, handsome",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "una mujer hermosa sobre toda ponderación."
+    },
+    {
+      "lemma": "superficie",
+      "answer": "la superficie",
+      "prompt": "surface",
+      "alternates": [
+        "superficie"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "cuya inmóvil superficie apenas riza el viento de la tarde."
+    },
+    {
+      "lemma": "trocha",
+      "answer": "la trocha",
+      "prompt": "narrow path, trail",
+      "alternates": [
+        "trocha"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "perdiéndose entre los matorrales de una trocha que conducía á la fuente."
+    },
+    {
+      "lemma": "jauría",
+      "answer": "la jauría",
+      "prompt": "pack of hounds",
+      "alternates": [
+        "jauría"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "el latir de la jauría desencadenada y las voces de los pajes resonaron con nueva furia"
+    },
+    {
+      "lemma": "pliegue",
+      "answer": "el pliegue",
+      "prompt": "fold",
+      "alternates": [
+        "pliegue"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "deslizándose entre los pliegues del velo como un rayo de sol que atraviesa las nubes"
+    },
+    {
+      "lemma": "fondo",
+      "answer": "el fondo",
+      "prompt": "depths, bottom",
+      "alternates": [
+        "fondo"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "dejas perder para que vaya á morir en el fondo del bosque! ¿Crees acaso que he"
+    },
+    {
+      "lemma": "acento",
+      "answer": "el acento",
+      "prompt": "tone, accent",
+      "alternates": [
+        "acento"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "unos ojos... —¡Verdes! exclamó Iñigo con un acento de profundo terror"
+    },
+    {
+      "lemma": "matorral",
+      "answer": "el matorral",
+      "prompt": "thicket, scrubland",
+      "alternates": [
+        "matorral"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "perdiéndose entre los matorrales de una trocha que conducía á la fuente."
+    },
+    {
+      "lemma": "mirada",
+      "answer": "la mirada",
+      "prompt": "gaze, look",
+      "alternates": [
+        "mirada"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "yo creí ver una mirada que se clavó en la mía"
+    },
+    {
+      "lemma": "vacilar",
+      "answer": "vacilar",
+      "prompt": "to hesitate, to waver",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "¿Y si lo fuese? El joven vaciló un instante"
+    },
+    {
+      "lemma": "querer",
+      "answer": "querer",
+      "prompt": "to love, to care for",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "¿Qué os ocupa tan largas horas lejos de los que más os quieren?"
+    },
+    {
+      "lemma": "servidor",
+      "answer": "el servidor",
+      "prompt": "servant, attendant",
+      "alternates": [
+        "servidor"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "el joven exclamó dirigiéndose á su servidor"
+    },
+    {
+      "lemma": "flotar",
+      "answer": "flotar",
+      "prompt": "to float",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "tal vez una de esas flores que flotan entre las algas de su seno"
+    },
+    {
+      "lemma": "eco",
+      "answer": "el eco",
+      "prompt": "echo",
+      "alternates": [
+        "eco"
+      ],
+      "pos": "noun",
+      "reading": null,
+      "context": "perdido? Las cuencas del Moncayo repitieron de eco en eco el bramido de las trompas,"
+    },
+    {
+      "lemma": "llegar",
+      "answer": "llegar",
+      "prompt": "to arrive, to reach",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "¿Quién sabe si no le daré lugar para que llegue á la fuente? y si llegase"
+    },
+    {
+      "lemma": "parecer",
+      "answer": "parecer",
+      "prompt": "to seem, to appear",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "que al parecer solo para mí existe"
+    },
+    {
+      "lemma": "envolver",
+      "answer": "envolver",
+      "prompt": "to surround, to envelop",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "á revelártelo... Tú me ayudarás á desvanecer el misterio que envuelve á esa criatura"
+    },
+    {
+      "lemma": "conducir",
+      "answer": "conducir",
+      "prompt": "to lead, to go to",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "perdiéndose entre los matorrales de una trocha que conducía á la fuente."
+    }
+  ],
+  "skipped": [],
+  "rejected": [],
+  "version": "v3",
+  "commit": "1956a501",
+  "text": "es-fiction",
+  "language": "es",
+  "run": 1
+}

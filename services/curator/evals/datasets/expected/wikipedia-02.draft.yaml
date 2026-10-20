@@ -1,0 +1,180 @@
+name: wikipedia-02
+language: es
+notes: ''
+required: []
+optional:
+- answer: militar
+  prompt:
+  - military
+- answer: la clase
+  prompt:
+  - type, kind
+- answer: la guerra
+  prompt:
+  - war
+- answer: explorar
+  prompt:
+  - to explore
+- answer: el terrorismo
+  prompt:
+  - terrorism
+- answer: innumerable
+  prompt:
+  - countless, innumerable
+- answer: abrumadoramente
+  prompt:
+  - overwhelmingly
+- answer: el contendiente
+  prompt:
+  - contender, contestant
+- answer: acuñar
+  prompt:
+  - to coin (a term or phrase)
+- answer: asimétrico
+  prompt:
+  - asymmetric
+- answer: rebasar
+  prompt:
+  - to go beyond, to exceed
+- answer: atípico
+  prompt:
+  - atypical, unusual
+- answer: abismal
+  prompt:
+  - abysmal, vast, enormous
+- answer: cuantitativo
+  prompt:
+  - quantitative
+- answer: el decenio
+  prompt:
+  - decade (ten-year period)
+- answer: cualitativo
+  prompt:
+  - qualitative
+- answer: basarse
+  prompt:
+  - to be based on
+- answer: postular
+  prompt:
+  - to postulate, to put forward
+- answer: constatarse
+  prompt:
+  - to be verified, to be confirmed
+- answer: el calado
+  prompt:
+  - depth, significance
+- answer: la desobediencia
+  prompt:
+  - disobedience
+- answer: la objeción
+  prompt:
+  - objection
+- answer: la implicación
+  prompt:
+  - involvement, implication
+- answer: el autor
+  prompt:
+  - author
+- answer: reflejar
+  prompt:
+  - to reflect
+- answer: la acción
+  prompt:
+  - action
+- answer: mediático
+  prompt:
+  - relating to the media
+- answer: recurrente
+  prompt:
+  - recurring, recurrent
+- answer: ético
+  prompt:
+  - ethical
+- answer: la guerrilla
+  prompt:
+  - guerrilla warfare
+- answer: la restricción
+  prompt:
+  - restriction
+- answer: teórico
+  prompt:
+  - theoretical
+- answer: obligar
+  prompt:
+  - to force, to oblige
+- answer: la táctica
+  prompt:
+  - tactic
+- answer: convencional
+  prompt:
+  - conventional
+- answer: extenso
+  prompt:
+  - extensive, vast
+- answer: diplomático
+  prompt:
+  - diplomatic
+- answer: el bando
+  prompt:
+  - side, faction
+- answer: sucio
+  prompt:
+  - dirty, filthy
+- answer: violento
+  prompt:
+  - violent
+- answer: la utilización
+  prompt:
+  - use, utilization
+- answer: conducir
+  prompt:
+  - to lead, to drive
+- answer: la combinación
+  prompt:
+  - combination
+- answer: el recurso
+  prompt:
+  - resource, means
+- answer: la potencia
+  prompt:
+  - power, nation
+- answer: profundo
+  prompt:
+  - deep, profound
+- answer: servir
+  prompt:
+  - to serve
+- answer: el ámbito
+  prompt:
+  - field, sphere, domain
+- answer: el coronel
+  prompt:
+  - colonel
+- answer: chino
+  prompt:
+  - Chinese
+- answer: la escala
+  prompt:
+  - scale
+- answer: la tradición
+  prompt:
+  - tradition
+- answer: el conflicto
+  prompt:
+  - conflict
+- answer: utilizar
+  prompt:
+  - to use, to utilize
+- answer: la resistencia
+  prompt:
+  - resistance
+- answer: la influencia
+  prompt:
+  - influence
+- answer: la publicación
+  prompt:
+  - publication
+- answer: el concepto
+  prompt:
+  - concept
+forbidden: []

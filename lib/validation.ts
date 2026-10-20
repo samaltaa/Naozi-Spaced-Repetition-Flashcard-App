@@ -57,6 +57,28 @@ export const CreateItemsInput = z.union([ItemInput, z.array(ItemInput).min(1).ma
 
 export const UpdateItemInput = ItemInput.partial();
 
+// Extractions
+
+export const StartExtractionInput = z
+  .object({
+    url: z.url({ protocol: /^https?$/ }).max(2000).optional(),
+    text: z.string().trim().min(1).max(80_000).optional(),
+  })
+  .refine((v) => (v.url === undefined) !== (v.text === undefined), "Send either a link or some text.");
+
+export const UpdateDraftInput = z.object({
+  prompt: Text(500).optional(),
+  answer: Text(500).optional(),
+  alternates: z.array(Text(500)).max(20).optional(),
+  notes: z.string().trim().max(2000).nullable().optional(),
+  status: z.enum(["pending", "deleted"]).optional(),
+});
+
+export const ImportExtractionInput = z.object({
+  levelId: z.guid(),
+  draftIds: z.array(z.guid()).min(1).max(200),
+});
+
 // Accounts
 
 function isTimeZone(value: string): boolean {
@@ -106,3 +128,6 @@ export type CreateItemsInput = z.infer<typeof CreateItemsInput>;
 export type UpdateItemInput = z.infer<typeof UpdateItemInput>;
 export type ReviewSubmission = z.infer<typeof ReviewSubmission>;
 export type SignUpInput = z.infer<typeof SignUpInput>;
+export type StartExtractionInput = z.infer<typeof StartExtractionInput>;
+export type UpdateDraftInput = z.infer<typeof UpdateDraftInput>;
+export type ImportExtractionInput = z.infer<typeof ImportExtractionInput>;

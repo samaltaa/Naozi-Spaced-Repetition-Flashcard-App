@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curator Evaluation Results</title>
+<style>
+:root {
+  --ink: #1f2a37;
+  --ink-soft: #4b5563;
+  --ink-faint: #9ca3af;
+  --paper: #f7f6f2;
+  --card: #ffffff;
+  --line: #e5e7eb;
+  --grid: #eef0f2;
+  --good: #15803d;
+  --accent: #0f766e;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 20px 64px;
+}
+
+code { font-size: 12px; }
+
+/* Header */
+
+header.page {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+
+.lede {
+  margin: 10px 0 0;
+  max-width: 780px;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+h2 { margin: 0 0 4px; font-size: 19px; }
+h3 { margin: 0 0 6px; font-size: 15px; }
+
+.sub {
+  margin: 0 0 22px;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+}
+
+section { margin-top: 24px; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 22px 18px;
+  break-inside: avoid;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.note {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+/* Headline numbers */
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.kpi {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  break-inside: avoid;
+}
+
+.kpi .label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-soft);
+}
+
+.kpi .value {
+  margin-top: 6px;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--good);
+}
+
+.kpi .detail {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.kpi .detail s { color: var(--ink-faint); }
+
+/* Column charts */
+
+.chart {
+  --height: 260px;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 0 10px;
+  margin-top: 8px;
+}
+
+.y-axis {
+  position: relative;
+  height: var(--height);
+}
+
+.y-axis span {
+  position: absolute;
+  right: 0;
+  transform: translateY(50%);
+  font-size: 11px;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+.plot {
+  position: relative;
+  height: var(--height);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  gap: 12px;
+  padding: 0 8px;
+  border-bottom: 2px solid var(--ink);
+  background-image: linear-gradient(to top, var(--grid) 1px, transparent 1px);
+  background-size: 100% 25%;
+}
+
+.group {
+  flex: 1 1 0;
+  max-width: 190px;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5px;
+}
+
+.bar {
+  position: relative;
+  flex: 1 1 0;
+  max-width: 60px;
+  height: max(var(--h), 3px);
+  border-radius: 6px 6px 0 0;
+  background: var(--c, var(--ink));
+}
+
+.bar.zero {
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--c) 0 4px, transparent 4px 7px);
+}
+
+.bar .val {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.bar.stack {
+  display: flex;
+  flex-direction: column-reverse;
+  background: none;
+  height: var(--h);
+  overflow: visible;
+}
+
+.bar.stack .seg { width: 100%; }
+.bar.stack .seg:last-of-type { border-radius: 6px 6px 0 0; }
+
+.x-axis {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
+  padding: 8px 8px 0;
+}
+
+.x-axis div {
+  flex: 1 1 0;
+  max-width: 190px;
+  text-align: center;
+  font-size: 11.5px;
+  line-height: 1.35;
+  color: var(--ink-soft);
+}
+
+.x-axis b {
+  display: block;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.legend span::before {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-right: 6px;
+  border-radius: 3px;
+  vertical-align: -1px;
+  background: var(--c);
+}
+
+/* Scatter */
+
+.scatter {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  grid-template-rows: 320px auto;
+  gap: 0 10px;
+  margin-top: 8px;
+}
+
+.scatter .y-axis { height: 320px; }
+
+.field {
+  position: relative;
+  border-left: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  background-image:
+    linear-gradient(to top, var(--grid) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid) 1px, transparent 1px);
+  background-size: 100% 25%, 33.333% 100%;
+}
+
+.dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: 0 0 -8px -8px;
+  border-radius: 50%;
+  background: var(--c);
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px var(--c);
+}
+
+.dot span {
+  position: absolute;
+  left: 20px;
+  top: -3px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.x-ticks {
+  grid-column: 2;
+  position: relative;
+  height: 22px;
+}
+
+.x-ticks span {
+  position: absolute;
+  top: 4px;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+/* Strip plot */
+
+.strip { display: grid; gap: 10px; }
+
+.strip-row, .strip-axis {
+  display: grid;
+  grid-template-columns: 150px 1fr 52px;
+  gap: 12px;
+  align-items: center;
+}
+
+.strip-label {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.3;
+}
+
+.strip-label b {
+  display: block;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.strip-track {
+  position: relative;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--grid);
+}
+
+.strip-track i {
+  position: absolute;
+  top: 50%;
+  width: 13px;
+  height: 13px;
+  margin: -6.5px 0 0 -6.5px;
+  border-radius: 50%;
+  background: var(--c);
+  opacity: .85;
+  border: 1.5px solid #fff;
+}
+
+.strip-track em {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  width: 3px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.strip-med {
+  font-size: 13px;
+  font-weight: 800;
+  text-align: right;
+}
+
+.strip-ticks {
+  position: relative;
+  height: 16px;
+}
+
+.strip-ticks span {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+/* Tables */
+
+.table-wrap { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+th, td {
+  padding: 7px 9px;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  white-space: nowrap;
+}
+
+th:first-child, td:first-child,
+th:nth-child(2), td:nth-child(2) { text-align: left; }
+
+thead th {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--ink-soft);
+  border-bottom: 2px solid var(--ink);
+}
+
+td.heat {
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Examples */
+
+.examples {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px 24px;
+}
+
+.examples ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.examples li { margin: 2px 0; }
+.examples li b { color: var(--ink); }
+
+footer {
+  margin-top: 36px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+footer p { margin: 4px 0; }
+
+/* Small screens */
+
+@media (max-width: 760px) {
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .two, .examples { grid-template-columns: 1fr; }
+  .strip-row, .strip-axis { grid-template-columns: 90px 1fr 44px; }
+  h1 { font-size: 24px; }
+}
+
+/* Print */
+
+@page {
+  size: A4;
+  margin: 14mm 12mm;
+}
+
+@media print {
+  body { background: #fff; font-size: 13px; }
+  main { max-width: none; padding: 0; }
+  section { break-inside: avoid; }
+  section.page-break { break-before: page; }
+  .kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+</style>
+</head>
+<body>
+<main>
+  <header class="page">
+    <p class="eyebrow">Naozi · Curator service · October 2026</p>
+    <h1>Article-to-vocabulary extraction: quality and cost across versions</h1>
+    <p class="lede">
+      Every curator version was run on the same 15 frozen texts: 5 each in Spanish, Russian and Chinese, covering encyclopedia, news,
+      travel, fiction and literary writing. Older versions only support Spanish. The translation cache was off, so every run paid full price.
+      Every word produced was graded by Claude Opus 5.5.
+    </p>
+  </header>
+  <section class="kpis"><div class="kpi"><div class="label">Cost per article</div><div class="value">−98.8%</div><div class="detail"><s>$0.108</s> → <b>$0.0013</b> median, Spanish</div></div><div class="kpi"><div class="label">Cost per usable card</div><div class="value">−99.0%</div><div class="detail"><s>$0.0023</s> → <b>$0.00002</b></div></div><div class="kpi"><div class="label">Usable cards</div><div class="value">−0.5 pts</div><div class="detail"><s>97%</s> → <b>96%</b> of words produced</div></div><div class="kpi"><div class="label">Time per article</div><div class="value">−87.5%</div><div class="detail"><s>51s</s> → <b>6s</b> median, Spanish</div></div></section><section><div class="two"><div class="card"><h2>Cost per article</h2><p class="sub">Spanish, median of 5 articles, linear scale</p><div class="chart" style="--height:260px"><div class="y-axis"><span style="bottom:0.00%">$0</span><span style="bottom:25.00%">$0.031</span><span style="bottom:50.00%">$0.062</span><span style="bottom:75.00%">$0.094</span><span style="bottom:100.00%">$0.125</span></div><div class="plot"><div class="group"><div class="bar" style="--h:86.27%; --c:#c2410c"><span class="val">$0.108</span></div></div><div class="group"><div class="bar" style="--h:22.89%; --c:#ea580c"><span class="val">$0.029</span></div></div><div class="group"><div class="bar" style="--h:0.99%; --c:#15803d"><span class="val">$0.0012</span></div></div><div class="group"><div class="bar" style="--h:1.04%; --c:#0f766e"><span class="val">$0.0013</span></div></div></div><div class="x-axis"><div><b>v1</b>Sonnet 4.6 · full replies</div><div><b>v3</b>Sonnet 4.6 · slim replies</div><div><b>v4</b>Haiku 5.5 · fallback</div><div><b>v6</b>Haiku 5.5 · language profiles</div></div></div><p class="note">Range per version: v1 $0.096–$0.170 · v3 $0.026–$0.030 · v4 $0.0011–$0.0014 · v6 $0.0011–$0.0014</p></div><div class="card"><h2>Cost per usable card</h2><p class="sub">Total cost divided by cards the judge found fully correct, log scale</p><div class="chart" style="--height:260px"><div class="y-axis"><span style="bottom:0.00%">$0.00001</span><span style="bottom:33.33%">$0.00010</span><span style="bottom:66.67%">$0.0010</span><span style="bottom:100.00%">$0.010</span></div><div class="plot"><div class="group"><div class="bar" style="--h:79.02%; --c:#c2410c"><span class="val">$0.0023</span></div></div><div class="group"><div class="bar" style="--h:57.56%; --c:#ea580c"><span class="val">$0.00053</span></div></div><div class="group"><div class="bar" style="--h:12.10%; --c:#15803d"><span class="val">$0.00002</span></div></div><div class="group"><div class="bar" style="--h:12.34%; --c:#0f766e"><span class="val">$0.00002</span></div></div></div><div class="x-axis"><div><b>v1</b>Sonnet 4.6 · full replies</div><div><b>v3</b>Sonnet 4.6 · slim replies</div><div><b>v4</b>Haiku 5.5 · fallback</div><div><b>v6</b>Haiku 5.5 · language profiles</div></div></div><p class="note">This folds quality into cost: a cheap version that produces bad cards scores worse here.</p></div></div></section><section><div class="card"><h2>Quality by version</h2><p class="sub">Spanish, all 5 articles pooled. Precision: valid word in the right dictionary form. Usable: valid, right form and right gloss.</p><div class="chart" style="--height:280px"><div class="y-axis"><span style="bottom:0.00%">0%</span><span style="bottom:25.00%">25%</span><span style="bottom:50.00%">50%</span><span style="bottom:75.00%">75%</span><span style="bottom:100.00%">100%</span></div><div class="plot"><div class="group"><div class="bar" style="--h:97.50%; --c:#c2410c"><span class="val">98%</span></div><div class="bar" style="--h:97.50%; --c:#ea580c"><span class="val">98%</span></div><div class="bar" style="--h:97.89%; --c:#15803d"><span class="val">98%</span></div><div class="bar" style="--h:97.68%; --c:#0f766e"><span class="val">98%</span></div></div><div class="group"><div class="bar" style="--h:98.93%; --c:#c2410c"><span class="val">99%</span></div><div class="bar" style="--h:97.50%; --c:#ea580c"><span class="val">98%</span></div><div class="bar" style="--h:97.89%; --c:#15803d"><span class="val">98%</span></div><div class="bar" style="--h:98.57%; --c:#0f766e"><span class="val">99%</span></div></div><div class="group"><div class="bar" style="--h:96.79%; --c:#c2410c"><span class="val">97%</span></div><div class="bar" style="--h:95.36%; --c:#ea580c"><span class="val">95%</span></div><div class="bar" style="--h:96.13%; --c:#15803d"><span class="val">96%</span></div><div class="bar" style="--h:96.26%; --c:#0f766e"><span class="val">96%</span></div></div></div><div class="x-axis"><div><b>Precision</b></div><div><b>Gloss accuracy</b></div><div><b>Usable cards</b></div></div></div><div class="legend"><span style="--c:#c2410c">v1 · Sonnet 4.6 · full replies</span><span style="--c:#ea580c">v3 · Sonnet 4.6 · slim replies</span><span style="--c:#15803d">v4 · Haiku 5.5 · fallback</span><span style="--c:#0f766e">v6 · Haiku 5.5 · language profiles</span></div></div></section><section class="page-break"><div class="card"><h2>Cost against quality</h2><p class="sub">Each point is a version and language: median cost per article (log scale) against the share of usable cards. Up and to the left is better.</p><div class="scatter"><div class="y-axis"><span style="bottom:0.00%">0%</span><span style="bottom:25.00%">25%</span><span style="bottom:50.00%">50%</span><span style="bottom:75.00%">75%</span><span style="bottom:100.00%">100%</span></div><div class="field"><div class="dot" style="left:67.76%; bottom:96.79%; --c:#c2410c"><span>v1 es</span></div><div class="dot" style="left:48.55%; bottom:95.36%; --c:#ea580c"><span>v3 es</span></div><div class="dot" style="left:3.09%; bottom:96.13%; --c:#15803d"><span>v4 es</span></div><div class="dot" style="left:3.80%; bottom:96.26%; --c:#0f766e"><span>v6 es</span></div><div class="dot" style="left:41.00%; bottom:93.17%; --c:#7c3aed"><span>v6 ru</span></div><div class="dot" style="left:2.54%; bottom:89.70%; --c:#b91c1c"><span>v6 zh</span></div></div><div class="x-ticks"><span style="left:0.00%">$0.0010</span><span style="left:33.33%">$0.010</span><span style="left:66.67%">$0.100</span><span style="left:100.00%">$1.00</span></div></div></div></section><section><div class="card"><h2>What happened to every word</h2><p class="sub">Share of produced words by the first problem the judge found, all articles pooled</p><div class="chart" style="--height:280px"><div class="y-axis"><span style="bottom:0.00%">0%</span><span style="bottom:25.00%">25%</span><span style="bottom:50.00%">50%</span><span style="bottom:75.00%">75%</span><span style="bottom:100.00%">100%</span></div><div class="plot"><div class="group"><div class="bar stack" style="--h:100.00%"><span class="val">97% usable</span><div class="seg" style="height:96.79%; background:#15803d"></div><div class="seg" style="height:0.00%; background:#a855f7"></div><div class="seg" style="height:0.71%; background:#f59e0b"></div><div class="seg" style="height:2.50%; background:#fb923c"></div><div class="seg" style="height:0.00%; background:#9ca3af"></div></div></div><div class="group"><div class="bar stack" style="--h:100.00%"><span class="val">95% usable</span><div class="seg" style="height:95.36%; background:#15803d"></div><div class="seg" style="height:0.00%; background:#a855f7"></div><div class="seg" style="height:2.14%; background:#f59e0b"></div><div class="seg" style="height:2.50%; background:#fb923c"></div><div class="seg" style="height:0.00%; background:#9ca3af"></div></div></div><div class="group"><div class="bar stack" style="--h:100.00%"><span class="val">96% usable</span><div class="seg" style="height:96.13%; background:#15803d"></div><div class="seg" style="height:0.00%; background:#a855f7"></div><div class="seg" style="height:1.76%; background:#f59e0b"></div><div class="seg" style="height:2.11%; background:#fb923c"></div><div class="seg" style="height:0.00%; background:#9ca3af"></div></div></div><div class="group"><div class="bar stack" style="--h:100.00%"><span class="val">96% usable</span><div class="seg" style="height:96.26%; background:#15803d"></div><div class="seg" style="height:0.00%; background:#a855f7"></div><div class="seg" style="height:1.43%; background:#f59e0b"></div><div class="seg" style="height:1.96%; background:#fb923c"></div><div class="seg" style="height:0.36%; background:#9ca3af"></div></div></div><div class="group"><div class="bar stack" style="--h:100.00%"><span class="val">93% usable</span><div class="seg" style="height:93.17%; background:#15803d"></div><div class="seg" style="height:2.05%; background:#a855f7"></div><div class="seg" style="height:1.02%; background:#f59e0b"></div><div class="seg" style="height:3.24%; background:#fb923c"></div><div class="seg" style="height:0.51%; background:#9ca3af"></div></div></div><div class="group"><div class="bar stack" style="--h:100.00%"><span class="val">90% usable</span><div class="seg" style="height:89.70%; background:#15803d"></div><div class="seg" style="height:1.07%; background:#a855f7"></div><div class="seg" style="height:3.73%; background:#f59e0b"></div><div class="seg" style="height:0.53%; background:#fb923c"></div><div class="seg" style="height:4.97%; background:#9ca3af"></div></div></div></div><div class="x-axis"><div><b>v1</b>Spanish</div><div><b>v3</b>Spanish</div><div><b>v4</b>Spanish</div><div><b>v6</b>Spanish</div><div><b>v6</b>Russian</div><div><b>v6</b>Chinese</div></div></div><div class="legend"><span style="--c:#15803d">Usable card</span><span style="--c:#a855f7">Wrong reading only</span><span style="--c:#f59e0b">Wrong gloss</span><span style="--c:#fb923c">Wrong form</span><span style="--c:#9ca3af">Not a valid word</span></div></div></section><section class="page-break"><div class="two"><div class="card"><h2>Current version by language</h2><p class="sub">v6, 5 articles × 2 runs per language. Reading accuracy covers Russian stress and Chinese pinyin.</p><div class="chart" style="--height:260px"><div class="y-axis"><span style="bottom:0.00%">0%</span><span style="bottom:25.00%">25%</span><span style="bottom:50.00%">50%</span><span style="bottom:75.00%">75%</span><span style="bottom:100.00%">100%</span></div><div class="plot"><div class="group"><div class="bar" style="--h:97.68%; --c:#0f766e"><span class="val">98%</span></div><div class="bar" style="--h:96.25%; --c:#7c3aed"><span class="val">96%</span></div><div class="bar" style="--h:94.49%; --c:#b91c1c"><span class="val">94%</span></div></div><div class="group"><div class="bar" style="--h:98.57%; --c:#0f766e"><span class="val">99%</span></div><div class="bar" style="--h:98.46%; --c:#7c3aed"><span class="val">98%</span></div><div class="bar" style="--h:96.07%; --c:#b91c1c"><span class="val">96%</span></div></div><div class="group"><div class="bar" style="--h:96.70%; --c:#7c3aed"><span class="val">97%</span></div><div class="bar" style="--h:98.88%; --c:#b91c1c"><span class="val">99%</span></div></div><div class="group"><div class="bar" style="--h:96.26%; --c:#0f766e"><span class="val">96%</span></div><div class="bar" style="--h:93.17%; --c:#7c3aed"><span class="val">93%</span></div><div class="bar" style="--h:89.70%; --c:#b91c1c"><span class="val">90%</span></div></div></div><div class="x-axis"><div><b>Precision</b></div><div><b>Gloss accuracy</b></div><div><b>Reading accuracy</b></div><div><b>Usable cards</b></div></div></div><div class="legend"><span style="--c:#0f766e">Spanish</span><span style="--c:#7c3aed">Russian</span><span style="--c:#b91c1c">Chinese</span></div></div><div class="card"><h2>Cost per article by language</h2><p class="sub">v6 median. Russian includes the Sonnet stress pass; Chinese pinyin is generated in code.</p><div class="chart" style="--height:260px"><div class="y-axis"><span style="bottom:0.00%">$0</span><span style="bottom:25.00%">$0.0050</span><span style="bottom:50.00%">$0.010</span><span style="bottom:75.00%">$0.015</span><span style="bottom:100.00%">$0.020</span></div><div class="plot"><div class="group"><div class="bar" style="--h:6.50%; --c:#0f766e"><span class="val">$0.0013</span></div></div><div class="group"><div class="bar" style="--h:84.92%; --c:#7c3aed"><span class="val">$0.017</span></div></div><div class="group"><div class="bar" style="--h:5.96%; --c:#b91c1c"><span class="val">$0.0012</span></div></div></div><div class="x-axis"><div><b>Spanish</b>58 words median</div><div><b>Russian</b>59 words median</div><div><b>Chinese</b>56 words median</div></div></div></div></div></section><section><div class="card"><h2>Spread across articles</h2><p class="sub">Usable-card rate of every single run. The black line marks the median.</p><div class="strip"><div class="strip-row"><div class="strip-label"><b>v1</b>Spanish</div><div class="strip-track"><i style="left:98.33%; --c:#c2410c" title="es-fiction run 1"></i><i style="left:96.55%; --c:#c2410c" title="es-literary run 1"></i><i style="left:97.87%; --c:#c2410c" title="es-news run 1"></i><i style="left:96.55%; --c:#c2410c" title="es-travel run 1"></i><i style="left:94.74%; --c:#c2410c" title="es-wiki run 1"></i><em style="left:96.55%"></em></div><div class="strip-med">97%</div></div><div class="strip-row"><div class="strip-label"><b>v3</b>Spanish</div><div class="strip-track"><i style="left:98.33%; --c:#ea580c" title="es-fiction run 1"></i><i style="left:94.83%; --c:#ea580c" title="es-literary run 1"></i><i style="left:95.92%; --c:#ea580c" title="es-news run 1"></i><i style="left:92.98%; --c:#ea580c" title="es-travel run 1"></i><i style="left:94.64%; --c:#ea580c" title="es-wiki run 1"></i><em style="left:94.83%"></em></div><div class="strip-med">95%</div></div><div class="strip-row"><div class="strip-label"><b>v4</b>Spanish</div><div class="strip-track"><i style="left:98.33%; --c:#15803d" title="es-fiction run 1"></i><i style="left:96.61%; --c:#15803d" title="es-literary run 1"></i><i style="left:98.00%; --c:#15803d" title="es-news run 1"></i><i style="left:96.55%; --c:#15803d" title="es-travel run 1"></i><i style="left:91.23%; --c:#15803d" title="es-wiki run 1"></i><em style="left:96.61%"></em></div><div class="strip-med">97%</div></div><div class="strip-row"><div class="strip-label"><b>v6</b>Spanish</div><div class="strip-track"><i style="left:96.67%; --c:#0f766e" title="es-fiction run 1"></i><i style="left:100.00%; --c:#0f766e" title="es-fiction run 2"></i><i style="left:94.92%; --c:#0f766e" title="es-literary run 1"></i><i style="left:96.55%; --c:#0f766e" title="es-literary run 2"></i><i style="left:100.00%; --c:#0f766e" title="es-news run 1"></i><i style="left:100.00%; --c:#0f766e" title="es-news run 2"></i><i style="left:94.83%; --c:#0f766e" title="es-travel run 1"></i><i style="left:96.55%; --c:#0f766e" title="es-travel run 2"></i><i style="left:91.23%; --c:#0f766e" title="es-wiki run 1"></i><i style="left:92.98%; --c:#0f766e" title="es-wiki run 2"></i><em style="left:96.55%"></em></div><div class="strip-med">97%</div></div><div class="strip-row"><div class="strip-label"><b>v6</b>Russian</div><div class="strip-track"><i style="left:96.55%; --c:#7c3aed" title="ru-fiction run 1"></i><i style="left:93.10%; --c:#7c3aed" title="ru-fiction run 2"></i><i style="left:92.98%; --c:#7c3aed" title="ru-literary run 1"></i><i style="left:92.73%; --c:#7c3aed" title="ru-literary run 2"></i><i style="left:91.53%; --c:#7c3aed" title="ru-news run 1"></i><i style="left:91.53%; --c:#7c3aed" title="ru-news run 2"></i><i style="left:91.67%; --c:#7c3aed" title="ru-travel run 1"></i><i style="left:95.00%; --c:#7c3aed" title="ru-travel run 2"></i><i style="left:93.33%; --c:#7c3aed" title="ru-wiki run 1"></i><i style="left:93.33%; --c:#7c3aed" title="ru-wiki run 2"></i><em style="left:93.04%"></em></div><div class="strip-med">93%</div></div><div class="strip-row"><div class="strip-label"><b>v6</b>Chinese</div><div class="strip-track"><i style="left:89.09%; --c:#b91c1c" title="zh-fiction run 1"></i><i style="left:92.59%; --c:#b91c1c" title="zh-fiction run 2"></i><i style="left:86.44%; --c:#b91c1c" title="zh-literary run 1"></i><i style="left:88.14%; --c:#b91c1c" title="zh-literary run 2"></i><i style="left:96.23%; --c:#b91c1c" title="zh-news run 1"></i><i style="left:96.23%; --c:#b91c1c" title="zh-news run 2"></i><i style="left:84.48%; --c:#b91c1c" title="zh-travel run 1"></i><i style="left:85.45%; --c:#b91c1c" title="zh-travel run 2"></i><i style="left:88.33%; --c:#b91c1c" title="zh-wiki run 1"></i><i style="left:91.23%; --c:#b91c1c" title="zh-wiki run 2"></i><em style="left:88.71%"></em></div><div class="strip-med">89%</div></div><div class="strip-axis"><div></div><div class="strip-ticks"><span style="left:0%">0%</span><span style="left:25%">25%</span><span style="left:50%">50%</span><span style="left:75%">75%</span><span style="left:100%">100%</span></div><div></div></div></div></div></section><section><div class="card"><h2>Every article</h2><p class="sub">Usable-card rate (coloured from red at 50% or less to green at 100%) and cost per article. v6 shows the median of 2 runs.</p><div class="table-wrap"><table><thead><tr><th rowspan="2">Article</th><th rowspan="2">Kind</th><th colspan="2">v1</th><th colspan="2">v3</th><th colspan="2">v4</th><th colspan="2">v6</th></tr><tr><th>Usable</th><th>Cost</th><th>Usable</th><th>Cost</th><th>Usable</th><th>Cost</th><th>Usable</th><th>Cost</th></tr></thead><tbody><tr><td>es-fiction</td><td>fiction</td><td class="heat" style="background:hsl(126 70% 88%)">98%</td><td>$0.096</td><td class="heat" style="background:hsl(126 70% 88%)">98%</td><td>$0.028</td><td class="heat" style="background:hsl(126 70% 88%)">98%</td><td>$0.0014</td><td class="heat" style="background:hsl(126 70% 88%)">98%</td><td>$0.0013</td></tr><tr><td>es-literary</td><td>literary</td><td class="heat" style="background:hsl(121 70% 88%)">97%</td><td>$0.099</td><td class="heat" style="background:hsl(117 70% 88%)">95%</td><td>$0.030</td><td class="heat" style="background:hsl(121 70% 88%)">97%</td><td>$0.0012</td><td class="heat" style="background:hsl(119 70% 88%)">96%</td><td>$0.0014</td></tr><tr><td>es-news</td><td>news</td><td class="heat" style="background:hsl(124 70% 88%)">98%</td><td>$0.108</td><td class="heat" style="background:hsl(119 70% 88%)">96%</td><td>$0.026</td><td class="heat" style="background:hsl(125 70% 88%)">98%</td><td>$0.0012</td><td class="heat" style="background:hsl(130 70% 88%)">100%</td><td>$0.0011</td></tr><tr><td>es-travel</td><td>travel</td><td class="heat" style="background:hsl(121 70% 88%)">97%</td><td>$0.170</td><td class="heat" style="background:hsl(112 70% 88%)">93%</td><td>$0.029</td><td class="heat" style="background:hsl(121 70% 88%)">97%</td><td>$0.0014</td><td class="heat" style="background:hsl(119 70% 88%)">96%</td><td>$0.0014</td></tr><tr><td>es-wiki</td><td>encyclopedia</td><td class="heat" style="background:hsl(116 70% 88%)">95%</td><td>$0.163</td><td class="heat" style="background:hsl(116 70% 88%)">95%</td><td>$0.029</td><td class="heat" style="background:hsl(107 70% 88%)">91%</td><td>$0.0011</td><td class="heat" style="background:hsl(109 70% 88%)">92%</td><td>$0.0012</td></tr><tr><td>ru-fiction</td><td>fiction</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(117 70% 88%)">95%</td><td>$0.018</td></tr><tr><td>ru-literary</td><td>literary</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(111 70% 88%)">93%</td><td>$0.017</td></tr><tr><td>ru-news</td><td>news</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(108 70% 88%)">92%</td><td>$0.018</td></tr><tr><td>ru-travel</td><td>travel</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(113 70% 88%)">93%</td><td>$0.017</td></tr><tr><td>ru-wiki</td><td>encyclopedia</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(113 70% 88%)">93%</td><td>$0.016</td></tr><tr><td>zh-fiction</td><td>fiction</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(106 70% 88%)">91%</td><td>$0.0012</td></tr><tr><td>zh-literary</td><td>literary</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(97 70% 88%)">87%</td><td>$0.0012</td></tr><tr><td>zh-news</td><td>news</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(120 70% 88%)">96%</td><td>$0.0012</td></tr><tr><td>zh-travel</td><td>travel</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(91 70% 88%)">85%</td><td>$0.0012</td></tr><tr><td>zh-wiki</td><td>encyclopedia</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat">–</td><td>–</td><td class="heat" style="background:hsl(103 70% 88%)">90%</td><td>$0.0012</td></tr></tbody></table></div></div></section><section><div class="card"><h2>Run-to-run stability</h2><p class="sub">v6 ran twice on every article. Word overlap is the share of answers both runs produced.</p><div class="table-wrap"><table><thead><tr><th>Article</th><th>Word overlap</th><th>Usable (run 1 / 2)</th><th>Cost</th><th>Time</th></tr></thead><tbody><tr><td>es-fiction</td><td>97%</td><td>97% / 100%</td><td>$0.0013 / $0.0013</td><td>5.8s / 6.4s</td></tr><tr><td>es-literary</td><td>98%</td><td>95% / 97%</td><td>$0.0014 / $0.0014</td><td>6.3s / 7.3s</td></tr><tr><td>es-news</td><td>100%</td><td>100% / 100%</td><td>$0.0011 / $0.0011</td><td>5.2s / 5.4s</td></tr><tr><td>es-travel</td><td>97%</td><td>95% / 97%</td><td>$0.0014 / $0.0014</td><td>6.6s / 6.6s</td></tr><tr><td>es-wiki</td><td>100%</td><td>91% / 93%</td><td>$0.0011 / $0.0012</td><td>6.0s / 6.6s</td></tr><tr><td>ru-fiction</td><td>97%</td><td>97% / 93%</td><td>$0.018 / $0.018</td><td>15.2s / 15.3s</td></tr><tr><td>ru-literary</td><td>93%</td><td>93% / 93%</td><td>$0.016 / $0.017</td><td>14.8s / 15.9s</td></tr><tr><td>ru-news</td><td>100%</td><td>92% / 92%</td><td>$0.018 / $0.018</td><td>14.8s / 15.3s</td></tr><tr><td>ru-travel</td><td>100%</td><td>92% / 95%</td><td>$0.017 / $0.017</td><td>16.6s / 16.6s</td></tr><tr><td>ru-wiki</td><td>100%</td><td>93% / 93%</td><td>$0.016 / $0.016</td><td>15.1s / 15.1s</td></tr><tr><td>zh-fiction</td><td>95%</td><td>89% / 93%</td><td>$0.0013 / $0.0012</td><td>6.4s / 6.8s</td></tr><tr><td>zh-literary</td><td>100%</td><td>86% / 88%</td><td>$0.0012 / $0.0012</td><td>6.0s / 6.1s</td></tr><tr><td>zh-news</td><td>100%</td><td>96% / 96%</td><td>$0.0012 / $0.0012</td><td>6.7s / 6.2s</td></tr><tr><td>zh-travel</td><td>95%</td><td>84% / 85%</td><td>$0.0012 / $0.0012</td><td>5.9s / 6.3s</td></tr><tr><td>zh-wiki</td><td>95%</td><td>88% / 91%</td><td>$0.0012 / $0.0012</td><td>5.7s / 6.1s</td></tr></tbody></table></div></div></section><section class="page-break"><div class="card"><h2>All metrics</h2><p class="sub">Quality metrics are pooled over every word; tokens, cost and time are medians per article.</p><div class="table-wrap"><table><thead><tr><th>Version</th><th>Language</th><th>Runs</th><th>Words</th><th>Precision</th><th>Gloss</th><th>Reading</th><th>Usable</th><th>Input</th><th>Output</th><th>Cost</th><th>Per usable</th><th>Time</th></tr></thead><tbody><tr><td>v1</td><td>Spanish</td><td>5</td><td>58</td><td>97.5%</td><td>98.9%</td><td>–</td><td>96.8%</td><td>10,922</td><td>5,013</td><td>$0.108</td><td>$0.0023</td><td>51.0s</td></tr><tr><td>v3</td><td>Spanish</td><td>5</td><td>57</td><td>97.5%</td><td>97.5%</td><td>–</td><td>95.4%</td><td>3,905</td><td>1,130</td><td>$0.029</td><td>$0.00053</td><td>17.3s</td></tr><tr><td>v4</td><td>Spanish</td><td>5</td><td>58</td><td>97.9%</td><td>97.9%</td><td>–</td><td>96.1%</td><td>5,416</td><td>1,360</td><td>$0.0012</td><td>$0.00002</td><td>6.2s</td></tr><tr><td>v6</td><td>Spanish</td><td>10</td><td>58</td><td>97.7%</td><td>98.6%</td><td>–</td><td>96.3%</td><td>5,440</td><td>1,535</td><td>$0.0013</td><td>$0.00002</td><td>6.4s</td></tr><tr><td>v6</td><td>Russian</td><td>10</td><td>59</td><td>96.2%</td><td>98.5%</td><td>96.7%</td><td>93.2%</td><td>7,289</td><td>1,970</td><td>$0.017</td><td>$0.00032</td><td>15.3s</td></tr><tr><td>v6</td><td>Chinese</td><td>10</td><td>56</td><td>94.5%</td><td>96.1%</td><td>98.9%</td><td>89.7%</td><td>5,360</td><td>1,325</td><td>$0.0012</td><td>$0.00002</td><td>6.2s</td></tr></tbody></table></div></div></section><section><div class="card"><h2>Examples of problems the judge found</h2><p class="sub">Up to eight per group</p><div class="examples"><div><h3>v1 · Spanish</h3><ul><li><b>resbalarse = to slide, to slip</b> — -se not meaning-changing; should be resbalar</li><li><b>doblar = to toll (a bell)</b> — narrow sense; main meaning is to fold/bend/turn</li><li><b>oírse = to be heard, to hear (oneself)</b> — -se does not change meaning; should be oír</li><li><b>realizarse = to be carried out, to take place</b> — passive se; dictionary form is realizar</li><li><b>el casco = old quarter (as in casco antiguo)</b> — main meaning is helmet; old quarter only in casco antiguo</li><li><b>construirse = to be built</b> — passive se; dictionary form is construir</li><li><b>robusta = robust, strong</b> — should be masculine &#x27;robusto&#x27;</li><li><b>comercializarse = to be marketed, to be sold commercially</b> — passive se; dictionary form is comercializar</li></ul></div><div><h3>v6 · Spanish</h3><ul><li><b>joven = young man</b> — noun missing article (el joven); used as adjective here</li><li><b>resbalarse = to slide, to slip</b> — -se not meaning-changing; should be resbalar</li><li><b>joven = young man, young woman</b> — noun missing article (el/la joven)</li><li><b>oírse = to be heard</b> — should be oír; -se is only passive here</li><li><b>la pupila = pupil</b> — tagged as adjective, but it is a noun</li><li><b>joven = young man, youth</b> — noun missing article: el joven</li><li><b>el casco = old town, historic center</b> — gloss fits only &#x27;casco antiguo&#x27;; main meaning is helmet</li><li><b>el taifa = taifa, petty kingdom</b> — taifa is feminine: la taifa</li></ul></div><div><h3>v6 · Russian</h3><ul><li><b>асессор = collegiate assessor</b> — gloss should be &#x27;assessor&#x27;; &#x27;collegiate&#x27; belongs to коллежский</li><li><b>зима = years</b> — зима means winter, not years</li><li><b>худенький = thin, slender</b> — stress should be ху́денький</li><li><b>вельможи = grandee, bigwig</b> — plural form; should be вельможа</li><li><b>уронить = to drop</b> — stress should be урони́ть</li><li><b>зима = winters, years (long time no see)</b> — gloss should be &#x27;winter&#x27;, not idiom-specific plural</li><li><b>решетом = sieve, riddle</b> — instrumental case; dictionary form is решето</li><li><b>этакую = such a</b> — inflected form; should be этакий, stressed э́такий</li></ul></div><div><h3>v6 · Chinese</h3><ul><li><b>打折 = to break a leg</b> — gloss too narrow; main meaning &#x27;to give a discount&#x27; or &#x27;to break&#x27;</li><li><b>竊書 = stealing books</b> — free verb-object phrase, not a dictionary word</li><li><b>記着 = to remember</b> — includes particle 着; should be 記</li><li><b>回字 = the character 回</b> — character name plus 字, not a lexical word</li><li><b>教人 = to teach people, to make people</b> — free verb-object phrase; tagged noun but glossed as verb</li><li><b>嚷道 = to shout out</b> — 嚷 plus speech marker 道, not a dictionary word</li><li><b>教人 = to make people feel</b> — verb-object phrase, not a word; mis-tagged as noun</li><li><b>嚷道 = to shout, to cry out</b> — 嚷 + speech marker 道, not a dictionary word; use 嚷</li></ul></div></div></div></section>
+  <footer>
+    <p><b>Versions</b>: v1 <code>10894ede</code> · v3 <code>1956a501</code> · v4 <code>630a73a1</code> · v6 <code>d8d9cd22</code>, each run from its own commit. Prompt v2 was never committed.</p>
+    <p><b>Metrics</b>: precision = valid word in the correct dictionary form; usable = also a correct gloss and, where present, a correct reading.</p>
+    <p><b>Judge</b>: 75 calls to Claude Opus 5.5 costing $2.90. Identical words with identical glosses share one grade across versions. The judge was not checked against human grading, so treat absolute numbers as estimates and differences between versions as the stronger signal.</p>
+    <p><b>Generation spend</b>: $0.982 across 45 runs. Pricing per million tokens (input / output): Sonnet 4.6 $3 / $15 · Haiku 5.5 $0.10 / $0.50 · Opus 5.5 $4 / $20.</p>
+  </footer>
+</main>
+</body>
+</html>

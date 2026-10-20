@@ -1,0 +1,90 @@
+name: dialogue-01
+language: es
+notes: ''
+required: []
+optional:
+- answer: el gimnasio
+  prompt:
+  - gym, gymnasium
+- answer: el/la cotilla
+  prompt:
+  - gossip (person who gossips)
+- answer: el novio
+  prompt:
+  - boyfriend
+- answer: enfadarse
+  prompt:
+  - to get angry
+- answer: pasar
+  prompt:
+  - to happen, to be wrong (¿qué te pasa? = what's wrong?)
+- answer: merecer
+  prompt:
+  - to deserve, to be worth (merecer la pena = to be worth it)
+- answer: preocuparse
+  prompt:
+  - to worry
+- answer: los celos
+  prompt:
+  - jealousy
+- answer: oler
+  prompt:
+  - to smell
+- answer: enterarse
+  prompt:
+  - to find out, to hear about
+- answer: el músculo
+  prompt:
+  - muscle
+- answer: fijarse
+  prompt:
+  - to notice, to pay attention (to someone)
+- answer: pensar
+  prompt:
+  - to think
+- answer: gustar
+  prompt:
+  - to like, to be pleasing to
+- answer: guapo
+  prompt:
+  - handsome, good-looking
+- answer: notar
+  prompt:
+  - to notice, to sense
+- answer: admitir
+  prompt:
+  - to admit
+- answer: sensible
+  prompt:
+  - sensitive
+- answer: oír
+  prompt:
+  - to hear
+- answer: hablar
+  prompt:
+  - to speak, to talk
+- answer: la paciencia
+  prompt:
+  - patience
+- answer: tocar
+  prompt:
+  - to touch; to play (an instrument)
+- answer: el cerebro
+  prompt:
+  - brain
+- answer: la pareja
+  prompt:
+  - couple, partner
+- answer: malo
+  prompt:
+  - bad, wrong
+- answer: la pena
+  prompt:
+  - pity, shame; (in 'merecer la pena') to be worth it
+- answer: el amor
+  prompt:
+  - love
+- answer: la semana
+  prompt:
+  - week
+forbidden: []

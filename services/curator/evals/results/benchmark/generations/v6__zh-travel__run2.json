@@ -1,0 +1,544 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v6/services/curator/src/curator/extract.py",
+  "prompt_version": "6",
+  "model": "claude-haiku-5-5",
+  "seconds": 6.26,
+  "batches": [
+    {
+      "model": "claude-haiku-5-5",
+      "purpose": "translate",
+      "input_tokens": 5394,
+      "output_tokens": 1348,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 5394,
+  "output_tokens": 1348,
+  "cost_usd": 0.001213,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "景区",
+      "answer": "景区",
+      "prompt": "scenic area",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jǐngqū",
+      "context": "湘湖等著名景区"
+    },
+    {
+      "lemma": "公路",
+      "answer": "公路",
+      "prompt": "road, highway",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gōnglù",
+      "context": "有高速公路、一级公路300多公里，通过沪杭、杭甬、杭宁、杭金衢"
+    },
+    {
+      "lemma": "取票",
+      "answer": "取票",
+      "prompt": "to pick up a ticket",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "qǔpiào",
+      "context": "但也可以至任意人工售票窗口购票取票"
+    },
+    {
+      "lemma": "高速",
+      "answer": "高速",
+      "prompt": "high-speed, high speed",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "gāosù",
+      "context": "有高速公路、一级公路300多公里，通过沪杭、杭甬、杭宁、杭金衢"
+    },
+    {
+      "lemma": "线路",
+      "answer": "线路",
+      "prompt": "route, line",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xiànlù",
+      "context": "杭州地铁目前共规划了13条线路，1号线、2号线、4号线主体部分已经正式运营。"
+    },
+    {
+      "lemma": "断桥",
+      "answer": "断桥",
+      "prompt": "broken bridge",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "duànqiáo",
+      "context": "形成的苏堤春晓、曲院风荷、平湖秋月、断桥残雪、花港观鱼、南屏晚钟、"
+    },
+    {
+      "lemma": "位于",
+      "answer": "位于",
+      "prompt": "to be located at",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "wèiyú",
+      "context": "杭州市简称杭，位于中国东南沿海、浙江省北部，钱塘江下游北岸，京杭大运河南端。"
+    },
+    {
+      "lemma": "安检",
+      "answer": "安检",
+      "prompt": "security check",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "ānjiǎn",
+      "context": "站厅面积大，安检人数多，若要前往，请预留至少20分钟时间。"
+    },
+    {
+      "lemma": "残雪",
+      "answer": "残雪",
+      "prompt": "snow remaining on the ground, lingering snow",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "cánxuě",
+      "context": "的苏堤春晓、曲院风荷、平湖秋月、断桥残雪、花港观鱼、南屏晚钟、双峰"
+    },
+    {
+      "lemma": "码头",
+      "answer": "码头",
+      "prompt": "dock, wharf, pier",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "mǎtóu",
+      "context": "在末班船离开之前到岛上任意码头离开"
+    },
+    {
+      "lemma": "遗址",
+      "answer": "遗址",
+      "prompt": "ruins, archaeological site",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yízhǐ",
+      "context": "最早可追溯到距今八千年前的杭州萧山境内的跨湖桥遗址。"
+    },
+    {
+      "lemma": "吴语",
+      "answer": "吴语",
+      "prompt": "Wu dialect",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "wúyǔ",
+      "context": "当地的方言属于吴语（详见吴语会话手册），但更准确的来说叫做杭州话。"
+    },
+    {
+      "lemma": "自行车",
+      "answer": "自行车",
+      "prompt": "bicycle",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zìxíngchē",
+      "context": "杭州公共自行车系统一期工程于2008年5月1日开通"
+    },
+    {
+      "lemma": "保存",
+      "answer": "保存",
+      "prompt": "to preserve, to keep",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "bǎocún",
+      "context": "江南运河杭州塘运河沿岸保存较完整的古代城市公共仓储建筑群。"
+    },
+    {
+      "lemma": "购票",
+      "answer": "购票",
+      "prompt": "to buy a ticket",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "gòupiào",
+      "context": "但也可以至任意人工售票窗口购票取票"
+    },
+    {
+      "lemma": "地铁",
+      "answer": "地铁",
+      "prompt": "subway, metro",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dìtiě",
+      "context": "地铁方面有两个站"
+    },
+    {
+      "lemma": "杭宁",
+      "answer": "杭宁",
+      "prompt": "Hangzhou–Nanjing",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "hángníng",
+      "context": "公路300多公里，通过沪杭、杭甬、杭宁、杭金衢高速公路、104国道"
+    },
+    {
+      "lemma": "开放",
+      "answer": "开放",
+      "prompt": "to open, to develop",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "kāifàng",
+      "context": "城内还开放有许多商业文化街区"
+    },
+    {
+      "lemma": "公交",
+      "answer": "公交",
+      "prompt": "public transit, public transport",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gōngjiāo",
+      "context": "杭州公交拥有548条公交线路，运营里程达6.6亿公里。"
+    },
+    {
+      "lemma": "站厅",
+      "answer": "站厅",
+      "prompt": "station hall",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "zhàntīng",
+      "context": "站厅面积大，安检人数多，若要前往，请预留至少20分钟时间。"
+    },
+    {
+      "lemma": "地下",
+      "answer": "地下",
+      "prompt": "underground",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dìxià",
+      "context": "地下苏杭”之谚"
+    },
+    {
+      "lemma": "景点",
+      "answer": "景点",
+      "prompt": "scenic spot, tourist attraction",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jǐngdiǎn",
+      "context": "西湖是杭州最为知名的景点"
+    },
+    {
+      "lemma": "文化",
+      "answer": "文化",
+      "prompt": "culture",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "wénhuà",
+      "context": "杭州市是浙江省省会，浙江省政治、经济、文化、金融和交通中心。"
+    },
+    {
+      "lemma": "风景",
+      "answer": "风景",
+      "prompt": "scenery, landscape",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "fēngjǐng",
+      "context": "先后成为吴越国和南宋的都城，自古风景秀丽、富庶宜居，“人间天堂"
+    },
+    {
+      "lemma": "开通",
+      "answer": "开通",
+      "prompt": "to open, to start operating",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "kāitōng",
+      "context": "主要火车站有杭州东站、杭州站、杭州南站和杭州西站（2022年开通）。"
+    },
+    {
+      "lemma": "城市",
+      "answer": "城市",
+      "prompt": "city",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "chéngshì",
+      "context": "杭州余杭境内具备早期城市形态的良渚遗址为中华五千年文明史提供了重要"
+    },
+    {
+      "lemma": "街区",
+      "answer": "街区",
+      "prompt": "district, quarter",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "jiēqū",
+      "context": "城内还开放有许多商业文化街区"
+    },
+    {
+      "lemma": "龙井",
+      "answer": "龙井",
+      "prompt": "Longjing, Dragon Well",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "lóngjǐng",
+      "context": "龙井村是文明中外的龙井茶的产地。"
+    },
+    {
+      "lemma": "车站",
+      "answer": "车站",
+      "prompt": "railway station",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "chēzhàn",
+      "context": "杭州东站是重要的枢纽站，车站仅通行高速动车组，是多班列车的始发站。"
+    },
+    {
+      "lemma": "首批",
+      "answer": "首批",
+      "prompt": "first batch",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "shǒupī",
+      "context": "杭州是首批历史文化名城之一，亦是全国重点风景旅游城市。"
+    },
+    {
+      "lemma": "乘坐",
+      "answer": "乘坐",
+      "prompt": "to ride, to take (a vehicle)",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "chéngzuò",
+      "context": "出站大厅里有免费的高尔夫球车乘坐，但是速度较慢、班次并不密集。"
+    },
+    {
+      "lemma": "门票",
+      "answer": "门票",
+      "prompt": "entrance ticket",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "ménpiào",
+      "context": "（门票包括船票以及景区门票）。"
+    },
+    {
+      "lemma": "茶树",
+      "answer": "茶树",
+      "prompt": "tea tree",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "cháshù",
+      "context": "龙井村口有十八棵御茶树。"
+    },
+    {
+      "lemma": "名城",
+      "answer": "名城",
+      "prompt": "famous city",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "míngchéng",
+      "context": "杭州是首批历史文化名城之一，亦是全国重点风景旅游城市。"
+    },
+    {
+      "lemma": "售票",
+      "answer": "售票",
+      "prompt": "ticket sales",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shòupiào",
+      "context": "站厅在地下上楼楼梯附近有自动售票/取票机"
+    },
+    {
+      "lemma": "高铁",
+      "answer": "高铁",
+      "prompt": "high-speed rail",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gāotiě",
+      "context": "因为取票（持有身份证的乘客乘坐高铁不需要取票"
+    },
+    {
+      "lemma": "免费",
+      "answer": "免费",
+      "prompt": "free of charge",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "miǎnfèi",
+      "context": "候车厅一楼厅柱附近有免费的手机充电服务（提供手机充电线）"
+    },
+    {
+      "lemma": "良渚",
+      "answer": "良渚",
+      "prompt": "Liangzhu",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "liángzhǔ",
+      "context": "杭州余杭境内具备早期城市形态的良渚遗址为中华五千年文明史提供了重要"
+    },
+    {
+      "lemma": "名胜",
+      "answer": "名胜",
+      "prompt": "famous scenic site",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "míngshèng",
+      "context": "西冷印社等众多名胜古迹"
+    },
+    {
+      "lemma": "旅游",
+      "answer": "旅游",
+      "prompt": "tourism, travel",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "lǚyóu",
+      "context": "杭州是首批历史文化名城之一，亦是全国重点风景旅游城市。"
+    },
+    {
+      "lemma": "大厅",
+      "answer": "大厅",
+      "prompt": "main hall, waiting hall",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "dàtīng",
+      "context": "进入候车大厅需要安检，共有四个安检口，在夜间会改为特定安检口入站。"
+    },
+    {
+      "lemma": "拱券",
+      "answer": "拱券",
+      "prompt": "arch vault, arch ring",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gǒngxuàn",
+      "context": "拱券为纵联分节并列砌筑。"
+    },
+    {
+      "lemma": "安检口",
+      "answer": "安检口",
+      "prompt": "security checkpoint",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "ānjiǎnkǒu",
+      "context": "进入候车大厅需要安检，共有四个安检口，在夜间会改为特定安检口入站。"
+    },
+    {
+      "lemma": "拱桥",
+      "answer": "拱桥",
+      "prompt": "arch bridge",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gǒngqiáo",
+      "context": "为三孔薄墩联拱桥"
+    },
+    {
+      "lemma": "联拱",
+      "answer": "联拱",
+      "prompt": "to arch together, multi-arch",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "liángǒng",
+      "context": "大运河上保存较好的薄墩联拱七孔实腹拱桥"
+    },
+    {
+      "lemma": "遗产",
+      "answer": "遗产",
+      "prompt": "heritage, legacy",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "yíchǎn",
+      "context": "其中杭州西湖文化景观是世界文化遗产"
+    },
+    {
+      "lemma": "闸机",
+      "answer": "闸机",
+      "prompt": "to pass through a gate, to swipe through a gate",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "zhájī",
+      "context": "持有中国内地居民身份证则可以不用取票，直接刷证通过验票闸机。"
+    },
+    {
+      "lemma": "历史",
+      "answer": "历史",
+      "prompt": "history",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "lìshǐ",
+      "context": "杭州历史悠久，4700多年前就有人类在此繁衍生息；为中国七大古都之一。"
+    },
+    {
+      "lemma": "水上",
+      "answer": "水上",
+      "prompt": "water, on water",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shuǐshàng",
+      "context": "2004年10月28日杭州水上巴士开通，目前共设八条线路。"
+    },
+    {
+      "lemma": "墨客",
+      "answer": "墨客",
+      "prompt": "literati, men of letters",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "mòkè",
+      "context": "并留下许多文人墨客的赞叹及帝王名人的足迹。"
+    },
+    {
+      "lemma": "抵达",
+      "answer": "抵达",
+      "prompt": "to arrive at, to reach",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "dǐdá",
+      "context": "岛上各码头对应抵达湖滨各码头"
+    },
+    {
+      "lemma": "改为",
+      "answer": "改为",
+      "prompt": "to change into, to be changed to",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "gǎiwéi",
+      "context": "进入候车大厅需要安检，共有四个安检口，在夜间会改为特定安检口入站。"
+    },
+    {
+      "lemma": "虾仁",
+      "answer": "虾仁",
+      "prompt": "shrimp meat, shrimp",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "xiārén",
+      "context": "龙井虾仁：用龙井茶和鲜活河虾炒制的清香爽口的菜肴。"
+    },
+    {
+      "lemma": "公园",
+      "answer": "公园",
+      "prompt": "park",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "gōngyuán",
+      "context": "公园南北长约1公里"
+    },
+    {
+      "lemma": "枢纽",
+      "answer": "枢纽",
+      "prompt": "hub, junction",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "shūniǔ",
+      "context": "杭州交通发达，是中国东南重要交通枢纽。"
+    }
+  ],
+  "skipped": [
+    {
+      "lemma": "衢",
+      "reason": "part of place name (Hangzhou–Jinhua–Quzhou expressway); not a standalone word"
+    },
+    {
+      "lemma": "潭",
+      "reason": "part of place name (Santan, Three Pools); not a standalone word"
+    },
+    {
+      "lemma": "薄墩",
+      "reason": "specialized architectural term, part of a bridge name"
+    },
+    {
+      "lemma": "南山路",
+      "reason": "place name (Nanshan Road)"
+    },
+    {
+      "lemma": "杭金",
+      "reason": "part of place name (Hangzhou–Jinhua–Quzhou expressway); not a standalone word"
+    }
+  ],
+  "rejected": [],
+  "version": "v6",
+  "commit": "d8d9cd22",
+  "text": "zh-travel",
+  "language": "zh",
+  "run": 2
+}

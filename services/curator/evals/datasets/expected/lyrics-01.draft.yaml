@@ -1,0 +1,117 @@
+name: lyrics-01
+language: es
+notes: ''
+required: []
+optional:
+- answer: la ternura
+  prompt:
+  - tenderness, gentleness
+- answer: la salvación
+  prompt:
+  - salvation, rescue
+- answer: despertar
+  prompt:
+  - to awaken, to stir
+- answer: la ilusión
+  prompt:
+  - hope, dream, illusion
+- answer: el espejo
+  prompt:
+  - mirror
+- answer: preguntarse
+  prompt:
+  - to wonder, to ask oneself
+- answer: mirarse
+  prompt:
+  - to look at oneself
+- answer: morir
+  prompt:
+  - to die
+- answer: la esperanza
+  prompt:
+  - hope
+- answer: sentir
+  prompt:
+  - to feel
+- answer: el amor
+  prompt:
+  - love
+- answer: obscuro
+  prompt:
+  - dark
+- answer: el murmullo
+  prompt:
+  - murmur, whisper
+- answer: escuchar
+  prompt:
+  - to listen, to hear
+- answer: hablar
+  prompt:
+  - to speak, to talk
+- answer: mitigar
+  prompt:
+  - to mitigate, to ease
+- answer: perder
+  prompt:
+  - to lose
+- answer: abrazar
+  prompt:
+  - to hug, to embrace
+- answer: indiferente
+  prompt:
+  - indifferent, uncaring
+- answer: navegar
+  prompt:
+  - to navigate, to sail
+- answer: el corazón
+  prompt:
+  - heart
+- answer: el miedo
+  prompt:
+  - fear
+- answer: la luz
+  prompt:
+  - light
+- answer: faltar
+  prompt:
+  - to be missing, to lack
+- answer: vivir
+  prompt:
+  - to live
+- answer: la fantasía
+  prompt:
+  - fantasy, imagination
+- answer: el eco
+  prompt:
+  - echo
+- answer: el océano
+  prompt:
+  - ocean
+- answer: la soledad
+  prompt:
+  - loneliness, solitude
+- answer: el instante
+  prompt:
+  - instant, moment
+- answer: comprender
+  prompt:
+  - to understand
+- answer: llorar
+  prompt:
+  - to cry, to weep
+- answer: el dolor
+  prompt:
+  - pain, ache
+- answer: el recuerdo
+  prompt:
+  - memory, souvenir
+- answer: el aire
+  prompt:
+  - air
+- answer: el camino
+  prompt:
+  - path, road, way
+- answer: seguir
+  prompt:
+  - to follow, to continue
+forbidden: []

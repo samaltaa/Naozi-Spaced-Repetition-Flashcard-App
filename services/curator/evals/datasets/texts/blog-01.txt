@@ -1,0 +1,17 @@
+Artículo básico conceptual de la tecnología Kubernetes. Composición y arquitectura.
+Kubernetes
+
+Kubernetes o también conocida como K8S, es una plataforma de código abierto orquestadora de aplicaciones basada en contenedores. Kubernetes se encarga de orquestar toda la infraestructura de nuestra aplicación, tanto la parte de cómputo, redes y almacenamiento. Kubernetes también automatiza todo tipo de tareas operativas de administración de contenedores, incluyendo comandos para implementar, actualizar y escalar contenedores, acorde a las necesidades del proyecto.
+
+Google liberó el proyecto Kubernetes en el año 2014 basándose en la experiencia de interna de la compañía ejecutando aplicaciones en ambientes productivos y de gran escala, este combinado con las mejores ideas y prácticas de la comunidad.
+Conceptos clave de Kubernetes
+
+Kubernetes utiliza múltiples componentes para su trabajo, por lo que al principio, la curva de aprendizaje es un poco elevada por la gran cantidad de conceptos y piezas a comprender.
+
+Aquí tienes algunos conceptos clave de Kubernetes que debes entender:
+
+    Contenedor: Es una unidad de software que encapsula una aplicación y todas sus dependencias, lo que permite una implementación consistente y confiable en cualquier entorno.
+    Pod: Es la unidad más pequeña y básica en Kubernetes. Representa una o más instancias de contenedores que se ejecutan juntos en el mismo nodo y comparten el mismo espacio de red y almacenamiento.
+    ReplicaSet: Un replicaSet en Kubernetes es un controlador que se utiliza para garantizar que un número específico de réplicas (instancias) de un pod esté en funcionamiento en todo momento (1 replica = 1 pod).
+    Deployment: Es una abstracción de nivel superior que maneja la actualización de los Pods y los ReplicaSets, permitiendo despliegues sin tiempo de inactividad y rollbacks en caso de problemas.
+    Nodo (Node): Es una máquina física o virtual que forma parte del clúster de Kubernetes y ejecuta los contenedores.

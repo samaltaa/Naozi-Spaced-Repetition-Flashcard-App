@@ -1,0 +1,555 @@
+{
+  "curator_path": "/tmp/claude-1000/-home-wugong-naozi/796f3bab-9cd1-42bc-98c3-3c10296a9f39/scratchpad/worktrees/v6/services/curator/src/curator/extract.py",
+  "prompt_version": "6",
+  "model": "claude-haiku-5-5",
+  "seconds": 15.93,
+  "batches": [
+    {
+      "model": "claude-haiku-5-5",
+      "purpose": "translate",
+      "input_tokens": 5537,
+      "output_tokens": 1473,
+      "failed_models": []
+    },
+    {
+      "model": "claude-sonnet-4-6",
+      "purpose": "reading",
+      "input_tokens": 1553,
+      "output_tokens": 736,
+      "failed_models": []
+    }
+  ],
+  "input_tokens": 7090,
+  "output_tokens": 2209,
+  "cost_usd": 0.016989,
+  "failed_batches": 0,
+  "items": [
+    {
+      "lemma": "собака",
+      "answer": "собака",
+      "prompt": "dog",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "соба́ка",
+      "context": "видит: из дровяного склада купца Пичугина, прыгая на трёх ногах и оглядываясь, бежит собака."
+    },
+    {
+      "lemma": "благородие",
+      "answer": "благородие",
+      "prompt": "your honor (form of address to officers)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "благоро́дие",
+      "context": "— Никак беспорядок, ваше благородие!.."
+    },
+    {
+      "lemma": "палец",
+      "answer": "палец",
+      "prompt": "finger",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "па́лец",
+      "context": "показывает толпе окровавленный палец."
+    },
+    {
+      "lemma": "генеральский",
+      "answer": "генеральский",
+      "prompt": "general's",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "генера́льский",
+      "context": "ежели хотите знать… — Не рассуждать! — Нет, это не генеральская… — глубокомысленно замечает городовой."
+    },
+    {
+      "lemma": "бродячий",
+      "answer": "бродячий",
+      "prompt": "stray",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Как оштрафуют его, мерзавца, так он узнает у меня, что значит собака и прочий бродячий скот!"
+    },
+    {
+      "lemma": "дровяной",
+      "answer": "дровяной",
+      "prompt": "firewood",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "дровяно́й",
+      "context": "из дровяного склада купца Пичугина"
+    },
+    {
+      "lemma": "знать",
+      "answer": "знать",
+      "prompt": "to know",
+      "alternates": [],
+      "pos": "verb",
+      "reading": null,
+      "context": "Знаю вас, чертей! — Он, ваше благородие, цыгаркой ей в харю для смеха"
+    },
+    {
+      "lemma": "городовой",
+      "answer": "городовой",
+      "prompt": "policeman (city constable)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "городово́й",
+      "context": "За ним шагает рыжий городовой с решетом, доверху наполненным конфискованным крыжовником."
+    },
+    {
+      "lemma": "кусаться",
+      "answer": "кусаться",
+      "prompt": "to bite",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "куса́ться",
+      "context": "— Так ты кусаться, окаянная?"
+    },
+    {
+      "lemma": "спрашивать",
+      "answer": "спрашивать",
+      "prompt": "to ask",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "спра́шивать",
+      "context": "— По какому это случаю тут? — спрашивает Очумелов, врезываясь в толпу."
+    },
+    {
+      "lemma": "склад",
+      "answer": "склад",
+      "prompt": "warehouse, depot",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "из дровяного склада купца Пичугина"
+    },
+    {
+      "lemma": "толпа",
+      "answer": "толпа",
+      "prompt": "crowd",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "толпа́",
+      "context": "показывает толпе окровавленный палец."
+    },
+    {
+      "lemma": "шельма",
+      "answer": "шельма",
+      "prompt": "rogue, scoundrel",
+      "alternates": [
+        "мошенник"
+      ],
+      "pos": "noun",
+      "reading": "ше́льма",
+      "context": "На полупьяном лице его как бы написано: «Ужо я сорву с тебя, шельма!»"
+    },
+    {
+      "lemma": "расстегнуть",
+      "answer": "расстегнуть",
+      "prompt": "to unbutton",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "расстегну́ть",
+      "context": "За ней гонится человек в ситцевой крахмальной рубахе и расстёгнутой жилетке."
+    },
+    {
+      "lemma": "базарный",
+      "answer": "базарный",
+      "prompt": "market, bazaar",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "база́рный",
+      "context": "Через базарную площадь идёт полицейский надзиратель Очумелов в новой шинели и с узелком в руке."
+    },
+    {
+      "lemma": "жилетка",
+      "answer": "жилетка",
+      "prompt": "waistcoat, vest",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "жиле́тка",
+      "context": "За ней гонится человек в ситцевой крахмальной рубахе и расстёгнутой жилетке."
+    },
+    {
+      "lemma": "кашлять",
+      "answer": "кашлять",
+      "prompt": "to cough",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "ка́шлять",
+      "context": "Кто кричал? — Иду я, ваше благородие, никого не трогаю… — начинает Хрюкин, кашляя в кулак."
+    },
+    {
+      "lemma": "шинель",
+      "answer": "шинель",
+      "prompt": "greatcoat, overcoat",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "шине́ль",
+      "context": "Через базарную площадь идёт полицейский надзиратель Очумелов в новой шинели и с узелком в руке."
+    },
+    {
+      "lemma": "шагать",
+      "answer": "шагать",
+      "prompt": "to stride, to walk",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "шага́ть",
+      "context": "За ним шагает рыжий городовой с решетом, доверху наполненным конфискованным крыжовником."
+    },
+    {
+      "lemma": "дрожать",
+      "answer": "дрожать",
+      "prompt": "to tremble, to shiver",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "дрожа́ть",
+      "context": "растопырив передние ноги и дрожа всем телом"
+    },
+    {
+      "lemma": "истребить",
+      "answer": "истребить",
+      "prompt": "to exterminate, to destroy",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "истреби́ть",
+      "context": "А собаку истребить надо."
+    },
+    {
+      "lemma": "надзиратель",
+      "answer": "надзиратель",
+      "prompt": "supervisor, overseer (police)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "надзира́тель",
+      "context": "Через базарную площадь идёт полицейский надзиратель Очумелов в новой шинели и с узелком в руке."
+    },
+    {
+      "lemma": "глядеть",
+      "answer": "глядеть",
+      "prompt": "to look, to gaze",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "гляде́ть",
+      "context": "Открытые двери лавок и кабаков глядят на свет божий уныло, как голодные пасти; около них нет даже нищих."
+    },
+    {
+      "lemma": "приехать",
+      "answer": "приехать",
+      "prompt": "to arrive (by vehicle or travel)",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "прие́хать",
+      "context": "— Это генералова брата, что намеднись приехал."
+    },
+    {
+      "lemma": "генерал",
+      "answer": "генерал",
+      "prompt": "general",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "генера́л",
+      "context": "Чья это собака, спрашиваю? — Это, кажись, генерала Жигалова! — кричит кто-то из толпы."
+    },
+    {
+      "lemma": "собачий",
+      "answer": "собачий",
+      "prompt": "dog's",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "соба́чий",
+      "context": "А… а! Слышен собачий визг."
+    },
+    {
+      "lemma": "визг",
+      "answer": "визг",
+      "prompt": "yelp, squeal",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "А… а! Слышен собачий визг."
+    },
+    {
+      "lemma": "морда",
+      "answer": "морда",
+      "prompt": "muzzle, snout",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "мо́рда",
+      "context": "сидит на земле сам виновник скандала — белый борзой щенок с острой мордой и жёлтым пятном на спине."
+    },
+    {
+      "lemma": "брат",
+      "answer": "брат",
+      "prompt": "brother",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "У меня у самого брат в жандармах…"
+    },
+    {
+      "lemma": "рука",
+      "answer": "рука",
+      "prompt": "hand, arm",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "рука́",
+      "context": "Через базарную площадь идёт полицейский надзиратель Очумелов в новой шинели и с узелком в руке."
+    },
+    {
+      "lemma": "лавка",
+      "answer": "лавка",
+      "prompt": "shop, stall",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "ла́вка",
+      "context": "Открытые двери лавок и кабаков глядят на свет божий уныло, как голодные пасти; около них нет даже нищих."
+    },
+    {
+      "lemma": "сорвать",
+      "answer": "сорвать",
+      "prompt": "to tear off, to rip off",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "сорва́ть",
+      "context": "На полупьяном лице его как бы написано: «Ужо я сорву с тебя, шельма!»"
+    },
+    {
+      "lemma": "земля",
+      "answer": "земля",
+      "prompt": "ground, earth",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "земля́",
+      "context": "Он бежит за ней и, подавшись туловищем вперёд, падает на землю и хватает собаку за задние лапы."
+    },
+    {
+      "lemma": "чёрт",
+      "answer": "чёрт",
+      "prompt": "devil",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "Знаю вас, чертей! — Он, ваше благородие, цыгаркой ей в харю для смеха"
+    },
+    {
+      "lemma": "тварь",
+      "answer": "тварь",
+      "prompt": "creature, critter (often insulting)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": null,
+      "context": "Этого, ваше благородие, и в законе нет, чтоб от твари терпеть…"
+    },
+    {
+      "lemma": "нога",
+      "answer": "нога",
+      "prompt": "leg",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "нога́",
+      "context": "прыгая на трёх ногах и оглядываясь"
+    },
+    {
+      "lemma": "кричать",
+      "answer": "кричать",
+      "prompt": "to shout, to cry out",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "крича́ть",
+      "context": "Кто кричал? — Иду я, ваше благородие, никого не трогаю… — начинает Хрюкин, кашляя в кулак."
+    },
+    {
+      "lemma": "говорить",
+      "answer": "говорить",
+      "prompt": "to say, to speak",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "говори́ть",
+      "context": "— говорит городовой."
+    },
+    {
+      "lemma": "пальто",
+      "answer": "пальто",
+      "prompt": "coat, overcoat",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "пальто́",
+      "context": "Сними-ка, Елдырин, с меня пальто…"
+    },
+    {
+      "lemma": "крахмальный",
+      "answer": "крахмальный",
+      "prompt": "starched",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "кра́хмальный",
+      "context": "За ней гонится человек в ситцевой крахмальной рубахе и расстёгнутой жилетке."
+    },
+    {
+      "lemma": "вздорный",
+      "answer": "вздорный",
+      "prompt": "quarrelsome, cranky",
+      "alternates": [
+        "сварливый"
+      ],
+      "pos": "adjective",
+      "reading": null,
+      "context": "Вздорный человек, ваше благородие! — Врёшь кривой!"
+    },
+    {
+      "lemma": "решетом",
+      "answer": "решетом",
+      "prompt": "sieve, riddle",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "решето́м",
+      "context": "За ним шагает рыжий городовой с решетом, доверху наполненным конфискованным крыжовником."
+    },
+    {
+      "lemma": "заливаться",
+      "answer": "заливаться",
+      "prompt": "to be suffused, to beam (with a smile)",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "залива́ться",
+      "context": "Владимир Иваныч? — спрашивает Очумелов, и всё лицо его заливается улыбкой умиления."
+    },
+    {
+      "lemma": "легавый",
+      "answer": "легавый",
+      "prompt": "setter (hunting dog), pointer",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "лега́вый",
+      "context": "У него всё больше легавые… — Ты это верно знаешь? — Верно"
+    },
+    {
+      "lemma": "обращаться",
+      "answer": "обращаться",
+      "prompt": "to address, to turn to",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "обраща́ться",
+      "context": "Елдырин, — обращается надзиратель к городовому, — узнай, чья это собака, и составляй протокол!"
+    },
+    {
+      "lemma": "борзой",
+      "answer": "борзой",
+      "prompt": "borzoi, greyhound (Russian wolfhound)",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "борзо́й",
+      "context": "Наш не охотник до борзых."
+    },
+    {
+      "lemma": "бежать",
+      "answer": "бежать",
+      "prompt": "to run",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "бежа́ть",
+      "context": "видит: из дровяного склада купца Пичугина, прыгая на трёх ногах и оглядываясь, бежит собака."
+    },
+    {
+      "lemma": "приводиться",
+      "answer": "приводиться",
+      "prompt": "to be given, to be cited (from a source)",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "приводи́ться",
+      "context": "Рассказ в ПСС Чехова приводится по изданию А. Ф. Маркса Повести и рассказы."
+    },
+    {
+      "lemma": "харя",
+      "answer": "харя",
+      "prompt": "mug, ugly face (colloquial)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "ха́ря",
+      "context": "цыгаркой ей в харю для смеха"
+    },
+    {
+      "lemma": "окаянный",
+      "answer": "окаянный",
+      "prompt": "damned, wretched",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "ока́янный",
+      "context": "— Так ты кусаться, окаянная?"
+    },
+    {
+      "lemma": "подуть",
+      "answer": "подуть",
+      "prompt": "to blow (of wind)",
+      "alternates": [],
+      "pos": "verb",
+      "reading": "поду́ть",
+      "context": "Что-то ветром подуло…"
+    },
+    {
+      "lemma": "породистый",
+      "answer": "породистый",
+      "prompt": "pedigree, purebred",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "поро́дистый",
+      "context": "У генерала собаки дорогие, породистые, а эта — чёрт знает что!"
+    },
+    {
+      "lemma": "глубокомысленно",
+      "answer": "глубокомысленно",
+      "prompt": "thoughtfully, profoundly",
+      "alternates": [],
+      "pos": "adverb",
+      "reading": "глубокомы́сленно",
+      "context": "ежели хотите знать… — Не рассуждать! — Нет, это не генеральская… — глубокомысленно замечает городовой."
+    },
+    {
+      "lemma": "борзая",
+      "answer": "борзая",
+      "prompt": "borzoi (female or pup)",
+      "alternates": [],
+      "pos": "noun",
+      "reading": "борза́я",
+      "context": "сидит на земле сам виновник скандала — белый борзой щенок с острой мордой и жёлтым пятном на спине."
+    },
+    {
+      "lemma": "ихний",
+      "answer": "ихний",
+      "prompt": "theirs (colloquial)",
+      "alternates": [],
+      "pos": "adjective",
+      "reading": "и́хний",
+      "context": "Брат ихний охоч… — Да разве братец ихний приехали?"
+    }
+  ],
+  "skipped": [],
+  "rejected": [
+    {
+      "lemma": "пущать",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer 'пускать' does not contain the lemma 'пущать' [type=value_error, input_value={'lemma': 'пущать',...ng': 'пуска́ть'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "этакую",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer 'этакий' does not contain the lemma 'этакую' [type=value_error, input_value={'lemma': 'этакую',...ding': 'э́такий'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "шевеля",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer 'шевелить' does not contain the lemma 'шевеля' [type=value_error, input_value={'lemma': 'шевеля',...': 'шевели́ть'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "ихняя",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer 'ихний' does not contain the lemma 'ихняя' [type=value_error, input_value={'lemma': 'ихняя', '...eading': 'и́хний'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    },
+    {
+      "lemma": "наполненным",
+      "reason": "1 validation error for ExtractedItem\n  Value error, answer 'наполненный' does not contain the lemma 'наполненным' [type=value_error, input_value={'lemma': 'наполне...апо́лненный'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error"
+    }
+  ],
+  "version": "v6",
+  "commit": "d8d9cd22",
+  "text": "ru-literary",
+  "language": "ru",
+  "run": 2
+}
