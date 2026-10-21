@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import functools
+import importlib.util
 from dataclasses import dataclass, field
 from typing import Literal
 
@@ -26,11 +27,13 @@ LEADING_ARTICLES: dict[str, tuple[str, ...]] = {
 # Profile
 
 ReadingKind = Literal["stress", "pinyin"]
+Pipeline = Literal["spacy", "hazm"]
 
 @dataclass(frozen=True)
 class LanguageProfile:
     code: str
     spacy_model: str
+    pipeline: Pipeline = "spacy"
     script: str | None = None
     foreign_lang: str | None = None
     verb_endings: tuple[str, ...] = ()
@@ -43,6 +46,7 @@ class LanguageProfile:
     vowels: str = ""
     spaced: bool = True
     parse_simplified: bool = False
+    form_replaces_lemma: bool = False
     min_length: int = 3
     min_zipf: float = 2.0
     max_zipf: float = 5.5
@@ -107,7 +111,24 @@ CHINESE = LanguageProfile(
 - The part of speech comes from an automatic tagger and is often wrong for Chinese. Gloss the word's most common meaning whatever the tag says: 引入 is "to introduce", not "introduction". Never skip a word because its part of speech is wrong.""",
 )
 
-PROFILES = {profile.code: profile for profile in (SPANISH, ENGLISH, RUSSIAN, CHINESE)}
+PERSIAN = LanguageProfile(
+    code="fa",
+    spacy_model="",
+    pipeline="hazm",
+    script="ARABIC",
+    foreign_lang="en",
+    verb_endings=("تن", "دن"),
+    form_replaces_lemma=True,
+    min_length=2,
+    form_rules="""\
+- Use Persian letters: ی and ک, never the Arabic ي and ك. Keep the zero-width non-joiner where Persian spelling uses it: "می‌خواهم", "کتاب‌ها".
+- Nouns: singular, without the ezafe, without را, without the indefinite ی and without plural endings. "کتاب", not "کتاب‌ها".
+- Arabic broken plurals: send the singular in `form`. "انواع" → "نوع", "ظروف" → "ظرف", "راهبان" → "راهب", "نواحی" → "ناحیه".
+- Verbs: the infinitive. Keep the whole compound verb when the candidate is one: "رفتن", "انجام دادن".
+- Adjectives: the base form, not comparative (-تر) or superlative (-ترین).""",
+)
+
+PROFILES = {profile.code: profile for profile in (SPANISH, ENGLISH, RUSSIAN, CHINESE, PERSIAN)}
 
 GENERIC_MODELS = ("{code}_core_news_md", "{code}_core_web_md", "{code}_core_news_sm", "{code}_core_web_sm")
 
@@ -122,12 +143,17 @@ def base_code(lang: str) -> str:
 def installed(model: str) -> bool:
     return spacy.util.is_package(model)
 
+def available(profile: LanguageProfile) -> bool:
+    if profile.pipeline == "hazm":
+        return importlib.util.find_spec("hazm") is not None
+    return installed(profile.spacy_model)
+
 @functools.lru_cache(maxsize=32)
 def find_profile(lang: str) -> LanguageProfile | None:
     code = base_code(lang)
     profile = PROFILES.get(code)
     if profile is not None:
-        return profile if installed(profile.spacy_model) else None
+        return profile if available(profile) else None
     for template in GENERIC_MODELS:
         model = template.format(code=code)
         if installed(model):
