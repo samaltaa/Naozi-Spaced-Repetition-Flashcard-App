@@ -282,7 +282,11 @@ def same_as_gloss(
     return bool(translation.gloss) and fold(answer) == fold(translation.gloss)
 
 def item_lemma(candidate: Candidate, answer: str, profile: LanguageProfile = SPANISH) -> str:
-    if fold(candidate.lemma) in fold(answer) or not profile.reflexive_suffix:
+    if fold(candidate.lemma) in fold(answer):
+        return candidate.lemma
+    if profile.form_replaces_lemma:
+        return answer
+    if not profile.reflexive_suffix:
         return candidate.lemma
     return candidate.lemma.removesuffix(profile.reflexive_suffix)
 

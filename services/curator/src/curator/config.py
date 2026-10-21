@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     extraction_model: str = Field(default="claude-haiku-5-5")
     fallback_models: str = Field(default="claude-sonnet-4-6")
     reading_model: str = Field(default="claude-sonnet-4-6")
+    hazm_tagger_model: str = Field(default="")
     max_tokens: int = Field(default=8000)
 
     batch_size: int = Field(default=60)

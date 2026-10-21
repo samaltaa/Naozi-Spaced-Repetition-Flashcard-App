@@ -70,6 +70,7 @@ def test_language_support(client: TestClient) -> None:
     headers = {"x-curator-token": TOKEN}
     assert client.get("/languages/es", headers=headers).json() == {"supported": True}
     assert client.get("/languages/ru", headers=headers).json() == {"supported": True}
+    assert client.get("/languages/fa", headers=headers).json() == {"supported": True}
     assert client.get("/languages/en-GB", headers=headers).json() == {"supported": True}
     assert client.get("/languages/xx", headers=headers).json() == {"supported": False}
 
