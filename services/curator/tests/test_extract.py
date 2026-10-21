@@ -331,3 +331,16 @@ def test_chinese_readings_are_pinyin() -> None:
 def test_traditional_characters_get_correct_pinyin() -> None:
     assert extract.pinyin_of("長度") == "chángdù"
     assert extract.pinyin_of("銀行") == "yínháng"
+
+def test_persian_broken_plural_takes_the_singular() -> None:
+    from curator.languages import PERSIAN
+
+    plural = candidate("انواع")
+    item = build_item(plural, Translation(lemma="انواع", pos="noun", gloss="type, kind", form="نوع"), PERSIAN)
+    assert item.answer == "نوع"
+    assert item.lemma == "نوع"
+    assert item.alternates == []
+
+def test_unrelated_form_is_still_rejected_outside_persian() -> None:
+    with pytest.raises(ValueError):
+        build_item(candidate("guiso"), Translation(lemma="guiso", pos="noun", gloss="stew", form="el estofado"))

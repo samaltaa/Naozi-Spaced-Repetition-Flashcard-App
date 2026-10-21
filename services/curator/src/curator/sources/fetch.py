@@ -10,6 +10,20 @@ from lxml.etree import ParserError
 
 MAX_CHARS = 40_000
 
+# Joiners
+
+JOINERS = {"\u200c": "QZWNJQ", "\u200d": "QZWJQ"}
+
+def protect_joiners(text: str) -> str:
+    for char, mark in JOINERS.items():
+        text = text.replace(char, mark)
+    return text
+
+def restore_joiners(text: str) -> str:
+    for char, mark in JOINERS.items():
+        text = text.replace(mark, char)
+    return text
+
 # End matter
 
 END_MATTER = " | ".join(
@@ -38,17 +52,21 @@ def strip_end_matter(page: str) -> str:
 
 # Fetching
 
+def extract_text(page: str) -> str | None:
+    text = trafilatura.extract(
+        strip_end_matter(protect_joiners(page)),
+        include_comments=False,
+        include_tables=False,
+        favor_precision=True,
+    )
+    return restore_joiners(text) if text else None
+
 def from_url(url: str) -> str:
     downloaded = trafilatura.fetch_url(url)
     if downloaded is None:
         raise RuntimeError(f"Could not download {url}")
 
-    text = trafilatura.extract(
-        strip_end_matter(downloaded),
-        include_comments=False,
-        include_tables=False,
-        favor_precision=True,
-    )
+    text = extract_text(downloaded)
     if not text:
         raise RuntimeError(f"No article text found at {url}")
 

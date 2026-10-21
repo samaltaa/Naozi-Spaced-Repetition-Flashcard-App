@@ -231,6 +231,10 @@ def foreign_sentences(doc: Doc, profile: LanguageProfile) -> set[int]:
 
 def candidates_from_text(text: str, lang: str = "es") -> list[Candidate]:
     profile = profile_for(lang)
+    if profile.pipeline == "hazm":
+        from curator.nlp import persian
+
+        return persian.candidates_from_text(text, profile)
     doc = parse(text, profile)
 
     foreign = foreign_sentences(doc, profile)

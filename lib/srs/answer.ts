@@ -5,6 +5,10 @@ import type { AnswerCheck, DiacriticMode } from "./types";
 const PUNCTUATION = /\p{P}/gu;
 const WHITESPACE = /\s+/gu;
 const STRIPPABLE_MARKS = /([\p{Script=Latin}\p{Script=Greek}\p{Script=Cyrillic}])\p{M}+/gu;
+const ARABIC_YEH = /\u064a/gu;
+const ARABIC_KAF = /\u0643/gu;
+const TATWEEL = /\u0640/gu;
+const ZERO_WIDTH_NON_JOINER = /\u200c/gu;
 
 const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
 
@@ -18,8 +22,16 @@ function lower(text: string, locale: string): string {
   }
 }
 
+function unifyArabicScript(text: string): string {
+  return text
+    .replace(ARABIC_YEH, "\u06cc")
+    .replace(ARABIC_KAF, "\u06a9")
+    .replace(TATWEEL, "")
+    .replace(ZERO_WIDTH_NON_JOINER, " ");
+}
+
 export function normalizeAnswer(text: string, locale: string): string {
-  const cleaned = text.normalize("NFKC").replace(PUNCTUATION, " ").replace(WHITESPACE, " ").trim();
+  const cleaned = unifyArabicScript(text.normalize("NFKC")).replace(PUNCTUATION, " ").replace(WHITESPACE, " ").trim();
   return lower(cleaned, locale);
 }
 
