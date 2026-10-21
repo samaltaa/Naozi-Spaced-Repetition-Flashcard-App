@@ -126,3 +126,30 @@ def test_traditional_contexts_keep_original_characters() -> None:
     text = "黎曼在書中引入了流形的概念，數學家研究曲率。"
     found = {c.lemma: c for c in candidates_from_text(text, lang="zh")}
     assert "數學家" in found["概念"].context
+
+def test_persian_uses_hazm() -> None:
+    profile = find_profile("fa")
+    assert profile is not None
+    assert profile.pipeline == "hazm"
+    assert profile.script == "ARABIC"
+
+def test_persian_candidates() -> None:
+    pytest.importorskip("hazm")
+    text = (
+        "چای نام یک نوشیدنی معطر است که از برگ‌های گیاه چای به‌دست می‌آید. "
+        "مردم ایران هر روز چای می‌نوشند و برگ‌های تازه را در آب داغ دم می‌کنند. "
+        "کشاورزان برگ‌های چای را در بهار می‌چینند و پس از خشک کردن به بازار می‌برند."
+    )
+    found = {c.lemma: c for c in candidates_from_text(text, lang="fa")}
+    assert "برگ" in found
+    assert found["برگ"].pos == "noun"
+    assert found["برگ"].occurrences == 3
+    assert "‌" in found["برگ"].context
+    verbs = [c.lemma for c in found.values() if c.pos == "verb"]
+    assert verbs and all(v.endswith(("تن", "دن")) for v in verbs)
+
+def test_fold_unifies_persian_spellings() -> None:
+    assert fold("كتاب") == fold("کتاب")
+    assert fold("می‌خواهم") == fold("میخواهم")
+    assert fold("کِتاب") == fold("کتاب")
+    assert fold("آب") != fold("اب")

@@ -20,19 +20,24 @@ Gender = Literal["masculine", "feminine", "neuter", "common"]
 
 BREVE = "\u0306"
 STRESS_MARKS = {"\u0301", "\u0300"}
+ARABIC_LETTER_MARKS = {"\u0653", "\u0654", "\u0655"}
+ARABIC_VARIANTS = str.maketrans({"\u064a": "\u06cc", "\u0643": "\u06a9", "\u200c": None, "\u0640": None})
 
 def is_cyrillic(ch: str) -> bool:
     return "\u0400" <= ch <= "\u04ff"
 
+def is_arabic(ch: str) -> bool:
+    return "\u0600" <= ch <= "\u06ff"
+
 def fold(text: str) -> str:
-    decomposed = unicodedata.normalize("NFD", text.casefold())
+    decomposed = unicodedata.normalize("NFD", text.casefold().translate(ARABIC_VARIANTS))
     kept: list[str] = []
     base = ""
     for ch in decomposed:
         if not unicodedata.combining(ch):
             base = ch
             kept.append(ch)
-        elif ch == BREVE and is_cyrillic(base):
+        elif (ch == BREVE and is_cyrillic(base)) or (ch in ARABIC_LETTER_MARKS and is_arabic(base)):
             kept.append(ch)
     return " ".join(unicodedata.normalize("NFC", "".join(kept)).split())
 

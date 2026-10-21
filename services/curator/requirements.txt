@@ -13,6 +13,7 @@ pypinyin>=0.53
 opencc-python-reimplemented>=0.1.7
 jieba>=0.42
 spacy-pkuseg>=1.0
+hazm>=0.12,<0.13
 sqlalchemy>=2.0
 psycopg[binary]>=3.2
 fastapi>=0.115

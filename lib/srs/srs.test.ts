@@ -83,6 +83,24 @@ describe("checkTyped", () => {
   it("rejects empty input", () => {
     expect(checkTyped("   ", ["ser"], lenient).verdict).toBe("wrong");
   });
+
+  it("treats a Persian zero-width non-joiner and a space as the same", () => {
+    const persian = { locale: "fa", diacriticMode: "lenient" as const };
+    expect(checkTyped("می خواهم", ["می\u200cخواهم"], persian).verdict).toBe("exact");
+    expect(checkTyped("می\u200cخواهم", ["می خواهم"], persian).verdict).toBe("exact");
+  });
+
+  it("accepts a Persian word typed without its separator as a typo", () => {
+    const persian = { locale: "fa", diacriticMode: "lenient" as const };
+    expect(checkTyped("میخواهم", ["می\u200cخواهم"], persian).verdict).toBe("typo");
+  });
+
+  it("matches Arabic yeh and kaf with their Persian forms", () => {
+    const persian = { locale: "fa", diacriticMode: "strict" as const };
+    expect(checkTyped("\u0643\u062a\u0627\u0628", ["کتاب"], persian).verdict).toBe("exact");
+    expect(checkTyped("\u0645\u064a\u0632", ["میز"], persian).verdict).toBe("exact");
+    expect(checkTyped("کتـــاب", ["کتاب"], persian).verdict).toBe("exact");
+  });
 });
 
 describe("checkChoice", () => {
