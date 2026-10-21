@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from curator.sources.fetch import strip_end_matter
+from curator.sources.fetch import extract_text, strip_end_matter
 
 # End matter
 
@@ -20,3 +20,13 @@ def test_references_and_links_are_removed() -> None:
 
 def test_unparseable_pages_pass_through() -> None:
     assert strip_end_matter("") == ""
+
+# Joiners
+
+def test_zero_width_joiners_survive_extraction() -> None:
+    sentence = "این نوشیدنی پس از آب، پرمصرف‌ترین نوشیدنی جهان است و به‌دست می‌آید."
+    page = f"<html><body><article><h1>چای</h1><p>{sentence}</p><p>{sentence}</p></article></body></html>"
+    text = extract_text(page)
+    assert text is not None
+    assert "می‌آید" in text
+    assert "QZWNJQ" not in text
