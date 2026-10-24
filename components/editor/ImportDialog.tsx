@@ -13,6 +13,7 @@ import {
   type ColumnMapping,
   type ImportField,
 } from "@/lib/client/csv";
+import { describePlan, planLevelFill } from "@/lib/client/levels";
 import type { CourseItem, ItemInput } from "@/lib/client/types";
 
 // Types
@@ -24,6 +25,8 @@ type Props = {
   sourceLabel: string;
   targetLabel: string;
   lang: string;
+  wordsPerLevel: number;
+  levelCount: number;
   onImport: (items: ItemInput[], onProgress: (done: number) => void) => Promise<void>;
   onClose: () => void;
 };
@@ -59,6 +62,8 @@ export function ImportDialog({
   sourceLabel,
   targetLabel,
   lang,
+  wordsPerLevel,
+  levelCount,
   onImport,
   onClose,
 }: Props) {
@@ -78,6 +83,10 @@ export function ImportDialog({
   const plan = useMemo(() => buildImport(rows, mapping, hasHeader, existing), [rows, mapping, hasHeader, existing]);
   const sameColumn = mapping.prompt !== null && mapping.prompt === mapping.answer;
   const canImport = !busy && !sameColumn && plan.items.length > 0;
+  const levelPlan = useMemo(
+    () => planLevelFill(existing.length, plan.items.length, wordsPerLevel),
+    [existing.length, plan.items.length, wordsPerLevel],
+  );
   const optionalMapped = OPTIONAL_FIELDS.some((field) => mapping[field] !== null);
   const optionalVisible = showOptional || optionalMapped;
 
@@ -173,7 +182,7 @@ export function ImportDialog({
       onClose();
     } catch (err) {
       setError(
-        `${errorMessage(err, "The import stopped.")} Words added before the error were kept. Press Add again to import the rest.`,
+        `${errorMessage(err, "The import stopped.")} Words added before the error were kept.`,
       );
     } finally {
       setBusy(false);
@@ -203,7 +212,7 @@ export function ImportDialog({
             Import words
           </h2>
           <p className="truncate text-sm text-ink/60">
-            Into Level {levelNumber}: {levelTitle}
+            Starting in Level {levelNumber}: {levelTitle} · {wordsPerLevel} words per level
           </p>
         </div>
         <button
@@ -346,6 +355,9 @@ export function ImportDialog({
                 <span className="text-ink/60"> Showing the first {PREVIEW_ROWS}.</span>
               ) : null}
             </p>
+            {plan.items.length > 0 ? (
+              <p className="mt-1 text-sm text-ink/70">{describePlan(levelPlan, levelNumber, levelCount)}</p>
+            ) : null}
             {skipped > 0 ? (
               <p className="mt-1 text-sm text-ink/60">
                 Skipping {plural(skipped, "row", "rows")}: {skipReasons.join(", ")}.

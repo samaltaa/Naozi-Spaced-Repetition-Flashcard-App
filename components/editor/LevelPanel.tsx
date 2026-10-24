@@ -2,7 +2,7 @@
 
 import { useState, type KeyboardEvent } from "react";
 import { ConfirmButton } from "@/components/ui/ConfirmButton";
-import type { CourseItem, CourseLevel, ItemInput, UpdateItemInput } from "@/lib/client/types";
+import type { CourseLevel, ItemInput, UpdateItemInput } from "@/lib/client/types";
 import { AddItemRow } from "./AddItemRow";
 import { ArticleImportDialog } from "./ArticleImportDialog";
 import { ImportDialog } from "./ImportDialog";
@@ -20,8 +20,10 @@ type Props = {
   onUpdateItem: (itemId: string, changes: UpdateItemInput) => Promise<void>;
   onDeleteItem: (itemId: string) => Promise<void>;
   onImport: (items: ItemInput[], onProgress: (done: number) => void) => Promise<void>;
-  onImported: (items: CourseItem[]) => void;
+  onImported: (levels: CourseLevel[]) => void;
   articlesSupported: boolean;
+  wordsPerLevel: number;
+  levelCount: number;
 };
 
 export function LevelPanel({
@@ -38,6 +40,8 @@ export function LevelPanel({
   onImport,
   onImported,
   articlesSupported,
+  wordsPerLevel,
+  levelCount,
 }: Props) {
   const [title, setTitle] = useState(level.title);
   const [importing, setImporting] = useState(false);
@@ -109,6 +113,8 @@ export function LevelPanel({
           sourceLabel={sourceLabel}
           targetLabel={targetLabel}
           lang={lang}
+          wordsPerLevel={wordsPerLevel}
+          levelCount={levelCount}
           onImport={onImport}
           onClose={() => setImporting(false)}
         />
@@ -123,6 +129,8 @@ export function LevelPanel({
           sourceLabel={sourceLabel}
           targetLabel={targetLabel}
           lang={lang}
+          wordsPerLevel={wordsPerLevel}
+          levelCount={levelCount}
           onImported={onImported}
           onClose={() => setFromArticle(false)}
         />

@@ -1,4 +1,4 @@
-import { LEARNING_STEPS } from "@/lib/srs/constants";
+import { DEFAULT_WORDS_PER_LEVEL, LEARNING_STEPS } from "@/lib/srs/constants";
 import type { CourseFormValues, CourseItem, CourseRecord, ItemDraft, ItemInput, UpdateItemInput } from "./types";
 
 // Courses
@@ -14,6 +14,7 @@ export const DEFAULT_COURSE: CourseFormValues = {
   maxReviewsPerDay: 200,
   learningSteps: LEARNING_STEPS,
   wordsPerSession: 10,
+  wordsPerLevel: DEFAULT_WORDS_PER_LEVEL,
 };
 
 export function toFormValues(course: CourseRecord): CourseFormValues {
@@ -28,6 +29,7 @@ export function toFormValues(course: CourseRecord): CourseFormValues {
     maxReviewsPerDay: course.max_reviews_per_day,
     learningSteps: course.learning_steps,
     wordsPerSession: course.words_per_session,
+    wordsPerLevel: course.words_per_level,
   };
 }
 

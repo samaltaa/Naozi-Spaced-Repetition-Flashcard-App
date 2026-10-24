@@ -20,6 +20,7 @@ type Fields = Omit<CourseFormValues, "newPerDay" | "maxReviewsPerDay"> & {
 
 const ROUND_OPTIONS = [3, 4, 5, 6];
 const SESSION_SIZE_OPTIONS = [5, 8, 10, 12, 15, 20];
+const LEVEL_SIZE_OPTIONS = [10, 15, 20, 25, 30, 40, 50, 75, 100];
 
 type Status = { kind: "idle" } | { kind: "saving" } | { kind: "saved" } | { kind: "error"; message: string };
 
@@ -212,6 +213,32 @@ export function CourseForm({ initial, submitLabel, onSubmit }: Props) {
             ))}
           </select>
           <p className="mt-1 text-sm text-ink/60">New words introduced in one sitting, up to the daily limit.</p>
+        </div>
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        <div>
+          <label htmlFor="course-level-size" className={LABEL}>
+            Words per level
+          </label>
+          <select
+            id="course-level-size"
+            value={fields.wordsPerLevel}
+            onChange={(e) => set("wordsPerLevel", Number(e.target.value))}
+            className={INPUT}
+          >
+            {(LEVEL_SIZE_OPTIONS.includes(fields.wordsPerLevel)
+              ? LEVEL_SIZE_OPTIONS
+              : [...LEVEL_SIZE_OPTIONS, fields.wordsPerLevel].sort((a, b) => a - b)
+            ).map((value) => (
+              <option key={value} value={value}>
+                {value} words
+              </option>
+            ))}
+          </select>
+          <p className="mt-1 text-sm text-ink/60">
+            Imports fill a level up to this size, then continue in new levels.
+          </p>
         </div>
       </div>
 

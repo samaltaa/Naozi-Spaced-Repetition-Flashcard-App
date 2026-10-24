@@ -86,6 +86,7 @@ export interface CourseRecord {
   max_reviews_per_day: number;
   learning_steps: number;
   words_per_session: number;
+  words_per_level: number;
 }
 
 export interface CourseDetail extends CourseRecord {
@@ -123,6 +124,7 @@ export interface CourseFormValues {
   maxReviewsPerDay: number;
   learningSteps: number;
   wordsPerSession: number;
+  wordsPerLevel: number;
 }
 
 export interface ItemDraft {

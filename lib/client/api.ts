@@ -3,6 +3,7 @@ import type {
   CourseDetail,
   CourseFormValues,
   CourseItem,
+  CourseLevel,
   CourseRecord,
   CreateLevelInput,
   Dashboard,
@@ -83,6 +84,8 @@ export const api = {
 
   createItems: (levelId: string, body: ItemInput | ItemInput[]) =>
     request<CourseItem[]>(`/api/levels/${levelId}/items`, { method: "POST", body }),
+  importItems: (levelId: string, items: ItemInput[]) =>
+    request<CourseLevel[]>(`/api/levels/${levelId}/import`, { method: "POST", body: { items } }),
   updateItem: (itemId: string, body: UpdateItemInput) =>
     request<CourseItem>(`/api/items/${itemId}`, { method: "PATCH", body }),
   deleteItem: (itemId: string) => request<void>(`/api/items/${itemId}`, { method: "DELETE" }),
@@ -97,5 +100,5 @@ export const api = {
   discardExtraction: (extractionId: string) =>
     request<Extraction>(`/api/extractions/${extractionId}/discard`, { method: "POST" }),
   importExtraction: (extractionId: string, levelId: string, draftIds: string[]) =>
-    request<CourseItem[]>(`/api/extractions/${extractionId}/import`, { method: "POST", body: { levelId, draftIds } }),
+    request<CourseLevel[]>(`/api/extractions/${extractionId}/import`, { method: "POST", body: { levelId, draftIds } }),
 };

@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useRef, useState, type FormEvent } from "react";
 import { CloseIcon } from "@/components/ui/icons";
 import { api, errorMessage } from "@/lib/client/api";
-import type { CourseItem, Draft, Extraction, UpdateDraftInput } from "@/lib/client/types";
+import { describePlan, levelSlots, planLevelFill, slotLevelNumber } from "@/lib/client/levels";
+import type { CourseItem, CourseLevel, Draft, Extraction, UpdateDraftInput } from "@/lib/client/types";
 
 // Types
 
@@ -15,7 +16,9 @@ type Props = {
   sourceLabel: string;
   targetLabel: string;
   lang: string;
-  onImported: (items: CourseItem[]) => void;
+  wordsPerLevel: number;
+  levelCount: number;
+  onImported: (levels: CourseLevel[]) => void;
   onClose: () => void;
 };
 
@@ -24,7 +27,7 @@ type Mode = "url" | "text";
 // Constants
 
 const POLL_MS = 2500;
-const MAX_TEXT = 80_000;
+const MAX_TEXT = 120_000;
 
 const INPUT =
   "min-h-11 w-full rounded-lg border-2 border-ink/15 bg-white px-3 py-1.5 text-base outline-none focus:border-water sm:text-sm";
@@ -52,6 +55,7 @@ type DraftRowProps = {
   draft: Draft;
   selected: boolean;
   duplicate: boolean;
+  levelNumber: number | null;
   lang: string;
   sourceLabel: string;
   targetLabel: string;
@@ -64,6 +68,7 @@ function DraftRow({
   draft,
   selected,
   duplicate,
+  levelNumber,
   lang,
   sourceLabel,
   targetLabel,
@@ -149,8 +154,13 @@ function DraftRow({
           <CloseIcon className="h-4 w-4" />
         </button>
       </div>
-      {draft.notes || draft.reading || duplicate ? (
+      {draft.notes || draft.reading || duplicate || levelNumber !== null ? (
         <p className="mt-1 pl-8 text-sm text-ink/50">
+          {levelNumber !== null ? (
+            <span className="mr-2 rounded bg-water/10 px-1.5 py-0.5 text-xs font-bold text-water">
+              Level {levelNumber}
+            </span>
+          ) : null}
           {duplicate ? <span className="mr-2 font-bold text-ink/60">Already in this level.</span> : null}
           {draft.reading ? (
             <span lang={lang} className="mr-2 font-semibold text-ink/70">
@@ -178,6 +188,8 @@ export function ArticleImportDialog({
   sourceLabel,
   targetLabel,
   lang,
+  wordsPerLevel,
+  levelCount,
   onImported,
   onClose,
 }: Props) {
@@ -201,6 +213,14 @@ export function ArticleImportDialog({
   const canSubmit =
     !busy && (mode === "url" ? url.trim().length > 0 : text.trim().length > 0 && text.length <= MAX_TEXT);
   const canImport = reviewing && !busy && saving === 0 && chosen.length > 0;
+  const plan = useMemo(
+    () => planLevelFill(existing.length, chosen.length, wordsPerLevel),
+    [existing.length, chosen.length, wordsPerLevel],
+  );
+  const targetLevels = useMemo(() => {
+    const slots = levelSlots(plan);
+    return new Map(chosen.map((d, i) => [d.id, slotLevelNumber(slots[i] ?? 0, levelNumber, levelCount)]));
+  }, [chosen, plan, levelNumber, levelCount]);
 
   useEffect(() => {
     const dialog = dialogRef.current;
@@ -274,6 +294,9 @@ export function ArticleImportDialog({
       return next;
     });
 
+  const selectAll = () => setSelected(new Set(drafts.map((d) => d.id)));
+  const selectNone = () => setSelected(new Set());
+
   const saveDraft = async (draftId: string, changes: UpdateDraftInput): Promise<boolean> => {
     if (!extraction) return false;
     setSaving((n) => n + 1);
@@ -321,12 +344,12 @@ export function ArticleImportDialog({
     setBusy(true);
     setError(null);
     try {
-      const items = await api.importExtraction(
+      const levels = await api.importExtraction(
         extraction.id,
         levelId,
         chosen.map((d) => d.id),
       );
-      onImported(items);
+      onImported(levels);
       onClose();
     } catch (err) {
       setError(errorMessage(err, "The words could not be added."));
@@ -353,7 +376,7 @@ export function ArticleImportDialog({
             Words from an article
           </h2>
           <p className="truncate text-sm text-ink/60">
-            Into Level {levelNumber}: {levelTitle}
+            Starting in Level {levelNumber}: {levelTitle} · {wordsPerLevel} words per level
           </p>
         </div>
         <button
@@ -438,9 +461,23 @@ export function ArticleImportDialog({
         {reviewing ? (
           <section className="flex flex-col gap-3">
             <div>
-              <p className="font-bold">
-                {plural(drafts.length, "word", "words")} found. {chosen.length} selected.
-              </p>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                <p className="font-bold">
+                  {plural(drafts.length, "word", "words")} found. {chosen.length} selected.
+                </p>
+                <div className="flex gap-3 text-sm font-bold text-water">
+                  <button type="button" onClick={selectAll} className="min-h-11 hover:underline">
+                    Select all
+                  </button>
+                  <button type="button" onClick={selectNone} className="min-h-11 hover:underline">
+                    Select none
+                  </button>
+                </div>
+              </div>
+              {chosen.length > 0 ? (
+                <p className="text-sm text-ink/70">{describePlan(plan, levelNumber, levelCount)}</p>
+              ) : null}
+              <p className="text-sm text-ink/60">Most common words come first.</p>
               {extraction?.knownDropped ? (
                 <p className="text-sm text-ink/60">
                   Left out {plural(extraction.knownDropped, "word", "words")} you are already learning.
@@ -456,6 +493,7 @@ export function ArticleImportDialog({
                     draft={d}
                     selected={selected.has(d.id)}
                     duplicate={existingAnswers.has(answerKey(d.answer))}
+                    levelNumber={targetLevels.get(d.id) ?? null}
                     lang={lang}
                     sourceLabel={sourceLabel}
                     targetLabel={targetLabel}

@@ -5,6 +5,7 @@ import type {
   CreateCourseInput,
   CreateItemsInput,
   CreateLevelInput,
+  ImportItemsInput,
   ItemInput,
   UpdateCourseInput,
   UpdateItemInput,
@@ -25,6 +26,7 @@ function courseColumns(input: UpdateCourseInput) {
     max_reviews_per_day: input.maxReviewsPerDay,
     learning_steps: input.learningSteps,
     words_per_session: input.wordsPerSession,
+    words_per_level: input.wordsPerLevel,
   };
 }
 
@@ -50,6 +52,23 @@ function newItemColumns(input: ItemInput) {
 const touched = () => ({ updated_at: new Date().toISOString() });
 
 export type CourseWithLevels = { owner_id: string } & Record<string, unknown>;
+
+export interface ImportedItem {
+  id: string;
+  prompt: string;
+  answer: string;
+  alternates: string[];
+  reading: string | null;
+  notes: string | null;
+  position: number;
+}
+
+export interface ImportedLevel {
+  id: string;
+  title: string;
+  position: number;
+  items: ImportedItem[];
+}
 
 // Ownership
 
@@ -193,6 +212,23 @@ export async function createItems(userId: string, levelId: string, input: Create
     position: start + index,
   }));
   return unwrap(await supabase.from("items").insert(rows).select());
+}
+
+export async function importItems(
+  userId: string,
+  levelId: string,
+  items: ImportItemsInput["items"],
+): Promise<ImportedLevel[]> {
+  const { data, error } = await supabase.rpc("import_items", {
+    p_user_id: userId,
+    p_level_id: levelId,
+    p_items: items.map(newItemColumns),
+  });
+  if (error) {
+    if (error.code === "P0002") throw new HttpError(404, "Not found");
+    throw new HttpError(500, error.message);
+  }
+  return (data ?? []) as ImportedLevel[];
 }
 
 export async function updateItem(userId: string, itemId: string, input: UpdateItemInput) {

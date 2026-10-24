@@ -284,3 +284,6 @@ def rank_candidates(
     fresh = [c for c in candidates if fold(c.lemma) not in known]
     fresh.sort(key=lambda c: (-salience(c), -c.occurrences))
     return fresh[:limit]
+
+def order_by_frequency(candidates: list[Candidate]) -> list[Candidate]:
+    return sorted(candidates, key=lambda c: (-c.zipf, -salience(c)))

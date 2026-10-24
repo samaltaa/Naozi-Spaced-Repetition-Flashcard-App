@@ -344,3 +344,38 @@ def test_persian_broken_plural_takes_the_singular() -> None:
 def test_unrelated_form_is_still_rejected_outside_persian() -> None:
     with pytest.raises(ValueError):
         build_item(candidate("guiso"), Translation(lemma="guiso", pos="noun", gloss="stew", form="el estofado"))
+
+# Parallel batches
+
+def test_parallel_batches_keep_their_order(monkeypatch: pytest.MonkeyPatch) -> None:
+    import threading
+    import time
+
+    words = [candidate(f"palabra{i:02d}") for i in range(12)]
+    active = 0
+    peak = 0
+    lock = threading.Lock()
+
+    def slow_request(client: object, group: list[Candidate], system: str, model: str, profile: object = None):
+        nonlocal active, peak
+        with lock:
+            active += 1
+            peak = max(peak, active)
+        time.sleep(0.02 * (4 - int(group[0].lemma[-2:]) // 3))
+        with lock:
+            active -= 1
+        found = [Translation(lemma=c.lemma, pos=c.pos, gloss=f"word {c.lemma[-2:]}") for c in group]
+        return found, [], BatchUsage(size=len(group), input_tokens=10, output_tokens=10, model=model)
+
+    monkeypatch.setattr(get_settings(), "batch_size", 3)
+    monkeypatch.setattr(get_settings(), "parallel_batches", 4)
+    monkeypatch.setattr(extract, "request_batch", slow_request)
+    monkeypatch.setattr(extract, "build_client", lambda: object())
+    monkeypatch.setattr(extract, "candidates_from_text", lambda text, lang: list(words))
+    monkeypatch.setattr(extract, "order_by_frequency", lambda found: found)
+
+    result = extract_from_text("texto", lang="es")
+
+    assert peak > 1
+    assert [i.lemma for i in result.items] == [w.lemma for w in words]
+    assert len(result.batches) == 4

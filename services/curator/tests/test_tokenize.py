@@ -153,3 +153,18 @@ def test_fold_unifies_persian_spellings() -> None:
     assert fold("می‌خواهم") == fold("میخواهم")
     assert fold("کِتاب") == fold("کتاب")
     assert fold("آب") != fold("اب")
+
+def test_learning_order_puts_common_words_first() -> None:
+    from curator.nlp.tokenize import order_by_frequency
+
+    rare = Candidate(lemma="amasar", surface="amasar", pos="verb", zipf=2.4, context="", occurrences=5)
+    common = Candidate(lemma="casa", surface="casa", pos="noun", zipf=5.2, context="", occurrences=1)
+    middle = Candidate(lemma="guiso", surface="guiso", pos="noun", zipf=3.1, context="", occurrences=2)
+    assert [c.lemma for c in order_by_frequency([rare, middle, common])] == ["casa", "guiso", "amasar"]
+
+def test_default_ceiling_is_two_hundred() -> None:
+    from curator.config import Settings
+    from curator.sources.fetch import MAX_CHARS
+
+    assert Settings.model_fields["max_items_per_text"].default == 200
+    assert MAX_CHARS == 120_000

@@ -4,3 +4,6 @@ export const MIN_LEARNING_STEPS = 3;
 export const MAX_LEARNING_STEPS = 6;
 export const MIN_WORDS_PER_SESSION = 5;
 export const MAX_WORDS_PER_SESSION = 20;
+export const DEFAULT_WORDS_PER_LEVEL = 30;
+export const MIN_WORDS_PER_LEVEL = 5;
+export const MAX_WORDS_PER_LEVEL = 100;

@@ -1,7 +1,7 @@
 import "server-only";
 import { HttpError } from "@/lib/api";
 import { languageName } from "@/lib/client/languages";
-import { createItems, getLevelLanguages } from "@/lib/services/courses";
+import { getLevelLanguages, importItems } from "@/lib/services/courses";
 import {
   ItemInput,
   type ImportExtractionInput,
@@ -156,7 +156,9 @@ export async function importExtraction(userId: string, extractionId: string, inp
   if (extraction.status !== "done") throw new HttpError(409, "This extraction is not ready to import");
 
   const wanted = new Set(input.draftIds);
-  const drafts = extraction.items.filter((d) => wanted.has(d.id) && d.status === "pending");
+  const drafts = extraction.items
+    .filter((d) => wanted.has(d.id) && d.status === "pending")
+    .sort((a, b) => a.position - b.position);
   if (drafts.length === 0) throw new HttpError(400, "Choose at least one word to add");
 
   const parsed = ItemInput.array().safeParse(
@@ -170,8 +172,8 @@ export async function importExtraction(userId: string, extractionId: string, inp
   );
   if (!parsed.success) throw new HttpError(400, "Some words are empty or too long. Edit them first.");
 
-  const created = await createItems(userId, input.levelId, parsed.data);
-  const ordered = [...created].sort((a, b) => a.position - b.position);
+  const levels = await importItems(userId, input.levelId, parsed.data);
+  const ordered = levels.flatMap((level) => level.items);
   const imported = drafts.flatMap((d, i) => {
     const item = ordered[i];
     return item ? [{ draft_id: d.id, item_id: item.id }] : [];
@@ -183,5 +185,5 @@ export async function importExtraction(userId: string, extractionId: string, inp
     console.error("could not mark drafts as imported", err);
   }
 
-  return ordered;
+  return levels;
 }

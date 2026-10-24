@@ -8,7 +8,7 @@ from lxml.etree import ParserError
 
 # Limits
 
-MAX_CHARS = 40_000
+MAX_CHARS = 120_000
 
 # Joiners
 

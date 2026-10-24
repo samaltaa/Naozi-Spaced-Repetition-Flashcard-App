@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, field, replace
 from decimal import Decimal
 from typing import Protocol
@@ -14,7 +15,13 @@ from pypinyin import Style, lazy_pinyin
 
 from curator.config import get_settings, load_prompt, prompt_version
 from curator.languages import SPANISH, LanguageProfile, profile_for
-from curator.nlp.tokenize import candidates_from_text, citation_form, rank_candidates, to_simplified
+from curator.nlp.tokenize import (
+    candidates_from_text,
+    citation_form,
+    order_by_frequency,
+    rank_candidates,
+    to_simplified,
+)
 from curator.pricing import cost_usd
 from curator.schema import (
     Candidate,
@@ -345,9 +352,16 @@ def translate(
     system = system_prompt(profile, source_language, target_language)
     client = build_client()
     fresh: list[Translation] = []
+    groups = batched(candidates, settings.batch_size)
+    workers = max(1, min(settings.parallel_batches, len(groups)))
 
-    for group in batched(candidates, settings.batch_size):
-        reply = request_with_fallback(client, group, system, settings.model_chain, profile)
+    def run(group: list[Candidate]) -> tuple[list[Translation], list[Rejection], BatchUsage] | None:
+        return request_with_fallback(client, group, system, settings.model_chain, profile)
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        replies = list(pool.map(run, groups))
+
+    for group, reply in zip(groups, replies, strict=True):
         if reply is None:
             result.failed_batches += 1
             result.rejected.extend(Rejection(lemma=c.lemma, reason="every model failed") for c in group)
@@ -377,7 +391,7 @@ def extract_from_text(
     found = candidates_from_text(text, lang=profile.code)
     known_set = known_lemmas or set()
     result.known_dropped = sum(1 for c in found if fold(c.lemma) in known_set)
-    candidates = rank_candidates(found, known_lemmas=known_set, limit=settings.max_items_per_text)
+    candidates = order_by_frequency(rank_candidates(found, known_lemmas=known_set, limit=settings.max_items_per_text))
     if not candidates:
         return result
 

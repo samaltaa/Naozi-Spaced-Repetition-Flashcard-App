@@ -1,8 +1,10 @@
 import { z } from "zod";
 import {
   MAX_LEARNING_STEPS,
+  MAX_WORDS_PER_LEVEL,
   MAX_WORDS_PER_SESSION,
   MIN_LEARNING_STEPS,
+  MIN_WORDS_PER_LEVEL,
   MIN_WORDS_PER_SESSION,
 } from "@/lib/srs/constants";
 
@@ -28,6 +30,7 @@ export const CreateCourseInput = z.object({
   maxReviewsPerDay: z.int().min(1).max(2000).optional(),
   learningSteps: z.int().min(MIN_LEARNING_STEPS).max(MAX_LEARNING_STEPS).optional(),
   wordsPerSession: z.int().min(MIN_WORDS_PER_SESSION).max(MAX_WORDS_PER_SESSION).optional(),
+  wordsPerLevel: z.int().min(MIN_WORDS_PER_LEVEL).max(MAX_WORDS_PER_LEVEL).optional(),
 });
 
 export const UpdateCourseInput = CreateCourseInput.partial();
@@ -57,12 +60,16 @@ export const CreateItemsInput = z.union([ItemInput, z.array(ItemInput).min(1).ma
 
 export const UpdateItemInput = ItemInput.partial();
 
+export const ImportItemsInput = z.object({
+  items: z.array(ItemInput).min(1).max(1000),
+});
+
 // Extractions
 
 export const StartExtractionInput = z
   .object({
     url: z.url({ protocol: /^https?$/ }).max(2000).optional(),
-    text: z.string().trim().min(1).max(80_000).optional(),
+    text: z.string().trim().min(1).max(120_000).optional(),
   })
   .refine((v) => (v.url === undefined) !== (v.text === undefined), "Send either a link or some text.");
 
@@ -126,6 +133,7 @@ export type UpdateLevelInput = z.infer<typeof UpdateLevelInput>;
 export type ItemInput = z.infer<typeof ItemInput>;
 export type CreateItemsInput = z.infer<typeof CreateItemsInput>;
 export type UpdateItemInput = z.infer<typeof UpdateItemInput>;
+export type ImportItemsInput = z.infer<typeof ImportItemsInput>;
 export type ReviewSubmission = z.infer<typeof ReviewSubmission>;
 export type SignUpInput = z.infer<typeof SignUpInput>;
 export type StartExtractionInput = z.infer<typeof StartExtractionInput>;

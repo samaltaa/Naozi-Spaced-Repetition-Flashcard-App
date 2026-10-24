@@ -29,7 +29,8 @@ class Settings(BaseSettings):
     max_tokens: int = Field(default=8000)
 
     batch_size: int = Field(default=60)
-    max_items_per_text: int = Field(default=60)
+    parallel_batches: int = Field(default=4)
+    max_items_per_text: int = Field(default=200)
     max_retries: int = Field(default=1)
     request_timeout_seconds: float = Field(default=120.0)
 

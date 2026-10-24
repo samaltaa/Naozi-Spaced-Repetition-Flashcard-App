@@ -9,6 +9,7 @@ import { LanguageTile } from "@/components/ui/LanguageTile";
 import { StatusMessage } from "@/components/ui/StatusMessage";
 import { api, errorMessage } from "@/lib/client/api";
 import { toFormValues } from "@/lib/client/editor";
+import { countItems, mergeImported } from "@/lib/client/levels";
 import { languageName } from "@/lib/client/languages";
 import type {
   CourseDetail,
@@ -29,6 +30,13 @@ import { LevelPanel } from "./LevelPanel";
 type Tab = "words" | "settings";
 
 const IMPORT_BATCH = 500;
+
+function importNotice(levels: CourseLevel[], created: number): string {
+  const words = countItems(levels);
+  const base = `Added ${words} ${words === 1 ? "word" : "words"}`;
+  if (created === 0) return `${base}.`;
+  return `${base} and ${created} new ${created === 1 ? "level" : "levels"}.`;
+}
 
 const TABS: { id: Tab; label: string }[] = [
   { id: "words", label: "Levels and words" },
@@ -51,6 +59,7 @@ function stripLevels(course: CourseDetail): CourseRecord {
     max_reviews_per_day: course.max_reviews_per_day,
     learning_steps: course.learning_steps,
     words_per_session: course.words_per_session,
+    words_per_level: course.words_per_level,
   };
 }
 
@@ -124,26 +133,26 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
     setLevels((ls) => mapItems(ls, levelId, (items) => items.filter((i) => i.id !== itemId)));
   };
 
+  const addImported = (imported: CourseLevel[]) => {
+    const known = new Set(levels.map((l) => l.id));
+    setLevels((ls) => mergeImported(ls, imported));
+    setNotice(importNotice(imported, imported.filter((l) => !known.has(l.id)).length));
+  };
+
   const importItems = async (levelId: string, items: ItemInput[], onProgress: (done: number) => void) => {
-    const created: CourseItem[] = [];
+    const imported: CourseLevel[] = [];
+    let start = levelId;
     setNotice(null);
     try {
       for (let i = 0; i < items.length; i += IMPORT_BATCH) {
-        const batch = await api.createItems(levelId, items.slice(i, i + IMPORT_BATCH));
-        created.push(...batch);
-        onProgress(created.length);
+        const batch = await api.importItems(start, items.slice(i, i + IMPORT_BATCH));
+        imported.push(...batch);
+        start = batch.at(-1)?.id ?? start;
+        onProgress(countItems(imported));
       }
     } finally {
-      if (created.length > 0) {
-        setLevels((ls) => mapItems(ls, levelId, (existing) => [...existing, ...created]));
-      }
+      if (imported.length > 0) addImported(imported);
     }
-    setNotice(`Added ${created.length} ${created.length === 1 ? "word" : "words"}.`);
-  };
-
-  const addImported = (levelId: string, items: CourseItem[]) => {
-    setLevels((ls) => mapItems(ls, levelId, (existing) => [...existing, ...items]));
-    setNotice(`Added ${items.length} ${items.length === 1 ? "word" : "words"}.`);
   };
 
   // Course
@@ -229,7 +238,9 @@ function EditorBody({ initial }: { initial: CourseDetail }) {
                 onUpdateItem={(itemId, changes) => updateItem(level.id, itemId, changes)}
                 onDeleteItem={(itemId) => deleteItem(level.id, itemId)}
                 onImport={(items, onProgress) => importItems(level.id, items, onProgress)}
-                onImported={(items) => addImported(level.id, items)}
+                onImported={addImported}
+                wordsPerLevel={course.words_per_level}
+                levelCount={levels.length}
                 articlesSupported={articlesSupported}
               />
             ))}
